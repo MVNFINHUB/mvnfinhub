@@ -1,0 +1,176 @@
+/* MVN FINHUB - Top 1% Financial Process Brand */
+/* v1.0 - Launch Version */
+
+:root {
+    --bg-primary: #0a192f;
+    --bg-secondary: #112240;
+    --text-primary: #ccd6f6;
+    --text-secondary: #8892b0;
+    --accent: #64ffda;
+    --white: #e6f1ff;
+    --danger: #ff6b6b;
+    --success: #00b894;
+    --font-heading: 'Outfit', sans-serif;
+    --font-body: 'Inter', sans-serif;
+    --nav-height: 80px;
+}
+
+/* 1. BASE & RESET */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    font-family: var(--font-body);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+/* Brand Highlight Color */
+::selection { background: var(--accent); color: var(--bg-primary); }
+
+a { text-decoration: none; color: inherit; transition: 0.3s; }
+ul { list-style: none; }
+
+/* 2. TYPOGRAPHY */
+h1, h2, h3, h4 { font-family: var(--font-heading); color: var(--white); font-weight: 600; }
+.highlight { color: var(--accent); }
+
+/* Accessibility: Skip Link */
+.skip-link {
+    position: absolute; top: -40px; left: 0;
+    background: var(--accent); color: var(--bg-primary);
+    padding: 8px; z-index: 2000; transition: top 0.3s;
+}
+.skip-link:focus { top: 0; }
+
+.container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+
+/* 3. HEADER & NAV */
+header {
+    height: var(--nav-height);
+    background: rgba(10, 25, 47, 0.95);
+    backdrop-filter: blur(10px);
+    position: fixed; top: 0; width: 100%; z-index: 1000;
+    border-bottom: 1px solid rgba(100, 255, 218, 0.1);
+}
+nav { display: flex; justify-content: space-between; align-items: center; height: 100%; }
+.logo img { height: 40px; width: auto; }
+.nav-links { display: flex; gap: 30px; }
+.nav-links a { font-size: 14px; font-weight: 500; color: var(--white); }
+.nav-links a:hover { color: var(--accent); }
+
+.cta-btn {
+    border: 1px solid var(--accent); color: var(--accent);
+    padding: 10px 20px; border-radius: 4px; font-family: var(--font-heading);
+}
+.cta-btn:hover { background: rgba(100, 255, 218, 0.1); }
+.cta-btn.disabled { opacity: 0.5; pointer-events: none; }
+
+/* Mobile Hamburger */
+.hamburger { display: none; cursor: pointer; color: var(--accent); font-size: 28px; }
+
+/* 4. MOBILE DRAWER */
+.mobile-nav {
+    position: fixed; top: 0; right: -100%;
+    width: 75%; max-width: 300px; height: 100vh;
+    background: var(--bg-secondary);
+    padding: 80px 20px; transition: 0.3s ease-in-out;
+    z-index: 999; box-shadow: -10px 0 30px rgba(0,0,0,0.5);
+}
+.mobile-nav.active { right: 0; }
+.mobile-nav ul { display: flex; flex-direction: column; gap: 25px; }
+.mobile-nav a { font-size: 18px; color: var(--white); }
+
+/* 5. HERO SECTION */
+.hero { min-height: 100vh; display: flex; align-items: center; padding-top: var(--nav-height); }
+.hero-content h1 { font-size: clamp(40px, 8vw, 70px); line-height: 1.1; margin-bottom: 20px; }
+.hero-subtitle { color: var(--accent); font-family: var(--font-heading); font-size: 16px; margin-bottom: 20px; display: block; }
+.hero-desc { max-width: 540px; margin-bottom: 40px; font-size: 18px; color: var(--text-secondary); }
+
+/* 6. FORMS & SUCCESS CARD */
+.contact-section { padding: 100px 0; }
+.form-group { margin-bottom: 20px; position: relative; }
+.form-group label { display: block; margin-bottom: 8px; color: var(--white); font-size: 14px; }
+.form-group input, .form-group textarea, .form-group select {
+    width: 100%; padding: 12px; background: var(--bg-secondary);
+    border: 1px solid var(--text-secondary); border-radius: 4px;
+    color: var(--white); font-family: var(--font-body);
+}
+.form-group input:focus, .form-group textarea:focus { border-color: var(--accent); outline: none; }
+
+/* Honeypot (Accessible Hide) */
+.honey-trap {
+    opacity: 0; position: absolute; top: 0; left: 0; height: 0; width: 0; z-index: -1;
+}
+
+/* Success Card */
+.success-card {
+    display: none; /* Hidden by default */
+    background: var(--bg-secondary);
+    border: 1px solid var(--accent);
+    border-radius: 8px; padding: 40px; text-align: center;
+    margin-top: 20px;
+}
+.success-card.active { display: block; animation: fadeIn 0.5s ease; }
+.success-icon { font-size: 48px; color: var(--accent); margin-bottom: 20px; }
+.ref-id { font-family: monospace; color: var(--text-secondary); display: block; margin: 10px 0; }
+.reset-link { color: var(--accent); text-decoration: underline; cursor: pointer; font-size: 14px; }
+
+/* Validation Errors */
+.error-msg { color: var(--danger); font-size: 12px; margin-top: 5px; display: none; }
+.error-msg.visible { display: block; }
+
+/* 7. UTILITIES */
+.loading-spinner {
+    display: inline-block; width: 12px; height: 12px;
+    border: 2px solid rgba(255,255,255,0.3); border-radius: 50%;
+    border-top-color: #fff; animation: spin 1s infinite linear; margin-left: 10px;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+@keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+/* Floating WhatsApp */
+.whatsapp-float {
+    position: fixed; bottom: 30px; right: 30px;
+    background-color: #25d366; color: white;
+    width: 60px; height: 60px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 30px; box-shadow: 2px 2px 10px rgba(0,0,0,0.3);
+    z-index: 900; transition: 0.3s;
+}
+.whatsapp-float:hover { transform: scale(1.1); }
+
+/* Cookie Banner */
+.cookie-banner {
+    position: fixed; bottom: 0; left: 0; width: 100%;
+    background: var(--bg-secondary); padding: 15px;
+    border-top: 1px solid var(--accent);
+    display: flex; justify-content: space-between; align-items: center;
+    z-index: 2000; transform: translateY(100%); transition: transform 0.3s;
+}
+.cookie-banner.show { transform: translateY(0); }
+.cookie-btns button { padding: 8px 16px; margin-left: 10px; border-radius: 4px; cursor: pointer; border: none; font-weight: 600; }
+.btn-accept { background: var(--accent); color: var(--bg-primary); }
+.btn-decline { background: transparent; border: 1px solid var(--text-secondary); color: var(--text-primary); }
+
+/* 8. PRINT STYLES (Paper-Ready) */
+@media print {
+    body { background: white; color: black; }
+    header, .whatsapp-float, .mobile-nav, .cta-btn, .cookie-banner { display: none !important; }
+    .hero, .contact-section { padding: 0; min-height: auto; }
+    h1, h2, h3, p { color: black !important; text-shadow: none !important; }
+    a { text-decoration: underline; color: black; }
+    .container { width: 100%; max-width: 100%; padding: 0; }
+    body::after {
+        content: "Source: MVN FinHub - Strictly Non-Advisory Process Support";
+        display: block; text-align: center; margin-top: 50px; font-size: 12px; border-top: 1px solid #ccc; padding-top: 10px;
+    }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .nav-links, .header .cta-btn { display: none; }
+    .hamburger { display: block; }
+}
