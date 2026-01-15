@@ -1,19 +1,4 @@
-# MVN FinHub Terminal - Search Engine Protocol
-# v1.0 - 2026 Strategy
-
 User-agent: *
-
-# Allow all public terminal pages
 Allow: /
-Allow: /index.html
-Allow: /services.html
-Allow: /insights.html
-Allow: /legal.html
-
-# Disallow technical and error pages (Keeps SEO clean)
-Disallow: /404.html
-Disallow: /js/config.js
-Disallow: /cdn-cgi/
-
-# Point to the Master Map
+Disallow: /auth/
 Sitemap: https://mvnfinhub.pages.dev/sitemap.xml
