@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Establishing Secure Connection...</title>
+    <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body style="display:flex; flex-direction:column; align-items:center; justify-content:center; height:100vh;">
+    <div class="loader"></div>
+    <p style="margin-top:20px; color:var(--accent-cyan); font-family:monospace; letter-spacing:2px;">GATEWAY: CONNECTING_SUPPORT</p>
+
+    <script>
+        // Number: +91 9025469358 (Replace with your actual business number)
+        // Encoding: btoa("91XXXXXXXXXX") 
+        const secureToken = "OTFYWFhYWFhYWFhY"; 
+        
+        setTimeout(() => {
+            const decoded = atob(secureToken);
+            window.location.href = `https://wa.me/${decoded}?text=System_Request:Documentation_Support`;
+        }, 1500);
+    </script>
+</body>
+</html>
