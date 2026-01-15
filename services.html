@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Services | MVN FinHub</title>
     <link rel="stylesheet" href="css/styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Outfit:wght@500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=JetBrains+Mono:wght@400&family=Outfit:wght@500;700&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
 </head>
 <body>
@@ -14,9 +14,9 @@
             <nav>
                 <div class="logo"><a href="index.html">MVN<span class="highlight">FINHUB</span></a></div>
                 <ul class="nav-links">
-                    <li><a href="index.html">Home</a></li>
+                    <li><a href="index.html">Terminal</a></li>
                     <li><a href="services.html" class="active">Services</a></li>
-                    <li><a href="insights.html">Market Insights</a></li>
+                    <li><a href="insights.html">Insights</a></li>
                     <li><a href="index.html#contact">Contact</a></li>
                 </ul>
                 <div class="hamburger" id="hamburger"><i class="ph ph-list"></i></div>
@@ -24,34 +24,95 @@
         </div>
     </header>
 
-    <main style="padding-top: 120px; padding-bottom: 80px;">
-        <div class="container">
-            <h1>Our <span class="highlight">Expertise</span></h1>
-            <p style="margin-bottom: 50px; color: var(--text-secondary);">Strictly Non-Advisory Process Support.</p>
+    <div class="mobile-nav" id="mobileNav">
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="services.html">Services</a></li>
+        </ul>
+    </div>
 
-            <div class="services-grid">
-                <div class="tilt-card">
-                    <i class="ph ph-files" style="font-size: 40px; color: var(--accent);"></i>
-                    <h3 style="margin: 20px 0;">Physical to Demat</h3>
-                    <p style="color: var(--text-secondary);">Conversion of physical share certificates to electronic format. We handle RTA liaison and affidavit drafting.</p>
+    <main style="padding-top: 150px; padding-bottom: 80px;">
+        <div class="container">
+            <h1 style="margin-bottom: 10px;">Operational <span class="highlight">Capabilities</span></h1>
+            <p class="mono-tag">/// SCOPE: RESIDENT & NRI DOCUMENTATION</p>
+            
+            <div class="bento-grid" style="margin-top: 50px;">
+
+                <div class="spotlight-card span-2">
+                    <i class="ph ph-certificate" style="font-size: 40px; color: var(--accent-cyan); margin-bottom: 20px;"></i>
+                    <h3>Physical Shares to Demat</h3>
+                    <p style="color: var(--text-secondary); margin-top: 10px;">End-to-end conversion protocol.</p>
+                    <ul style="color: var(--text-mono); font-size: 14px; margin-top: 15px; list-style: none;">
+                        <li>> Name Correction Affidavit</li>
+                        <li>> Signature Mismatch Resolution</li>
+                        <li>> Death Claim / Transmission</li>
+                    </ul>
                 </div>
-                <div class="tilt-card">
-                    <i class="ph ph-bank" style="font-size: 40px; color: var(--accent);"></i>
-                    <h3 style="margin: 20px 0;">IEPF Claims</h3>
-                    <p style="color: var(--text-secondary);">Recovery of unclaimed dividends and shares from the IEPF Authority with complete documentation tracking.</p>
+
+                <div class="spotlight-card span-2">
+                    <i class="ph ph-bank" style="font-size: 40px; color: var(--accent-cyan); margin-bottom: 20px;"></i>
+                    <h3>IEPF Claim Recovery</h3>
+                    <p style="color: var(--text-secondary); margin-top: 10px;">Recovery of unclaimed dividends/shares.</p>
+                    <ul style="color: var(--text-mono); font-size: 14px; margin-top: 15px; list-style: none;">
+                        <li>> Form 5 Filing Assistance</li>
+                        <li>> Ministry Tracking</li>
+                        <li>> Verification Coordination</li>
+                    </ul>
                 </div>
-                <div class="tilt-card">
-                    <i class="ph ph-globe" style="font-size: 40px; color: var(--accent);"></i>
-                    <h3 style="margin: 20px 0;">NRI Banking</h3>
-                    <p style="color: var(--text-secondary);">Remote support for Re-KYC, Account Reactivation, and NRO/NRE status conversion.</p>
+
+                <div class="spotlight-card">
+                    <i class="ph ph-globe" style="font-size: 32px; color: var(--accent-indigo);"></i>
+                    <h4 style="margin: 15px 0;">NRI Banking Ops</h4>
+                    <p style="font-size: 13px; color: var(--text-secondary);">Re-KYC, Dormant Activation, NRO/NRE Conversion.</p>
                 </div>
+
+                <div class="spotlight-card">
+                    <i class="ph ph-identification-badge" style="font-size: 32px; color: var(--accent-indigo);"></i>
+                    <h4 style="margin: 15px 0;">NRI Identity Docs</h4>
+                    <p style="font-size: 13px; color: var(--text-secondary);">PAN/Aadhaar updates for overseas citizens.</p>
+                </div>
+
+                <div class="spotlight-card span-2" style="border-color: #ef4444; background: rgba(239, 68, 68, 0.05);">
+                    <h4 style="color: #ef4444; margin-bottom: 10px;">⚠ COMPLIANCE BOUNDARY</h4>
+                    <p style="font-size: 13px; color: var(--text-secondary);">
+                        MVN FinHub is strictly a documentation support service. We do <strong>NOT</strong> provide investment advice, stock tips, or tax filing services. All decisions remain with the client.
+                    </p>
+                </div>
+
+                <div class="spotlight-card">
+                    <i class="ph ph-cardholder" style="font-size: 32px; color: var(--text-primary);"></i>
+                    <h4 style="margin: 10px 0;">PAN Services</h4>
+                    <p style="font-size: 13px; color: var(--text-mono);">New / Correction</p>
+                </div>
+                <div class="spotlight-card">
+                    <i class="ph ph-fingerprint" style="font-size: 32px; color: var(--text-primary);"></i>
+                    <h4 style="margin: 10px 0;">Aadhaar</h4>
+                    <p style="font-size: 13px; color: var(--text-mono);">Update Guidance</p>
+                </div>
+                <div class="spotlight-card">
+                    <i class="ph ph-airplane" style="font-size: 32px; color: var(--text-primary);"></i>
+                    <h4 style="margin: 10px 0;">Passport</h4>
+                    <p style="font-size: 13px; color: var(--text-mono);">Renewal / Address</p>
+                </div>
+                <div class="spotlight-card">
+                    <i class="ph ph-user-check" style="font-size: 32px; color: var(--text-primary);"></i>
+                    <h4 style="margin: 10px 0;">Voter ID</h4>
+                    <p style="font-size: 13px; color: var(--text-mono);">EPIC Update</p>
+                </div>
+
+                <div class="spotlight-card span-2">
+                    <i class="ph ph-files" style="font-size: 32px; color: var(--text-primary);"></i>
+                    <h4 style="margin: 10px 0;">Loan Documentation</h4>
+                    <p style="font-size: 13px; color: var(--text-secondary);">Home/Personal Loan paperwork checklist. (No lender recommendations).</p>
+                </div>
+
             </div>
         </div>
     </main>
 
     <footer>
         <div class="container">
-            <p>&copy; 2026 MVN FinHub. All rights reserved.</p>
+            <p style="color: var(--text-secondary);">&copy; 2026 MVN FinHub.</p>
         </div>
     </footer>
     <script type="module" src="js/app.js"></script>
