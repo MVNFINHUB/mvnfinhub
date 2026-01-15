@@ -3,28 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>System Error | 404</title>
+    <title>404 | System Error</title>
     <link rel="stylesheet" href="css/styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400&family=Outfit:wght@700&display=swap" rel="stylesheet">
-    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
-<body style="height: 100vh; display: flex; align-items: center; justify-content: center; text-align: center; flex-direction: column; overflow: hidden;">
-    
-    <div style="animation: float 4s ease-in-out infinite;">
-        <i class="ph ph-warning-octagon" style="font-size: 120px; color: #ef4444; filter: drop-shadow(0 0 15px rgba(239, 68, 68, 0.4));"></i>
+<body style="display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh; text-align: center;">
+
+    <div style="font-size: 80px; color: var(--accent-cyan); margin-bottom: 20px;">
+        <i class="fa-solid fa-triangle-exclamation"></i>
     </div>
 
-    <p class="mono-tag" style="margin-top: 30px; color: #ef4444;">ERROR_CODE: 404_NOT_FOUND</p>
-    <h1 style="font-size: clamp(40px, 8vw, 80px); margin: 10px 0;">Request <span class="highlight">Denied.</span></h1>
-    <p style="color: var(--text-secondary); max-width: 400px; margin-bottom: 40px;">The document or terminal you are looking for does not exist in the database.</p>
+    <h1 style="font-size: clamp(40px, 6vw, 80px); line-height: 1;">404 <span style="color: var(--accent-cyan);">ERROR</span></h1>
     
-    <a href="index.html" class="cta-btn" style="border-color: var(--accent-cyan); color: var(--accent-cyan);">REBOOT TO TERMINAL</a>
+    <p style="color: var(--text-secondary); margin: 20px 0; font-family: monospace;">
+        /// SYSTEM_ALERT: PAGE_NOT_FOUND
+    </p>
+    
+    <p style="color: var(--text-primary); max-width: 400px; margin-bottom: 40px;">
+        The requested terminal route does not exist. Please return to the secure dashboard.
+    </p>
 
-    <style>
-        @keyframes float {
-            0%, 100% { transform: translateY(0) rotate(0); }
-            50% { transform: translateY(-20px) rotate(5deg); }
-        }
-    </style>
+    <a href="index.html" class="cta-btn">RETURN TO TERMINAL</a>
+
 </body>
 </html>
