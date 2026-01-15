@@ -1,4 +1,4 @@
-/* MVN OBSIDIAN ENGINE v4.5 - BULLETPROOF */
+/* MVN OBSIDIAN - BULLETPROOF v4.5 */
 :root {
     --bg-void: #020617;
     --accent-cyan: #22d3ee;
@@ -6,18 +6,23 @@
     --glass: rgba(30, 41, 59, 0.7);
 }
 
-* { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+* { 
+    margin: 0; padding: 0; box-sizing: border-box; 
+    -webkit-tap-highlight-color: transparent; 
+    touch-action: manipulation; /* Fixes iPhone double-tap lag */
+}
 
 body {
     background: var(--bg-void);
     color: var(--text-primary);
     font-family: 'Inter', sans-serif;
     line-height: 1.6;
+    overflow-x: hidden;
     background-image: radial-gradient(circle at 2px 2px, rgba(255,255,255,0.05) 1px, transparent 0);
-    background-size: 40px 40px; /* Technical Grid */
+    background-size: 40px 40px;
 }
 
-/* 101% DROPDOWN FIX: Ensures black background and white text regardless of browser */
+/* 101% DROPDOWN FIX: Visible on ALL devices */
 select, option, optgroup {
     background-color: #0f172a !important; 
     color: #ffffff !important;
@@ -25,30 +30,32 @@ select, option, optgroup {
     padding: 12px !important;
 }
 
+/* MOBILE OPTIMIZED INPUTS */
 input, textarea, select {
     width: 100%; padding: 15px; margin-top: 10px;
     border-radius: 8px; border: 1px solid rgba(255,255,255,0.1);
     background: rgba(255,255,255,0.05); color: #fff;
+    font-size: 16px; /* Prevents auto-zoom on iPhone */
 }
 
 /* BENTO CARD SPOTLIGHT */
+.bento-grid {
+    display: grid; 
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+}
+
 .spotlight-card {
     background: var(--glass); border-radius: 16px; padding: 30px;
     border: 1px solid rgba(255,255,255,0.1); transition: 0.4s;
 }
 .spotlight-card:hover { border-color: var(--accent-cyan); box-shadow: 0 0 30px rgba(34,211,238,0.2); }
 
-.cta-btn {
-    background: var(--accent-cyan); color: var(--bg-void);
-    border: none; padding: 14px 28px; border-radius: 8px;
-    font-weight: 700; cursor: pointer; text-decoration: none;
-    display: inline-block; transition: 0.3s;
+/* FLOATING WHATSAPP */
+.whatsapp-stealth {
+    position: fixed; bottom: 30px; right: 30px;
+    width: 65px; height: 65px; background: #25d366;
+    border-radius: 50%; display: flex; align-items: center; justify-content: center;
+    color: white !important; font-size: 35px; z-index: 9999;
+    box-shadow: 0 0 20px rgba(37, 211, 102, 0.5);
 }
-
-/* Loader for Redirect Page */
-.loader {
-    width: 48px; height: 48px; border: 5px solid #FFF;
-    border-bottom-color: var(--accent-cyan); border-radius: 50%;
-    animation: rotation 1s linear infinite;
-}
-@keyframes rotation { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
