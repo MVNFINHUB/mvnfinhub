@@ -4,9 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Market Insights | MVN FinHub</title>
-    <meta name="description" content="Daily updates on Global Economy and Indian Markets. Expert analysis on financial trends.">
     <link rel="stylesheet" href="css/styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Outfit:wght@500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=JetBrains+Mono:wght@400&family=Outfit:wght@500;700&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
 </head>
 <body>
@@ -15,9 +14,9 @@
             <nav>
                 <div class="logo"><a href="index.html">MVN<span class="highlight">FINHUB</span></a></div>
                 <ul class="nav-links">
-                    <li><a href="index.html">Home</a></li>
+                    <li><a href="index.html">Terminal</a></li>
                     <li><a href="services.html">Services</a></li>
-                    <li><a href="insights.html" class="active">Market Insights</a></li>
+                    <li><a href="insights.html" class="active">Insights</a></li>
                     <li><a href="index.html#contact">Contact</a></li>
                 </ul>
                 <div class="hamburger" id="hamburger"><i class="ph ph-list"></i></div>
@@ -25,56 +24,39 @@
         </div>
     </header>
 
-    <div class="mobile-nav" id="mobileNav">
-        <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="services.html">Services</a></li>
-            <li><a href="insights.html">Market Insights</a></li>
-        </ul>
-    </div>
-
-    <main style="padding-top: 120px; padding-bottom: 80px;">
+    <main style="padding-top: 150px; padding-bottom: 80px;">
         <div class="container">
-            <h1 style="margin-bottom: 10px;">Market <span class="highlight">Intelligence</span></h1>
-            <p style="color: var(--text-secondary); margin-bottom: 50px;">Curated analysis of the global economy and Indian financial sectors.</p>
+            <p class="mono-tag">/// INTEL_FEED: LIVE</p>
+            <h1 style="margin-bottom: 50px;">Market <span class="highlight">Intelligence</span></h1>
 
-            <div class="insight-grid">
-                <article class="tilt-card">
-                    <div style="color: var(--accent); margin-bottom: 15px;"><i class="ph ph-globe" style="font-size: 32px;"></i></div>
-                    <h3>Global Economy</h3>
-                    <p style="color: var(--text-secondary); font-size: 14px; margin: 10px 0;">Updates on Fed rates, global inflation trends, and currency movements affecting cross-border finance.</p>
-                    <span style="font-size: 12px; color: #8892b0; border: 1px solid #8892b0; padding: 2px 8px; border-radius: 20px;">Analysis</span>
+            <div class="bento-grid">
+                <article class="spotlight-card">
+                    <span class="mono-tag" style="color: var(--accent-indigo);">REGION: GLOBAL</span>
+                    <h3 style="margin: 15px 0;">Economic Pulse</h3>
+                    <p style="color: var(--text-secondary); font-size: 14px;">Analysis of Fed policy, global interest rates, and currency shifts impacting cross-border documentation.</p>
                 </article>
 
-                <article class="tilt-card">
-                    <div style="color: var(--accent); margin-bottom: 15px;"><i class="ph ph-trend-up" style="font-size: 32px;"></i></div>
-                    <h3>Indian Markets</h3>
-                    <p style="color: var(--text-secondary); font-size: 14px; margin: 10px 0;">SEBI regulatory updates, Sensex/Nifty performance drivers, and corporate governance news.</p>
-                    <span style="font-size: 12px; color: #8892b0; border: 1px solid #8892b0; padding: 2px 8px; border-radius: 20px;">Market Watch</span>
+                <article class="spotlight-card">
+                    <span class="mono-tag">REGION: INDIA</span>
+                    <h3 style="margin: 15px 0;">Regulatory Watch</h3>
+                    <p style="color: var(--text-secondary); font-size: 14px;">SEBI circular updates, IEPF regulatory shifts, and NSDL/CDSL procedural changes.</p>
                 </article>
 
-                <article class="tilt-card">
-                    <div style="color: var(--accent); margin-bottom: 15px;"><i class="ph ph-newspaper" style="font-size: 32px;"></i></div>
-                    <h3>The Daily Brief</h3>
-                    <p style="color: var(--text-secondary); font-size: 14px; margin: 10px 0;">Key headlines you need to know before the market opens. Condensed for the busy professional.</p>
-                    <span style="font-size: 12px; color: var(--accent); border: 1px solid var(--accent); padding: 2px 8px; border-radius: 20px;">Live Feed</span>
+                <article class="spotlight-card span-2">
+                    <span class="mono-tag" style="color: #ef4444;">PROTOCOL: DAILY_BRIEF</span>
+                    <h3 style="margin: 15px 0;">Operational Headlines</h3>
+                    <p style="color: var(--text-secondary); font-size: 14px;">Critical documentation deadlines and financial system status updates for the working day.</p>
                 </article>
             </div>
 
-            <div style="margin-top: 60px; padding: 30px; background: rgba(255,255,255,0.03); border-radius: 8px;">
-                <h4>Disclaimer</h4>
-                <p style="font-size: 13px; color: var(--text-secondary); margin-top: 10px;">
-                    The information provided on this page is for educational and informational purposes only. It does not constitute financial, investment, or legal advice. MVN FinHub is a documentation support service and does not provide investment recommendations.
+            <div class="spotlight-card" style="margin-top: 40px; border-left: 2px solid var(--accent-cyan);">
+                <p style="font-size: 12px; color: var(--text-mono); font-family: var(--font-tech);">
+                    DATA_DISCLAIMER: The information provided is for educational purposes only. MVN FinHub provides process support and does not offer investment recommendations.
                 </p>
             </div>
         </div>
     </main>
 
-    <footer>
-        <div class="container">
-            <p>&copy; 2026 MVN FinHub. All rights reserved.</p>
-        </div>
-    </footer>
     <script type="module" src="js/app.js"></script>
 </body>
 </html>
