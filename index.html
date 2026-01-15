@@ -1,62 +1,89 @@
 <!DOCTYPE html>
-<html lang="en" style="scroll-behavior: smooth;">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-    <title>MVN FinHub | Secure Terminal</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, viewport-fit=cover">
+    <title>MVN FinHub | Secure Documentation</title>
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
 <body>
-    <header style="height:80px; background:rgba(2,6,23,0.9); position:fixed; width:100%; z-index:1000; border-bottom:1px solid rgba(255,255,255,0.1);">
+
+    <header>
         <div class="container" style="display:flex; justify-content:space-between; align-items:center; height:100%;">
             <div class="logo"><a href="index.html" style="text-decoration:none; color:#fff; font-weight:700; font-size:24px;">MVN<span style="color:var(--accent-cyan);">FINHUB</span></a></div>
-            <nav style="display:flex; gap:25px;">
-                <a href="services.html" style="color:#fff; text-decoration:none;">Services</a>
-                <a href="#contact" style="color:#fff; text-decoration:none;">Contact</a>
+            <nav class="nav-links">
+                <a href="index.html">Terminal</a>
+                <a href="services.html">Services</a>
+                <a href="insights.html">Insights</a>
+                <a href="#contact">Contact</a>
             </nav>
         </div>
     </header>
 
-    <main style="padding-top:150px;">
+    <main style="padding-top:140px;">
         <section class="container">
-            <h1 style="font-size:clamp(40px, 8vw, 80px);">Secure <span style="color:var(--accent-cyan);">Financial</span> Documentation.</h1>
-            <p style="color:#94a3b8; margin-top:20px;">Non-advisory process support for RIs and NRIs. Physical Shares, IEPF, and Banking.</p>
+            <h1 style="font-size: clamp(36px, 6vw, 72px); font-weight:700; line-height:1.1;">
+                Secure <span style="color:var(--accent-cyan);">Financial</span> <br> Documentation.
+            </h1>
+            <p style="color:var(--text-secondary); margin:30px 0; max-width:600px; font-size:18px;">
+                Independent process support for Physical Shares, IEPF Claims, and NRI Banking. Strictly Non-Advisory.
+            </p>
+            <a href="#contact" class="cta-btn">INITIATE REQUEST</a>
         </section>
 
         <section id="contact" style="padding:100px 0;">
             <div class="container">
                 <div class="spotlight-card" style="max-width:700px; margin:0 auto;">
-                    <h2 style="margin-bottom:30px;">Secure Enquiry Terminal</h2>
+                    <h2 style="margin-bottom:20px;">Secure Enquiry Terminal</h2>
                     <form id="contactForm">
                         <input type="text" name="name" placeholder="Full Legal Name" required>
                         <input type="email" name="email" placeholder="Email Address" required>
                         <input type="tel" name="phone" placeholder="10-Digit Mobile" required>
+                        
                         <select name="service" required>
                             <option value="" disabled selected>PROTOCOL (SELECT SERVICE)</option>
                             <optgroup label="LEGACY & SHARES">
                                 <option value="Physical Shares">Physical Shares to Demat</option>
                                 <option value="IEPF Claims">IEPF Claim Recovery</option>
                             </optgroup>
-                            <optgroup label="NRI SERVICES">
+                            <optgroup label="NRI & IDENTITY">
                                 <option value="NRI Banking">NRI Banking Support</option>
-                                <option value="NRI Identity">NRI PAN / Aadhaar</option>
+                                <option value="Identity Docs">PAN / Aadhaar Update</option>
+                            </optgroup>
+                            <optgroup label="OTHER">
+                                <option value="Banking">Banking / Loans</option>
+                                <option value="Privacy">Data Privacy Request</option>
                             </optgroup>
                         </select>
+
                         <textarea name="message" rows="5" placeholder="Operational details..." required></textarea>
-                        <button type="submit" style="width:100%; padding:15px; background:var(--accent-cyan); color:#000; border:none; border-radius:8px; font-weight:700; margin-top:20px;">TRANSMIT SECURELY</button>
+                        
+                        <div style="margin-top:20px; display:flex; gap:10px; align-items:start;">
+                            <input type="checkbox" required style="width:20px; margin-top:5px;">
+                            <p style="font-size:12px; color:var(--text-secondary);">I authorize data processing for documentation support.</p>
+                        </div>
+
+                        <button type="submit" class="cta-btn" style="width:100%; margin-top:20px;">TRANSMIT SECURELY</button>
                     </form>
                 </div>
             </div>
         </section>
     </main>
 
-    <footer style="padding:60px 0; text-align:center;">
-        <a href="https://instagram.com/mvnfinhub" target="_blank" style="color:#fff; font-size:32px; margin-bottom:20px; display:inline-block;"><i class="fa-brands fa-instagram"></i></a>
-        <p style="color:#94a3b8;">&copy; 2026 MVN FinHub. System Status: <span style="color:#25d366;">Operational</span></p>
+    <footer style="padding:50px 0; text-align:center; border-top:1px solid var(--border);">
+        <a href="https://instagram.com/mvnfinhub" target="_blank" style="color:#fff; font-size:30px; margin-bottom:15px; display:inline-block;">
+            <i class="fa-brands fa-instagram"></i>
+        </a>
+        <p style="color:var(--text-secondary); font-size:12px;">&copy; 2026 MVN FinHub. Status: Operational.</p>
+        <div style="margin-top:10px;">
+            <a href="legal.html" style="color:var(--text-secondary); font-size:12px; margin:0 10px;">Privacy Policy</a>
+        </div>
     </footer>
 
-    <a href="auth/connect.html" class="whatsapp-stealth" target="_blank"><i class="fa-brands fa-whatsapp"></i></a>
+    <a href="auth/connect.html" class="whatsapp-stealth" target="_blank">
+        <i class="fa-brands fa-whatsapp"></i>
+    </a>
 
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <script type="module" src="js/app.js"></script>
