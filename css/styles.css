@@ -1,134 +1,197 @@
-/* MVN FINHUB - Neo-FinTech Design System */
-/* Standard: Bank-Grade Security & Accessibility */
+/* MVN OBSIDIAN - TOP 1% FINTECH DESIGN SYSTEM */
 
 :root {
-    --bg-primary: #0a192f;
-    --bg-secondary: #112240;
-    --text-primary: #e6f1ff;
-    --text-secondary: #8892b0;
-    --accent: #64ffda;
-    --glass: rgba(17, 34, 64, 0.7);
-    --glass-border: rgba(100, 255, 218, 0.1);
+    /* "Deep Void" Palette */
+    --bg-void: #020617;
+    --bg-card: rgba(30, 41, 59, 0.4); /* High-end frosted glass */
+    --bg-card-hover: rgba(30, 41, 59, 0.6);
+    
+    /* Text Colors */
+    --text-primary: #F8FAFC;
+    --text-secondary: #94A3B8;
+    --text-mono: #64748B; /* For technical details */
+
+    /* "Neon Noir" Accents */
+    --accent-cyan: #22d3ee;
+    --accent-indigo: #818cf8;
+    --border-color: rgba(148, 163, 184, 0.1);
+    
+    /* Fonts */
     --font-heading: 'Outfit', sans-serif;
     --font-body: 'Inter', sans-serif;
-    --nav-height: 80px;
+    --font-tech: 'JetBrains Mono', monospace; /* The "Terminal" look */
 }
 
-/* 1. GLOBAL RESET */
+/* 1. GLOBAL RESET & GRID BACKGROUND */
 * { margin: 0; padding: 0; box-sizing: border-box; }
-html { scroll-behavior: smooth; }
 
 body {
-    background-color: var(--bg-primary);
+    background-color: var(--bg-void);
     color: var(--text-primary);
     font-family: var(--font-body);
     line-height: 1.6;
-    background-image: radial-gradient(circle at 50% 50%, #112240 0%, #0a192f 100%);
     overflow-x: hidden;
+    
+    /* The Technical Grid Overlay */
+    background-image: 
+        linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+    background-size: 40px 40px;
+    position: relative;
 }
 
-a { text-decoration: none; color: inherit; transition: 0.3s; }
-ul { list-style: none; }
-img { max-width: 100%; display: block; }
+/* 2. AURORA GLOWS (Atmosphere) */
+body::before {
+    content: '';
+    position: fixed;
+    top: -20%; left: -10%;
+    width: 600px; height: 600px;
+    background: radial-gradient(circle, rgba(34, 211, 238, 0.15), transparent 70%);
+    filter: blur(80px);
+    z-index: -1;
+    animation: floatGlow 15s infinite alternate;
+}
 
-/* 2. TYPOGRAPHY */
-h1, h2, h3, h4 { font-family: var(--font-heading); color: var(--text-primary); font-weight: 700; }
-.highlight { color: var(--accent); }
+@keyframes floatGlow { from { transform: translate(0,0); } to { transform: translate(50px, 50px); } }
+
+/* 3. TYPOGRAPHY & UTILS */
+h1, h2, h3 { font-family: var(--font-heading); font-weight: 700; letter-spacing: -0.5px; }
+.mono-tag { font-family: var(--font-tech); font-size: 12px; text-transform: uppercase; letter-spacing: 1px; color: var(--accent-cyan); }
+
 .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+.highlight { 
+    background: linear-gradient(90deg, var(--accent-cyan), var(--text-primary)); 
+    -webkit-background-clip: text; 
+    -webkit-text-fill-color: transparent; 
+}
 
-/* 3. GLASSMORPHISM NAV */
+/* 4. GLASSMORPHISM NAVBAR */
 header {
-    height: var(--nav-height);
-    background: rgba(10, 25, 47, 0.85);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
+    height: 80px;
+    background: rgba(2, 6, 23, 0.8);
+    backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--border-color);
     position: fixed; top: 0; width: 100%; z-index: 1000;
-    border-bottom: 1px solid var(--glass-border);
 }
 nav { display: flex; justify-content: space-between; align-items: center; height: 100%; }
-.logo a { font-size: 24px; font-weight: 700; letter-spacing: -0.5px; }
+.logo a { font-size: 24px; font-weight: 700; color: var(--text-primary); text-decoration: none; }
 .nav-links { display: flex; gap: 30px; }
-.nav-links a { font-size: 14px; font-weight: 500; color: var(--text-primary); }
-.nav-links a:hover, .nav-links a.active { color: var(--accent); }
+.nav-links a { font-size: 14px; font-weight: 500; color: var(--text-secondary); transition: 0.3s; }
+.nav-links a:hover, .nav-links a.active { color: var(--accent-cyan); }
 
-/* Buttons */
-.cta-btn {
-    border: 1px solid var(--accent); color: var(--accent);
-    padding: 10px 20px; border-radius: 4px; font-family: var(--font-heading);
-    position: relative; overflow: hidden; z-index: 1;
-}
-.cta-btn::after {
-    content: ''; position: absolute; top: 0; left: 0; width: 0%; height: 100%;
-    background: var(--accent); z-index: -1; transition: 0.3s;
-}
-.cta-btn:hover { color: var(--bg-primary); }
-.cta-btn:hover::after { width: 100%; }
-
-/* 4. 3D TILT CARDS & GRID */
-.services-grid, .insight-grid {
+/* 5. SPOTLIGHT CARDS (The Bento Grid Engine) */
+.bento-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 30px;
+    gap: 20px;
+    padding: 20px 0;
 }
 
-.tilt-card {
-    background: var(--bg-secondary);
+/* Special Spans for Bento Layout */
+.span-2 { grid-column: span 2; }
+@media (max-width: 768px) { .span-2 { grid-column: span 1; } }
+
+.spotlight-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
     padding: 30px;
-    border-radius: 10px;
-    border: 1px solid var(--glass-border);
-    transition: transform 0.2s ease-out, box-shadow 0.3s;
     position: relative;
     overflow: hidden;
-}
-.tilt-card:hover {
-    border-color: var(--accent);
-    box-shadow: 0 10px 30px -15px rgba(2, 12, 27, 0.7);
-}
-
-/* 5. FORMS (Tech Style) */
-.form-group input, .form-group textarea, .form-group select {
-    width: 100%; padding: 12px; background: rgba(255,255,255,0.05);
-    border: 1px solid var(--glass-border); border-radius: 4px;
-    color: var(--text-primary); font-family: var(--font-body);
     transition: 0.3s;
 }
-.form-group input:focus, .form-group textarea:focus {
-    border-color: var(--accent); outline: none;
-    box-shadow: 0 0 10px rgba(100, 255, 218, 0.1);
+
+/* The Spotlight Beam Logic */
+.spotlight-card::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    border-radius: 12px;
+    padding: 1px; /* The border width */
+    background: radial-gradient(
+        800px circle at var(--mouse-x) var(--mouse-y),
+        rgba(34, 211, 238, 0.4),
+        transparent 40%
+    );
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.5s;
 }
 
-/* 6. TOAST NOTIFICATIONS */
-.toast-container { position: fixed; bottom: 20px; right: 20px; z-index: 2000; }
-.toast {
-    background: var(--bg-secondary); border-left: 4px solid var(--accent);
-    color: var(--text-primary); padding: 15px 25px; margin-top: 10px;
-    border-radius: 4px; box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-    transform: translateX(120%); transition: transform 0.3s ease;
-}
-.toast.show { transform: translateX(0); }
+.spotlight-card:hover::before { opacity: 1; }
+.spotlight-card:hover { transform: translateY(-2px); background: var(--bg-card-hover); }
 
-/* 7. FOOTER */
-footer {
-    text-align: center; padding: 40px 0; color: var(--text-secondary);
-    font-size: 14px; border-top: 1px solid var(--glass-border);
-    background: var(--bg-primary);
+/* 6. BUTTONS */
+.cta-btn {
+    background: transparent;
+    border: 1px solid var(--border-color);
+    color: var(--text-primary);
+    padding: 12px 24px;
+    border-radius: 6px;
+    font-family: var(--font-tech);
+    font-size: 13px;
+    position: relative;
+    overflow: hidden;
+    transition: 0.3s;
+    cursor: pointer;
+}
+.cta-btn:hover { border-color: var(--accent-cyan); box-shadow: 0 0 15px rgba(34, 211, 238, 0.2); }
+
+/* 7. FORMS (Tech Style) */
+.form-group { margin-bottom: 20px; }
+input, select, textarea {
+    width: 100%;
+    background: rgba(0,0,0,0.3);
+    border: 1px solid var(--border-color);
+    padding: 15px;
+    border-radius: 6px;
+    color: var(--text-primary);
+    font-family: var(--font-body);
+    transition: 0.3s;
+}
+input:focus, select:focus, textarea:focus {
+    outline: none;
+    border-color: var(--accent-cyan);
+    background: rgba(34, 211, 238, 0.05);
 }
 
-/* 8. MOBILE RESPONSIVE */
-.hamburger { display: none; cursor: pointer; color: var(--accent); font-size: 28px; }
+/* 8. STEALTH WHATSAPP BUTTON */
+.whatsapp-stealth {
+    position: fixed; bottom: 30px; right: 30px;
+    width: 60px; height: 60px;
+    background: #25d366; color: white;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 30px; box-shadow: 0 0 20px rgba(37, 211, 102, 0.4);
+    z-index: 2000; transition: 0.3s;
+}
+.whatsapp-stealth:hover { transform: scale(1.1); box-shadow: 0 0 30px rgba(37, 211, 102, 0.6); }
+
+/* 9. MOBILE */
+.hamburger { display: none; color: var(--text-primary); font-size: 28px; cursor: pointer; }
 .mobile-nav {
     position: fixed; top: 0; right: -100%; width: 80%; height: 100vh;
-    background: var(--bg-secondary); padding: 100px 40px;
-    transition: 0.3s; z-index: 999;
+    background: #0f172a; padding: 100px 40px; transition: 0.3s; z-index: 999;
 }
 .mobile-nav.active { right: 0; }
-.mobile-nav ul { display: flex; flex-direction: column; gap: 30px; }
-
+.mobile-nav ul { list-style: none; display: flex; flex-direction: column; gap: 30px; }
 @media (max-width: 768px) {
     .nav-links, header .cta-btn { display: none; }
     .hamburger { display: block; }
 }
 
-/* 404 Animation */
-.floating-doc { animation: float 6s ease-in-out infinite; }
-@keyframes float { 0% { transform: translateY(0px) rotate(0deg); } 50% { transform: translateY(-20px) rotate(5deg); } 100% { transform: translateY(0px) rotate(0deg); } }
+/* 10. TOAST */
+.toast-container { position: fixed; bottom: 20px; left: 20px; z-index: 2000; }
+.toast {
+    background: #1e293b; border-left: 3px solid var(--accent-cyan);
+    color: white; padding: 15px 25px; margin-top: 10px; border-radius: 4px;
+    transform: translateX(-120%); transition: 0.3s;
+    font-family: var(--font-tech); font-size: 13px;
+}
+.toast.show { transform: translateX(0); }
+
+/* Utility for honeypot */
+.honey-trap { opacity: 0; position: absolute; z-index: -1; }
