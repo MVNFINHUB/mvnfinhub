@@ -8,47 +8,48 @@
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
     
     <link rel="stylesheet" href="styles.css">
+    
     <script src="main.js" defer></script>
 </head>
 <body>
 
     <header class="site-header" role="banner">
-        <div class="container header-inner">
-            <a href="index.html" class="brand-logo" aria-label="MVN FinHub Home">
-                MVN FinHub
-            </a>
-            
-            <nav class="main-nav" role="navigation" aria-label="Main Navigation">
-                <ul class="nav-list">
-                    <li><a href="index.html" class="nav-link">Home</a></li>
-                    <li><a href="services.html" class="nav-link">Services</a></li>
-                    <li><a href="insights.html" class="nav-link">Insights</a></li>
-                    <li><a href="about.html" class="nav-link">About</a></li>
-                    <li><a href="contact.html" class="nav-link">Contact</a></li>
-                </ul>
-            </nav>
+        <a href="index.html" class="brand-logo" aria-label="MVN FinHub Home">
+            MVN FinHub
+        </a>
+        
+        <nav class="main-nav" role="navigation" aria-label="Main Navigation">
+            <ul class="nav-list">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="services.html" class="nav-link">Services</a></li>
+                <li><a href="insights.html" class="nav-link">Insights</a></li>
+                <li><a href="about.html" class="nav-link">About</a></li>
+                <li><a href="contact.html" class="nav-link">Contact</a></li>
+            </ul>
+        </nav>
 
-            <div class="header-action">
-                <a href="contact.html" class="btn btn-primary btn-sm">Start an Enquiry</a>
-                <button class="mobile-toggle" aria-label="Toggle navigation menu" aria-expanded="false">
-                    <span class="hamburger-box">
-                        <span class="hamburger-inner"></span>
-                    </span>
-                </button>
-            </div>
+        <div class="header-action">
+            <a href="contact.html" class="btn-primary">Start an Enquiry</a>
+            <button class="mobile-toggle" aria-label="Toggle navigation menu" style="display: none;">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="3" y1="12" x2="21" y2="12"></line>
+                    <line x1="3" y1="6" x2="21" y2="6"></line>
+                    <line x1="3" y1="18" x2="21" y2="18"></line>
+                </svg>
+            </button>
         </div>
     </header>
 
     <main id="main-content">
 
-        <section class="section hero-section" aria-labelledby="hero-title" data-animate="fade-up">
-            <div class="container hero-container">
+        <section class="section hero-section" aria-labelledby="hero-heading">
+            <div class="container">
                 <div class="hero-content">
-                    <span class="brand-label">MVN FinHub</span>
-                    <h1 id="hero-title" class="hero-heading">
+                    <span class="brand-label" style="color: var(--c-accent); font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; font-size: 0.8rem; display: block; margin-bottom: 1rem;">MVN FinHub</span>
+                    <h1 id="hero-heading" class="hero-heading">
                         Simplify Financial Documentation & Legacy Recovery
                     </h1>
                     <p class="hero-subheadline">
@@ -60,7 +61,7 @@
 
         <section class="section trust-section" aria-label="Trust Indicators">
             <div class="container">
-                <ul class="trust-list" data-stagger-children="true">
+                <ul class="trust-list">
                     <li class="trust-item">Strictly Non-Advisory</li>
                     <li class="trust-item">Secure & Private</li>
                     <li class="trust-item">Process-Driven</li>
@@ -71,20 +72,20 @@
 
         <section class="section situation-section" aria-label="Core Capabilities">
             <div class="container">
-                <div class="situation-grid" data-stagger-children="true">
-                    <span class="situation-pill">Shares & Legacy Asset Recovery</span>
-                    <span class="situation-pill">RI & NRI Documentation Support</span>
-                    <span class="situation-pill">Banking & Loan Documentation</span>
-                    <span class="situation-pill">Financial Structuring Awareness (Non-Advisory)</span>
+                <div class="trust-list" style="margin-top: 2rem;">
+                    <div class="trust-item">Shares & Legacy Asset Recovery</div>
+                    <div class="trust-item">RI & NRI Documentation Support</div>
+                    <div class="trust-item">Banking & Loan Documentation</div>
+                    <div class="trust-item">Financial Structuring Awareness (Non-Advisory)</div>
                 </div>
             </div>
         </section>
 
         <section class="section process-section" aria-labelledby="process-heading">
             <div class="container">
-                <h2 id="process-heading" class="section-title">How MVN FinHub Works</h2>
+                <h2 id="process-heading" class="hero-heading" style="font-size: 2.5rem; margin-bottom: 3rem;">How MVN FinHub Works</h2>
                 
-                <div class="grid-layout four-col-grid" data-stagger-children="true">
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem;">
                     <article class="process-card">
                         <h3 class="card-title">Framework</h3>
                         <p class="card-text">
@@ -106,12 +107,11 @@
                         </p>
                     </article>
 
-                    <article class="process-card status-card">
-                        <div class="status-header">
-                            <h3 class="card-title">Operational Status</h3>
-                            <div class="status-badge">
-                                <span class="pulse-dot">●</span> System Active
-                            </div>
+                    <article class="process-card">
+                        <h3 class="card-title">Operational Status</h3>
+                        <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.5rem; color: var(--c-accent);">
+                            <span style="width: 8px; height: 8px; background: currentColor; border-radius: 50%; box-shadow: 0 0 10px currentColor;"></span>
+                            <span style="font-size: 0.8rem; font-weight: 700; text-transform: uppercase;">System Active</span>
                         </div>
                         <p class="card-text">
                             Enquiries are securely accepted and processed through controlled systems.
@@ -121,103 +121,93 @@
             </div>
         </section>
 
-        <section class="section services-section bg-subtle" aria-labelledby="services-heading">
+        <section class="section services-section" aria-labelledby="services-heading">
             <div class="container">
-                <h2 id="services-heading" class="section-title">What We Help With</h2>
+                <h2 id="services-heading" class="hero-heading" style="font-size: 2.5rem; margin-bottom: 3rem;">What We Help With</h2>
                 
-                <div class="grid-layout services-grid" data-stagger-children="true">
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem;">
                     
-                    <div class="service-group">
-                        <h3 class="service-group-title">Shares & Legacy Asset Recovery</h3>
-                        <ul class="service-list-items">
-                            <li>Physical share certificate to demat</li>
-                            <li>Transmission (death claims)</li>
-                            <li>IEPF claim documentation support</li>
+                    <div class="service-card">
+                        <h3 class="card-title">Shares & Legacy Asset Recovery</h3>
+                        <ul style="list-style: none; color: #94a3b8;">
+                            <li style="margin-bottom: 0.5rem;">• Physical share certificate to demat</li>
+                            <li style="margin-bottom: 0.5rem;">• Transmission (death claims)</li>
+                            <li>• IEPF claim documentation support</li>
                         </ul>
                     </div>
 
-                    <div class="service-group">
-                        <h3 class="service-group-title">RI & NRI Documentation Support</h3>
-                        <ul class="service-list-items">
-                            <li>PAN, Aadhaar, Passport, Voter ID</li>
-                            <li>NRO / NRE banking documentation</li>
-                            <li>Re-KYC and account reactivation</li>
+                    <div class="service-card">
+                        <h3 class="card-title">RI & NRI Documentation Support</h3>
+                        <ul style="list-style: none; color: #94a3b8;">
+                            <li style="margin-bottom: 0.5rem;">• PAN, Aadhaar, Passport, Voter ID</li>
+                            <li style="margin-bottom: 0.5rem;">• NRO / NRE banking documentation</li>
+                            <li>• Re-KYC and account reactivation</li>
                         </ul>
                     </div>
 
-                    <div class="service-group">
-                        <h3 class="service-group-title">Banking & Loan Documentation</h3>
-                        <ul class="service-list-items">
-                            <li>Account opening & KYC support</li>
-                            <li>Nominee updates</li>
-                            <li>Loan documentation assistance</li>
+                    <div class="service-card">
+                        <h3 class="card-title">Banking & Loan Documentation</h3>
+                        <ul style="list-style: none; color: #94a3b8;">
+                            <li style="margin-bottom: 0.5rem;">• Account opening & KYC support</li>
+                            <li style="margin-bottom: 0.5rem;">• Nominee updates</li>
+                            <li>• Loan documentation assistance</li>
                         </ul>
                     </div>
 
-                    <div class="service-group">
-                        <h3 class="service-group-title">Financial Structuring Awareness (Non-Advisory)</h3>
-                        <ul class="service-list-items">
-                            <li>Understanding personal financial structure</li>
-                            <li>Scenario awareness and documentation readiness</li>
+                    <div class="service-card">
+                        <h3 class="card-title">Financial Structuring Awareness (Non-Advisory)</h3>
+                        <ul style="list-style: none; color: #94a3b8;">
+                            <li style="margin-bottom: 0.5rem;">• Understanding personal financial structure</li>
+                            <li>• Scenario awareness and documentation readiness</li>
                         </ul>
                     </div>
 
                 </div>
 
-                <div class="services-action">
-                    <a href="services.html" class="link-arrow">View Full Services →</a>
+                <div style="margin-top: 3rem; text-align: center;">
+                    <a href="services.html" class="nav-link" style="font-weight: 600; color: var(--c-accent);">View Full Services →</a>
                 </div>
             </div>
         </section>
 
         <section class="section why-section" aria-labelledby="why-heading">
             <div class="container">
-                <div class="split-layout">
-                    <div class="layout-content">
-                        <h2 id="why-heading" class="section-title">Why Clients Choose MVN FinHub</h2>
-                    </div>
-                    <div class="layout-list">
-                        <ul class="checklist" data-stagger-children="true">
-                            <li class="check-item">No investment advice or product selling</li>
-                            <li class="check-item">No commissions or conflicts of interest</li>
-                            <li class="check-item">Secure handling of personal information</li>
-                            <li class="check-item">Clear process explanations</li>
-                            <li class="check-item">Designed for real-world paperwork and family coordination</li>
-                        </ul>
-                    </div>
-                </div>
+                <h2 id="why-heading" class="hero-heading" style="font-size: 2.5rem; margin-bottom: 3rem;">Why Clients Choose MVN FinHub</h2>
+                
+                <ul style="display: grid; gap: 1rem; max-width: 800px;">
+                    <li class="trust-item" style="justify-content: start;">✓ No investment advice or product selling</li>
+                    <li class="trust-item" style="justify-content: start;">✓ No commissions or conflicts of interest</li>
+                    <li class="trust-item" style="justify-content: start;">✓ Secure handling of personal information</li>
+                    <li class="trust-item" style="justify-content: start;">✓ Clear process explanations</li>
+                    <li class="trust-item" style="justify-content: start;">✓ Designed for real-world paperwork and family coordination</li>
+                </ul>
             </div>
         </section>
 
-        <section class="section cta-section" aria-labelledby="cta-heading" data-animate="scale-up">
-            <div class="container cta-container">
-                <h2 id="cta-heading" class="cta-heading">Start an Enquiry</h2>
-                <div class="cta-actions">
-                    <a href="contact.html" class="btn btn-primary btn-xl">Start an Enquiry</a>
+        <section class="section cta-section" aria-labelledby="cta-heading" style="text-align: center; padding-bottom: 15vh;">
+            <div class="container">
+                <h2 id="cta-heading" class="hero-heading" style="font-size: 3rem;">Start an Enquiry</h2>
+                <div style="margin: 2rem 0;">
+                    <a href="contact.html" class="btn-primary" style="padding: 1rem 3rem; font-size: 1.1rem;">Start an Enquiry</a>
                 </div>
-                <p class="cta-helper">No login required • Response within 24 hours</p>
+                <p style="color: #64748b; font-size: 0.9rem;">No login required • Response within 24 hours</p>
             </div>
         </section>
 
     </main>
 
-    <footer class="site-footer" role="contentinfo">
-        <div class="container footer-inner">
-            <div class="footer-top">
-                <span class="footer-brand">© MVN FinHub</span>
-            </div>
+    <footer class="site-footer" role="contentinfo" style="position: relative; z-index: 10; border-top: 1px solid rgba(255,255,255,0.05); padding: 3rem 0; background: rgba(2, 6, 23, 0.8);">
+        <div class="container" style="text-align: center;">
+            <div style="font-weight: 700; color: #fff; margin-bottom: 1rem;">© MVN FinHub</div>
+            <p style="color: #64748b; font-size: 0.9rem; margin-bottom: 2rem; max-width: 600px; margin-left: auto; margin-right: auto;">
+                MVN FinHub provides strictly non-advisory financial process, documentation, and educational support.
+            </p>
             
-            <div class="footer-middle">
-                <p class="footer-text">
-                    MVN FinHub provides strictly non-advisory financial process, documentation, and educational support.
-                </p>
-            </div>
-            
-            <nav class="footer-bottom" aria-label="Footer Navigation">
-                <ul class="footer-links">
-                    <li><a href="legal.html">Privacy & Legal</a></li>
-                    <li><a href="contact.html">Contact</a></li>
-                    <li><a href="#">Instagram</a></li>
+            <nav aria-label="Footer Navigation">
+                <ul style="display: flex; justify-content: center; gap: 1.5rem; list-style: none;">
+                    <li><a href="legal.html" class="nav-link" style="color: #94a3b8; font-size: 0.85rem;">Privacy & Legal</a></li>
+                    <li><a href="contact.html" class="nav-link" style="color: #94a3b8; font-size: 0.85rem;">Contact</a></li>
+                    <li><a href="#" class="nav-link" style="color: #94a3b8; font-size: 0.85rem;">Instagram</a></li>
                 </ul>
             </nav>
         </div>
