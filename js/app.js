@@ -1,17 +1,21 @@
-/* MVN FINHUB - MAIN LOGIC ENGINE */
-import CONFIG from './config.js';
+/* MVN FINHUB - UNIVERSAL LOGIC (NO SERVER REQUIRED) */
 
 document.addEventListener('DOMContentLoaded', () => {
-    
-    // --- 1. NAVIGATION CURTAIN LOGIC ---
+    console.log("System Initialized...");
+
+    // 1. CONFIGURATION (Moved here to avoid Import errors)
+    const CONFIG = {
+        WHATSAPP_CODE: "OTE5ODc2NTQzMjEw", // Your encoded number
+        EMAIL_ID: "mvnfinhub.connect@gmail.com"
+    };
+
+    // 2. NAVIGATION CURTAIN LOGIC
     const navBtn = document.querySelector('.nav-btn');
     const navCurtain = document.querySelector('.nav-curtain');
     
     if(navBtn && navCurtain) {
         navBtn.addEventListener('click', () => {
             navCurtain.classList.toggle('active');
-            
-            // Switch Icon (Bars <-> X)
             const icon = navBtn.querySelector('i');
             if (navCurtain.classList.contains('active')) {
                 icon.classList.remove('fa-bars');
@@ -23,11 +27,8 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // --- 2. 3D CUBE SLIDER (HOMEPAGE) ---
-    // We check if the element exists first to avoid errors on other pages
-    if (document.querySelector('.mySwiper')) {
-        // Initialize Swiper (The 3D Engine)
-        // Note: Swiper is loaded from the CDN in index.html, so 'Swiper' global exists
+    // 3. 3D CUBE SLIDER INITIALIZATION
+    if (typeof Swiper !== 'undefined') {
         var swiper = new Swiper(".mySwiper", {
             effect: "cube",
             grabCursor: true,
@@ -39,30 +40,30 @@ document.addEventListener('DOMContentLoaded', () => {
             },
             autoplay: {
                 delay: 2500,
-                disableOnInteraction: true, // Stops spinning if user touches it
+                disableOnInteraction: false,
             },
             pagination: {
                 el: ".swiper-pagination",
                 clickable: true,
             },
         });
+        console.log("Cube Engine: ACTIVE");
+    } else {
+        console.error("Swiper Library not loaded!");
     }
 
-    // --- 3. FLIP CARD LOGIC (SERVICES) ---
+    // 4. FLIP CARD LOGIC
     const cards = document.querySelectorAll('.flip-card');
     cards.forEach(card => {
         card.addEventListener('click', () => {
             card.classList.toggle('flipped');
         });
     });
-
-    // --- 4. CLIPBOARD COPY (CONTACT PAGE) ---
-    // We attach this to the window so HTML can see it
-    window.copyToClipboard = function(text) {
-        navigator.clipboard.writeText(text).then(() => {
-            alert("SECURELY COPIED: " + text);
-        }).catch(err => {
-            console.error('Failed to copy: ', err);
-        });
-    };
 });
+
+// GLOBAL UTILITY: CLIPBOARD COPY
+window.copyToClipboard = function(text) {
+    navigator.clipboard.writeText(text).then(() => {
+        alert("SECURELY COPIED: " + text);
+    });
+};
