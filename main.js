@@ -1,225 +1,167 @@
 /**
- * MVN FinHub Main Script
- * Theme: Invisible Power, Performance, Accessibility
- * Version: 1.0.0
+ * MVN FinHub - High-Fidelity Interaction Engine
+ * Features: Spotlight Cards, Blur-Reveal, Sticky Header
  */
 
 document.addEventListener('DOMContentLoaded', () => {
     'use strict';
 
-    // ==========================================================================
-    // Configuration & State
-    // ==========================================================================
-    
-    const CONFIG = {
-        threshold: 0.1,
-        rootMargin: '0px 0px -50px 0px',
-        staggerDelay: 100 // ms
+    // State
+    const state = {
+        isReducedMotion: window.matchMedia('(prefers-reduced-motion: reduce)').matches,
+        isMobile: window.innerWidth < 900
     };
 
-    const SELECTORS = {
-        header: '.site-header',
-        animated: '[data-animate], .process-card, .service-card',
-        staggerParents: '[data-stagger-children="true"]',
-        mobileToggle: '.mobile-toggle',
-        navMenu: '.nav-list',
-        smoothLinks: 'a[href^="#"]:not([href="#"])'
+    // DOM Cache
+    const dom = {
+        header: document.querySelector('.site-header'),
+        cards: document.querySelectorAll('.process-card, .service-card'),
+        animatedElements: document.querySelectorAll('[data-animate], .trust-item, .situation-pill'),
+        staggerParents: document.querySelectorAll('[data-stagger-children="true"]'),
+        mobileToggle: document.querySelector('.mobile-toggle'),
+        navMenu: document.querySelector('.nav-list')
     };
 
-    const CLASSES = {
-        scrolled: 'is-scrolled',
-        visible: 'is-visible',
-        active: 'is-active',
-        noScroll: 'no-scroll'
+    /**
+     * FEATURE 1: Spotlight Effect
+     * Tracks mouse position over cards to create a localized glow.
+     * Uses CSS variables for performant updating.
+     */
+    const initSpotlight = () => {
+        if (state.isMobile || state.isReducedMotion) return;
+
+        dom.cards.forEach(card => {
+            card.addEventListener('mousemove', (e) => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+
+                // Set CSS variables on the card element
+                card.style.setProperty('--mouse-x', `${x}px`);
+                card.style.setProperty('--mouse-y', `${y}px`);
+            });
+        });
     };
 
-    // Check for reduced motion preference
-    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-    // ==========================================================================
-    // Feature: Sticky Header State
-    // ==========================================================================
-
+    /**
+     * FEATURE 2: Sticky Header with Glassmorphism
+     * Toggles class based on scroll position using RequestAnimationFrame.
+     */
     const initStickyHeader = () => {
-        const header = document.querySelector(SELECTORS.header);
-        if (!header) return;
-
+        if (!dom.header) return;
+        let lastScrollY = window.scrollY;
         let ticking = false;
 
-        const onScroll = () => {
-            if (!ticking) {
-                window.requestAnimationFrame(() => {
-                    if (window.scrollY > 10) {
-                        header.classList.add(CLASSES.scrolled);
-                    } else {
-                        header.classList.remove(CLASSES.scrolled);
-                    }
-                    ticking = false;
-                });
-                ticking = true;
+        const update = () => {
+            if (window.scrollY > 20) {
+                dom.header.classList.add('is-scrolled');
+            } else {
+                dom.header.classList.remove('is-scrolled');
             }
+            ticking = false;
         };
 
-        window.addEventListener('scroll', onScroll, { passive: true });
-        // Initial check
-        onScroll();
+        window.addEventListener('scroll', () => {
+            lastScrollY = window.scrollY;
+            if (!ticking) {
+                window.requestAnimationFrame(update);
+                ticking = true;
+            }
+        }, { passive: true });
     };
 
-    // ==========================================================================
-    // Feature: Reveal Animations (IntersectionObserver)
-    // ==========================================================================
-
-    const initRevealAnimations = () => {
-        // If reduced motion is requested, show everything immediately
-        if (prefersReducedMotion) {
-            document.querySelectorAll(SELECTORS.animated).forEach(el => {
-                el.classList.add(CLASSES.visible);
-                el.style.opacity = '1';
+    /**
+     * FEATURE 3: Blur-In Reveal Animations
+     * Uses IntersectionObserver to trigger 'is-visible' class.
+     * Supports staggering for child elements.
+     */
+    const initRevealSystem = () => {
+        if (state.isReducedMotion) {
+            // Immediate reveal for accessibility
+            document.querySelectorAll('[data-animate], .process-card').forEach(el => {
+                el.classList.add('is-visible');
+                el.style.opacity = 1;
                 el.style.transform = 'none';
-            });
-            document.querySelectorAll(SELECTORS.staggerParents).forEach(parent => {
-                Array.from(parent.children).forEach(child => {
-                    child.classList.add(CLASSES.visible);
-                    child.style.opacity = '1';
-                    child.style.transform = 'none';
-                });
+                el.style.filter = 'none';
             });
             return;
         }
 
-        const observerOptions = {
-            threshold: CONFIG.threshold,
-            rootMargin: CONFIG.rootMargin
+        const observerConfig = {
+            root: null,
+            rootMargin: '0px 0px -10% 0px', // Trigger when element is 10% up from bottom
+            threshold: 0.1
         };
 
-        const revealObserver = new IntersectionObserver((entries, observer) => {
+        const revealObserver = new IntersectionObserver((entries, obs) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     const target = entry.target;
                     
-                    // Handle Staggered Children
-                    if (target.hasAttribute('data-stagger-children')) {
+                    // Add visibility class
+                    target.classList.add('is-visible');
+                    
+                    // Handle Staggered Children Logic
+                    if (target.dataset.staggerChildren === "true") {
                         const children = Array.from(target.children);
                         children.forEach((child, index) => {
-                            child.style.transitionDelay = `${index * CONFIG.staggerDelay}ms`;
-                            child.classList.add(CLASSES.visible);
+                            // Programmatic delay for smooth cascade
+                            child.style.transitionDelay = `${index * 100}ms`;
+                            child.classList.add('is-visible');
+                            // Ensure child has base animate styles
+                            child.setAttribute('data-animate', '');
                         });
-                    } else {
-                        // Handle Single Elements
-                        target.classList.add(CLASSES.visible);
                     }
 
-                    observer.unobserve(target);
+                    obs.unobserve(target);
                 }
             });
-        }, observerOptions);
+        }, observerConfig);
 
-        // Observe independent animated elements
-        const animatedElements = document.querySelectorAll(SELECTORS.animated);
-        animatedElements.forEach(el => revealObserver.observe(el));
-
-        // Observe containers that stagger their children
-        const staggerContainers = document.querySelectorAll(SELECTORS.staggerParents);
-        staggerContainers.forEach(el => revealObserver.observe(el));
+        // Observe elements
+        dom.animatedElements.forEach(el => revealObserver.observe(el));
+        dom.staggerParents.forEach(el => revealObserver.observe(el));
+        
+        // Also observe cards individually if not inside a stagger parent
+        dom.cards.forEach(card => {
+             if (!card.closest('[data-stagger-children="true"]')) {
+                 card.setAttribute('data-animate', '');
+                 revealObserver.observe(card);
+             }
+        });
     };
 
-    // ==========================================================================
-    // Feature: Mobile Navigation Toggle
-    // ==========================================================================
-
+    /**
+     * FEATURE 4: Mobile Menu
+     * Simple toggle logic.
+     */
     const initMobileMenu = () => {
-        const toggleBtn = document.querySelector(SELECTORS.mobileToggle);
-        const navMenu = document.querySelector(SELECTORS.navMenu);
+        if (!dom.mobileToggle || !dom.navMenu) return;
 
-        if (!toggleBtn || !navMenu) return;
-
-        toggleBtn.addEventListener('click', (e) => {
-            e.stopPropagation();
-            const isExpanded = toggleBtn.getAttribute('aria-expanded') === 'true';
+        dom.mobileToggle.addEventListener('click', () => {
+            const isExpanded = dom.mobileToggle.getAttribute('aria-expanded') === 'true';
+            dom.mobileToggle.setAttribute('aria-expanded', !isExpanded);
             
-            toggleBtn.setAttribute('aria-expanded', !isExpanded);
-            navMenu.style.display = isExpanded ? 'none' : 'flex';
-            
-            // Note: In production styles.css, ensure .nav-list is positioned absolute/fixed for mobile
-            // This JS assumes CSS handles the visual layout of the open state
+            // Toggle visibility (CSS should handle position/z-index for .mobile-open)
             if (!isExpanded) {
-                navMenu.classList.add('mobile-open');
-                // Basic styles injection for functionality if CSS is missing specific mobile hook
-                navMenu.style.position = 'absolute';
-                navMenu.style.top = '100%';
-                navMenu.style.left = '0';
-                navMenu.style.right = '0';
-                navMenu.style.background = '#FFFFFF';
-                navMenu.style.flexDirection = 'column';
-                navMenu.style.padding = '24px';
-                navMenu.style.boxShadow = '0 10px 30px rgba(0,0,0,0.1)';
-                navMenu.style.borderBottom = '1px solid #E2E8F0';
+                dom.navMenu.style.display = 'flex';
+                dom.navMenu.style.flexDirection = 'column';
+                dom.navMenu.style.position = 'fixed';
+                dom.navMenu.style.top = '70px';
+                dom.navMenu.style.left = '0';
+                dom.navMenu.style.width = '100%';
+                dom.navMenu.style.background = 'white';
+                dom.navMenu.style.padding = '2rem';
+                dom.navMenu.style.boxShadow = '0 10px 30px rgba(0,0,0,0.1)';
             } else {
-                navMenu.classList.remove('mobile-open');
-                navMenu.style = ''; // Clear inline styles to revert to CSS
-            }
-        });
-
-        // Close menu on click outside
-        document.addEventListener('click', (e) => {
-            if (navMenu.classList.contains('mobile-open') && 
-                !navMenu.contains(e.target) && 
-                !toggleBtn.contains(e.target)) {
-                
-                toggleBtn.setAttribute('aria-expanded', 'false');
-                navMenu.classList.remove('mobile-open');
-                navMenu.style = '';
+                dom.navMenu.style.display = 'none';
             }
         });
     };
 
-    // ==========================================================================
-    // Feature: Smooth Scrolling
-    // ==========================================================================
-
-    const initSmoothScroll = () => {
-        const links = document.querySelectorAll(SELECTORS.smoothLinks);
-
-        links.forEach(link => {
-            link.addEventListener('click', (e) => {
-                const targetId = link.getAttribute('href');
-                const targetElement = document.querySelector(targetId);
-
-                if (targetElement) {
-                    e.preventDefault();
-                    
-                    // Close mobile menu if open
-                    const navMenu = document.querySelector(SELECTORS.navMenu);
-                    const toggleBtn = document.querySelector(SELECTORS.mobileToggle);
-                    if (navMenu && toggleBtn) {
-                        navMenu.style = '';
-                        toggleBtn.setAttribute('aria-expanded', 'false');
-                    }
-
-                    const headerOffset = 80;
-                    const elementPosition = targetElement.getBoundingClientRect().top;
-                    const offsetPosition = elementPosition + window.scrollY - headerOffset;
-
-                    window.scrollTo({
-                        top: offsetPosition,
-                        behavior: 'smooth'
-                    });
-                }
-            });
-        });
-    };
-
-    // ==========================================================================
-    // Initialization
-    // ==========================================================================
-
-    const init = () => {
-        initStickyHeader();
-        initRevealAnimations();
-        initMobileMenu();
-        initSmoothScroll();
-    };
-
-    // Run
-    init();
+    // Initialize
+    initSpotlight();
+    initStickyHeader();
+    initRevealSystem();
+    initMobileMenu();
 });
