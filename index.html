@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" class="no-js">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,21 +8,20 @@
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
     
-    <link rel="icon" type="image/png" href="/favicon.png">
+    <link rel="stylesheet" href="styles.css">
+    <script src="main.js" defer></script>
 </head>
-<body class="page-home">
+<body>
 
-    <header class="site-header" data-scroll-state="top">
+    <header class="site-header" role="banner">
         <div class="container header-inner">
-            <a href="/" class="brand-logo" aria-label="MVN FinHub Home">
+            <a href="index.html" class="brand-logo" aria-label="MVN FinHub Home">
                 MVN FinHub
             </a>
             
-            <nav class="main-nav" role="navigation">
+            <nav class="main-nav" role="navigation" aria-label="Main Navigation">
                 <ul class="nav-list">
                     <li><a href="index.html" class="nav-link">Home</a></li>
                     <li><a href="services.html" class="nav-link">Services</a></li>
@@ -32,28 +31,27 @@
                 </ul>
             </nav>
 
-            <div class="header-cta">
+            <div class="header-action">
                 <a href="contact.html" class="btn btn-primary btn-sm">Start an Enquiry</a>
+                <button class="mobile-toggle" aria-label="Toggle navigation menu" aria-expanded="false">
+                    <span class="hamburger-box">
+                        <span class="hamburger-inner"></span>
+                    </span>
+                </button>
             </div>
-            
-            <button class="mobile-toggle" aria-label="Toggle menu" aria-expanded="false">
-                <span class="hamburger-box">
-                    <span class="hamburger-inner"></span>
-                </span>
-            </button>
         </div>
     </header>
 
     <main id="main-content">
 
-        <section class="section hero-section" data-animate="fade-up">
+        <section class="section hero-section" aria-labelledby="hero-title" data-animate="fade-up">
             <div class="container hero-container">
                 <div class="hero-content">
-                    <span class="brand-label" data-delay="100">MVN FinHub</span>
-                    <h1 class="hero-heading" data-delay="200">
+                    <span class="brand-label">MVN FinHub</span>
+                    <h1 id="hero-title" class="hero-heading">
                         Simplify Financial Documentation & Legacy Recovery
                     </h1>
-                    <p class="hero-subheadline" data-delay="300">
+                    <p class="hero-subheadline">
                         Independent, strictly non-advisory process support for physical share recovery, IEPF claims, NRI banking, and financial documentation.
                     </p>
                 </div>
@@ -62,28 +60,18 @@
 
         <section class="section trust-section" aria-label="Trust Indicators">
             <div class="container">
-                <div class="trust-wrapper">
-                    <ul class="trust-list">
-                        <li class="trust-item">
-                            <span class="icon-check"></span> Strictly Non-Advisory
-                        </li>
-                        <li class="trust-item">
-                            <span class="icon-shield"></span> Secure & Private
-                        </li>
-                        <li class="trust-item">
-                            <span class="icon-process"></span> Process-Driven
-                        </li>
-                        <li class="trust-item">
-                            <span class="icon-file"></span> Compliance-First
-                        </li>
-                    </ul>
-                </div>
+                <ul class="trust-list" data-stagger-children="true">
+                    <li class="trust-item">Strictly Non-Advisory</li>
+                    <li class="trust-item">Secure & Private</li>
+                    <li class="trust-item">Process-Driven</li>
+                    <li class="trust-item">Compliance-First</li>
+                </ul>
             </div>
         </section>
 
-        <section class="section situation-section" aria-label="Scope of Work">
+        <section class="section situation-section" aria-label="Core Capabilities">
             <div class="container">
-                <div class="situation-grid">
+                <div class="situation-grid" data-stagger-children="true">
                     <span class="situation-pill">Shares & Legacy Asset Recovery</span>
                     <span class="situation-pill">RI & NRI Documentation Support</span>
                     <span class="situation-pill">Banking & Loan Documentation</span>
@@ -92,14 +80,11 @@
             </div>
         </section>
 
-        <section class="section process-section">
+        <section class="section process-section" aria-labelledby="process-heading">
             <div class="container">
-                <header class="section-header">
-                    <h2 class="section-title">How MVN FinHub Works</h2>
-                </header>
-
+                <h2 id="process-heading" class="section-title">How MVN FinHub Works</h2>
+                
                 <div class="grid-layout four-col-grid" data-stagger-children="true">
-                    
                     <article class="process-card">
                         <h3 class="card-title">Framework</h3>
                         <p class="card-text">
@@ -124,7 +109,7 @@
                     <article class="process-card status-card">
                         <div class="status-header">
                             <h3 class="card-title">Operational Status</h3>
-                            <div class="status-badge success">
+                            <div class="status-badge">
                                 <span class="pulse-dot">●</span> System Active
                             </div>
                         </div>
@@ -132,18 +117,15 @@
                             Enquiries are securely accepted and processed through controlled systems.
                         </p>
                     </article>
-
                 </div>
             </div>
         </section>
 
-        <section class="section services-section bg-subtle">
+        <section class="section services-section bg-subtle" aria-labelledby="services-heading">
             <div class="container">
-                <header class="section-header">
-                    <h2 class="section-title">What We Help With</h2>
-                </header>
-
-                <div class="grid-layout services-grid">
+                <h2 id="services-heading" class="section-title">What We Help With</h2>
+                
+                <div class="grid-layout services-grid" data-stagger-children="true">
                     
                     <div class="service-group">
                         <h3 class="service-group-title">Shares & Legacy Asset Recovery</h3>
@@ -182,20 +164,20 @@
 
                 </div>
 
-                <div class="section-footer">
+                <div class="services-action">
                     <a href="services.html" class="link-arrow">View Full Services →</a>
                 </div>
             </div>
         </section>
 
-        <section class="section why-section">
+        <section class="section why-section" aria-labelledby="why-heading">
             <div class="container">
                 <div class="split-layout">
                     <div class="layout-content">
-                        <h2 class="section-title">Why Clients Choose MVN FinHub</h2>
+                        <h2 id="why-heading" class="section-title">Why Clients Choose MVN FinHub</h2>
                     </div>
                     <div class="layout-list">
-                        <ul class="checklist">
+                        <ul class="checklist" data-stagger-children="true">
                             <li class="check-item">No investment advice or product selling</li>
                             <li class="check-item">No commissions or conflicts of interest</li>
                             <li class="check-item">Secure handling of personal information</li>
@@ -207,9 +189,9 @@
             </div>
         </section>
 
-        <section class="section cta-section" data-animate="scale-up">
+        <section class="section cta-section" aria-labelledby="cta-heading" data-animate="scale-up">
             <div class="container cta-container">
-                <h2 class="cta-heading">Start an Enquiry</h2>
+                <h2 id="cta-heading" class="cta-heading">Start an Enquiry</h2>
                 <div class="cta-actions">
                     <a href="contact.html" class="btn btn-primary btn-xl">Start an Enquiry</a>
                 </div>
@@ -219,7 +201,7 @@
 
     </main>
 
-    <footer class="site-footer">
+    <footer class="site-footer" role="contentinfo">
         <div class="container footer-inner">
             <div class="footer-top">
                 <span class="footer-brand">© MVN FinHub</span>
@@ -231,19 +213,15 @@
                 </p>
             </div>
             
-            <div class="footer-bottom">
-                <nav class="footer-nav">
-                    <ul class="footer-links">
-                        <li><a href="legal.html">Privacy & Legal</a></li>
-                        <li><a href="contact.html">Contact</a></li>
-                        <li><a href="#">Instagram</a></li>
-                    </ul>
-                </nav>
-            </div>
+            <nav class="footer-bottom" aria-label="Footer Navigation">
+                <ul class="footer-links">
+                    <li><a href="legal.html">Privacy & Legal</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="#">Instagram</a></li>
+                </ul>
+            </nav>
         </div>
     </footer>
-
-    <script src="main.js" defer></script>
 
 </body>
 </html>
