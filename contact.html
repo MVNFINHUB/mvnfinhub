@@ -3,79 +3,411 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Secure Link | MVN FinHub</title>
-    <link rel="stylesheet" href="css/styles.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <title>Start a Secure Enquiry | MVN FinHub</title>
+    <meta name="description" content="Submit a secure enquiry for non-advisory financial documentation and process support. Privacy-first, response within 24 hours.">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* CSS Variables */
+        :root {
+            --primary-color: #0B3C5D;
+            --text-color: #4A5568;
+            --accent-color: #2F855A;
+            --background-white: #FFFFFF;
+            --background-section: #F7FAFC;
+            --border-color: #E2E8F0;
+            --input-bg: #FFFFFF;
+            --spacing-unit: 8px;
+            --max-width: 1200px;
+            --form-width: 600px;
+        }
+
+        /* Reset & Base Styles */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--text-color);
+            background-color: var(--background-white);
+            line-height: 1.5;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* Layout Utilities */
+        .container {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 0 calc(var(--spacing-unit) * 2);
+        }
+
+        .section {
+            padding: calc(var(--spacing-unit) * 6) 0;
+        }
+
+        .bg-section {
+            background-color: var(--background-section);
+        }
+
+        /* Typography */
+        h1, h2, h3 {
+            color: var(--primary-color);
+            font-weight: 700;
+        }
+
+        h1 {
+            font-size: 2rem;
+            margin-bottom: var(--spacing-unit);
+            text-align: center;
+        }
+
+        .sub-heading {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto calc(var(--spacing-unit) * 4);
+            font-size: 1rem;
+            color: var(--text-color);
+        }
+
+        /* Header */
+        header {
+            padding: calc(var(--spacing-unit) * 3) 0;
+            border-bottom: 1px solid var(--border-color);
+            background-color: var(--background-white);
+        }
+
+        .brand-name {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+
+        /* Qualification Notice */
+        .qualification-notice {
+            background-color: #EBF8FF; /* Light Blue-ish for notice */
+            border-left: 4px solid var(--primary-color);
+            padding: calc(var(--spacing-unit) * 2);
+            margin: 0 auto calc(var(--spacing-unit) * 4);
+            max-width: var(--form-width);
+            font-size: 0.9rem;
+            color: #2C5282;
+        }
+
+        /* Form Styling */
+        .form-container {
+            max-width: var(--form-width);
+            margin: 0 auto;
+            background: var(--background-white);
+        }
+
+        .form-group {
+            margin-bottom: calc(var(--spacing-unit) * 3);
+        }
+
+        label {
+            display: block;
+            margin-bottom: var(--spacing-unit);
+            font-weight: 600;
+            font-size: 0.9rem;
+            color: var(--primary-color);
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="tel"],
+        select,
+        textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            font-family: 'Inter', sans-serif;
+            font-size: 1rem;
+            color: var(--text-color);
+            background-color: var(--input-bg);
+        }
+
+        input:focus,
+        select:focus,
+        textarea:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 2px rgba(11, 60, 93, 0.1);
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .helper-text {
+            display: block;
+            font-size: 0.8rem;
+            color: #718096;
+            margin-top: 6px;
+        }
+
+        /* Checkbox */
+        .checkbox-group {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: calc(var(--spacing-unit) * 4);
+        }
+
+        .checkbox-group input {
+            margin-top: 4px;
+            margin-right: 12px;
+            width: 16px;
+            height: 16px;
+        }
+
+        .checkbox-label {
+            font-size: 0.9rem;
+            font-weight: 400;
+            line-height: 1.4;
+            color: var(--text-color);
+            margin-bottom: 0; /* Override default label margin */
+        }
+
+        /* Button */
+        .btn-primary {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: #FFFFFF;
+            padding: 14px 28px;
+            border-radius: 4px;
+            font-weight: 600;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+            width: 100%;
+            text-align: center;
+        }
+
+        .btn-primary:hover {
+            opacity: 0.95;
+        }
+
+        /* Success State (Hidden by default, structure provided) */
+        .success-state {
+            display: none; /* Toggle to block via JS in production */
+            max-width: var(--form-width);
+            margin: 0 auto;
+            text-align: center;
+            padding: calc(var(--spacing-unit) * 4);
+            background-color: #F0FFF4;
+            border: 1px solid #C6F6D5;
+            border-radius: 6px;
+        }
+
+        .success-icon {
+            display: inline-block;
+            width: 48px;
+            height: 48px;
+            background-color: var(--accent-color);
+            color: white;
+            border-radius: 50%;
+            line-height: 48px;
+            font-size: 24px;
+            margin-bottom: calc(var(--spacing-unit) * 2);
+        }
+
+        .success-heading {
+            color: var(--accent-color);
+            font-size: 1.5rem;
+            margin-bottom: var(--spacing-unit);
+        }
+
+        .reference-text {
+            font-family: monospace;
+            background: #E2E8F0;
+            padding: 4px 8px;
+            border-radius: 4px;
+            display: inline-block;
+            margin-bottom: calc(var(--spacing-unit) * 2);
+            font-size: 0.9rem;
+        }
+
+        /* Security Assurance */
+        .security-assurance {
+            max-width: var(--form-width);
+            margin: calc(var(--spacing-unit) * 6) auto 0;
+            text-align: center;
+            padding-top: calc(var(--spacing-unit) * 4);
+            border-top: 1px solid var(--border-color);
+        }
+
+        .security-assurance h4 {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--text-color);
+            margin-bottom: var(--spacing-unit);
+        }
+
+        .security-list {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: calc(var(--spacing-unit) * 2);
+            font-size: 0.85rem;
+            color: #718096;
+        }
+
+        .security-item::before {
+            content: "🔒";
+            margin-right: 6px;
+            font-size: 0.8rem;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--primary-color);
+            color: #FFFFFF;
+            padding: calc(var(--spacing-unit) * 6) 0;
+            font-size: 0.875rem;
+            margin-top: calc(var(--spacing-unit) * 8);
+        }
+
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            gap: calc(var(--spacing-unit) * 2);
+        }
+
+        .footer-links a {
+            color: #FFFFFF;
+            opacity: 0.8;
+            margin: 0 var(--spacing-unit);
+        }
+
+        .footer-links a:hover {
+            opacity: 1;
+            text-decoration: underline;
+        }
+
+        @media (max-width: 768px) {
+            h1 { font-size: 1.75rem; }
+            .btn-primary { width: 100%; }
+        }
+    </style>
 </head>
 <body>
+
     <header>
-        <div class="container" style="display:flex; justify-content:space-between; align-items:center; height:100%;">
-            <a href="index.html" class="logo mono" style="font-weight:700;">MVN<span style="color:var(--cyan);">FINHUB</span></a>
-            <div class="nav-btn"><i class="fa-solid fa-bars"></i></div>
+        <div class="container">
+            <a href="index.html" class="brand-name">MVN FinHub</a>
         </div>
     </header>
-     <div class="nav-curtain">
-         <a href="services.html" class="nav-link">01. SERVICES</a>
-         <a href="insights.html" class="nav-link">02. INSIGHTS</a>
-         <a href="about.html" class="nav-link">03. PROTOCOL (ABOUT)</a>
-         <a href="contact.html" class="nav-link" style="color:var(--green);">04. CONNECT</a>
-    </div>
 
-    <main class="container" style="padding-top:100px; padding-bottom:100px;">
-        <div style="display:flex; justify-content:space-between; align-items:end; margin-bottom:40px;">
-            <h1>SECURE <span style="color:var(--green);">COMM-LINK</span></h1>
-            <p class="mono" style="font-size:12px; color:var(--text-muted);">SESSION: <span style="color:var(--cyan);">ENCRYPTED</span></p>
-        </div>
+    <main>
+        <section class="section">
+            <div class="container">
+                <h1>Start an Enquiry</h1>
+                <p class="sub-heading">
+                    Submit your documentation or process-related enquiry securely.<br>
+                    MVN FinHub provides strictly non-advisory financial process and documentation support.
+                </p>
 
-        <div style="background:rgba(255,255,255,0.02); padding:20px; border-radius:10px; margin-bottom:40px;">
-            <p class="mono" style="color:var(--cyan); margin-bottom:15px;">/// EXECUTION_LIFECYCLE</p>
-            <div class="process-step"><span class="mono">01. INITIATION</span></div>
-            <div class="process-step"><span class="mono">02. FORENSIC AUDIT</span></div>
-            <div class="process-step"><span class="mono">03. COMMERCIALS</span></div>
-            <div class="process-step"><span class="mono">04. DOCUMENTATION</span></div>
-            <div class="process-step"><span class="mono">05. GOVT FILING</span></div>
-            <div class="process-step" style="border:none;"><span class="mono" style="color:var(--green);">06. CRYSTALLIZATION</span></div>
-        </div>
+                <div class="qualification-notice">
+                    This enquiry form is intended for documentation, process, and compliance-related support only.<br>
+                    We do not provide investment advice, recommendations, or guarantees.
+                </div>
 
-        <form id="secure-form">
-            <div class="input-group">
-                <input type="text" id="name" class="input-field" placeholder="// OPERATOR_ID (NAME)" required>
-            </div>
-            <div class="input-group">
-                <input type="tel" id="mobile" class="input-field" placeholder="// FREQUENCY_LINK (MOBILE)" pattern="[0-9]{10}" required>
-            </div>
-            <div class="input-group">
-                <input type="email" id="email" class="input-field" placeholder="// DIGITAL_MAILBOX (EMAIL)" required>
-            </div>
-            <div class="input-group">
-                <select id="service" class="input-field" style="background:#020617;">
-                    <option value="Legacy">PROTOCOL: LEGACY RECOVERY</option>
-                    <option value="NRI">PROTOCOL: NRI SERVICES</option>
-                    <option value="Identity">PROTOCOL: IDENTITY UPDATES</option>
-                </select>
-            </div>
-            <div class="input-group">
-                <textarea id="message" class="input-field" rows="4" placeholder="// TRANSMISSION_DATA (MESSAGE)" required></textarea>
-            </div>
-            <button type="submit" class="submit-btn">TRANSMIT REQUEST</button>
-        </form>
+                <div class="form-container">
+                    <form action="#" method="POST" id="enquiryForm">
+                        
+                        <div class="form-group">
+                            <label for="fullName">Full Name</label>
+                            <input type="text" id="fullName" name="fullName" required>
+                        </div>
 
-        <div class="flip-grid" style="margin-top:50px;">
-            <a href="auth/connect.html" style="background:#22c55e; padding:20px; border-radius:8px; color:#000; text-align:center;">
-                <i class="fa-brands fa-whatsapp" style="font-size:30px;"></i>
-                <p style="font-weight:700; margin-top:10px;">SECURE CHAT</p>
-            </a>
-            <a href="https://instagram.com" target="_blank" style="background:linear-gradient(45deg, #f09433, #e6683c); padding:20px; border-radius:8px; color:#fff; text-align:center;">
-                <i class="fa-brands fa-instagram" style="font-size:30px;"></i>
-                <p style="font-weight:700; margin-top:10px;">MARKET VISUALS</p>
-            </a>
-            <div onclick="copyToClipboard('mvnfinhub.connect@gmail.com')" style="background:#334155; padding:20px; border-radius:8px; color:#fff; text-align:center; cursor:pointer;">
-                <i class="fa-solid fa-copy" style="font-size:30px;"></i>
-                <p style="font-weight:700; margin-top:10px;">COPY EMAIL</p>
+                        <div class="form-group">
+                            <label for="email">Email Address</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="phone">Phone Number (10 digits)</label>
+                            <input type="tel" id="phone" name="phone" pattern="[0-9]{10}" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="service">Service Required</label>
+                            <select id="service" name="service" required>
+                                <option value="" disabled selected>Select a service...</option>
+                                <option value="shares">Shares & Legacy Asset Recovery</option>
+                                <option value="ri">RI Documentation Services</option>
+                                <option value="nri">NRI Documentation Services</option>
+                                <option value="banking">Banking & Loan Documentation</option>
+                                <option value="awareness">Financial Structuring Awareness</option>
+                                <option value="other">Other / Not Sure</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" name="message" minlength="20" required></textarea>
+                            <span class="helper-text">Briefly describe your documentation or process requirement. Minimum 20 characters.</span>
+                        </div>
+
+                        <div class="checkbox-group">
+                            <input type="checkbox" id="consent" name="consent" required>
+                            <label for="consent" class="checkbox-label">
+                                I agree to the Privacy Policy and authorize MVN FinHub to contact me regarding my enquiry.<br>
+                                I understand that services are strictly non-advisory in nature.
+                            </label>
+                        </div>
+
+                        <button type="submit" class="btn-primary">Submit Enquiry</button>
+                    </form>
+
+                    <div class="success-state" id="successMessage">
+                        <div class="success-icon">✓</div>
+                        <h3 class="success-heading">Enquiry Received</h3>
+                        <div class="reference-text">Reference ID: Auto-generated</div>
+                        <p>We will review your documentation requirements and respond within 24 hours.</p>
+                        <p>Please keep your reference ID for future communication.</p>
+                    </div>
+                </div>
+
+                <div class="security-assurance">
+                    <div class="security-list">
+                        <span class="security-item">Enquiries are processed through secure systems.</span>
+                        <span class="security-item">No data is shared with third parties.</span>
+                        <span class="security-item">No unsolicited communication.</span>
+                        <span class="security-item">User-initiated contact only.</span>
+                    </div>
+                </div>
+
             </div>
-        </div>
+        </section>
     </main>
-    <script type="module" src="js/app.js"></script>
+
+    <footer>
+        <div class="container footer-content">
+            <div>© MVN FinHub</div>
+            <p>MVN FinHub provides strictly non-advisory financial process, documentation, and educational support.</p>
+            <div class="footer-links">
+                <a href="services.html">Services</a>
+                <a href="insights.html">Insights</a>
+                <a href="#">Privacy & Legal</a>
+            </div>
+        </div>
+    </footer>
+
 </body>
 </html>
