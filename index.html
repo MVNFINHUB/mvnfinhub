@@ -2,18 +2,24 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>MVN FinHub | The Terminal</title>
+    
     <link rel="stylesheet" href="css/styles.css">
+    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
-    <link rel="manifest" href="manifest.json">
 </head>
 <body>
+
     <header>
         <div class="container" style="display:flex; justify-content:space-between; align-items:center; height:100%;">
-            <div class="logo mono" style="font-size:20px; font-weight:700;"><span class="brand-type"></span><span class="glow">_</span></div>
-            <div class="nav-btn"><i class="fa-solid fa-bars"></i></div>
+            <div class="logo mono">
+                MVN<span class="glow" style="font-weight:300;">FINHUB</span>
+            </div>
+            <div class="nav-btn">
+                <i class="fa-solid fa-bars"></i>
+            </div>
         </div>
     </header>
 
@@ -27,49 +33,48 @@
     <main class="container">
         <div class="swiper mySwiper">
             <div class="swiper-wrapper">
+                
                 <div class="swiper-slide">
-                    <i class="fa-solid fa-shield-halved" style="font-size:48px; color:var(--cyan); margin-bottom:20px;"></i>
-                    <h1>THE PROTOCOL</h1>
-                    <p class="mono" style="color:var(--text-muted);">Secure Documentation Layer</p>
+                    <i class="fa-solid fa-shield-halved" style="font-size:60px; color:var(--cyan); margin-bottom:20px;"></i>
+                    <h1 style="font-size:32px; text-transform:uppercase;">The Protocol</h1>
+                    <p class="mono" style="color:var(--text-muted); margin-top:10px;">Secure Documentation Layer</p>
                 </div>
+
                 <div class="swiper-slide">
-                    <i class="fa-solid fa-file-contract" style="font-size:48px; color:var(--green); margin-bottom:20px;"></i>
-                    <h1>LEGACY RECOVERY</h1>
-                    <p class="mono" style="color:var(--text-muted);">Shares to Demat & IEPF</p>
+                    <i class="fa-solid fa-file-contract" style="font-size:60px; color:var(--green); margin-bottom:20px;"></i>
+                    <h1 style="font-size:32px; text-transform:uppercase;">Legacy Recovery</h1>
+                    <p class="mono" style="color:var(--text-muted); margin-top:10px;">Shares to Demat & IEPF</p>
                 </div>
+
                 <div class="swiper-slide">
-                    <i class="fa-solid fa-globe" style="font-size:48px; color:#facc15; margin-bottom:20px;"></i>
-                    <h1>NRI HUB</h1>
-                    <p class="mono" style="color:var(--text-muted);">FEMA Compliant Ops</p>
+                    <i class="fa-solid fa-globe" style="font-size:60px; color:var(--gold); margin-bottom:20px;"></i>
+                    <h1 style="font-size:32px; text-transform:uppercase;">NRI Hub</h1>
+                    <p class="mono" style="color:var(--text-muted); margin-top:10px;">FEMA Compliant Ops</p>
                 </div>
+
                 <div class="swiper-slide">
-                    <div class="status-dot" style="width:20px; height:20px; margin-bottom:20px;"></div>
-                    <h1>SYSTEM STATUS</h1>
-                    <p class="mono" style="color:var(--green);">● OPERATIONAL</p>
+                    <div class="status-dot" style="width:20px; height:20px; margin-bottom:30px;"></div>
+                    <h1 style="font-size:32px; text-transform:uppercase;">System Status</h1>
+                    <p class="mono" style="color:var(--green); margin-top:10px;">● OPERATIONAL</p>
                 </div>
+
             </div>
             <div class="swiper-pagination"></div>
         </div>
 
         <div style="text-align:center; margin-top:40px;">
-            <a href="contact.html" class="action-btn" style="background:var(--text-main); color:#000;">INITIATE REQUEST</a>
+            <a href="contact.html" class="action-btn">INITIATE REQUEST</a>
         </div>
     </main>
 
     <div class="marquee-container">
-        <div class="marquee-text">/// WARNING: MVN FINHUB IS A DOCUMENTATION CONCIERGE. WE DO NOT PROVIDE INVESTMENT ADVICE, TIPS, OR MARKET RECOMMENDATIONS. ALL SERVICES ARE PROCEDURAL. ///</div>
+        <div class="marquee-text">
+            /// WARNING: MVN FINHUB IS A DOCUMENTATION CONCIERGE. WE DO NOT PROVIDE INVESTMENT ADVICE, TIPS, OR MARKET RECOMMENDATIONS. ALL SERVICES ARE PROCEDURAL. ///  SYSTEM_CHECK: ENCRYPTED ///
+        </div>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-    <script type="module">
-        import './js/app.js';
-        var swiper = new Swiper(".mySwiper", {
-            effect: "cube",
-            grabCursor: true,
-            cubeEffect: { shadow: true, slideShadows: true, shadowOffset: 20, shadowScale: 0.94 },
-            autoplay: { delay: 3000, disableOnInteraction: true },
-            pagination: { el: ".swiper-pagination" },
-        });
-    </script>
+    <script type="module" src="js/app.js"></script>
+
 </body>
 </html>
