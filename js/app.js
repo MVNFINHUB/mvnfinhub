@@ -1,72 +1,68 @@
+/* MVN FINHUB - MAIN LOGIC ENGINE */
 import CONFIG from './config.js';
 
-// --- NAV TOGGLE ---
-const navBtn = document.querySelector('.nav-btn');
-const navCurtain = document.querySelector('.nav-curtain');
-if(navBtn) {
-    navBtn.addEventListener('click', () => {
-        navCurtain.classList.toggle('active');
-        navBtn.innerHTML = navCurtain.classList.contains('active') ? '<i class="fa-solid fa-xmark"></i>' : '<i class="fa-solid fa-bars"></i>';
-    });
-}
-
-// --- FLIP CARD LOGIC (SERVICES) ---
-document.querySelectorAll('.flip-card').forEach(card => {
-    card.addEventListener('click', () => {
-        card.classList.toggle('flipped');
-    });
-});
-
-// --- TYPEWRITER EFFECT (HOME) ---
-const brandText = document.querySelector('.brand-type');
-if(brandText) {
-    const text = "MVN FINHUB";
-    let i = 0;
-    function typeWriter() {
-        if (i < text.length) {
-            brandText.innerHTML += text.charAt(i);
-            i++;
-            setTimeout(typeWriter, 100);
-        }
-    }
-    setTimeout(typeWriter, 500);
-}
-
-// --- SUPABASE FORM LOGIC (CONTACT) ---
-const contactForm = document.getElementById('secure-form');
-if (contactForm && typeof supabase !== 'undefined') {
-    const sb = supabase.createClient(CONFIG.SUPABASE_URL, CONFIG.SUPABASE_ANON_KEY);
+document.addEventListener('DOMContentLoaded', () => {
     
-    contactForm.addEventListener('submit', async (e) => {
-        e.preventDefault();
-        const btn = document.querySelector('.submit-btn');
-        btn.innerHTML = "TRANSMITTING... <i class='fa-solid fa-spinner fa-spin'></i>";
-        
-        const formData = {
-            name: document.getElementById('name').value,
-            mobile: document.getElementById('mobile').value,
-            email: document.getElementById('email').value,
-            service: document.getElementById('service').value,
-            message: document.getElementById('message').value,
-            timestamp: new Date().toISOString()
-        };
+    // --- 1. NAVIGATION CURTAIN LOGIC ---
+    const navBtn = document.querySelector('.nav-btn');
+    const navCurtain = document.querySelector('.nav-curtain');
+    
+    if(navBtn && navCurtain) {
+        navBtn.addEventListener('click', () => {
+            navCurtain.classList.toggle('active');
+            
+            // Switch Icon (Bars <-> X)
+            const icon = navBtn.querySelector('i');
+            if (navCurtain.classList.contains('active')) {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-xmark');
+            } else {
+                icon.classList.remove('fa-xmark');
+                icon.classList.add('fa-bars');
+            }
+        });
+    }
 
-        const { error } = await sb.from('contact_messages').insert([formData]);
+    // --- 2. 3D CUBE SLIDER (HOMEPAGE) ---
+    // We check if the element exists first to avoid errors on other pages
+    if (document.querySelector('.mySwiper')) {
+        // Initialize Swiper (The 3D Engine)
+        // Note: Swiper is loaded from the CDN in index.html, so 'Swiper' global exists
+        var swiper = new Swiper(".mySwiper", {
+            effect: "cube",
+            grabCursor: true,
+            cubeEffect: {
+                shadow: true,
+                slideShadows: true,
+                shadowOffset: 20,
+                shadowScale: 0.94,
+            },
+            autoplay: {
+                delay: 2500,
+                disableOnInteraction: true, // Stops spinning if user touches it
+            },
+            pagination: {
+                el: ".swiper-pagination",
+                clickable: true,
+            },
+        });
+    }
 
-        if (error) {
-            alert('TRANSMISSION ERROR: ' + error.message);
-            btn.innerHTML = "RETRY TRANSMISSION";
-        } else {
-            alert('SECURE TRANSMISSION SUCCESSFUL. REFERENCE ID: ' + Math.random().toString(36).substr(2, 9).toUpperCase());
-            contactForm.reset();
-            btn.innerHTML = "TRANSMIT REQUEST";
-        }
+    // --- 3. FLIP CARD LOGIC (SERVICES) ---
+    const cards = document.querySelectorAll('.flip-card');
+    cards.forEach(card => {
+        card.addEventListener('click', () => {
+            card.classList.toggle('flipped');
+        });
     });
-}
 
-// --- CLIPBOARD COPY ---
-window.copyToClipboard = function(text) {
-    navigator.clipboard.writeText(text).then(() => {
-        alert("COPIED TO CLIPBOARD: " + text);
-    });
-}
+    // --- 4. CLIPBOARD COPY (CONTACT PAGE) ---
+    // We attach this to the window so HTML can see it
+    window.copyToClipboard = function(text) {
+        navigator.clipboard.writeText(text).then(() => {
+            alert("SECURELY COPIED: " + text);
+        }).catch(err => {
+            console.error('Failed to copy: ', err);
+        });
+    };
+});
