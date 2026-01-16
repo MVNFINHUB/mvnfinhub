@@ -1,133 +1,225 @@
 /**
- * MVN FinHub - Main Logic
- * Theme: Performance, Progressive Enhancement, Interaction
+ * MVN FinHub Main Script
+ * Theme: Invisible Power, Performance, Accessibility
+ * Version: 1.0.0
  */
 
 document.addEventListener('DOMContentLoaded', () => {
     'use strict';
 
-    // -- Configuration --
+    // ==========================================================================
+    // Configuration & State
+    // ==========================================================================
+    
+    const CONFIG = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px',
+        staggerDelay: 100 // ms
+    };
+
     const SELECTORS = {
         header: '.site-header',
-        animatedElements: '[data-animate]',
+        animated: '[data-animate], .process-card, .service-card',
         staggerParents: '[data-stagger-children="true"]',
-        staggerItems: '.trust-item, .situation-pill', // Auto-stagger these lists
-        heroItems: '.hero-content > *'
+        mobileToggle: '.mobile-toggle',
+        navMenu: '.nav-list',
+        smoothLinks: 'a[href^="#"]:not([href="#"])'
     };
 
     const CLASSES = {
         scrolled: 'is-scrolled',
-        visible: 'is-visible'
+        visible: 'is-visible',
+        active: 'is-active',
+        noScroll: 'no-scroll'
     };
 
-    // -- State --
-    let isReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    // Check for reduced motion preference
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-    // -- Feature: Sticky Header State --
-    const initHeaderScroll = () => {
+    // ==========================================================================
+    // Feature: Sticky Header State
+    // ==========================================================================
+
+    const initStickyHeader = () => {
         const header = document.querySelector(SELECTORS.header);
         if (!header) return;
 
-        const handleScroll = () => {
-            if (window.scrollY > 20) {
-                header.classList.add(CLASSES.scrolled);
-            } else {
-                header.classList.remove(CLASSES.scrolled);
+        let ticking = false;
+
+        const onScroll = () => {
+            if (!ticking) {
+                window.requestAnimationFrame(() => {
+                    if (window.scrollY > 10) {
+                        header.classList.add(CLASSES.scrolled);
+                    } else {
+                        header.classList.remove(CLASSES.scrolled);
+                    }
+                    ticking = false;
+                });
+                ticking = true;
             }
         };
 
-        window.addEventListener('scroll', handleScroll, { passive: true });
-        handleScroll(); // Check on load
+        window.addEventListener('scroll', onScroll, { passive: true });
+        // Initial check
+        onScroll();
     };
 
-    // -- Feature: Scroll Reveal Animations (IntersectionObserver) --
-    const initScrollAnimations = () => {
-        if (isReducedMotion) return; // Skip setup if reduced motion
+    // ==========================================================================
+    // Feature: Reveal Animations (IntersectionObserver)
+    // ==========================================================================
+
+    const initRevealAnimations = () => {
+        // If reduced motion is requested, show everything immediately
+        if (prefersReducedMotion) {
+            document.querySelectorAll(SELECTORS.animated).forEach(el => {
+                el.classList.add(CLASSES.visible);
+                el.style.opacity = '1';
+                el.style.transform = 'none';
+            });
+            document.querySelectorAll(SELECTORS.staggerParents).forEach(parent => {
+                Array.from(parent.children).forEach(child => {
+                    child.classList.add(CLASSES.visible);
+                    child.style.opacity = '1';
+                    child.style.transform = 'none';
+                });
+            });
+            return;
+        }
 
         const observerOptions = {
-            root: null,
-            rootMargin: '0px 0px -10% 0px', // Trigger when element is 10% from bottom
-            threshold: 0.1
+            threshold: CONFIG.threshold,
+            rootMargin: CONFIG.rootMargin
         };
 
-        const observer = new IntersectionObserver((entries, obs) => {
+        const revealObserver = new IntersectionObserver((entries, observer) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    entry.target.classList.add(CLASSES.visible);
-                    obs.unobserve(entry.target); // Run once
+                    const target = entry.target;
+                    
+                    // Handle Staggered Children
+                    if (target.hasAttribute('data-stagger-children')) {
+                        const children = Array.from(target.children);
+                        children.forEach((child, index) => {
+                            child.style.transitionDelay = `${index * CONFIG.staggerDelay}ms`;
+                            child.classList.add(CLASSES.visible);
+                        });
+                    } else {
+                        // Handle Single Elements
+                        target.classList.add(CLASSES.visible);
+                    }
+
+                    observer.unobserve(target);
                 }
             });
         }, observerOptions);
 
-        // 1. Target explicit animate elements
-        const elements = document.querySelectorAll(SELECTORS.animatedElements);
-        elements.forEach(el => observer.observe(el));
+        // Observe independent animated elements
+        const animatedElements = document.querySelectorAll(SELECTORS.animated);
+        animatedElements.forEach(el => revealObserver.observe(el));
 
-        // 2. Target Stagger Parents
-        const parents = document.querySelectorAll(SELECTORS.staggerParents);
-        parents.forEach(el => observer.observe(el));
-        
-        // 3. Auto-stagger items in lists (Trust strip & Situation pills)
-        // We observe the parent, then animate children via CSS delay injection
-        const listsToStagger = document.querySelectorAll('.trust-list, .situation-grid, .checklist');
-        
-        listsToStagger.forEach(list => {
-            // Assign transition delays to children via JS for dynamic lists
-            Array.from(list.children).forEach((child, index) => {
-                child.style.transitionDelay = `${index * 50}ms`; // Fast stagger
-                observer.observe(child);
-            });
-        });
-        
-        // 4. Hero Stagger (Manual via data-delay in HTML or JS fallbacks)
-        const heroItems = document.querySelectorAll(SELECTORS.heroItems);
-        heroItems.forEach((item, index) => {
-             // If data-delay exists (from HTML), use it, else calc
-             if (!item.getAttribute('data-delay')) {
-                 item.style.transitionDelay = `${100 + (index * 100)}ms`;
-             }
-             // Force add class immediately for Hero if it's top of fold
-             item.classList.add(CLASSES.visible);
-        });
+        // Observe containers that stagger their children
+        const staggerContainers = document.querySelectorAll(SELECTORS.staggerParents);
+        staggerContainers.forEach(el => revealObserver.observe(el));
     };
 
-    // -- Feature: Mobile Menu Toggle (Basic Accessibility) --
-    const initMobileMenu = () => {
-        const btn = document.querySelector('.mobile-toggle');
-        const nav = document.querySelector('.nav-list');
-        const cta = document.querySelector('.header-cta');
-        
-        if (!btn || !nav) return;
+    // ==========================================================================
+    // Feature: Mobile Navigation Toggle
+    // ==========================================================================
 
-        btn.addEventListener('click', () => {
-            const isExpanded = btn.getAttribute('aria-expanded') === 'true';
-            btn.setAttribute('aria-expanded', !isExpanded);
+    const initMobileMenu = () => {
+        const toggleBtn = document.querySelector(SELECTORS.mobileToggle);
+        const navMenu = document.querySelector(SELECTORS.navMenu);
+
+        if (!toggleBtn || !navMenu) return;
+
+        toggleBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            const isExpanded = toggleBtn.getAttribute('aria-expanded') === 'true';
             
-            // Note: In a full implementation, we'd toggle a class on the body or nav
-            // For this output, we'll simple toggle visibility styles inline for the demo
-            // assuming CSS handles the "open" state logic if class was added.
+            toggleBtn.setAttribute('aria-expanded', !isExpanded);
+            navMenu.style.display = isExpanded ? 'none' : 'flex';
+            
+            // Note: In production styles.css, ensure .nav-list is positioned absolute/fixed for mobile
+            // This JS assumes CSS handles the visual layout of the open state
             if (!isExpanded) {
-                // Open
-                nav.style.display = 'flex';
-                nav.style.flexDirection = 'column';
-                nav.style.position = 'absolute';
-                nav.style.top = '100%';
-                nav.style.left = '0';
-                nav.style.right = '0';
-                nav.style.background = '#fff';
-                nav.style.padding = '2rem';
-                nav.style.borderBottom = '1px solid #eee';
-                nav.style.boxShadow = '0 10px 20px rgba(0,0,0,0.05)';
+                navMenu.classList.add('mobile-open');
+                // Basic styles injection for functionality if CSS is missing specific mobile hook
+                navMenu.style.position = 'absolute';
+                navMenu.style.top = '100%';
+                navMenu.style.left = '0';
+                navMenu.style.right = '0';
+                navMenu.style.background = '#FFFFFF';
+                navMenu.style.flexDirection = 'column';
+                navMenu.style.padding = '24px';
+                navMenu.style.boxShadow = '0 10px 30px rgba(0,0,0,0.1)';
+                navMenu.style.borderBottom = '1px solid #E2E8F0';
             } else {
-                // Close
-                nav.style.display = ''; // Revert to CSS
-                nav.style.position = '';
+                navMenu.classList.remove('mobile-open');
+                navMenu.style = ''; // Clear inline styles to revert to CSS
+            }
+        });
+
+        // Close menu on click outside
+        document.addEventListener('click', (e) => {
+            if (navMenu.classList.contains('mobile-open') && 
+                !navMenu.contains(e.target) && 
+                !toggleBtn.contains(e.target)) {
+                
+                toggleBtn.setAttribute('aria-expanded', 'false');
+                navMenu.classList.remove('mobile-open');
+                navMenu.style = '';
             }
         });
     };
 
-    // -- Init --
-    initHeaderScroll();
-    initScrollAnimations();
-    initMobileMenu();
+    // ==========================================================================
+    // Feature: Smooth Scrolling
+    // ==========================================================================
+
+    const initSmoothScroll = () => {
+        const links = document.querySelectorAll(SELECTORS.smoothLinks);
+
+        links.forEach(link => {
+            link.addEventListener('click', (e) => {
+                const targetId = link.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+
+                if (targetElement) {
+                    e.preventDefault();
+                    
+                    // Close mobile menu if open
+                    const navMenu = document.querySelector(SELECTORS.navMenu);
+                    const toggleBtn = document.querySelector(SELECTORS.mobileToggle);
+                    if (navMenu && toggleBtn) {
+                        navMenu.style = '';
+                        toggleBtn.setAttribute('aria-expanded', 'false');
+                    }
+
+                    const headerOffset = 80;
+                    const elementPosition = targetElement.getBoundingClientRect().top;
+                    const offsetPosition = elementPosition + window.scrollY - headerOffset;
+
+                    window.scrollTo({
+                        top: offsetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    };
+
+    // ==========================================================================
+    // Initialization
+    // ==========================================================================
+
+    const init = () => {
+        initStickyHeader();
+        initRevealAnimations();
+        initMobileMenu();
+        initSmoothScroll();
+    };
+
+    // Run
+    init();
 });
