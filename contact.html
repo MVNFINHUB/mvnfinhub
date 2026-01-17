@@ -15,109 +15,113 @@
     <script src="assets/js/app.js" defer></script>
 
     <style>
-        /* 1. Center the form on the page */
+        /* --- 1. LAYOUT FIXES (Force Center) --- */
+        body {
+            background-color: #F8FAFC; /* Lightest Grey/Blue background */
+        }
+        
+        .contact-section {
+            display: flex;
+            justify-content: center;
+            padding: 60px 20px;
+        }
+
         .form-wrapper {
-            max-width: 600px;
-            margin: 40px auto;
+            width: 100%;
+            max-width: 550px; /* Perfect width for reading */
             background: #ffffff;
-            padding: 40px;
-            border-radius: 8px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.05); /* Subtle shadow for neatness */
+            padding: 48px;
+            border-radius: 16px; /* Softer corners */
+            box-shadow: 0 10px 25px rgba(0,0,0,0.05); /* Premium float effect */
             border: 1px solid #e2e8f0;
         }
 
-        /* 2. Fix the Header text */
-        .form-header {
-            text-align: center;
-            margin-bottom: 30px;
-        }
-        .form-header h1 {
-            font-size: 2rem;
-            color: #0A2540; /* Navy */
-            margin-bottom: 10px;
-        }
-        .form-header p {
-            color: #64748B;
-            font-size: 0.95rem;
-            line-height: 1.5;
+        /* --- 2. HEADER PATCH (Fixes the visible hamburger on desktop) --- */
+        @media (min-width: 769px) {
+            .mobile-toggle {
+                display: none !important; /* Forces hamburger to hide on Laptop */
+            }
         }
 
-        /* 3. Make Inputs look professional */
-        .form-group {
-            margin-bottom: 20px;
-        }
-        .form-label {
-            display: block;
-            margin-bottom: 8px;
-            font-weight: 600;
-            color: #334155;
-            font-size: 0.9rem;
-        }
+        /* --- 3. FORM STYLING --- */
+        .form-header { text-align: center; margin-bottom: 32px; }
+        .form-header h1 { font-size: 2rem; color: #0F172A; margin-bottom: 12px; letter-spacing: -0.5px; }
+        .form-header p { color: #64748B; font-size: 0.95rem; line-height: 1.5; }
+
+        .form-group { margin-bottom: 20px; }
+        .form-label { display: block; margin-bottom: 8px; font-weight: 600; color: #334155; font-size: 0.9rem; }
+        
         .form-input, .form-select, .form-textarea {
             width: 100%;
             padding: 12px 16px;
             border: 1px solid #cbd5e1;
-            border-radius: 6px;
+            border-radius: 8px;
             font-family: 'Inter', sans-serif;
             font-size: 1rem;
-            background-color: #f8fafc;
-            transition: border-color 0.2s;
+            background-color: #fff;
+            transition: all 0.2s;
         }
-        .form-input:focus, .form-textarea:focus {
+        
+        .form-input:focus, .form-select:focus, .form-textarea:focus {
             outline: none;
             border-color: #0A2540;
-            background-color: #fff;
+            box-shadow: 0 0 0 4px rgba(10, 37, 64, 0.1); /* Subtle blue glow */
         }
-        .form-textarea {
-            min-height: 120px;
-            resize: vertical;
-        }
+        
+        .form-textarea { min-height: 120px; resize: vertical; }
 
-        /* 4. Fix the Checkbox alignment */
         .checkbox-group {
             display: flex;
             align-items: flex-start;
             gap: 12px;
             margin-bottom: 24px;
-            background: #f1f5f9;
-            padding: 12px;
-            border-radius: 6px;
+            padding: 4px 0;
         }
-        .checkbox-input {
-            margin-top: 4px;
-            width: 18px;
-            height: 18px;
-        }
-        .checkbox-label {
-            font-size: 0.85rem;
-            color: #475569;
-            line-height: 1.4;
-        }
+        .checkbox-input { margin-top: 4px; width: 16px; height: 16px; cursor: pointer; }
+        .checkbox-label { font-size: 0.85rem; color: #475569; line-height: 1.4; cursor: pointer; }
 
-        /* 5. Direct Contact Links (Center them) */
-        .direct-contact {
-            margin-top: 30px;
-            padding-top: 20px;
+        /* --- 4. MODERN ICONS (2026 Style) --- */
+        .icon-container {
+            margin-top: 40px;
+            padding-top: 24px;
             border-top: 1px solid #e2e8f0;
             display: flex;
             justify-content: center;
-            gap: 24px;
-            font-size: 0.9rem;
-        }
-        .contact-link {
-            color: #0A2540;
-            font-weight: 500;
-            text-decoration: underline;
+            gap: 32px; /* Space between icons */
         }
 
-        /* Mobile Fixes */
+        .social-icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            background-color: #F1F5F9;
+            color: #334155;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .social-icon svg {
+            width: 24px;
+            height: 24px;
+            fill: currentColor;
+        }
+
+        /* Hover Effects */
+        .social-icon:hover {
+            transform: translateY(-4px); /* Lifts up */
+            background-color: #0A2540; /* Turns Navy */
+            color: #ffffff; /* Icon turns white */
+            box-shadow: 0 4px 12px rgba(10, 37, 64, 0.2);
+        }
+
+        /* Mobile Adjustments */
         @media (max-width: 768px) {
-            .form-wrapper {
-                margin: 20px 16px;
-                padding: 24px;
-            }
-            .form-header h1 { font-size: 1.6rem; }
-            .direct-contact { flex-direction: column; align-items: center; gap: 12px; }
+            .form-wrapper { padding: 24px; max-width: 100%; }
+            .form-header h1 { font-size: 1.75rem; }
+            .contact-section { padding: 20px 16px; }
         }
     </style>
 </head>
@@ -139,7 +143,7 @@
         </div>
     </header>
 
-    <section>
+    <section class="contact-section">
         <div class="form-wrapper">
             
             <div class="form-header">
@@ -195,15 +199,24 @@
                     </label>
                 </div>
 
-                <button type="submit" class="submit-btn btn btn-primary" style="width: 100%; padding: 14px; font-size: 1rem; cursor: pointer;">
+                <button type="submit" class="submit-btn btn btn-primary" style="width: 100%; padding: 14px; font-size: 1rem; cursor: pointer; background: #0A2540; color: white; border: none; border-radius: 8px;">
                     Submit Enquiry
                 </button>
 
             </form>
 
-            <div class="direct-contact">
-                <a href="mailto:mvnfinhub.connect@gmail.com" class="contact-link">📧 mvnfinhub.connect@gmail.com</a>
-                <a href="https://instagram.com/mvnfinhub" target="_blank" class="contact-link">📷 @mvnfinhub</a>
+            <div class="icon-container">
+                <a href="mailto:mvnfinhub.connect@gmail.com" class="social-icon" aria-label="Email Us">
+                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M20 4H4C2.9 4 2.01 4.9 2.01 6L2 18C2 19.1 2.9 20 4 20H20C21.1 20 22 19.1 22 18V6C22 4.9 21.1 4 20 4ZM20 8L12 13L4 8V6L12 11L20 6V8Z"/>
+                    </svg>
+                </a>
+
+                <a href="https://instagram.com/mvnfinhub" target="_blank" class="social-icon" aria-label="Visit Instagram">
+                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M7.8 2H16.2C19.4 2 22 4.6 22 7.8V16.2C22 19.4 19.4 22 16.2 22H7.8C4.6 22 2 19.4 2 16.2V7.8C2 4.6 4.6 2 7.8 2ZM7.6 4C5.6 4 4 5.6 4 7.6V16.4C4 18.4 5.6 20 7.6 20H16.4C18.4 20 20 18.4 20 16.4V7.6C20 5.6 18.4 4 16.4 4H7.6ZM12 7C14.8 7 17 9.2 17 12C17 14.8 14.8 17 12 17C9.2 17 7 14.8 7 12C7 9.2 9.2 7 12 7ZM12 9C10.3 9 9 10.3 9 12C9 13.7 10.3 15 12 15C13.7 15 15 13.7 15 12C15 10.3 13.7 9 12 9ZM17.25 5.5C17.94 5.5 18.5 6.06 18.5 6.75C18.5 7.44 17.94 8 17.25 8C16.56 8 16 7.44 16 6.75C16 6.06 16.56 5.5 17.25 5.5Z"/>
+                    </svg>
+                </a>
             </div>
 
         </div>
@@ -211,7 +224,7 @@
 
     <footer>
         <div class="container">
-            <p>&copy; <span class="copyright-year">2024</span> MVN FinHub</p>
+            <p>&copy; <span class="copyright-year">2026</span> MVN FinHub</p>
             <div class="footer-links">
                 <a href="legal.html">Privacy</a>
                 <a href="contact.html">Contact</a>
