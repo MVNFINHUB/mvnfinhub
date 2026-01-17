@@ -1,4 +1,4 @@
-/* MVN FINHUB - PREMIUM MAIN STYLES */
+/* MVN FINHUB - MAIN STYLES (PREMIUM) */
 
 @import url('./variables.css');
 @import url('./components.css');
@@ -9,52 +9,53 @@ html { scroll-behavior: smooth; }
 
 body {
     font-family: var(--font-sans);
-    background-color: var(--bg-cream);
-    color: var(--text-slate);
+    background-color: var(--bg-body);
+    color: var(--text-main);
     line-height: 1.6;
     display: flex; flex-direction: column; min-height: 100vh;
+    transition: background-color 0.3s ease, color 0.3s ease; /* Smooth Dark Mode Transition */
 }
 
-h1, h2, h3 { font-family: var(--font-serif); color: var(--primary-navy); letter-spacing: -0.5px; margin-bottom: 16px; }
-a { text-decoration: none; color: inherit; }
+h1, h2, h3, h4 { font-family: var(--font-serif); color: var(--text-head); letter-spacing: -0.5px; margin-bottom: 16px; }
+a { text-decoration: none; color: inherit; transition: color 0.2s; }
 
 /* --- GLASS HEADER --- */
 header {
     background-color: var(--surface-glass);
-    backdrop-filter: blur(12px); /* Blur Effect */
+    backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
-    border-bottom: 1px solid rgba(226, 232, 240, 0.6);
+    border-bottom: 1px solid var(--border-color);
     padding: 16px 0;
-    position: sticky;
-    top: 0;
-    z-index: 1000;
+    position: sticky; top: 0; z-index: 1000;
+    transition: all 0.3s ease;
 }
 
 .nav-flex { display: flex; justify-content: space-between; align-items: center; }
-.brand-logo { font-weight: 700; font-size: 1.5rem; color: var(--primary-navy); }
+.brand-logo { font-weight: 700; font-size: 1.5rem; color: var(--text-head); }
+
 .nav-links { display: flex; gap: 32px; align-items: center; }
-.nav-item { font-weight: 500; font-size: 0.95rem; transition: color 0.2s; }
+.nav-item { font-weight: 500; font-size: 0.95rem; color: var(--text-main); }
 .nav-item:hover { color: var(--accent-emerald); }
-.nav-item.btn-nav { background: var(--primary-navy); color: white; padding: 10px 20px; border-radius: 6px; }
+.nav-item.btn-nav { background: var(--text-head); color: var(--bg-body); padding: 10px 20px; border-radius: 8px; }
 
-/* Hide Hamburger on Desktop */
-.mobile-toggle { display: none; } 
+/* Hamburger (Hidden on Desktop) */
+.mobile-toggle { display: none; }
 
-/* --- GRADIENT HERO --- */
+/* --- SECTIONS --- */
 .hero {
-    background: var(--gradient-primary); /* Gradient Background */
+    background: var(--gradient-primary);
     color: white;
-    padding: 100px 0;
+    padding: 120px 0;
     text-align: center;
 }
+/* Force white text in hero regardless of theme */
 .hero h1, .hero p { color: white !important; }
 
-/* --- UTILITIES --- */
 .container { max-width: var(--container-width); margin: 0 auto; padding: 0 24px; }
 .section-padding { padding: 80px 0; }
 .grid-4 { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 32px; margin-top: 40px; }
 
-/* --- FOOTER --- */
-footer { background: #0F172A; color: #94A3B8; padding: 60px 0; text-align: center; margin-top: auto; }
+/* Footer */
+footer { background: #020617; color: #94A3B8; padding: 60px 0; text-align: center; margin-top: auto; border-top: 1px solid rgba(255,255,255,0.1); }
 .footer-links { margin-top: 24px; display: flex; justify-content: center; gap: 24px; }
 .footer-links a:hover { color: white; }
