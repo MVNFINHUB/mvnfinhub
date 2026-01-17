@@ -1,115 +1,60 @@
-/* MVN FINHUB - MAIN STYLESHEET
-   -------------------------------------------------------
-   The Master Controller. Imports dependencies and sets global rules.
-*/
+/* MVN FINHUB - PREMIUM MAIN STYLES */
 
-/* 1. IMPORTS (Load the Design System) */
 @import url('./variables.css');
 @import url('./components.css');
 @import url('./mobile.css');
 
-/* 2. GLOBAL RESET */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+html { scroll-behavior: smooth; }
+* { margin: 0; padding: 0; box-sizing: border-box; }
 
-/* 3. BASE SETTINGS */
 body {
     font-family: var(--font-sans);
     background-color: var(--bg-cream);
     color: var(--text-slate);
     line-height: 1.6;
-    -webkit-font-smoothing: antialiased; /* Crisp text on Mac/iOS */
-    
-    /* Sticky Footer Setup */
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
+    display: flex; flex-direction: column; min-height: 100vh;
 }
 
-/* 4. TYPOGRAPHY DEFAULTS */
-h1, h2, h3, h4 {
-    font-family: var(--font-serif);
-    color: var(--primary-navy);
-    line-height: 1.3;
-    margin-bottom: 16px;
-}
+h1, h2, h3 { font-family: var(--font-serif); color: var(--primary-navy); letter-spacing: -0.5px; margin-bottom: 16px; }
+a { text-decoration: none; color: inherit; }
 
-p {
-    margin-bottom: 16px;
-}
-
-a {
-    text-decoration: none;
-    color: inherit;
-    transition: color 0.2s;
-}
-
-ul {
-    list-style: none;
-}
-
-/* 5. LAYOUT UTILITIES */
-.container {
-    max-width: var(--container-width);
-    margin: 0 auto;
-    padding: 0 20px;
-    width: 100%;
-}
-
-.section-padding {
-    padding: 80px 0;
-}
-
-/* 6. HEADER & NAVIGATION */
+/* --- GLASS HEADER --- */
 header {
-    background-color: var(--surface-white);
-    border-bottom: 1px solid var(--border-color);
-    padding: 20px 0;
-    position: sticky; /* Stays at top when scrolling */
+    background-color: var(--surface-glass);
+    backdrop-filter: blur(12px); /* Blur Effect */
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(226, 232, 240, 0.6);
+    padding: 16px 0;
+    position: sticky;
     top: 0;
-    z-index: 100;
+    z-index: 1000;
 }
 
-.nav-flex {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
+.nav-flex { display: flex; justify-content: space-between; align-items: center; }
+.brand-logo { font-weight: 700; font-size: 1.5rem; color: var(--primary-navy); }
+.nav-links { display: flex; gap: 32px; align-items: center; }
+.nav-item { font-weight: 500; font-size: 0.95rem; transition: color 0.2s; }
+.nav-item:hover { color: var(--accent-emerald); }
+.nav-item.btn-nav { background: var(--primary-navy); color: white; padding: 10px 20px; border-radius: 6px; }
 
-.brand-logo {
-    font-family: var(--font-serif);
-    font-weight: 700;
-    font-size: 1.5rem;
-    color: var(--primary-navy);
-}
+/* Hide Hamburger on Desktop */
+.mobile-toggle { display: none; } 
 
-/* 7. FOOTER (Global) */
-footer {
-    background-color: #0F172A; /* Dark Slate (Darker than Navy) */
-    color: #94A3B8;
-    padding: 60px 0;
-    text-align: center;
-    font-size: 0.9rem;
-    margin-top: auto; /* Ensures footer sits at bottom */
-}
-
-.footer-links {
-    margin-top: 24px;
-    display: flex;
-    justify-content: center;
-    gap: 24px;
-}
-
-.footer-links a:hover {
+/* --- GRADIENT HERO --- */
+.hero {
+    background: var(--gradient-primary); /* Gradient Background */
     color: white;
+    padding: 100px 0;
+    text-align: center;
 }
+.hero h1, .hero p { color: white !important; }
 
-/* 8. GRIDS (Global Layouts) */
-.grid-4 {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-    gap: 24px;
-}
+/* --- UTILITIES --- */
+.container { max-width: var(--container-width); margin: 0 auto; padding: 0 24px; }
+.section-padding { padding: 80px 0; }
+.grid-4 { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 32px; margin-top: 40px; }
+
+/* --- FOOTER --- */
+footer { background: #0F172A; color: #94A3B8; padding: 60px 0; text-align: center; margin-top: auto; }
+.footer-links { margin-top: 24px; display: flex; justify-content: center; gap: 24px; }
+.footer-links a:hover { color: white; }
