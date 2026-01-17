@@ -1,6 +1,0 @@
-User-agent: *
-Allow: /
-Disallow: /auth/
-Disallow: /assets/private/
-
-Sitemap: https://mvnfinhub.com/sitemap.xml
