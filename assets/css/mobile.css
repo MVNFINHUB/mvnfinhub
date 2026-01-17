@@ -52,18 +52,31 @@
 
     /* 4. NAVIGATION (Mobile Header) */
     header {
-        padding: 12px 0; /* Slimmer header on mobile */
+        padding: 12px 0;
     }
 
     .nav-flex {
-        flex-direction: row; /* Keep logo and hamburger side-by-side */
+        flex-direction: row;
         justify-content: space-between;
         align-items: center;
     }
 
+    /* --- ADD THIS NEW RULE --- */
+    .mobile-toggle {
+        display: block; /* Shows hamburger ONLY on phone */
+        font-size: 1.8rem;
+        background: none;
+        border: none;
+        cursor: pointer;
+        color: var(--primary-navy);
+        padding: 5px;
+    }
+    /* ------------------------- */
+
     /* The Mobile Menu Drawer */
     .nav-links {
         display: none; 
+        /* ... keep the rest of your existing code ... */ 
         flex-direction: column;
         width: 100%;
         position: absolute;
