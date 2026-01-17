@@ -10,9 +10,217 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" href="assets/css/main.css"> 
+    <style>
+        /* --- DESIGN SYSTEM --- */
+        :root {
+            --primary-navy: #0A2540;
+            --accent-emerald: #059669;
+            --accent-hover: #047857;
+            --bg-cream: #F8FAFC;
+            --surface-white: #FFFFFF;
+            --text-slate: #334155;
+            --border-color: #E2E8F0;
+            --touch-target: 48px;
+        }
 
-    <script src="assets/js/app.js" defer></script>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-cream);
+            color: var(--text-slate);
+            line-height: 1.6;
+        }
+
+        h1, h2, h3 { font-family: 'Merriweather', serif; color: var(--primary-navy); }
+        a { text-decoration: none; color: inherit; transition: color 0.2s; }
+        ul { list-style: none; }
+
+        /* --- LAYOUT UTILITIES --- */
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        .section-padding { padding: 60px 0; }
+
+        /* --- HEADER & NAVIGATION (UPDATED) --- */
+        header {
+            background-color: var(--surface-white);
+            border-bottom: 1px solid var(--border-color);
+            padding: 16px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-flex {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .brand-logo {
+            font-family: 'Merriweather', serif;
+            font-weight: 700;
+            font-size: 1.5rem;
+            color: var(--primary-navy);
+        }
+
+        /* Desktop Menu */
+        .nav-links {
+            display: flex;
+            gap: 32px;
+            align-items: center;
+        }
+
+        .nav-item {
+            font-weight: 500;
+            color: var(--text-slate);
+            font-size: 0.95rem;
+        }
+        .nav-item:hover { color: var(--primary-navy); }
+
+        /* "Contact" as a mini button in menu */
+        .nav-item.btn-nav {
+            background-color: var(--primary-navy);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 4px;
+            transition: background 0.2s;
+        }
+        .nav-item.btn-nav:hover { background-color: #183B5E; }
+
+        /* Mobile Hamburger Button (Hidden on Desktop) */
+        .mobile-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.8rem;
+            cursor: pointer;
+            color: var(--primary-navy);
+            padding: 5px;
+        }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            background-color: var(--primary-navy);
+            color: white;
+            padding: 80px 0;
+            text-align: center;
+        }
+        .hero h1 { color: white; font-size: 2.2rem; margin-bottom: 16px; }
+        .hero p { color: #CBD5E1; font-size: 1.125rem; max-width: 700px; margin: 0 auto 32px; }
+
+        /* --- BUTTONS --- */
+        .btn {
+            display: inline-block;
+            padding: 14px 28px;
+            border-radius: 6px;
+            font-weight: 600;
+            min-height: var(--touch-target);
+            border: none;
+            cursor: pointer;
+        }
+        .btn-primary { background-color: var(--accent-emerald); color: white; }
+        .btn-primary:hover { background-color: var(--accent-hover); }
+
+        /* --- TRUST TAGS --- */
+        .trust-indicators {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-bottom: 32px;
+        }
+        .trust-tag {
+            background: rgba(255,255,255,0.1);
+            padding: 6px 12px;
+            border-radius: 4px;
+            border: 1px solid rgba(255,255,255,0.2);
+            font-size: 0.85rem;
+            color: #E2E8F0;
+        }
+
+        /* --- GRID LAYOUT --- */
+        .grid-4 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 24px;
+            margin-top: 40px;
+        }
+        .face-card {
+            background: var(--surface-white);
+            padding: 24px;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+        .status-active { color: var(--accent-emerald); font-weight: 600; font-size: 0.9rem; }
+
+        /* --- SERVICE LISTS --- */
+        .service-list li, .why-list li {
+            position: relative;
+            padding-left: 24px;
+            margin-bottom: 8px;
+            color: var(--text-slate);
+        }
+        .service-list li::before { content: "•"; color: var(--accent-emerald); position: absolute; left: 0; font-weight: bold; }
+        .why-list { background: white; padding: 30px; border-radius: 8px; border-left: 4px solid var(--primary-navy); }
+        .why-list li::before { content: "✓"; position: absolute; left: 0; color: var(--accent-emerald); }
+
+        .view-link { display: block; text-align: center; margin-top: 30px; color: var(--primary-navy); font-weight: 600; }
+        .contact-teaser { background-color: var(--primary-navy); color: white; text-align: center; }
+        .contact-teaser h2 { color: white; margin-bottom: 24px; }
+
+        /* --- FOOTER --- */
+        footer { background-color: #0F172A; color: #94A3B8; padding: 40px 0; text-align: center; font-size: 0.9rem; }
+        .footer-links { margin-top: 16px; display: flex; justify-content: center; gap: 20px; }
+        .footer-links a:hover { color: white; }
+
+        /* --- MOBILE RESPONSIVE STYLES --- */
+        @media (max-width: 768px) {
+            /* 1. Header Changes */
+            .mobile-toggle { display: block; } /* Show Hamburger */
+            
+            /* Hide Menu by Default */
+            .nav-links {
+                display: none; 
+                flex-direction: column;
+                width: 100%;
+                position: absolute;
+                top: 100%; /* Below header */
+                left: 0;
+                background-color: var(--surface-white);
+                border-bottom: 1px solid var(--border-color);
+                padding: 20px;
+                box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+                gap: 20px;
+                align-items: flex-start;
+            }
+
+            /* Show Menu when Active class is added by JS */
+            .nav-links.active { display: flex; }
+
+            .nav-item {
+                font-size: 1.1rem; /* Larger text for fingers */
+                width: 100%;
+                padding: 10px 0;
+                border-bottom: 1px solid #F1F5F9;
+            }
+            .nav-item.btn-nav {
+                display: inline-block;
+                width: auto;
+                margin-top: 10px;
+            }
+
+            /* 2. Content Changes */
+            .hero h1 { font-size: 1.75rem; }
+            .grid-4 { grid-template-columns: 1fr; } /* Stack cards */
+            .btn { width: 100%; display: block; margin-top: 10px; }
+            .container { padding: 0 16px; }
+        }
+    </style>
 </head>
 <body>
 
@@ -47,7 +255,7 @@
             </div>
 
             <a href="contact.html" class="btn btn-primary">Start an Enquiry</a>
-            <div style="font-size: 0.85rem; color: rgba(255,255,255,0.7); margin-top: 12px;">No login required • Response within 24 hours</div>
+            <div style="font-size: 0.85rem; color: #94A3B8; margin-top: 12px;">No login required • Response within 24 hours</div>
         </div>
     </section>
 
@@ -75,11 +283,11 @@
         </div>
     </section>
 
-    <section class="section-padding" style="background-color: var(--surface-white);">
+    <section class="section-padding" style="background-color: white;">
         <div class="container">
             <h2 style="text-align: center; margin-bottom: 40px; font-size: 1.8rem;">What We Help With</h2>
             <div class="grid-4">
-                <div class="face-card">
+                <div class="face-card" style="border-top: 4px solid var(--primary-navy);">
                     <h3>Shares & Legacy Asset Recovery</h3>
                     <ul class="service-list">
                         <li>Physical share certificate to demat</li>
@@ -87,7 +295,7 @@
                         <li>IEPF claim documentation support</li>
                     </ul>
                 </div>
-                <div class="face-card">
+                <div class="face-card" style="border-top: 4px solid var(--primary-navy);">
                     <h3>RI & NRI Documentation Support</h3>
                     <ul class="service-list">
                         <li>PAN, Aadhaar, Passport, Voter ID</li>
@@ -95,7 +303,7 @@
                         <li>Re-KYC and account reactivation</li>
                     </ul>
                 </div>
-                <div class="face-card">
+                <div class="face-card" style="border-top: 4px solid var(--primary-navy);">
                     <h3>Banking & Loan Documentation</h3>
                     <ul class="service-list">
                         <li>Account opening & KYC support</li>
@@ -103,7 +311,7 @@
                         <li>Loan documentation assistance</li>
                     </ul>
                 </div>
-                <div class="face-card">
+                <div class="face-card" style="border-top: 4px solid var(--accent-emerald);">
                     <h3>Financial Structuring Awareness (Non-Advisory)</h3>
                     <ul class="service-list">
                         <li>Understanding personal financial structure</li>
@@ -146,6 +354,26 @@
             </div>
         </div>
     </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Update Year
+            document.querySelector('.copyright-year').textContent = new Date().getFullYear();
+
+            // Mobile Menu Logic
+            const menuToggle = document.getElementById('mobile-menu-toggle');
+            const navLinks = document.getElementById('nav-links');
+
+            if (menuToggle && navLinks) {
+                menuToggle.addEventListener('click', () => {
+                    navLinks.classList.toggle('active');
+                    const isExpanded = navLinks.classList.contains('active');
+                    menuToggle.setAttribute('aria-expanded', isExpanded);
+                    menuToggle.textContent = isExpanded ? '✕' : '☰';
+                });
+            }
+        });
+    </script>
 
 </body>
 </html>
