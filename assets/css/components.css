@@ -1,66 +1,49 @@
-/* MVN FINHUB - PREMIUM COMPONENTS */
+/* MVN FINHUB - COMPONENTS (PREMIUM) */
 
-/* --- BUTTONS (Gradient & Glow) --- */
+/* --- BUTTONS --- */
 .btn {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    padding: 14px 32px;
-    border-radius: 50px; /* Modern Pill Shape */
-    font-weight: 600;
-    text-decoration: none;
-    transition: all 0.3s ease;
-    border: none;
-    cursor: pointer;
-    font-family: var(--font-sans);
+    display: inline-flex; align-items: center; justify-content: center;
+    padding: 14px 32px; border-radius: 50px;
+    font-weight: 600; text-decoration: none; cursor: pointer; border: none;
+    font-family: var(--font-sans); transition: all 0.3s ease;
 }
 
 .btn-primary {
     background: var(--gradient-action);
     color: white;
-    box-shadow: 0 4px 6px rgba(5, 150, 105, 0.25); /* Green Shadow */
+    box-shadow: 0 4px 15px rgba(5, 150, 105, 0.3);
 }
+.btn-primary:hover { transform: translateY(-3px); box-shadow: 0 8px 25px rgba(5, 150, 105, 0.5); }
 
-.btn-primary:hover {
-    transform: translateY(-2px); /* Lifts up */
-    box-shadow: 0 8px 15px rgba(5, 150, 105, 0.4); /* Stronger Glow */
-}
-
-/* --- CARDS (Floating Effect) --- */
+/* --- CARDS --- */
 .face-card, .service-card {
-    background: var(--surface-white);
-    border: 1px solid rgba(255,255,255,0.5);
+    background: var(--surface-card);
+    border: 1px solid var(--border-color);
     border-radius: var(--border-radius);
     padding: 32px;
     box-shadow: var(--shadow-sm);
     transition: all 0.3s ease;
     height: 100%;
 }
+.face-card:hover { transform: translateY(-8px); box-shadow: var(--shadow-lg); border-color: transparent; }
 
-.face-card:hover {
-    transform: translateY(-8px); /* Float Up */
-    box-shadow: var(--shadow-lg); /* Deep Shadow */
-}
-
-/* --- LISTS (Green Checkmarks) --- */
+/* --- LISTS --- */
 .service-list li, .why-list li {
-    list-style: none;
-    position: relative;
-    padding-left: 32px;
-    margin-bottom: 14px;
-    color: var(--text-slate);
+    list-style: none; position: relative; padding-left: 32px; margin-bottom: 14px;
+    color: var(--text-main);
+}
+.service-list li::before, .why-list li::before {
+    content: "✓"; position: absolute; left: 0; color: var(--accent-emerald);
+    background: rgba(5, 150, 105, 0.1); width: 24px; height: 24px;
+    border-radius: 50%; text-align: center; line-height: 24px; font-weight: bold;
 }
 
-.service-list li::before, .why-list li::before {
-    content: "✓";
-    position: absolute;
-    left: 0;
-    color: var(--accent-emerald);
-    font-weight: bold;
-    background: rgba(5, 150, 105, 0.1);
-    width: 24px;
-    height: 24px;
-    border-radius: 50%;
-    text-align: center;
-    line-height: 24px;
+/* --- THEME TOGGLE BUTTON (Injected by JS) --- */
+.theme-btn {
+    background: none; border: 2px solid var(--border-color);
+    border-radius: 50%; width: 40px; height: 40px;
+    display: flex; align-items: center; justify-content: center;
+    cursor: pointer; font-size: 1.2rem; margin-left: 16px;
+    transition: all 0.2s;
 }
+.theme-btn:hover { background: var(--bg-body); border-color: var(--accent-emerald); }
