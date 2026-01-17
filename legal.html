@@ -3,227 +3,203 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Legal, Privacy & Non-Advisory Disclosure | MVN FinHub</title>
-    <meta name="description" content="Read MVN FinHub’s non-advisory disclaimer, privacy policy, data handling practices, and limitation of liability.">
+    <meta name="description" content="Legal, Privacy Policy, and Non-Advisory Disclaimer for MVN FinHub.">
+    <title>Legal & Privacy | MVN FinHub</title>
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
 
     <style>
-        /* CSS Variables */
+        /* --- DESIGN SYSTEM REUSED --- */
         :root {
-            --primary-color: #0B3C5D;
-            --text-color: #4A5568;
-            --accent-color: #2F855A;
-            --background-white: #FFFFFF;
-            --background-section: #F7FAFC;
+            --primary-navy: #0A2540;
+            --bg-cream: #F8FAFC;
+            --surface-white: #FFFFFF;
+            --text-slate: #334155;
             --border-color: #E2E8F0;
-            --spacing-unit: 8px;
-            --max-width: 1200px;
+            --section-border: #CBD5E1;
         }
 
-        /* Reset & Base Styles */
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
         body {
             font-family: 'Inter', sans-serif;
-            color: var(--text-color);
-            background-color: var(--background-white);
-            line-height: 1.6;
-            -webkit-font-smoothing: antialiased;
+            background-color: var(--bg-cream);
+            color: var(--text-slate);
+            line-height: 1.7;
         }
 
-        a {
-            text-decoration: none;
-            color: inherit;
-        }
-
-        ul {
-            list-style: none;
-        }
-
-        /* Layout Utilities */
-        .container {
-            max-width: var(--max-width);
-            margin: 0 auto;
-            padding: 0 calc(var(--spacing-unit) * 3);
-        }
-
-        .section {
-            padding: calc(var(--spacing-unit) * 6) 0;
-            border-bottom: 1px solid var(--border-color);
-        }
-
-        .section:last-of-type {
-            border-bottom: none;
-        }
-
-        /* Typography */
         h1, h2, h3 {
-            color: var(--primary-color);
-            font-weight: 700;
-            line-height: 1.3;
+            font-family: 'Merriweather', serif;
+            color: var(--primary-navy);
         }
 
-        h1 {
-            font-size: 2.25rem;
-            margin-bottom: calc(var(--spacing-unit) * 4);
-            padding-top: calc(var(--spacing-unit) * 4);
+        /* --- LAYOUT UTILITIES --- */
+        .container {
+            max-width: 800px; /* Narrower for legal reading */
+            margin: 0 auto;
+            padding: 0 20px;
         }
-
-        h2 {
-            font-size: 1.5rem;
-            margin-bottom: calc(var(--spacing-unit) * 2);
-        }
-
-        p {
-            margin-bottom: calc(var(--spacing-unit) * 2);
-            max-width: 800px;
-        }
-
-        /* List Styling */
-        .legal-list {
-            margin-bottom: calc(var(--spacing-unit) * 3);
-            padding-left: calc(var(--spacing-unit) * 2);
-        }
-
-        .legal-list li {
-            position: relative;
-            padding-left: calc(var(--spacing-unit) * 2);
-            margin-bottom: var(--spacing-unit);
-            font-weight: 500;
-        }
-
-        .legal-list li::before {
-            content: "•";
-            position: absolute;
-            left: 0;
-            color: var(--primary-color);
-        }
-
-        /* Header */
+        .section-padding { padding: 60px 0; }
+        
+        /* --- HEADER & FOOTER --- */
         header {
-            padding: calc(var(--spacing-unit) * 3) 0;
+            background: var(--surface-white);
             border-bottom: 1px solid var(--border-color);
-            background-color: var(--background-white);
+            padding: 20px 0;
         }
-
-        .brand-name {
-            font-size: 1.5rem;
+        .brand-logo {
+            font-family: 'Merriweather', serif;
             font-weight: 700;
-            color: var(--primary-color);
+            font-size: 1.5rem;
+            color: var(--primary-navy);
+            text-decoration: none;
         }
-
-        /* Content Layout */
-        .legal-content {
-            max-width: 800px; /* Constrain width for readability on legal text */
-        }
-
-        /* Footer */
         footer {
-            background-color: var(--primary-color);
-            color: #FFFFFF;
-            padding: calc(var(--spacing-unit) * 6) 0;
-            font-size: 0.875rem;
-            margin-top: calc(var(--spacing-unit) * 4);
-        }
-
-        .footer-content {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
+            background: #0F172A;
+            color: #94A3B8;
+            padding: 40px 0;
             text-align: center;
-            gap: calc(var(--spacing-unit) * 2);
+            font-size: 0.9rem;
+            margin-top: auto;
         }
 
-        .footer-links a {
-            color: #FFFFFF;
-            opacity: 0.8;
-            margin: 0 var(--spacing-unit);
+        /* --- PAGE HEADER --- */
+        .page-header {
+            padding: 60px 0 20px;
+            border-bottom: 1px solid var(--border-color);
+            margin-bottom: 40px;
+        }
+        .page-header h1 { font-size: 2.2rem; }
+        .page-header p {
+            margin-top: 10px;
+            color: #64748B;
+            font-size: 1.1rem;
         }
 
-        .footer-links a:hover {
-            opacity: 1;
-            text-decoration: underline;
+        /* --- LEGAL SECTIONS --- */
+        .legal-section {
+            background: var(--surface-white);
+            padding: 40px;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            margin-bottom: 40px;
         }
 
-        /* Responsive */
+        .legal-section h2 {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--bg-cream);
+        }
+
+        .legal-section p { margin-bottom: 16px; }
+
+        .legal-list {
+            margin-left: 20px;
+            margin-bottom: 20px;
+        }
+        .legal-list li {
+            margin-bottom: 8px;
+            padding-left: 10px;
+        }
+
+        /* --- NON-ADVISORY BOX (Highlight) --- */
+        .disclaimer-box {
+            border-left: 5px solid var(--primary-navy);
+            background-color: #F1F5F9;
+        }
+
+        /* --- RESPONSIVE --- */
         @media (max-width: 768px) {
-            h1 { font-size: 1.75rem; }
-            h2 { font-size: 1.25rem; }
+            .legal-section { padding: 24px; }
+            .page-header h1 { font-size: 1.8rem; }
         }
     </style>
 </head>
 <body>
 
     <header>
-        <div class="container">
-            <a href="index.html" class="brand-name">MVN FinHub</a>
+        <div class="container" style="max-width: 1100px;">
+            <a href="index.html" class="brand-logo">MVN FinHub</a>
         </div>
     </header>
 
-    <main class="container legal-content">
-        <h1>Legal & Compliance</h1>
+    <div class="container">
+        
+        <section class="page-header">
+            <h1>Legal & Privacy</h1>
+            <p>Legal clarity is provided to ensure transparency and user understanding.</p>
+        </section>
 
-        <section class="section">
+        <section class="legal-section disclaimer-box">
             <h2>Non-Advisory Disclaimer</h2>
-            <p>
-                MVN FinHub operates strictly as a financial process facilitator and documentation support service.
-                We are not SEBI-registered investment advisors, portfolio managers, or research analysts.
-            </p>
-            <p>We do not provide:</p>
+            <p>MVN FinHub operates strictly as a financial process facilitation, documentation support, and educational awareness platform.</p>
+            <p><strong>MVN FinHub is not a SEBI-registered investment advisor, portfolio manager, or research analyst.</strong></p>
+            
+            <p>MVN FinHub does not provide:</p>
             <ul class="legal-list">
                 <li>Investment advice</li>
                 <li>Buy or sell recommendations</li>
-                <li>Guaranteed returns</li>
+                <li>Financial opinions</li>
+                <li>Guaranteed outcomes or returns</li>
             </ul>
-            <p>All financial decisions remain solely with the user.</p>
+            <p>All financial decisions remain solely the responsibility of the user.</p>
         </section>
 
-        <section class="section">
+        <section class="legal-section">
             <h2>Privacy Policy</h2>
-            <p>
-                MVN FinHub collects limited personal information including name, email address, phone number, and service requirement solely for the purpose of responding to enquiries and providing process support.
-            </p>
-            <p>
-                We do not sell, trade, or share personal data with advertisers, financial agencies, or third parties.
-            </p>
-            <p>
-                Data is stored securely using industry-standard systems.
-                Users may request data deletion at any time by contacting us.
-            </p>
+            <p>MVN FinHub collects limited personal information, which may include:</p>
+            <ul class="legal-list">
+                <li>Name</li>
+                <li>Email address</li>
+                <li>Phone number</li>
+                <li>Service requirement details</li>
+            </ul>
+
+            <p>This information is collected only for the purpose of:</p>
+            <ul class="legal-list">
+                <li>Responding to enquiries</li>
+                <li>Providing documentation and process support</li>
+            </ul>
+
+            <p><strong>Privacy commitments:</strong></p>
+            <ul class="legal-list">
+                <li>Personal data is not sold, traded, or shared with advertisers or financial institutions.</li>
+                <li>Data is stored using secure, industry-standard systems.</li>
+                <li>Users may request data deletion by contacting MVN FinHub.</li>
+            </ul>
         </section>
 
-        <section class="section">
+        <section class="legal-section">
             <h2>Limitation of Liability</h2>
-            <p>
-                MVN FinHub is not responsible for delays, rejections, or decisions made by banks, companies, or government authorities.
-                Approval outcomes are outside our control.
-            </p>
+            <p>MVN FinHub is not responsible for decisions, approvals, delays, or rejections made by:</p>
+            <ul class="legal-list">
+                <li>Banks</li>
+                <li>Financial institutions</li>
+                <li>Companies</li>
+                <li>Government authorities</li>
+            </ul>
+            <p>Outcomes of financial or documentation processes are outside the control of MVN FinHub. Information provided is for general awareness and process understanding only.</p>
         </section>
 
-        <section class="section">
-            <h2>Consent</h2>
-            <p>
-                By submitting an enquiry, you authorize MVN FinHub to contact you regarding your request and acknowledge the strictly non-advisory nature of the services.
-            </p>
+        <section class="legal-section">
+            <h2>User Consent</h2>
+            <p>By submitting an enquiry or using the platform:</p>
+            <ul class="legal-list">
+                <li>Users acknowledge the non-advisory nature of MVN FinHub.</li>
+                <li>Users consent to being contacted regarding their enquiry.</li>
+                <li>Users accept that MVN FinHub’s role is limited to documentation and process support.</li>
+            </ul>
         </section>
-    </main>
+
+    </div>
 
     <footer>
-        <div class="container footer-content">
-            <div>© MVN FinHub</div>
-            <p>MVN FinHub provides strictly non-advisory financial process, documentation, and educational support.</p>
-            <div class="footer-links">
-                <a href="services.html">Services</a>
-                <a href="insights.html">Insights</a>
-                <a href="contact.html">Contact</a>
-            </div>
+        <div class="container">
+            <p>&copy; MVN FinHub</p>
+            <p style="margin-top: 8px;">Use of the platform constitutes acceptance of these terms. MVN FinHub maintains compliance-first operations across all services.</p>
         </div>
     </footer>
 
