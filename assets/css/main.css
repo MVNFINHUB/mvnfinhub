@@ -58,30 +58,57 @@ footer { background: #020617; color: #94A3B8; padding: 60px 0; text-align: cente
 .footer-links { margin-top: 24px; display: flex; justify-content: center; gap: 24px; }
 .footer-links a:hover { color: white; }
 
-//* --- FLOATING DARK MODE BUTTON (MINIMAL VERSION) --- */
-.theme-btn-floating {
-    position: fixed;
-    bottom: 24px;        /* Closer to the bottom edge */
-    right: 24px;         /* Closer to the right edge */
-    width: 42px;         /* Much smaller (was 56px) */
-    height: 42px;        /* Perfect circle */
-    background-color: var(--text-head); 
-    color: var(--bg-body);
-    border-radius: 50%;
-    border: 1px solid var(--border-color); /* Subtle border */
-    box-shadow: 0 4px 10px rgba(0,0,0,0.15); /* Softer shadow */
+/* --- FOOTER ADJUSTMENTS --- */
+footer .container {
+    position: relative; /* Allows us to place the button in the corner */
+}
+
+/* --- MINIMAL FOOTER THEME BUTTON (Supabase Style) --- */
+.theme-btn-footer {
+    position: absolute;
+    top: 0;       /* Aligns with the top of the footer content */
+    right: 0;     /* Aligns to the right edge of the content */
+    
+    width: 32px;  /* Minimal Size */
+    height: 32px;
+    
+    background: transparent;
+    border: 1px solid rgba(148, 163, 184, 0.4); /* Subtle border */
+    border-radius: 6px; /* Small rounded corners */
+    
+    color: #94A3B8;
     cursor: pointer;
-    font-size: 1.1rem;   /* Smaller icon */
+    font-size: 0.9rem; /* Small Icon */
+    
     display: flex;
     align-items: center;
     justify-content: center;
-    z-index: 9999;
     transition: all 0.2s ease;
-    opacity: 0.9;        /* Slightly see-through until hovered */
 }
 
-.theme-btn-floating:hover {
-    transform: translateY(-2px); /* Slight lift */
-    opacity: 1;          /* Fully visible on hover */
-    box-shadow: 0 6px 14px rgba(0,0,0,0.25);
+.theme-btn-footer:hover {
+    background-color: rgba(255,255,255,0.1);
+    color: white;
+    border-color: white;
+}
+
+/* Dark Mode Adjustment for the button itself */
+[data-theme="light"] .theme-btn-footer {
+    border-color: rgba(15, 23, 42, 0.2);
+    color: #475569;
+}
+[data-theme="light"] .theme-btn-footer:hover {
+    background-color: rgba(15, 23, 42, 0.1);
+    color: #0F172A;
+}
+
+/* MOBILE FIX: Ensure it doesn't overlap centered text */
+@media (max-width: 768px) {
+    .theme-btn-footer {
+        position: absolute;
+        top: 0; 
+        right: 0;
+        width: 36px; /* Slightly larger touch target */
+        height: 36px;
+    }
 }
