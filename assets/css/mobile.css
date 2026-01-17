@@ -1,15 +1,16 @@
-/* MVN FINHUB - MOBILE CORRECTIONS */
+/* MVN FINHUB - MOBILE CORRECTIONS (FINAL FIX) */
 
 @media (max-width: 768px) {
     
     /* 1. Header Layout */
     .nav-flex {
-        flex-wrap: wrap; /* Allows menu to drop to next line */
+        flex-wrap: wrap; 
+        position: relative; /* Secures the layout */
     }
 
-    /* 2. Hamburger Button */
+    /* 2. Hamburger Button (Make it visible) */
     .mobile-toggle {
-        display: block; /* Show the button */
+        display: block !important;
         font-size: 1.8rem;
         background: none;
         border: none;
@@ -19,54 +20,50 @@
         margin-left: auto; /* Pushes button to the right */
     }
 
-    /* 3. The Menu List (Hidden by default) */
+    /* 3. The Menu List (FORCE HIDDEN by default) */
     .nav-links {
-        display: none; /* CRITICAL: Hides menu initially */
+        display: none !important; /* <--- THIS FIXES THE ISSUE */
         width: 100%;
         flex-direction: column;
         background-color: var(--surface-card);
-        padding: 20px;
-        margin-top: 15px;
+        padding: 24px;
+        margin-top: 16px;
         border-radius: 12px;
-        box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        box-shadow: 0 10px 30px rgba(0,0,0,0.15);
         border: 1px solid var(--border-color);
-        gap: 15px;
-        
-        /* Animation */
-        animation: slideDown 0.3s ease-out;
+        gap: 16px;
+        position: absolute; /* Floats it on top of content */
+        top: 60px; /* Pushes it below header */
+        left: 0;
+        z-index: 9999; /* Ensures it sits on top of everything */
     }
 
-    /* 4. The "Active" State (Shown when clicked) */
+    /* 4. The "Active" State (Only show when clicked) */
     .nav-links.active {
-        display: flex; /* Shows menu when JS adds 'active' class */
+        display: flex !important; /* Shows menu when open */
     }
 
-    /* 5. Menu Items */
+    /* 5. Menu Items Styling */
     .nav-item {
         width: 100%;
         text-align: center;
-        padding: 10px;
+        padding: 12px 0;
         border-bottom: 1px solid var(--border-color);
+        font-size: 1.1rem;
     }
     .nav-item:last-child { border-bottom: none; }
+    
+    /* 6. Button in Menu */
+    .nav-item.btn-nav {
+        margin-top: 10px;
+        background-color: var(--primary-navy);
+        color: white !important;
+        border-radius: 8px;
+    }
 
-    /* 6. Layout Adjustments for Content */
+    /* 7. Content Adjustments */
+    .hero { padding-top: 60px; } /* Prevent overlap */
     .hero h1 { font-size: 2rem !important; }
     .grid-4 { grid-template-columns: 1fr !important; }
     .container { padding: 0 20px; }
-    
-    /* Fix floating button overlap on mobile */
-    .theme-btn-floating {
-        bottom: 20px;
-        right: 20px;
-        width: 48px;
-        height: 48px;
-        font-size: 1.2rem;
-    }
-}
-
-/* Slide Down Animation */
-@keyframes slideDown {
-    from { opacity: 0; transform: translateY(-10px); }
-    to { opacity: 1; transform: translateY(0); }
 }
