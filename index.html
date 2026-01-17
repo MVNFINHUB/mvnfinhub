@@ -4,212 +4,131 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Independent, strictly non-advisory process support for physical share recovery, IEPF claims, NRI banking, and financial documentation.">
-    <title>MVN FinHub | Simplify Financial Documentation & Legacy Recovery</title>
-    
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
-    
+    <title>MVN FinHub</title>
     <link rel="stylesheet" href="styles.css">
-    
     <script src="main.js" defer></script>
 </head>
 <body>
 
-    <header class="site-header" role="banner">
-        <a href="index.html" class="brand-logo" aria-label="MVN FinHub Home">
-            MVN FinHub
-        </a>
-        
-        <nav class="main-nav" role="navigation" aria-label="Main Navigation">
-            <ul class="nav-list">
-                <li><a href="index.html" class="nav-link">Home</a></li>
-                <li><a href="services.html" class="nav-link">Services</a></li>
-                <li><a href="insights.html" class="nav-link">Insights</a></li>
-                <li><a href="about.html" class="nav-link">About</a></li>
-                <li><a href="contact.html" class="nav-link">Contact</a></li>
-            </ul>
-        </nav>
+    <header>
+        <div class="container">
+            <a href="#" class="brand">MVN FinHub</a>
 
-        <div class="header-action">
-            <a href="contact.html" class="btn-primary">Start an Enquiry</a>
-            <button class="mobile-toggle" aria-label="Toggle navigation menu" style="display: none;">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <line x1="3" y1="12" x2="21" y2="12"></line>
-                    <line x1="3" y1="6" x2="21" y2="6"></line>
-                    <line x1="3" y1="18" x2="21" y2="18"></line>
-                </svg>
-            </button>
+            <nav aria-label="Main Navigation">
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#insights">Insights</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+
+            <div class="header-actions">
+                <button id="dark-mode-toggle" type="button" aria-label="Toggle Dark Mode">
+                    Dark Mode
+                </button>
+                <a href="#enquiry" class="btn-primary">Start an Enquiry</a>
+            </div>
         </div>
     </header>
 
-    <main id="main-content">
-
-        <section class="section hero-section" aria-labelledby="hero-heading">
+    <main>
+        <section class="section hero" id="home">
             <div class="container">
-                <div class="hero-content">
-                    <span class="brand-label" style="color: var(--c-accent); font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; font-size: 0.8rem; display: block; margin-bottom: 1rem;">MVN FinHub</span>
-                    <h1 id="hero-heading" class="hero-heading">
-                        Simplify Financial Documentation & Legacy Recovery
-                    </h1>
-                    <p class="hero-subheadline">
-                        Independent, strictly non-advisory process support for physical share recovery, IEPF claims, NRI banking, and financial documentation.
-                    </p>
-                </div>
+                <h1>MVN FinHub</h1>
+                <p class="hero-sub">Simplify Financial Documentation & Legacy Recovery</p>
+                <p class="hero-text">Independent, strictly non-advisory process support for physical share recovery, IEPF claims, NRI banking, and financial documentation.</p>
             </div>
         </section>
 
-        <section class="section trust-section" aria-label="Trust Indicators">
+        <section class="section trust">
             <div class="container">
                 <ul class="trust-list">
-                    <li class="trust-item">Strictly Non-Advisory</li>
-                    <li class="trust-item">Secure & Private</li>
-                    <li class="trust-item">Process-Driven</li>
-                    <li class="trust-item">Compliance-First</li>
+                    <li>Strictly Non-Advisory</li>
+                    <li>Secure & Private</li>
+                    <li>Process-Driven</li>
+                    <li>Compliance-First</li>
                 </ul>
             </div>
         </section>
 
-        <section class="section situation-section" aria-label="Core Capabilities">
+        <section class="section how-it-works">
             <div class="container">
-                <div class="trust-list" style="margin-top: 2rem;">
-                    <div class="trust-item">Shares & Legacy Asset Recovery</div>
-                    <div class="trust-item">RI & NRI Documentation Support</div>
-                    <div class="trust-item">Banking & Loan Documentation</div>
-                    <div class="trust-item">Financial Structuring Awareness (Non-Advisory)</div>
-                </div>
-            </div>
-        </section>
-
-        <section class="section process-section" aria-labelledby="process-heading">
-            <div class="container">
-                <h2 id="process-heading" class="hero-heading" style="font-size: 2.5rem; margin-bottom: 3rem;">How MVN FinHub Works</h2>
+                <h2>How MVN FinHub Works</h2>
                 
-                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem;">
-                    <article class="process-card">
-                        <h3 class="card-title">Framework</h3>
-                        <p class="card-text">
-                            A structured, rule-based, non-advisory financial process framework focused on compliance, documentation discipline, and transparency.
-                        </p>
+                <div class="process-grid">
+                    <article class="process-item">
+                        <h3>Framework</h3>
+                        <p>A structured, rule-based, non-advisory financial process framework focused on compliance, documentation discipline, and transparency.</p>
                     </article>
 
-                    <article class="process-card">
-                        <h3 class="card-title">Execution</h3>
-                        <p class="card-text">
-                            Hands-on support for legacy asset recovery, physical share to demat conversion, IEPF claims, and complex financial documentation workflows.
-                        </p>
+                    <article class="process-item">
+                        <h3>Execution</h3>
+                        <p>Hands-on support for legacy asset recovery, physical share to demat conversion, IEPF claims, and complex financial documentation workflows.</p>
                     </article>
 
-                    <article class="process-card">
-                        <h3 class="card-title">Financial Awareness</h3>
-                        <p class="card-text">
-                            Clear explanations of financial processes and scenarios to improve understanding and preparedness — strictly educational, never advisory.
-                        </p>
+                    <article class="process-item">
+                        <h3>Financial Awareness</h3>
+                        <p>Clear explanations of financial processes and scenarios to improve understanding and preparedness — strictly educational, never advisory.</p>
                     </article>
 
-                    <article class="process-card">
-                        <h3 class="card-title">Operational Status</h3>
-                        <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.5rem; color: var(--c-accent);">
-                            <span style="width: 8px; height: 8px; background: currentColor; border-radius: 50%; box-shadow: 0 0 10px currentColor;"></span>
-                            <span style="font-size: 0.8rem; font-weight: 700; text-transform: uppercase;">System Active</span>
-                        </div>
-                        <p class="card-text">
-                            Enquiries are securely accepted and processed through controlled systems.
-                        </p>
+                    <article class="process-item">
+                        <h3>Operational Status</h3>
+                        <p><strong>● System Active</strong></p>
+                        <p>Enquiries are securely accepted and processed through controlled systems.</p>
                     </article>
                 </div>
             </div>
         </section>
 
-        <section class="section services-section" aria-labelledby="services-heading">
+        <section class="section services" id="services">
             <div class="container">
-                <h2 id="services-heading" class="hero-heading" style="font-size: 2.5rem; margin-bottom: 3rem;">What We Help With</h2>
-                
-                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem;">
-                    
-                    <div class="service-card">
-                        <h3 class="card-title">Shares & Legacy Asset Recovery</h3>
-                        <ul style="list-style: none; color: #94a3b8;">
-                            <li style="margin-bottom: 0.5rem;">• Physical share certificate to demat</li>
-                            <li style="margin-bottom: 0.5rem;">• Transmission (death claims)</li>
-                            <li>• IEPF claim documentation support</li>
-                        </ul>
-                    </div>
-
-                    <div class="service-card">
-                        <h3 class="card-title">RI & NRI Documentation Support</h3>
-                        <ul style="list-style: none; color: #94a3b8;">
-                            <li style="margin-bottom: 0.5rem;">• PAN, Aadhaar, Passport, Voter ID</li>
-                            <li style="margin-bottom: 0.5rem;">• NRO / NRE banking documentation</li>
-                            <li>• Re-KYC and account reactivation</li>
-                        </ul>
-                    </div>
-
-                    <div class="service-card">
-                        <h3 class="card-title">Banking & Loan Documentation</h3>
-                        <ul style="list-style: none; color: #94a3b8;">
-                            <li style="margin-bottom: 0.5rem;">• Account opening & KYC support</li>
-                            <li style="margin-bottom: 0.5rem;">• Nominee updates</li>
-                            <li>• Loan documentation assistance</li>
-                        </ul>
-                    </div>
-
-                    <div class="service-card">
-                        <h3 class="card-title">Financial Structuring Awareness (Non-Advisory)</h3>
-                        <ul style="list-style: none; color: #94a3b8;">
-                            <li style="margin-bottom: 0.5rem;">• Understanding personal financial structure</li>
-                            <li>• Scenario awareness and documentation readiness</li>
-                        </ul>
-                    </div>
-
-                </div>
-
-                <div style="margin-top: 3rem; text-align: center;">
-                    <a href="services.html" class="nav-link" style="font-weight: 600; color: var(--c-accent);">View Full Services →</a>
-                </div>
-            </div>
-        </section>
-
-        <section class="section why-section" aria-labelledby="why-heading">
-            <div class="container">
-                <h2 id="why-heading" class="hero-heading" style="font-size: 2.5rem; margin-bottom: 3rem;">Why Clients Choose MVN FinHub</h2>
-                
-                <ul style="display: grid; gap: 1rem; max-width: 800px;">
-                    <li class="trust-item" style="justify-content: start;">✓ No investment advice or product selling</li>
-                    <li class="trust-item" style="justify-content: start;">✓ No commissions or conflicts of interest</li>
-                    <li class="trust-item" style="justify-content: start;">✓ Secure handling of personal information</li>
-                    <li class="trust-item" style="justify-content: start;">✓ Clear process explanations</li>
-                    <li class="trust-item" style="justify-content: start;">✓ Designed for real-world paperwork and family coordination</li>
+                <h2>What We Help With</h2>
+                <ul class="service-list">
+                    <li>Shares & Legacy Asset Recovery</li>
+                    <li>RI & NRI Documentation Support</li>
+                    <li>Banking & Loan Documentation</li>
+                    <li>Financial Structure & Readiness (Non-Advisory)</li>
                 </ul>
             </div>
         </section>
 
-        <section class="section cta-section" aria-labelledby="cta-heading" style="text-align: center; padding-bottom: 15vh;">
+        <section class="section why-choose">
             <div class="container">
-                <h2 id="cta-heading" class="hero-heading" style="font-size: 3rem;">Start an Enquiry</h2>
-                <div style="margin: 2rem 0;">
-                    <a href="contact.html" class="btn-primary" style="padding: 1rem 3rem; font-size: 1.1rem;">Start an Enquiry</a>
-                </div>
-                <p style="color: #64748b; font-size: 0.9rem;">No login required • Response within 24 hours</p>
+                <h2>Why Clients Choose MVN FinHub</h2>
+                <ul class="benefits-list">
+                    <li>No investment advice or product selling</li>
+                    <li>No commissions or conflicts of interest</li>
+                    <li>Secure handling of personal information</li>
+                    <li>Clear process explanations</li>
+                    <li>Designed for real-world paperwork and family coordination</li>
+                </ul>
             </div>
         </section>
 
+        <section class="section action-readiness" id="enquiry">
+            <div class="container">
+                <h2>Start an Enquiry</h2>
+                <p>No login required • Response within 24 hours</p>
+            </div>
+        </section>
     </main>
 
-    <footer class="site-footer" role="contentinfo" style="position: relative; z-index: 10; border-top: 1px solid rgba(255,255,255,0.05); padding: 3rem 0; background: rgba(2, 6, 23, 0.8);">
-        <div class="container" style="text-align: center;">
-            <div style="font-weight: 700; color: #fff; margin-bottom: 1rem;">© MVN FinHub</div>
-            <p style="color: #64748b; font-size: 0.9rem; margin-bottom: 2rem; max-width: 600px; margin-left: auto; margin-right: auto;">
-                MVN FinHub provides strictly non-advisory financial process, documentation, and educational support.
-            </p>
+    <footer>
+        <div class="container">
+            <p class="copyright">&copy; MVN FinHub</p>
+            <p class="footer-desc">MVN FinHub provides strictly non-advisory financial process, documentation, and educational support.</p>
             
             <nav aria-label="Footer Navigation">
-                <ul style="display: flex; justify-content: center; gap: 1.5rem; list-style: none;">
-                    <li><a href="legal.html" class="nav-link" style="color: #94a3b8; font-size: 0.85rem;">Privacy & Legal</a></li>
-                    <li><a href="contact.html" class="nav-link" style="color: #94a3b8; font-size: 0.85rem;">Contact</a></li>
-                    <li><a href="#" class="nav-link" style="color: #94a3b8; font-size: 0.85rem;">Instagram</a></li>
+                <ul class="footer-links">
+                    <li><a href="#">Privacy & Legal</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                    <li><a href="#">Instagram</a></li>
                 </ul>
             </nav>
+            
+            <p class="footer-note">Beyond (2026)/ 3D / WebAssemblyAn immersive, "smart" digital experience.</p>
         </div>
     </footer>
 
