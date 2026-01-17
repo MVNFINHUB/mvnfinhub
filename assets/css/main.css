@@ -58,27 +58,30 @@ footer { background: #020617; color: #94A3B8; padding: 60px 0; text-align: cente
 .footer-links { margin-top: 24px; display: flex; justify-content: center; gap: 24px; }
 .footer-links a:hover { color: white; }
 
-/* --- FLOATING DARK MODE BUTTON (The Fix) --- */
+//* --- FLOATING DARK MODE BUTTON (MINIMAL VERSION) --- */
 .theme-btn-floating {
     position: fixed;
-    bottom: 30px;
-    right: 30px;
-    width: 56px;
-    height: 56px;
-    background-color: var(--text-head); /* Uses Navy in light mode, White in dark mode */
+    bottom: 24px;        /* Closer to the bottom edge */
+    right: 24px;         /* Closer to the right edge */
+    width: 42px;         /* Much smaller (was 56px) */
+    height: 42px;        /* Perfect circle */
+    background-color: var(--text-head); 
     color: var(--bg-body);
     border-radius: 50%;
-    border: none;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    border: 1px solid var(--border-color); /* Subtle border */
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15); /* Softer shadow */
     cursor: pointer;
-    font-size: 1.5rem;
+    font-size: 1.1rem;   /* Smaller icon */
     display: flex;
     align-items: center;
     justify-content: center;
-    z-index: 9999; /* Stays on top of everything */
-    transition: transform 0.2s ease;
+    z-index: 9999;
+    transition: all 0.2s ease;
+    opacity: 0.9;        /* Slightly see-through until hovered */
 }
 
 .theme-btn-floating:hover {
-    transform: scale(1.1);
+    transform: translateY(-2px); /* Slight lift */
+    opacity: 1;          /* Fully visible on hover */
+    box-shadow: 0 6px 14px rgba(0,0,0,0.25);
 }
