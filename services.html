@@ -3,264 +3,282 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Execution-level, non-advisory services for shares recovery, IEPF claims, RI & NRI documentation, banking and loan processes.">
-    <title>Financial Documentation & Process Services | MVN FinHub</title>
+    <meta name="description" content="MVN FinHub Services - Financial Structure, Legacy Recovery, NRI Documentation. Strictly Non-Advisory.">
+    <title>Our Services | MVN FinHub</title>
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
-    
-    <link rel="stylesheet" href="styles.css">
-    
-    <script src="main.js" defer></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* --- DESIGN SYSTEM REUSED FROM INDEX --- */
+        :root {
+            --primary-navy: #0A2540;
+            --accent-emerald: #059669;
+            --bg-cream: #F8FAFC;
+            --surface-white: #FFFFFF;
+            --text-slate: #334155;
+            --border-color: #E2E8F0;
+            --alert-bg: #FEF2F2;
+            --alert-text: #991B1B;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-cream);
+            color: var(--text-slate);
+            line-height: 1.6;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Merriweather', serif;
+            color: var(--primary-navy);
+        }
+
+        /* --- LAYOUT UTILITIES --- */
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        .section-padding { padding: 60px 0; }
+        
+        /* --- HEADER & FOOTER (Matches Index) --- */
+        header {
+            background: var(--surface-white);
+            border-bottom: 1px solid var(--border-color);
+            padding: 20px 0;
+        }
+        .brand-logo {
+            font-family: 'Merriweather', serif;
+            font-weight: 700;
+            font-size: 1.5rem;
+            color: var(--primary-navy);
+            text-decoration: none;
+        }
+        footer {
+            background: #0F172A;
+            color: #94A3B8;
+            padding: 40px 0;
+            text-align: center;
+            font-size: 0.9rem;
+            margin-top: auto;
+        }
+
+        /* --- PAGE HEADER --- */
+        .page-header {
+            background-color: var(--primary-navy);
+            color: white;
+            padding: 60px 0;
+            text-align: center;
+        }
+        .page-header h1 { color: white; margin-bottom: 16px; }
+        .page-header p {
+            color: #CBD5E1;
+            max-width: 600px;
+            margin: 0 auto;
+            font-size: 1.1rem;
+        }
+
+        /* --- PRIMARY SERVICE CARD (Featured) --- */
+        .primary-service {
+            background: var(--surface-white);
+            border: 2px solid var(--primary-navy); /* Emphasized Border */
+            border-radius: 8px;
+            padding: 40px;
+            margin-bottom: 60px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        }
+
+        .primary-badge {
+            background-color: var(--primary-navy);
+            color: white;
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 16px;
+            text-transform: uppercase;
+        }
+
+        .boundary-box {
+            background-color: #F1F5F9;
+            border-left: 4px solid var(--primary-navy);
+            padding: 16px;
+            margin-top: 24px;
+            font-size: 0.95rem;
+        }
+
+        /* --- SECONDARY SERVICES GRID --- */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .service-card {
+            background: var(--surface-white);
+            padding: 30px;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+
+        .service-card h3 {
+            font-size: 1.25rem;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 10px;
+        }
+
+        .check-list li {
+            position: relative;
+            padding-left: 28px;
+            margin-bottom: 12px;
+            list-style: none;
+        }
+        .check-list li::before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: var(--accent-emerald);
+            font-weight: bold;
+        }
+
+        /* --- "WHAT WE DO NOT PROVIDE" (Compliance) --- */
+        .exclusion-section {
+            background-color: var(--alert-bg);
+            border: 1px solid #FECACA;
+            border-radius: 8px;
+            padding: 40px;
+            margin-top: 60px;
+        }
+        
+        .exclusion-section h2 {
+            color: var(--alert-text);
+            margin-bottom: 24px;
+            font-size: 1.5rem;
+        }
+
+        .cross-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 16px;
+        }
+        
+        .cross-list li {
+            position: relative;
+            padding-left: 28px;
+            color: var(--alert-text);
+            font-weight: 500;
+            list-style: none;
+        }
+        .cross-list li::before {
+            content: "✕";
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+        }
+
+        /* --- RESPONSIVE --- */
+        @media (max-width: 768px) {
+            .primary-service { padding: 24px; }
+            .exclusion-section { padding: 24px; }
+        }
+    </style>
 </head>
 <body>
 
-    <header class="site-header" role="banner">
-        <a href="index.html" class="brand-logo" aria-label="MVN FinHub Home">
-            MVN FinHub
-        </a>
-        
-        <nav class="main-nav" role="navigation" aria-label="Main Navigation">
-            <ul class="nav-list">
-                <li><a href="index.html" class="nav-link">Home</a></li>
-                <li><a href="services.html" class="nav-link" style="color: #fff; text-shadow: 0 0 10px rgba(255,255,255,0.5);">Services</a></li>
-                <li><a href="insights.html" class="nav-link">Insights</a></li>
-                <li><a href="about.html" class="nav-link">About</a></li>
-                <li><a href="contact.html" class="nav-link">Contact</a></li>
-            </ul>
-        </nav>
-
-        <div class="header-action">
-            <a href="contact.html" class="btn-primary">Start an Enquiry</a>
-            <button class="mobile-toggle" aria-label="Toggle navigation menu" style="display: none;">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <line x1="3" y1="12" x2="21" y2="12"></line>
-                    <line x1="3" y1="6" x2="21" y2="6"></line>
-                    <line x1="3" y1="18" x2="21" y2="18"></line>
-                </svg>
-            </button>
+    <header>
+        <div class="container">
+            <a href="index.html" class="brand-logo">MVN FinHub</a>
         </div>
     </header>
 
-    <main id="main-content">
+    <section class="page-header">
+        <div class="container">
+            <h1>Our Services</h1>
+            <p>MVN FinHub provides execution-level documentation and process support.</p>
+            <p style="margin-top: 10px; opacity: 0.8; font-size: 0.95rem;">We do not provide investment advice, recommendations, or guarantees.</p>
+        </div>
+    </section>
 
-        <section class="section hero-section" aria-labelledby="page-title">
-            <div class="container">
-                <div class="hero-content">
-                    <h1 id="page-title" class="hero-heading">Our Services</h1>
-                    <p class="hero-subheadline">
-                        MVN FinHub provides execution-level documentation and process support.
-                        We do not provide investment advice, recommendations, or guarantees.
-                    </p>
-                </div>
-            </div>
-        </section>
-
-        <section class="section" aria-labelledby="section-i-heading">
-            <div class="container">
-                <h2 id="section-i-heading" class="hero-heading" style="font-size: 2rem; margin-bottom: 2rem; opacity: 0.9;">SECTION I — SHARES & LEGACY ASSET RECOVERY</h2>
-                
-                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem;">
-                    
-                    <article class="process-card">
-                        <h3 class="card-title">Physical Share Certificate → Demat</h3>
-                        <ul style="list-style: none; color: #94a3b8;">
-                            <li style="margin-bottom: 0.5rem;">• Name mismatch resolution</li>
-                            <li style="margin-bottom: 0.5rem;">• Signature mismatch handling</li>
-                            <li>• Duplicate certificate process</li>
-                        </ul>
-                    </article>
-
-                    <article class="process-card">
-                        <h3 class="card-title">Transmission (Death Claims)</h3>
-                        <ul style="list-style: none; color: #94a3b8;">
-                            <li>• Legal heir documentation guidance</li>
-                        </ul>
-                    </article>
-
-                    <article class="process-card">
-                        <h3 class="card-title">IEPF Claims Support</h3>
-                        <ul style="list-style: none; color: #94a3b8;">
-                            <li style="margin-bottom: 0.5rem;">• IEPF Form-5 filing assistance</li>
-                            <li style="margin-bottom: 0.5rem;">• Documentation checklist preparation</li>
-                            <li style="margin-bottom: 0.5rem;">• Company coordination guidance</li>
-                            <li>• Claim tracking and follow-up process explanation</li>
-                        </ul>
-                    </article>
-
-                </div>
-            </div>
-        </section>
-
-        <section class="section" aria-labelledby="section-ii-heading">
-            <div class="container">
-                <h2 id="section-ii-heading" class="hero-heading" style="font-size: 2rem; margin-bottom: 2rem; opacity: 0.9;">SECTION II — RESIDENT INDIAN (RI) DOCUMENTATION SERVICES</h2>
-                
-                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem;">
-                    
-                    <article class="process-card">
-                        <h3 class="card-title">PAN Card Services</h3>
-                        <ul style="list-style: none; color: #94a3b8;">
-                            <li style="margin-bottom: 0.5rem;">• New PAN application guidance</li>
-                            <li style="margin-bottom: 0.5rem;">• PAN correction / update</li>
-                            <li style="margin-bottom: 0.5rem;">• Duplicate PAN reprint support</li>
-                            <li>• PAN–Aadhaar linking guidance</li>
-                        </ul>
-                    </article>
-
-                    <article class="process-card">
-                        <h3 class="card-title">Aadhaar Services</h3>
-                        <ul style="list-style: none; color: #94a3b8;">
-                            <li style="margin-bottom: 0.5rem;">• Address, name, DOB update guidance</li>
-                            <li style="margin-bottom: 0.5rem;">• UIDAI appointment checklist</li>
-                            <li>• Status tracking assistance</li>
-                        </ul>
-                    </article>
-
-                    <article class="process-card">
-                        <h3 class="card-title">Passport Services</h3>
-                        <ul style="list-style: none; color: #94a3b8;">
-                            <li style="margin-bottom: 0.5rem;">• Fresh passport application guidance</li>
-                            <li style="margin-bottom: 0.5rem;">• Renewal / reissue support</li>
-                            <li>• Address or name change documentation</li>
-                        </ul>
-                    </article>
-
-                    <article class="process-card">
-                        <h3 class="card-title">Voter ID (EPIC)</h3>
-                        <ul style="list-style: none; color: #94a3b8;">
-                            <li style="margin-bottom: 0.5rem;">• New registration guidance</li>
-                            <li>• Corrections and duplicate EPIC support</li>
-                        </ul>
-                    </article>
-
-                </div>
-            </div>
-        </section>
-
-        <section class="section" aria-labelledby="section-iii-heading">
-            <div class="container">
-                <h2 id="section-iii-heading" class="hero-heading" style="font-size: 2rem; margin-bottom: 2rem; opacity: 0.9;">SECTION III — NON-RESIDENT INDIAN (NRI) SERVICES</h2>
-                
-                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem;">
-                    
-                    <article class="process-card">
-                        <h3 class="card-title">NRI Banking Support</h3>
-                        <ul style="list-style: none; color: #94a3b8;">
-                            <li style="margin-bottom: 0.5rem;">• NRO / NRE account documentation</li>
-                            <li style="margin-bottom: 0.5rem;">• Resident → NRI conversion process</li>
-                            <li>• Re-KYC and account reactivation</li>
-                        </ul>
-                    </article>
-
-                    <article class="process-card">
-                        <h3 class="card-title">Power of Attorney</h3>
-                        <ul style="list-style: none; color: #94a3b8;">
-                            <li>• Documentation checklist guidance</li>
-                        </ul>
-                    </article>
-
-                    <article class="process-card">
-                        <h3 class="card-title">NRI PAN & Aadhaar</h3>
-                        <ul style="list-style: none; color: #94a3b8;">
-                            <li style="margin-bottom: 0.5rem;">• PAN application / correction for NRIs</li>
-                            <li>• Aadhaar eligibility guidance</li>
-                        </ul>
-                    </article>
-
-                </div>
-            </div>
-        </section>
-
-        <section class="section" aria-labelledby="section-iv-heading">
-            <div class="container">
-                <h2 id="section-iv-heading" class="hero-heading" style="font-size: 2rem; margin-bottom: 2rem; opacity: 0.9;">SECTION IV — BANKING & LOAN DOCUMENTATION</h2>
-                
-                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem;">
-                    
-                    <article class="process-card">
-                        <h3 class="card-title">Banking Process Support</h3>
-                        <ul style="list-style: none; color: #94a3b8;">
-                            <li style="margin-bottom: 0.5rem;">• Account opening documentation</li>
-                            <li style="margin-bottom: 0.5rem;">• KYC update guidance</li>
-                            <li style="margin-bottom: 0.5rem;">• Nominee addition / modification</li>
-                            <li>• Dormant account reactivation</li>
-                        </ul>
-                    </article>
-
-                    <article class="process-card">
-                        <h3 class="card-title">Loan Documentation Support (Non-Advisory)</h3>
-                        <ul style="list-style: none; color: #94a3b8;">
-                            <li style="margin-bottom: 0.5rem;">• Home, personal, education loan paperwork</li>
-                            <li style="margin-bottom: 0.5rem;">• Balance transfer documentation</li>
-                            <li>• Bank / NBFC process explanation</li>
-                        </ul>
-                    </article>
-
-                </div>
-            </div>
-        </section>
-
-        <section class="section" aria-labelledby="section-v-heading">
-            <div class="container">
-                <h2 id="section-v-heading" class="hero-heading" style="font-size: 2rem; margin-bottom: 2rem; opacity: 0.9;">SECTION V — FINANCIAL STRUCTURING & AWARENESS (NON-ADVISORY)</h2>
-                
-                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem;">
-                    
-                    <article class="process-card">
-                        <h3 class="card-title">Personal Financial Structure Mapping</h3>
-                        <ul style="list-style: none; color: #94a3b8;">
-                            <li style="margin-bottom: 0.5rem;">• Asset and liability organization</li>
-                            <li style="margin-bottom: 0.5rem;">• Cash-flow understanding</li>
-                            <li style="margin-bottom: 0.5rem;">• Goal classification (short / medium / long term)</li>
-                            <li>• Documentation readiness guidance</li>
-                        </ul>
-                    </article>
-
-                    <article class="process-card">
-                        <h3 class="card-title">Financial Scenario Awareness</h3>
-                        <ul style="list-style: none; color: #94a3b8;">
-                            <li style="margin-bottom: 0.5rem;">• Common financial scenarios explained</li>
-                            <li style="margin-bottom: 0.5rem;">• General implications (no prediction)</li>
-                            <li>• Risk awareness and process clarity</li>
-                        </ul>
-                    </article>
-
-                </div>
-            </div>
-        </section>
-
-        <section class="section" aria-label="Service Limitations" style="padding-bottom: 15vh;">
-            <div class="container">
-                <h2 class="hero-heading" style="font-size: 2rem; margin-bottom: 3rem; color: #ef4444; opacity: 0.9;">SECTION — WHAT WE DO NOT PROVIDE (CLEAR BOUNDARIES)</h2>
-                
-                <ul class="trust-list" style="justify-content: center;">
-                    <li class="trust-item" style="border-color: rgba(239, 68, 68, 0.3); color: #fca5a5;">Investment advice</li>
-                    <li class="trust-item" style="border-color: rgba(239, 68, 68, 0.3); color: #fca5a5;">Stock or mutual fund recommendations</li>
-                    <li class="trust-item" style="border-color: rgba(239, 68, 68, 0.3); color: #fca5a5;">Tax filing or tax planning</li>
-                    <li class="trust-item" style="border-color: rgba(239, 68, 68, 0.3); color: #fca5a5;">Portfolio management</li>
-                    <li class="trust-item" style="border-color: rgba(239, 68, 68, 0.3); color: #fca5a5;">Guaranteed outcomes</li>
-                </ul>
-            </div>
-        </section>
-
-    </main>
-
-    <footer class="site-footer" role="contentinfo" style="position: relative; z-index: 10; border-top: 1px solid rgba(255,255,255,0.05); padding: 3rem 0; background: rgba(2, 6, 23, 0.8);">
-        <div class="container" style="text-align: center;">
-            <div style="font-weight: 700; color: #fff; margin-bottom: 1rem;">© MVN FinHub</div>
-            <p style="color: #64748b; font-size: 0.9rem; margin-bottom: 2rem; max-width: 600px; margin-left: auto; margin-right: auto;">
-                MVN FinHub provides strictly non-advisory financial process, documentation, and educational support.
-            </p>
+    <section class="section-padding">
+        <div class="container">
             
-            <nav aria-label="Footer Navigation">
-                <ul style="display: flex; justify-content: center; gap: 1.5rem; list-style: none;">
-                    <li><a href="legal.html" class="nav-link" style="color: #94a3b8; font-size: 0.85rem;">Privacy & Legal</a></li>
-                    <li><a href="contact.html" class="nav-link" style="color: #94a3b8; font-size: 0.85rem;">Contact</a></li>
-                    <li><a href="#" class="nav-link" style="color: #94a3b8; font-size: 0.85rem;">Instagram</a></li>
+            <div class="primary-service">
+                <span class="primary-badge">Primary Service</span>
+                <h2>Financial Structure & Readiness (Non-Advisory)</h2>
+                
+                <div style="margin-top: 24px;">
+                    <ul class="check-list">
+                        <li>Personal financial structure organization</li>
+                        <li>Asset and liability mapping</li>
+                        <li>Cash-flow understanding (informational)</li>
+                        <li>Goal classification awareness (short / medium / long term)</li>
+                        <li>Documentation readiness for common financial scenarios</li>
+                    </ul>
+                </div>
+
+                <div class="boundary-box">
+                    <strong>Explicit Boundary Statement:</strong><br>
+                    This service is strictly educational and process-oriented. No investment advice, planning, or recommendations are provided.
+                </div>
+            </div>
+
+            <div class="services-grid">
+                
+                <div class="service-card">
+                    <h3>Shares & Legacy Asset Recovery</h3>
+                    <ul class="check-list">
+                        <li>Physical share certificate to demat</li>
+                        <li>Transmission (death claims)</li>
+                        <li>IEPF claim documentation support</li>
+                    </ul>
+                </div>
+
+                <div class="service-card">
+                    <h3>RI & NRI Documentation Support</h3>
+                    <ul class="check-list">
+                        <li>PAN, Aadhaar, Passport, Voter ID</li>
+                        <li>NRO / NRE banking documentation</li>
+                        <li>Re-KYC and account reactivation</li>
+                    </ul>
+                </div>
+
+                <div class="service-card">
+                    <h3>Banking & Loan Documentation</h3>
+                    <ul class="check-list">
+                        <li>Account opening & KYC support</li>
+                        <li>Nominee updates</li>
+                        <li>Loan documentation assistance</li>
+                    </ul>
+                </div>
+
+            </div>
+
+            <div class="exclusion-section">
+                <h2>What We Do Not Provide</h2>
+                <ul class="cross-list">
+                    <li>Investment advice</li>
+                    <li>Stock or mutual fund recommendations</li>
+                    <li>Tax filing or tax planning</li>
+                    <li>Portfolio management</li>
+                    <li>Guaranteed outcomes</li>
                 </ul>
-            </nav>
+            </div>
+
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; MVN FinHub</p>
+            <p style="margin-top: 8px;">All services are process-driven and documentation-focused.</p>
+            <p>All financial decisions remain solely with the user. MVN FinHub maintains a strictly non-advisory role.</p>
         </div>
     </footer>
 
