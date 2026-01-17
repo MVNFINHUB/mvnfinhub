@@ -3,110 +3,227 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="MVN FinHub Insights provide clear, structured explanations of financial processes and real-world documentation scenarios. Strictly educational and non-advisory.">
-    <title>Insights - MVN FinHub</title>
-    <link rel="stylesheet" href="styles.css">
-    <script src="main.js" defer></script>
+    <meta name="description" content="MVN FinHub Insights - Educational awareness on financial documentation, legacy recovery, and NRI processes. Non-Advisory.">
+    <title>Insights & Awareness | MVN FinHub</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* --- DESIGN SYSTEM REUSED --- */
+        :root {
+            --primary-navy: #0A2540;
+            --accent-emerald: #059669;
+            --bg-cream: #F8FAFC;
+            --surface-white: #FFFFFF;
+            --text-slate: #334155;
+            --border-color: #E2E8F0;
+            --notice-bg: #EFF6FF; /* Soft Blue for Notice */
+            --notice-border: #1E40AF;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-cream);
+            color: var(--text-slate);
+            line-height: 1.6;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Merriweather', serif;
+            color: var(--primary-navy);
+        }
+
+        /* --- LAYOUT UTILITIES --- */
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        .section-padding { padding: 60px 0; }
+
+        /* --- HEADER & FOOTER --- */
+        header {
+            background: var(--surface-white);
+            border-bottom: 1px solid var(--border-color);
+            padding: 20px 0;
+        }
+        .brand-logo {
+            font-family: 'Merriweather', serif;
+            font-weight: 700;
+            font-size: 1.5rem;
+            color: var(--primary-navy);
+            text-decoration: none;
+        }
+        footer {
+            background: #0F172A;
+            color: #94A3B8;
+            padding: 40px 0;
+            text-align: center;
+            font-size: 0.9rem;
+            margin-top: auto;
+        }
+
+        /* --- PAGE HEADER --- */
+        .page-header {
+            background-color: var(--surface-white);
+            padding: 60px 0 40px;
+            border-bottom: 1px solid var(--border-color);
+            text-align: center;
+        }
+        .page-header h1 { margin-bottom: 16px; font-size: 2.2rem; }
+        .page-header p {
+            color: var(--text-slate);
+            max-width: 700px;
+            margin: 0 auto;
+            font-size: 1.1rem;
+        }
+
+        /* --- INSIGHT DOMAINS GRID --- */
+        .insights-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 30px;
+        }
+
+        .topic-card {
+            background: var(--surface-white);
+            padding: 32px;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        
+        .topic-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+        }
+
+        .topic-card h3 {
+            font-size: 1.35rem;
+            margin-bottom: 20px;
+            padding-bottom: 16px;
+            border-bottom: 2px solid var(--bg-cream);
+        }
+
+        .topic-list li {
+            position: relative;
+            padding-left: 24px;
+            margin-bottom: 12px;
+            list-style: none;
+            color: var(--text-slate);
+        }
+        
+        /* Using a book/document icon style bullet for education */
+        .topic-list li::before {
+            content: "▪"; 
+            position: absolute;
+            left: 0;
+            color: var(--accent-emerald);
+            font-size: 1.5rem;
+            line-height: 1rem;
+            top: 2px;
+        }
+
+        /* --- IMPORTANT NOTICE BOX --- */
+        .notice-box {
+            background-color: var(--notice-bg);
+            border-left: 4px solid var(--notice-border);
+            padding: 30px;
+            margin-top: 60px;
+            border-radius: 4px;
+        }
+        
+        .notice-box h2 {
+            font-size: 1.25rem;
+            margin-bottom: 12px;
+            color: var(--primary-navy);
+        }
+
+        /* --- RESPONSIVE --- */
+        @media (max-width: 768px) {
+            .insights-grid { grid-template-columns: 1fr; }
+            .topic-card { padding: 24px; }
+            .page-header h1 { font-size: 1.75rem; }
+        }
+    </style>
 </head>
 <body>
 
     <header>
         <div class="container">
-            <a href="index.html" class="brand">MVN FinHub</a>
-
-            <nav aria-label="Main Navigation">
-                <ul>
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="index.html#services">Services</a></li>
-                    <li><a href="insights.html" aria-current="page">Insights</a></li>
-                    <li><a href="index.html#about">About</a></li>
-                    <li><a href="index.html#contact">Contact</a></li>
-                </ul>
-            </nav>
-
-            <div class="header-actions">
-                <button id="dark-mode-toggle" type="button" aria-label="Toggle Dark Mode">
-                    Dark Mode
-                </button>
-                <a href="index.html#enquiry" class="btn-primary">Start an Enquiry</a>
-            </div>
+            <a href="index.html" class="brand-logo">MVN FinHub</a>
         </div>
     </header>
 
-    <main>
-        <section class="section hero">
-            <div class="container">
-                <h1>INSIGHTS & FINANCIAL AWARENESS</h1>
-                <p class="hero-text">MVN FinHub Insights provide clear, structured explanations of financial processes and real-world documentation scenarios.</p>
-                <p>All content is strictly educational and non-advisory.</p>
-            </div>
-        </section>
+    <section class="page-header">
+        <div class="container">
+            <h1>Insights & Financial Awareness</h1>
+            <p>MVN FinHub Insights provide clear, structured explanations of financial processes and real-world documentation scenarios.</p>
+            <p style="margin-top: 12px; font-weight: 500; opacity: 0.8;">All content is strictly educational and non-advisory.</p>
+        </div>
+    </section>
 
-        <section class="section">
-            <div class="container">
-                <h2>INSIGHT DOMAINS</h2>
+    <section class="section-padding">
+        <div class="container">
+            
+            <div class="insights-grid">
                 
-                <div class="process-grid">
-                    <article class="process-item" data-reveal>
-                        <h3>Financial Documentation Awareness</h3>
-                        <ul class="service-list">
-                            <li>Understanding why proper documentation matters</li>
-                            <li>Common documentation gaps and delays</li>
-                            <li>How incomplete records affect financial processes</li>
-                        </ul>
-                    </article>
+                <article class="topic-card">
+                    <h3>Financial Documentation Awareness</h3>
+                    <ul class="topic-list">
+                        <li>Understanding why proper documentation matters</li>
+                        <li>Common documentation gaps and delays</li>
+                        <li>How incomplete records affect financial processes</li>
+                    </ul>
+                </article>
 
-                    <article class="process-item" data-reveal>
-                        <h3>Legacy Asset & Share Recovery Awareness</h3>
-                        <ul class="service-list">
-                            <li>Common issues with physical share certificates</li>
-                            <li>Transmission scenarios and documentation readiness</li>
-                            <li>IEPF-related process awareness</li>
-                        </ul>
-                    </article>
+                <article class="topic-card">
+                    <h3>Legacy Asset & Share Recovery Awareness</h3>
+                    <ul class="topic-list">
+                        <li>Common issues with physical share certificates</li>
+                        <li>Transmission scenarios and documentation readiness</li>
+                        <li>IEPF-related process awareness</li>
+                    </ul>
+                </article>
 
-                    <article class="process-item" data-reveal>
-                        <h3>Banking & Compliance Awareness</h3>
-                        <ul class="service-list">
-                            <li>KYC and re-KYC process understanding</li>
-                            <li>Dormant account risks and reactivation awareness</li>
-                            <li>Nominee importance and documentation clarity</li>
-                        </ul>
-                    </article>
+                <article class="topic-card">
+                    <h3>Banking & Compliance Awareness</h3>
+                    <ul class="topic-list">
+                        <li>KYC and re-KYC process understanding</li>
+                        <li>Dormant account risks and reactivation awareness</li>
+                        <li>Nominee importance and documentation clarity</li>
+                    </ul>
+                </article>
 
-                    <article class="process-item" data-reveal>
-                        <h3>NRI Financial Process Awareness</h3>
-                        <ul class="service-list">
-                            <li>NRO / NRE account structure understanding</li>
-                            <li>Resident to NRI status change implications</li>
-                            <li>Common overseas documentation challenges</li>
-                        </ul>
-                    </article>
-                </div>
+                <article class="topic-card">
+                    <h3>NRI Financial Process Awareness</h3>
+                    <ul class="topic-list">
+                        <li>NRO / NRE account structure understanding</li>
+                        <li>Resident to NRI status change implications</li>
+                        <li>Common overseas documentation challenges</li>
+                    </ul>
+                </article>
+
             </div>
-        </section>
 
-        <section class="section trust">
-            <div class="container">
-                <h3>IMPORTANT NOTICE</h3>
+            <div class="notice-box">
+                <h2>IMPORTANT NOTICE</h2>
                 <p>All insights are provided for general awareness and educational purposes only.</p>
                 <p>MVN FinHub does not provide investment advice, recommendations, or opinions.</p>
             </div>
-        </section>
-    </main>
+
+        </div>
+    </section>
 
     <footer>
         <div class="container">
-            <p class="copyright">&copy; MVN FinHub</p>
-            <p class="footer-desc">MVN FinHub provides strictly non-advisory financial process, documentation, and educational support.</p>
-            
-            <nav aria-label="Footer Navigation">
-                <ul class="footer-links">
-                    <li><a href="#">Privacy & Legal</a></li>
-                    <li><a href="#">Contact</a></li>
-                    <li><a href="#">Instagram</a></li>
-                </ul>
-            </nav>
+            <p>&copy; MVN FinHub</p>
+            <p style="margin-top: 8px;">Content explains processes, not decisions. No predictions, comparisons, or outcomes.</p>
+            <p>Users remain solely responsible for financial decisions. MVN FinHub’s role is limited to education and process clarity.</p>
         </div>
     </footer>
 
