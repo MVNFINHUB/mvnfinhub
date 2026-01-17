@@ -1,51 +1,66 @@
-/* MVN FINHUB - DESIGN SYSTEM (CORE VARIABLES)
+/* MVN FINHUB - VARIABLES (PREMIUM DESIGN SYSTEM)
    -------------------------------------------------------
-   This file defines the "Source of Truth" for the design.
-   No actual styles are applied here, only definitions.
+   Defines the palette for a high-end, depth-rich interface.
+   Changes: Added gradients, complex shadows, and glass effects.
 */
 
 :root {
-    /* --- COLOR PALETTE (PSYCHOLOGY OF TRUST) --- */
+    /* --- COLOR PALETTE (RICH & PROFESSIONAL) --- */
     
-    /* Primary: Navy Blue (Authority, Legal, Trust) */
+    /* Primary: Deep Navy with a hint of Royal Blue for depth */
     --primary-navy: #0A2540;
-    --primary-light: #183B5E; /* Hover state for navy */
+    --primary-light: #183B5E;
+    /* Gradient: Adds a premium sheen to headers/hero */
+    --gradient-primary: linear-gradient(135deg, #0A2540 0%, #1e40af 100%);
 
-    /* Accent: Emerald Green (Readiness, Action, Safe) */
+    /* Accent: Emerald to Teal Gradient */
     --accent-emerald: #059669;
-    --accent-hover: #047857;  /* Darker green for hover */
+    --accent-hover: #047857;
+    /* Gradient: Makes buttons look touchable/3D */
+    --gradient-action: linear-gradient(135deg, #059669 0%, #10b981 100%);
 
-    /* Alerts: Muted Red (Compliance Gaps - Use sparingly) */
+    /* Alerts */
     --alert-bg: #FEF2F2;
     --alert-text: #991B1B;
     --alert-border: #FECACA;
 
-    /* Backgrounds: Cream/Off-White (Reading Comfort) */
-    --bg-cream: #F8FAFC;
-    --section-grey: #F1F5F9;
-    --surface-white: #FFFFFF;
+    /* Backgrounds */
+    --bg-cream: #F8FAFC;       /* Main Page Background */
+    --surface-white: #FFFFFF;  /* Card Background */
+    --surface-glass: rgba(255, 255, 255, 0.9); /* Frosted Header Background */
 
     /* Typography Colors */
-    --text-dark: #0F172A;     /* Headings */
-    --text-slate: #334155;    /* Body text (Softer than black) */
-    --text-muted: #64748B;    /* Meta text/Footer */
+    --text-dark: #0F172A;
+    --text-slate: #334155;
+    --text-muted: #64748B;
     
-    /* Borders */
+    /* Borders (Subtle) */
     --border-color: #E2E8F0;
     --input-border: #CBD5E1;
 
-    /* --- TYPOGRAPHY (FONTS) --- */
-    /* Trust/Formal Font (Headings) */
-    --font-serif: 'Merriweather', serif;
+    /* --- ELEVATION (SHADOWS) --- */
+    /* Level 1: Subtle lift for cards */
+    --shadow-sm: 0 1px 3px rgba(0,0,0,0.1), 0 1px 2px rgba(0,0,0,0.06);
     
-    /* Readable/Modern Font (Body) */
+    /* Level 2: Hover states and Dropdowns */
+    --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06);
+    
+    /* Level 3: Modals and Sticky elements */
+    --shadow-lg: 0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -2px rgba(0,0,0,0.05);
+
+    /* --- TYPOGRAPHY --- */
+    --font-serif: 'Merriweather', serif;
     --font-sans: 'Inter', sans-serif;
 
     /* --- SPACING & SIZES --- */
     --container-width: 1100px;
-    --header-height: 70px;
-    --border-radius: 6px;     /* Professional curve, not too round */
+    --header-height: 72px;
+    --border-radius: 12px;     /* Increased for a more modern, friendly look */
     
     /* Mobile-First Touch Targets */
-    --touch-target: 48px;     /* Minimum clickable area for thumbs */
+    --touch-target: 48px;
+    
+    /* --- ANIMATION --- */
+    --transition-fast: 0.2s ease;
+    --transition-smooth: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
