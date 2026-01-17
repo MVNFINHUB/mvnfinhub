@@ -1,21 +1,72 @@
-/* MVN FINHUB - MOBILE (RESPONSIVE) */
+/* MVN FINHUB - MOBILE CORRECTIONS */
 
 @media (max-width: 768px) {
-    .mobile-toggle { display: block; font-size: 1.8rem; background: none; border: none; cursor: pointer; color: var(--text-head); }
     
+    /* 1. Header Layout */
+    .nav-flex {
+        flex-wrap: wrap; /* Allows menu to drop to next line */
+    }
+
+    /* 2. Hamburger Button */
+    .mobile-toggle {
+        display: block; /* Show the button */
+        font-size: 1.8rem;
+        background: none;
+        border: none;
+        cursor: pointer;
+        color: var(--text-head);
+        padding: 5px;
+        margin-left: auto; /* Pushes button to the right */
+    }
+
+    /* 3. The Menu List (Hidden by default) */
     .nav-links {
-        display: none; flex-direction: column; position: absolute; top: 100%; left: 0; width: 100%;
-        background: var(--surface-card); padding: 24px; box-shadow: var(--shadow-lg); gap: 16px;
+        display: none; /* CRITICAL: Hides menu initially */
+        width: 100%;
+        flex-direction: column;
+        background-color: var(--surface-card);
+        padding: 20px;
+        margin-top: 15px;
+        border-radius: 12px;
+        box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        border: 1px solid var(--border-color);
+        gap: 15px;
+        
+        /* Animation */
+        animation: slideDown 0.3s ease-out;
+    }
+
+    /* 4. The "Active" State (Shown when clicked) */
+    .nav-links.active {
+        display: flex; /* Shows menu when JS adds 'active' class */
+    }
+
+    /* 5. Menu Items */
+    .nav-item {
+        width: 100%;
+        text-align: center;
+        padding: 10px;
         border-bottom: 1px solid var(--border-color);
     }
-    .nav-links.active { display: flex; animation: slideDown 0.3s ease-out; }
-    
+    .nav-item:last-child { border-bottom: none; }
+
+    /* 6. Layout Adjustments for Content */
     .hero h1 { font-size: 2rem !important; }
     .grid-4 { grid-template-columns: 1fr !important; }
     .container { padding: 0 20px; }
     
-    /* Center the theme button on mobile menu */
-    .theme-btn { margin: 10px auto 0; }
+    /* Fix floating button overlap on mobile */
+    .theme-btn-floating {
+        bottom: 20px;
+        right: 20px;
+        width: 48px;
+        height: 48px;
+        font-size: 1.2rem;
+    }
 }
 
-@keyframes slideDown { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
+/* Slide Down Animation */
+@keyframes slideDown {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
