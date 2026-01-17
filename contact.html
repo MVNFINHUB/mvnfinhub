@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Contact MVN FinHub - Start a secure enquiry for financial documentation and process support.">
-    <title>Start an Enquiry | MVN FinHub</title>
+    <meta name="description" content="Contact MVN FinHub - Start a secure enquiry.">
+    <title>Contact Us | MVN FinHub</title>
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -13,6 +13,113 @@
     <link rel="stylesheet" href="assets/css/main.css">
 
     <script src="assets/js/app.js" defer></script>
+
+    <style>
+        /* 1. Center the form on the page */
+        .form-wrapper {
+            max-width: 600px;
+            margin: 40px auto;
+            background: #ffffff;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05); /* Subtle shadow for neatness */
+            border: 1px solid #e2e8f0;
+        }
+
+        /* 2. Fix the Header text */
+        .form-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .form-header h1 {
+            font-size: 2rem;
+            color: #0A2540; /* Navy */
+            margin-bottom: 10px;
+        }
+        .form-header p {
+            color: #64748B;
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+
+        /* 3. Make Inputs look professional */
+        .form-group {
+            margin-bottom: 20px;
+        }
+        .form-label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #334155;
+            font-size: 0.9rem;
+        }
+        .form-input, .form-select, .form-textarea {
+            width: 100%;
+            padding: 12px 16px;
+            border: 1px solid #cbd5e1;
+            border-radius: 6px;
+            font-family: 'Inter', sans-serif;
+            font-size: 1rem;
+            background-color: #f8fafc;
+            transition: border-color 0.2s;
+        }
+        .form-input:focus, .form-textarea:focus {
+            outline: none;
+            border-color: #0A2540;
+            background-color: #fff;
+        }
+        .form-textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        /* 4. Fix the Checkbox alignment */
+        .checkbox-group {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            margin-bottom: 24px;
+            background: #f1f5f9;
+            padding: 12px;
+            border-radius: 6px;
+        }
+        .checkbox-input {
+            margin-top: 4px;
+            width: 18px;
+            height: 18px;
+        }
+        .checkbox-label {
+            font-size: 0.85rem;
+            color: #475569;
+            line-height: 1.4;
+        }
+
+        /* 5. Direct Contact Links (Center them) */
+        .direct-contact {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid #e2e8f0;
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+            font-size: 0.9rem;
+        }
+        .contact-link {
+            color: #0A2540;
+            font-weight: 500;
+            text-decoration: underline;
+        }
+
+        /* Mobile Fixes */
+        @media (max-width: 768px) {
+            .form-wrapper {
+                margin: 20px 16px;
+                padding: 24px;
+            }
+            .form-header h1 { font-size: 1.6rem; }
+            .direct-contact { flex-direction: column; align-items: center; gap: 12px; }
+        }
+    </style>
 </head>
 <body>
 
@@ -20,9 +127,7 @@
         <div class="container nav-flex">
             <a href="index.html" class="brand-logo">MVN FinHub</a>
             
-            <button class="mobile-toggle" id="mobile-menu-toggle" aria-label="Toggle Menu">
-                ☰
-            </button>
+            <button class="mobile-toggle" id="mobile-menu-toggle">☰</button>
 
             <nav class="nav-links" id="nav-links">
                 <a href="index.html" class="nav-item">Home</a>
@@ -34,78 +139,71 @@
         </div>
     </header>
 
-    <section class="section-padding">
-        <div class="container" style="max-width: 600px;">
+    <section>
+        <div class="form-wrapper">
             
             <div class="form-header">
                 <h1>Start an Enquiry</h1>
-                <p>This form allows you to contact MVN FinHub regarding documentation and process support requirements.</p>
-                <p class="disclaimer-text">No investment advice or recommendations are provided.</p>
+                <p>Securely submit your documentation requirements. <br>Response within 24 hours.</p>
             </div>
 
-            <div id="successMessage" class="success-message" style="display: none;">
-                <span class="success-icon">✓</span>
-                <h2>Enquiry Received</h2>
-                <p>Reference ID: <span id="refIdDisplay" class="ref-id"></span></p>
-                <p style="margin-top: 12px;">We will review your documentation requirements and respond within 24 hours.</p>
-                <a href="index.html" class="btn btn-primary" style="margin-top: 20px;">Return Home</a>
+            <div id="successMessage" style="display: none; text-align: center; color: #059669; padding: 20px;">
+                <h2 style="margin-bottom: 10px;">✓ Enquiry Sent</h2>
+                <p>Reference ID: <strong id="refIdDisplay" style="color: #0A2540;"></strong></p>
+                <p style="margin-top: 10px; font-size: 0.9rem;">Thank you. We will contact you shortly.</p>
+                <a href="index.html" class="btn btn-primary" style="margin-top: 15px; display: inline-block;">Return Home</a>
             </div>
 
-            <form id="enquiryForm" class="contact-form">
+            <form id="enquiryForm">
                 
                 <div class="form-group">
                     <label for="fullName" class="form-label">Full Name</label>
-                    <input type="text" id="fullName" name="fullName" class="form-input" required placeholder="Enter your full name">
+                    <input type="text" id="fullName" class="form-input" required placeholder="Enter your full name">
                 </div>
 
                 <div class="form-group">
                     <label for="email" class="form-label">Email Address</label>
-                    <input type="email" id="email" name="email" class="form-input" required placeholder="name@example.com">
+                    <input type="email" id="email" class="form-input" required placeholder="name@example.com">
                 </div>
 
                 <div class="form-group">
-                    <label for="phone" class="form-label">Phone Number (10 digits)</label>
-                    <input type="tel" id="phone" name="phone" class="form-input" required pattern="[0-9]{10}" placeholder="9876543210">
+                    <label for="phone" class="form-label">Phone Number</label>
+                    <input type="tel" id="phone" class="form-input" required pattern="[0-9]{10}" placeholder="10-digit mobile number">
                 </div>
 
                 <div class="form-group">
-                    <label for="service" class="form-label">Service Required</label>
-                    <select id="service" name="service" class="form-select" required>
+                    <label for="service" class="form-label">Service Type</label>
+                    <select id="service" class="form-select" required>
                         <option value="" disabled selected>Select a service...</option>
-                        <option value="Financial Structure & Readiness">Financial Structure & Readiness</option>
-                        <option value="Legacy Asset Recovery">Shares & Legacy Asset Recovery</option>
-                        <option value="NRI Documentation">RI & NRI Documentation Support</option>
-                        <option value="Banking Documentation">Banking & Loan Documentation</option>
-                        <option value="Other">Other Process Support</option>
+                        <option value="Financial Structure">Financial Structure & Readiness</option>
+                        <option value="Legacy Recovery">Shares & Legacy Recovery</option>
+                        <option value="NRI Support">NRI Documentation Support</option>
+                        <option value="Banking">Banking & Loan Documentation</option>
+                        <option value="Other">Other Query</option>
                     </select>
                 </div>
 
                 <div class="form-group">
-                    <label for="message" class="form-label">Message</label>
-                    <textarea id="message" name="message" class="form-textarea" required minlength="20" placeholder="Please describe your documentation requirement (min 20 characters)..."></textarea>
+                    <label for="message" class="form-label">Your Requirement</label>
+                    <textarea id="message" class="form-textarea" required minlength="20" placeholder="Please describe your specific requirement..."></textarea>
                 </div>
 
-                <div class="checkbox-group" style="display: flex; gap: 12px; align-items: flex-start; margin-bottom: 24px;">
-                    <input type="checkbox" id="consent" name="consent" class="checkbox-input" style="margin-top: 5px;" required>
-                    <label for="consent" class="checkbox-label" style="font-size: 0.9rem;">
-                        I agree to the Privacy Policy and authorize MVN FinHub to contact me regarding my enquiry.
+                <div class="checkbox-group">
+                    <input type="checkbox" id="consent" class="checkbox-input" required>
+                    <label for="consent" class="checkbox-label">
+                        I agree to the Privacy Policy and authorize MVN FinHub to contact me regarding this enquiry.
                     </label>
                 </div>
 
-                <button type="submit" class="submit-btn btn btn-primary" style="width: 100%;">Submit Enquiry</button>
+                <button type="submit" class="submit-btn btn btn-primary" style="width: 100%; padding: 14px; font-size: 1rem; cursor: pointer;">
+                    Submit Enquiry
+                </button>
 
-                <div class="submission-context" style="margin-top: 24px; font-size: 0.85rem; color: #64748B; text-align: center;">
-                    <p>Submitting an enquiry does not constitute financial advice or a service guarantee.</p>
-                </div>
             </form>
 
-            <div class="direct-contact" style="margin-top: 40px; text-align: center; display: flex; justify-content: center; gap: 20px;">
-                <a href="mailto:mvnfinhub.connect@gmail.com" class="contact-link" style="display: flex; align-items: center; gap: 8px;">
-                    📧 mvnfinhub.connect@gmail.com
-                </a>
-                <a href="https://instagram.com/mvnfinhub" target="_blank" class="contact-link" style="display: flex; align-items: center; gap: 8px;">
-                    📷 mvnfinhub
-                </a>
+            <div class="direct-contact">
+                <a href="mailto:mvnfinhub.connect@gmail.com" class="contact-link">📧 mvnfinhub.connect@gmail.com</a>
+                <a href="https://instagram.com/mvnfinhub" target="_blank" class="contact-link">📷 @mvnfinhub</a>
             </div>
 
         </div>
@@ -115,7 +213,7 @@
         <div class="container">
             <p>&copy; <span class="copyright-year">2024</span> MVN FinHub</p>
             <div class="footer-links">
-                <a href="legal.html">Privacy & Legal</a>
+                <a href="legal.html">Privacy</a>
                 <a href="contact.html">Contact</a>
                 <a href="https://instagram.com/mvnfinhub" target="_blank">Instagram</a>
             </div>
