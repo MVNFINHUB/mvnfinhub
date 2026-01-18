@@ -63,22 +63,55 @@ footer .container {
     position: relative; /* Allows us to place the button in the corner */
 }
 
-/* --- MINIMAL FOOTER THEME BUTTON (Supabase Style) --- */
+/* --- FIX 1: CONTACT TEASER (Force Navy Blue in ALL Modes) --- */
+.contact-teaser {
+    background-color: #0A2540 !important; /* Always Navy */
+    color: white !important;
+}
+
+.contact-teaser h2, 
+.contact-teaser p {
+    color: white !important;
+}
+
+.contact-teaser .btn {
+    background-color: white !important;
+    color: #0A2540 !important;
+    font-weight: 600;
+}
+
+/* --- FIX 2: FOOTER & BUTTON POSITIONING --- */
+footer {
+    position: relative;
+    background-color: #0F172A; /* Always Dark Slate */
+    color: #94A3B8;
+}
+
+footer .container {
+    position: relative; /* Anchor for the button */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+/* The Icon Itself */
 .theme-btn-footer {
     position: absolute;
-    top: 0;       /* Aligns with the top of the footer content */
-    right: 0;     /* Aligns to the right edge of the content */
+    right: 0;           /* Stick to the right edge */
+    top: 50%;           /* Center vertically */
+    transform: translateY(-50%); /* Perfect center alignment */
     
-    width: 32px;  /* Minimal Size */
-    height: 32px;
+    width: 36px;
+    height: 36px;
     
-    background: transparent;
-    border: 1px solid rgba(148, 163, 184, 0.4); /* Subtle border */
-    border-radius: 6px; /* Small rounded corners */
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 8px;
     
     color: #94A3B8;
     cursor: pointer;
-    font-size: 0.9rem; /* Small Icon */
+    font-size: 1rem;
     
     display: flex;
     align-items: center;
@@ -87,28 +120,6 @@ footer .container {
 }
 
 .theme-btn-footer:hover {
-    background-color: rgba(255,255,255,0.1);
-    color: white;
-    border-color: white;
-}
-
-/* Dark Mode Adjustment for the button itself */
-[data-theme="light"] .theme-btn-footer {
-    border-color: rgba(15, 23, 42, 0.2);
-    color: #475569;
-}
-[data-theme="light"] .theme-btn-footer:hover {
-    background-color: rgba(15, 23, 42, 0.1);
+    background-color: white;
     color: #0F172A;
-}
-
-/* MOBILE FIX: Ensure it doesn't overlap centered text */
-@media (max-width: 768px) {
-    .theme-btn-footer {
-        position: absolute;
-        top: 0; 
-        right: 0;
-        width: 36px; /* Slightly larger touch target */
-        height: 36px;
-    }
 }
