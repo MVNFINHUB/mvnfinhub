@@ -1,45 +1,46 @@
 /**
- * MVN FINHUB - APP CONTROLLER
+ * MVN FINHUB - APP CONTROLLER (FINAL)
  * Handles: Database, Mobile Menu, and Footer Dark Mode.
  */
 
 document.addEventListener('DOMContentLoaded', () => {
 
-    // --- CONFIGURATION ---
+    // --- CONFIGURATION (PASTE YOUR KEYS HERE) ---
      const SUPABASE_URL = 'https://fviufivewglglnxhlmmf.supabase.co'; 
-     const SUPABASE_KEY = 'sb_publishable_HYE7g0GyJbUfmldKTTAbeA_OUdc0Rah';
-    // ----------------------
+     const SUPABASE_KEY = 'sb_publishable_HYE7g0GyJbUfmldKTTAbeA_OUdc0Rah';'
+    // -------------------------------------------
 
-    // --- 1. DARK MODE LOGIC (ATTACHED TO FOOTER) ---
-    const savedTheme = localStorage.getItem('theme') || 'light';
-    document.documentElement.setAttribute('data-theme', savedTheme);
+    // --- 1. DARK MODE LOGIC (STRICT FOOTER TARGET) ---
+    // We target the specific ID we added to the HTML footer
+    const themeBtn = document.getElementById('footer-theme-btn');
+    const htmlElement = document.documentElement;
 
-    // Create the Minimal Button
-    const themeBtn = document.createElement('button');
-    themeBtn.className = 'theme-btn-footer'; // New Class Name
-    themeBtn.innerHTML = savedTheme === 'dark' ? '☀️' : '🌙';
-    themeBtn.setAttribute('aria-label', 'Toggle Dark Mode');
-    themeBtn.title = "Toggle Theme";
-
-    // Attach to Footer Container
-    const footerContainer = document.querySelector('footer .container');
-    if (footerContainer) {
-        footerContainer.appendChild(themeBtn);
-    } else {
-        // Fallback if no footer found
-        document.body.appendChild(themeBtn);
+    // A. Check saved preference on load
+    const currentTheme = localStorage.getItem('theme');
+    if (currentTheme === 'dark') {
+        htmlElement.setAttribute('data-theme', 'dark');
+        // Update the icon to Sun if it's already dark mode
+        if (themeBtn) themeBtn.textContent = '☀️';
     }
 
-    // Toggle Function
-    themeBtn.addEventListener('click', () => {
-        const currentTheme = document.documentElement.getAttribute('data-theme');
-        const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-        
-        document.documentElement.setAttribute('data-theme', newTheme);
-        localStorage.setItem('theme', newTheme);
-        themeBtn.innerHTML = newTheme === 'dark' ? '☀️' : '🌙';
-    });
+    // B. Toggle Function
+    if (themeBtn) {
+        themeBtn.addEventListener('click', () => {
+            const isDark = htmlElement.getAttribute('data-theme') === 'dark';
 
+            if (isDark) {
+                // Switch to Light
+                htmlElement.setAttribute('data-theme', 'light');
+                localStorage.setItem('theme', 'light');
+                themeBtn.textContent = '🌙'; 
+            } else {
+                // Switch to Dark
+                htmlElement.setAttribute('data-theme', 'dark');
+                localStorage.setItem('theme', 'dark');
+                themeBtn.textContent = '☀️';
+            }
+        });
+    }
 
     // --- 2. MOBILE MENU ---
     const menuToggle = document.getElementById('mobile-menu-toggle');
@@ -49,15 +50,17 @@ document.addEventListener('DOMContentLoaded', () => {
         menuToggle.addEventListener('click', () => {
             navLinks.classList.toggle('active');
             const isExpanded = navLinks.classList.contains('active');
+            // Toggle between Hamburger (☰) and Close (✕)
             menuToggle.textContent = isExpanded ? '✕' : '☰';
         });
     }
 
     // --- 3. DYNAMIC FOOTER YEAR ---
+    // Automatically updates the year in the footer
     const yearSpan = document.querySelector('.copyright-year');
     if(yearSpan) yearSpan.textContent = new Date().getFullYear();
 
-    // --- 4. FORM SUBMISSION ---
+    // --- 4. FORM SUBMISSION (SUPABASE) ---
     const enquiryForm = document.getElementById('enquiryForm');
     const successMessage = document.getElementById('successMessage');
     const refIdDisplay = document.getElementById('refIdDisplay');
@@ -66,7 +69,9 @@ document.addEventListener('DOMContentLoaded', () => {
         enquiryForm.addEventListener('submit', async function(e) {
             e.preventDefault();
             
-            if (!document.getElementById('consent').checked) {
+            // Check Consent Checkbox
+            const consentCheckbox = document.getElementById('consent');
+            if (consentCheckbox && !consentCheckbox.checked) {
                 alert("Please agree to the Privacy Policy."); return;
             }
 
@@ -75,6 +80,7 @@ document.addEventListener('DOMContentLoaded', () => {
             submitBtn.disabled = true; 
             submitBtn.textContent = 'Sending...';
 
+            // Generate Reference ID: MVN-YYYY-RANDOM
             const refID = `MVN-${new Date().getFullYear()}-${Math.floor(10000 + Math.random() * 90000)}`;
 
             const formData = {
@@ -101,6 +107,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 if (!response.ok) throw new Error('Server Error');
 
+                // Success State
                 enquiryForm.style.display = 'none';
                 if(refIdDisplay) refIdDisplay.textContent = refID;
                 if(successMessage) {
