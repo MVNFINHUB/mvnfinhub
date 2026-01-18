@@ -83,8 +83,19 @@
     margin: 0 auto !important;    /* Center it */
     padding: 40px 20px !important; /* Good spacing */
 }
-    .trust-indicators { gap: 8px; }
-    .trust-tag { font-size: 0.75rem; padding: 4px 12px; }
+    /* In public/assets/css/mobile.css */
+
+@media (max-width: 768px) {
+    /* ... other mobile styles ... */
+
+    /* KEEP THIS - IT MAKES TAGS LOOK GOOD ON PHONES */
+    .trust-indicators { 
+        gap: 8px; 
+    }
+    .trust-tag { 
+        font-size: 0.75rem; 
+        padding: 4px 12px; 
+    }
 }
     }
     /* --- FIX: FOOTER OVERLAP --- */
