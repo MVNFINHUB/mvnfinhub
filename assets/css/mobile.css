@@ -2,27 +2,28 @@
 
 @media (max-width: 768px) {
     
-   /* 1. HEADER & LOGO */
+   /* 1. HEADER & LOGO (Mobile Optimized) */
     .nav-flex {
-        flex-wrap: nowrap; /* Forces logo and menu button to stay side-by-side */
+        flex-wrap: nowrap;
         align-items: center;
-        gap: 10px;
+        gap: 8px;
         justify-content: space-between;
     }
     
     .brand-logo {
-        gap: 8px; /* Tighter gap for mobile */
-        flex-shrink: 0; /* Prevents logo from squishing */
+        gap: 8px;
     }
 
-    /* Mobile Sizes */
-    .brand-logo img {
-        height: 36px; /* Smaller but visible */
+    /* Smaller Icon */
+    .logo-icon-wrapper img {
+        height: 38px;
+        filter: drop-shadow(0 0 4px rgba(0, 210, 255, 0.4)); /* Less glow on mobile */
     }
 
-    .brand-name {
-        font-size: 1.2rem; /* Readable on small screens */
-    }
+    /* Smaller Text */
+    .brand-text {
+        font-size: 1.25rem;
+    }}
 
     /* 2. HAMBURGER BUTTON */
     .mobile-toggle {
