@@ -133,19 +133,102 @@ body {
 /* Hamburger (Hidden on Desktop) */
 .mobile-toggle { display: none; }
 
-/* --- SECTIONS --- */
-.hero {
-    background: var(--gradient-primary);
-    color: white;
-    padding: 120px 0;
-    text-align: center;
+/* --- PREMIUM HERO STYLES --- */
+.hero-premium {
+    position: relative;
+    padding: 180px 0 100px 0; /* Space for fixed header */
+    background-color: #F8FAFC;
+    overflow: hidden;
 }
-.hero h1, .hero p { color: white !important; }
 
-.container { max-width: var(--container-width); margin: 0 auto; padding: 0 24px; }
-.section-padding { padding: 80px 0; }
-.grid-4 { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 32px; margin-top: 40px; }
+/* Background Blobs */
+.hero-glow {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(90px);
+    z-index: 0;
+    opacity: 0.5;
+}
+.glow-left { width: 400px; height: 400px; background: rgba(0, 200, 255, 0.15); top: -100px; left: -100px; }
+.glow-right { width: 500px; height: 500px; background: rgba(10, 37, 64, 0.1); bottom: -100px; right: -100px; }
 
+/* The Glass Card */
+.hero-glass-card {
+    position: relative;
+    z-index: 1;
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.8);
+    border-radius: 24px;
+    padding: 60px 40px;
+    text-align: center;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.05);
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+/* Typography */
+.hero-glass-card h1 {
+    color: #0A2540;
+    font-family: 'Merriweather', serif;
+    font-weight: 800;
+    font-size: 2.8rem;
+    margin-bottom: 20px;
+    line-height: 1.2;
+}
+
+.hero-glass-card p {
+    color: #475569;
+    font-size: 1.15rem;
+    margin-bottom: 30px;
+    line-height: 1.6;
+    max-width: 750px;
+    margin-left: auto; margin-right: auto;
+}
+
+/* TRUST TAGS (Updated for Light Background) */
+.trust-indicators {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+    margin-bottom: 35px;
+}
+
+.trust-tag {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #0A2540; /* Navy Text */
+    background: rgba(0, 200, 255, 0.1); /* Light Cyan Background */
+    padding: 6px 16px;
+    border-radius: 20px;
+    border: 1px solid rgba(0, 200, 255, 0.2);
+}
+
+/* Button & Micro Text */
+.btn-group { margin-bottom: 15px; }
+
+.hero-micro-text {
+    font-size: 0.85rem;
+    color: #64748B; /* Slate Grey (Visible on Light) */
+    font-weight: 500;
+}
+
+/* --- DARK MODE ADAPTATION --- */
+[data-theme="dark"] .hero-premium { background-color: #0F172A; }
+[data-theme="dark"] .hero-glass-card { 
+    background: rgba(30, 41, 59, 0.6); 
+    border: 1px solid rgba(255,255,255,0.05);
+}
+[data-theme="dark"] .hero-glass-card h1 { color: #ffffff; }
+[data-theme="dark"] .hero-glass-card p { color: #cbd5e1; }
+[data-theme="dark"] .trust-tag {
+    background: rgba(255, 255, 255, 0.1);
+    color: #e2e8f0;
+    border-color: rgba(255,255,255,0.1);
+}
+[data-theme="dark"] .hero-micro-text { color: #94A3B8; }
 /* Footer */
 footer { background: #020617; color: #94A3B8; padding: 60px 0; text-align: center; margin-top: auto; border-top: 1px solid rgba(255,255,255,0.1); }
 .footer-links { margin-top: 24px; display: flex; justify-content: center; gap: 24px; }
