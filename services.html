@@ -10,16 +10,15 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" href="assets/css/main.css?v=platinum">
+    <link rel="stylesheet" href="assets/css/main.css?v=platinum_fix">
 
     <script src="assets/js/app.js" defer></script>
 
     <style>
-        /* --- PAGE SPECIFIC STYLES (Premium & Colorful) --- */
+        /* --- PAGE SPECIFIC STYLES --- */
 
-        /* 1. PRIMARY SERVICE (The Featured Box) */
+        /* 1. PRIMARY SERVICE (Blue Feature Box) */
         .primary-service {
-            /* Light Mode Gradient */
             background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(240, 249, 255, 0.9) 100%);
             backdrop-filter: blur(12px);
             border: 2px solid #0A2540;
@@ -30,12 +29,7 @@
             position: relative;
             overflow: hidden;
         }
-        .primary-service::before {
-            content: ''; position: absolute; top: 0; right: 0;
-            width: 100px; height: 100px;
-            background: radial-gradient(circle, rgba(0, 119, 182, 0.1) 0%, transparent 70%);
-        }
-
+        
         .primary-badge {
             background-color: #0A2540;
             color: #ffffff;
@@ -46,15 +40,9 @@
             font-weight: 700;
             margin-bottom: 24px;
             text-transform: uppercase;
-            letter-spacing: 0.5px;
-            box-shadow: 0 4px 10px rgba(10, 37, 64, 0.2);
         }
 
-        .primary-service h2 {
-            font-size: 1.8rem;
-            color: #0A2540;
-            margin-bottom: 10px;
-        }
+        .primary-service h2 { font-size: 1.8rem; color: #0A2540; margin-bottom: 10px; }
 
         .boundary-box {
             background-color: rgba(255, 255, 255, 0.6); 
@@ -66,7 +54,7 @@
             color: #334155;
         }
 
-        /* 2. SERVICES GRID */
+        /* 2. SERVICE CARDS */
         .services-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -80,45 +68,24 @@
             border-radius: 16px;
             border: 1px solid rgba(255,255,255,0.8);
             box-shadow: 0 4px 15px rgba(0,0,0,0.03);
-            transition: transform 0.2s ease;
-        }
-        .service-card:hover {
-            transform: translateY(-5px);
-            border-color: #0077B6;
         }
 
         .service-card h3 {
-            font-size: 1.35rem;
-            margin-bottom: 20px;
-            border-bottom: 2px solid #E2E8F0;
-            padding-bottom: 15px;
-            color: #0A2540;
-            font-family: 'Merriweather', serif;
+            font-size: 1.35rem; margin-bottom: 20px;
+            border-bottom: 2px solid #E2E8F0; padding-bottom: 15px;
+            color: #0A2540; font-family: 'Merriweather', serif;
         }
 
         /* 3. CHECK LISTS */
-        .check-list li {
-            position: relative;
-            padding-left: 32px;
-            margin-bottom: 14px;
-            list-style: none;
-            color: #334155;
-            font-weight: 500;
-        }
+        .check-list li { position: relative; padding-left: 32px; margin-bottom: 14px; list-style: none; color: #334155; font-weight: 500; }
         .check-list li::before {
-            content: "✓";
-            position: absolute;
-            left: 0; top: 0;
-            color: #10B981;
-            font-weight: 900;
-            font-size: 1.1rem;
-            background: rgba(16, 185, 129, 0.1);
-            width: 24px; height: 24px;
-            display: flex; align-items: center; justify-content: center;
-            border-radius: 50%;
+            content: "✓"; position: absolute; left: 0; top: 0;
+            color: #10B981; font-weight: 900; font-size: 1.1rem;
+            background: rgba(16, 185, 129, 0.1); width: 24px; height: 24px;
+            display: flex; align-items: center; justify-content: center; border-radius: 50%;
         }
 
-        /* 4. EXCLUSION SECTION (Red Box) */
+        /* 4. RED EXCLUSION BOX */
         .exclusion-section {
             background: linear-gradient(135deg, #FEF2F2 0%, #FFF1F2 100%);
             border: 1px solid #FECACA;
@@ -126,79 +93,50 @@
             border-radius: 12px;
             padding: 40px;
             margin-top: 60px;
-            box-shadow: 0 10px 30px rgba(239, 68, 68, 0.05);
         }
+        .exclusion-section h2 { color: #991B1B; margin-bottom: 24px; font-size: 1.6rem; }
         
-        .exclusion-section h2 {
-            color: #991B1B;
-            margin-bottom: 24px;
-            font-size: 1.6rem;
-            display: flex; align-items: center; gap: 10px;
-        }
-        .exclusion-section h2::before { content: "⚠️"; font-size: 1.4rem; }
+        .cross-list { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; }
+        .cross-list li { position: relative; padding-left: 32px; color: #7F1D1D; font-weight: 600; list-style: none; }
+        .cross-list li::before { content: "✕"; position: absolute; left: 0; top: 2px; color: #EF4444; font-weight: 900; font-size: 1.1rem; }
 
-        .cross-list {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 16px;
-        }
+        /* --- CRITICAL DARK MODE OVERRIDES (These Force the Fix) --- */
         
-        .cross-list li {
-            position: relative;
-            padding-left: 32px;
-            color: #7F1D1D;
-            font-weight: 600;
-            list-style: none;
-        }
-        .cross-list li::before {
-            content: "✕";
-            position: absolute;
-            left: 0; top: 2px;
-            color: #EF4444;
-            font-weight: 900;
-            font-size: 1.1rem;
-        }
-
-        /* --- DARK MODE OVERRIDES (FIXED) --- */
         [data-theme="dark"] .primary-service {
-            /* Use !important to override the gradient image */
-            background: rgba(30, 41, 59, 0.6) !important;
-            border-color: #38bdf8;
+            background: rgba(30, 41, 59, 0.8) !important; /* Force Dark Blue */
+            border-color: #38bdf8 !important;
         }
-        [data-theme="dark"] .primary-service h2 { color: white; }
+        [data-theme="dark"] .primary-service h2 { color: white !important; }
         
         [data-theme="dark"] .boundary-box {
-            background-color: rgba(15, 23, 42, 0.5);
-            border-left-color: #38bdf8;
-            color: #cbd5e1;
+            background-color: rgba(15, 23, 42, 0.6) !important;
+            border-left-color: #38bdf8 !important;
+            color: #cbd5e1 !important;
         }
 
         [data-theme="dark"] .service-card {
-            background: rgba(30, 41, 59, 0.6);
-            border-color: rgba(255,255,255,0.05);
+            background: rgba(30, 41, 59, 0.6) !important;
+            border-color: rgba(255,255,255,0.05) !important;
         }
         [data-theme="dark"] .service-card h3 {
-            color: #ffffff;
-            border-bottom-color: rgba(255,255,255,0.1);
+            color: #ffffff !important;
+            border-bottom-color: rgba(255,255,255,0.1) !important;
         }
-        [data-theme="dark"] .check-list li { color: #cbd5e1; }
+        [data-theme="dark"] .check-list li { color: #cbd5e1 !important; }
         
-        /* Red Box Dark Mode Fix */
+        /* Force Red Box to Dark Red */
         [data-theme="dark"] .exclusion-section {
-            /* Force dark background, removing the light pink gradient */
-            background: rgba(69, 10, 10, 0.6) !important;
-            border-color: #7f1d1d;
-            border-left-color: #ef4444;
+            background: rgba(69, 10, 10, 0.6) !important; /* Deep Dark Red */
+            border-color: #7f1d1d !important;
+            border-left-color: #ef4444 !important;
         }
         [data-theme="dark"] .exclusion-section h2, 
         [data-theme="dark"] .cross-list li {
-            color: #fca5a5;
+            color: #fca5a5 !important;
         }
 
-        /* Responsive */
         @media (max-width: 768px) {
             .primary-service, .exclusion-section { padding: 25px; }
-            .primary-service h2 { font-size: 1.5rem; }
         }
     </style>
 </head>
@@ -354,7 +292,7 @@
             }
         }
 
-        // 2. "Ghost Icon" Killer (Removes any floating button)
+        // 2. Kill Ghost Icons immediately on load
         window.addEventListener('load', function() {
             const ghosts = document.querySelectorAll('.theme-btn-floating, #theme-toggle-float');
             ghosts.forEach(el => el.remove());
