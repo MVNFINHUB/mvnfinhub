@@ -76,7 +76,13 @@
    /* Hero Mobile Fixes */
 @media (max-width: 768px) {
     .hero-premium { padding-top: 130px; }
-    .hero-glass-card h1 { font-size: 1.8rem; }
+    /* --- MOBILE HERO FIX --- */
+.hero-glass-card {
+    width: 92% !important;        /* 4% gap on left and right */
+    max-width: 92% !important;
+    margin: 0 auto !important;    /* Center it */
+    padding: 40px 20px !important; /* Good spacing */
+}
     .trust-indicators { gap: 8px; }
     .trust-tag { font-size: 0.75rem; padding: 4px 12px; }
 }
