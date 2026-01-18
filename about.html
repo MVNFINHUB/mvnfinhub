@@ -8,110 +8,161 @@
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Merriweather:wght@400;700;900&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" href="assets/css/main.css?v=2">
+    <link rel="stylesheet" href="assets/css/main.css?v=platinum">
 
     <script src="assets/js/app.js" defer></script>
 
     <style>
-        /* --- PAGE SPECIFIC STYLES --- */
+        /* --- PAGE SPECIFIC STYLES (Trust & Premium) --- */
         
-        /* Layout Utilities */
+        /* 1. LAYOUT UTILITIES */
         .container-narrow {
-            max-width: 900px; /* Narrower for reading comfort */
+            max-width: 900px;
             margin: 0 auto;
             padding: 0 20px;
         }
 
-        /* --- HERO --- */
+        /* 2. HERO SECTION (Deep Trust Gradient) */
         .about-hero {
-            background: var(--gradient-primary);
+            position: relative;
+            background: linear-gradient(135deg, #0F172A 0%, #1E40AF 100%);
             color: white;
-            padding: 100px 0;
+            padding: 120px 0;
             text-align: center;
+            overflow: hidden;
         }
-        .about-hero h1 { color: white !important; margin-bottom: 24px; font-size: 2.5rem; }
+        /* Subtle Pattern Overlay */
+        .about-hero::before {
+            content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background-image: radial-gradient(rgba(255,255,255,0.05) 1px, transparent 1px);
+            background-size: 30px 30px;
+            opacity: 0.5;
+        }
+
+        .about-hero h1 { 
+            color: white !important; 
+            margin-bottom: 24px; 
+            font-size: 3rem; 
+            font-family: 'Merriweather', serif;
+            position: relative; z-index: 2;
+        }
         .about-hero p {
             color: rgba(255,255,255,0.9);
             font-size: 1.25rem;
             max-width: 700px;
             margin: 0 auto;
+            position: relative; z-index: 2;
+            line-height: 1.6;
         }
 
-        /* --- CONTENT BLOCKS --- */
-        .content-block {
-            margin-bottom: 60px;
-        }
+        /* 3. CONTENT BLOCKS */
+        .content-block { margin-bottom: 60px; }
         .content-block h2 {
-            font-size: 1.8rem;
-            margin-bottom: 20px;
-            padding-bottom: 10px;
-            border-bottom: 2px solid var(--border-color);
+            font-size: 2rem;
+            margin-bottom: 24px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #E2E8F0;
             display: inline-block;
-            color: var(--text-head);
+            color: #0A2540;
+            font-family: 'Merriweather', serif;
         }
+        .content-block p { font-size: 1.05rem; color: #334155; line-height: 1.8; }
 
-        /* --- PHILOSOPHY GRID --- */
+        /* 4. PHILOSOPHY GRID (Glass Cards) */
         .values-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 30px;
-            margin-top: 30px;
+            margin-top: 40px;
         }
         .value-card {
-            background: var(--surface-card); /* Adaptive Card */
-            padding: 30px;
-            border-radius: 12px;
-            border: 1px solid var(--border-color);
-            border-left: 4px solid var(--accent-emerald);
-            box-shadow: var(--shadow-sm);
-            transition: transform 0.2s ease;
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(12px);
+            padding: 35px;
+            border-radius: 16px;
+            border: 1px solid rgba(255,255,255,0.8);
+            border-left: 5px solid #10B981; /* Emerald Trust Accent */
+            box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+            transition: transform 0.3s ease;
         }
-        .value-card:hover { transform: translateY(-3px); }
-        .value-card h3 { font-size: 1.1rem; margin-bottom: 0; color: var(--text-head); }
+        .value-card:hover { 
+            transform: translateY(-5px); 
+            box-shadow: 0 10px 25px rgba(16, 185, 129, 0.1);
+        }
+        .value-card h3 { 
+            font-size: 1.15rem; margin-bottom: 0; color: #064E3B; font-weight: 600;
+        }
 
-        /* --- COMMITMENT SECTION (Grey Box) --- */
+        /* 5. COMMITMENT SECTION (Royal Blue Highlight) */
         .commitment-section {
-            background-color: var(--bg-body); /* Adaptive Background */
+            background: linear-gradient(135deg, #F0F9FF 0%, #E0F2FE 100%);
+            border-top: 1px solid #BAE6FD;
+            border-bottom: 1px solid #BAE6FD;
             padding: 80px 0;
-            border-top: 1px solid var(--border-color);
-            border-bottom: 1px solid var(--border-color);
+            position: relative;
         }
-        
-        /* Make it slightly darker/distinct in Light Mode */
-        @media (prefers-color-scheme: light) {
-            [data-theme="light"] .commitment-section {
-                background-color: #F1F5F9; 
-            }
-        }
+        .commitment-section h2 { color: #0369A1; border-bottom-color: #BAE6FD; }
 
         .commitment-list li {
             position: relative;
-            padding-left: 28px;
-            margin-bottom: 12px;
+            padding-left: 32px;
+            margin-bottom: 16px;
             list-style: none;
-            color: var(--text-main);
+            color: #334155;
+            font-weight: 500;
+            font-size: 1.05rem;
         }
         .commitment-list li::before {
             content: "🛡"; /* Shield icon */
-            position: absolute;
-            left: 0;
-            font-size: 1rem;
+            position: absolute; left: 0; top: 2px;
+            font-size: 1.2rem; color: #0284C7;
         }
 
-        /* --- AUDIENCE LIST --- */
+        /* 6. AUDIENCE LIST */
         .audience-list li {
             margin-bottom: 16px;
-            padding-left: 20px;
-            border-left: 3px solid var(--primary-navy);
-            color: var(--text-main);
+            padding-left: 24px;
+            border-left: 4px solid #1E40AF; /* Navy Bar */
+            color: #334155;
             list-style: none;
+            font-size: 1.05rem;
+            background: linear-gradient(90deg, #F8FAFC 0%, transparent 100%);
+            padding: 12px 24px;
+            border-radius: 0 8px 8px 0;
         }
 
-        /* --- RESPONSIVE --- */
+        /* --- DARK MODE OVERRIDES (Nuclear Fix) --- */
+        [data-theme="dark"] .about-hero {
+            background: linear-gradient(135deg, #0F172A 0%, #020617 100%) !important;
+        }
+        [data-theme="dark"] .content-block h2 { color: #ffffff !important; border-bottom-color: rgba(255,255,255,0.1) !important; }
+        [data-theme="dark"] .content-block p { color: #cbd5e1 !important; }
+
+        [data-theme="dark"] .value-card {
+            background: rgba(30, 41, 59, 0.6) !important;
+            border-color: rgba(255,255,255,0.05) !important;
+            border-left-color: #10B981 !important;
+        }
+        [data-theme="dark"] .value-card h3 { color: #ffffff !important; }
+
+        [data-theme="dark"] .commitment-section {
+            background: rgba(15, 23, 42, 0.8) !important;
+            border-color: rgba(255,255,255,0.05) !important;
+        }
+        [data-theme="dark"] .commitment-section h2 { color: #38bdf8 !important; border-bottom-color: rgba(255,255,255,0.1) !important; }
+        [data-theme="dark"] .commitment-list li { color: #cbd5e1 !important; }
+        
+        [data-theme="dark"] .audience-list li {
+            background: rgba(30, 41, 59, 0.6) !important;
+            color: #cbd5e1 !important;
+            border-left-color: #60A5FA !important;
+        }
+
+        /* Responsive */
         @media (max-width: 768px) {
-            .about-hero h1 { font-size: 2rem; }
+            .about-hero h1 { font-size: 2.2rem; }
             .section-padding { padding: 50px 0; }
         }
     </style>
@@ -121,14 +172,15 @@
     <header>
         <div class="container nav-flex">
             <a href="index.html" class="brand-logo">
-    <div class="logo-icon-wrapper">
-        <img src="assets/images/logo-header.png" alt="MVN FinHub Logo">
-    </div>
-    <div class="brand-text">
-        <span class="text-mvn">MVN</span><span class="text-finhub">FinHub</span>
-    </div>
-</a>
-            <button class="mobile-toggle" id="mobile-menu-toggle">☰</button>
+                <div class="logo-icon-wrapper">
+                    <img src="assets/images/logo-header.png" alt="MVN FinHub Logo">
+                </div>
+                <div class="brand-text">
+                    <span class="text-mvn">MVN</span><span class="text-finhub">FinHub</span>
+                </div>
+            </a>
+            
+            <button class="mobile-toggle" id="mobile-menu-toggle" aria-label="Toggle Menu">☰</button>
 
             <nav class="nav-links" id="nav-links">
                 <a href="index.html" class="nav-item">Home</a>
@@ -153,8 +205,8 @@
             <div class="content-block">
                 <h2>Why MVN FinHub Exists</h2>
                 <p>Financial processes and documentation are often complex, fragmented, and unclear for individuals and families.</p>
-                <p style="margin-top: 16px;">Many people struggle with legacy assets, banking documentation, and compliance-related procedures due to lack of clear process understanding.</p>
-                <p style="margin-top: 16px;">MVN FinHub exists to provide structured, neutral, and transparent support for navigating these processes without influencing financial decisions.</p>
+                <p>Many people struggle with legacy assets, banking documentation, and compliance-related procedures due to lack of clear process understanding.</p>
+                <p>MVN FinHub exists to provide structured, neutral, and transparent support for navigating these processes without influencing financial decisions.</p>
             </div>
 
             <div class="content-block">
@@ -219,6 +271,10 @@
 
     <footer>
         <div class="container">
+            <div class="footer-logo-container">
+                <img src="assets/images/logo-3d-full.png" alt="MVN FinHub Premium" class="footer-3d-logo">
+            </div>
+
             <p>&copy; <span class="copyright-year">2026</span> MVN FinHub</p>
             <p style="margin-top: 8px;">MVN FinHub is a support and awareness platform, not a decision-making authority.</p>
             <p style="margin-bottom: 24px;">Trust is built through transparency, boundaries, and consistency. The platform’s role ends at process clarity and documentation support.</p>
@@ -227,9 +283,42 @@
                 <a href="legal.html">Privacy & Legal</a>
                 <a href="contact.html">Contact</a>
                 <a href="https://instagram.com/mvnfinhub" target="_blank">Instagram</a>
+                
+                <button id="footer-theme-btn" class="theme-btn-footer" onclick="toggleTheme()" aria-label="Toggle Dark Mode" style="cursor: pointer;">🌙</button>
             </div>
         </div>
     </footer>
+
+    <script>
+        // 1. Theme Logic
+        if(localStorage.getItem('theme') === 'dark') {
+            document.documentElement.setAttribute('data-theme', 'dark');
+            const btn = document.getElementById('footer-theme-btn');
+            if(btn) btn.textContent = '☀️';
+        }
+
+        function toggleTheme() {
+            const html = document.documentElement;
+            const btn = document.getElementById('footer-theme-btn');
+            const current = html.getAttribute('data-theme');
+
+            if (current === 'dark') {
+                html.setAttribute('data-theme', 'light');
+                localStorage.setItem('theme', 'light');
+                btn.textContent = '🌙';
+            } else {
+                html.setAttribute('data-theme', 'dark');
+                localStorage.setItem('theme', 'dark');
+                btn.textContent = '☀️';
+            }
+        }
+
+        // 2. Kill Ghost Icons
+        window.addEventListener('load', function() {
+            const ghosts = document.querySelectorAll('.theme-btn-floating, #theme-toggle-float');
+            ghosts.forEach(el => el.remove());
+        });
+    </script>
 
 </body>
 </html>
