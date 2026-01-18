@@ -76,10 +76,13 @@
     /* Hero Mobile Fixes */
 @media (max-width: 768px) {
     .hero-premium { padding-top: 130px; }
-    .hero-glass-card h1 { font-size: 1.8rem; }
-    .trust-indicators { gap: 8px; }
-    .trust-tag { font-size: 0.75rem; padding: 4px 12px; }
-}
+    /* --- MOBILE HERO ALIGNMENT FIX --- */
+    .hero-glass-card {
+        width: 92% !important; /* Leave small gaps on sides */
+        margin: 0 auto !important; /* Center it */
+        padding: 30px 20px !important; /* Internal spacing */
+        border-radius: 16px;
+    }
 
     /* --- FIX: FOOTER OVERLAP --- */
     footer .container {
