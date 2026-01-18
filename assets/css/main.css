@@ -46,41 +46,47 @@ body {
 
 .nav-flex { display: flex; justify-content: space-between; align-items: center; }
 
-/* --- FINAL LOGO FIX: NO GAP & MAX SIZE --- */
+/* --- LOGO FIX: AGGRESSIVE CONNECTION & MAX SIZE --- */
 .brand-logo { 
     display: flex; 
     align-items: center; 
-    gap: 0px; /* REMOVE FLEX GAP COMPLETELY */
+    gap: 0px; /* No automatic spacing */
     text-decoration: none; 
     padding: 2px 0;
+    overflow: visible; /* Ensure nothing gets clipped */
 }
 
-/* 1. Massive Icon */
+/* 1. MASSIVE ICON SIZE */
 .logo-icon-wrapper img {
-    height: 65px; /* VERY LARGE (Matches Brand Name Scale) */
+    height: 70px; /* HUGE SIZE */
     width: auto;
     object-fit: contain;
     filter: drop-shadow(0 4px 6px rgba(0,0,0,0.1));
     transition: all 0.3s ease;
     
-    /* THE "STRANGE GAP" KILLER */
-    /* This pulls the text closer to the image, ignoring empty space in the PNG */
-    margin-right: -12px; 
+    /* THE "NUCLEAR" FIX FOR THE GAP */
+    /* This forces the text to overlap the image container by 25 pixels.
+       This will eat up any invisible padding in your PNG file. */
+    margin-right: -25px; 
+    
+    position: relative;
+    z-index: 1; /* Sits behind text if they overlap too much */
 }
 
 /* 2. Big, Solid Brand Text */
 .brand-text {
     font-family: 'Merriweather', serif;
     font-weight: 900;
-    font-size: 2.0rem; /* Increased to match the big logo */
+    font-size: 2.0rem; /* Matches the huge logo scale */
     line-height: 1;
-    letter-spacing: -0.5px;
+    letter-spacing: -1px; /* Tighter letter spacing */
     display: flex;
-    align-items: center; /* Vertically centered with logo */
+    align-items: center;
     
-    /* Push text slightly down if it feels too high compared to logo */
     position: relative;
-    top: 2px;
+    z-index: 2; /* Sits on top */
+    /* Pull text slightly left as a backup */
+    margin-left: -5px; 
 }
 /* "MVN" - Solid Navy (Clear in Day Mode) */
 .text-mvn {
