@@ -30,7 +30,23 @@ header {
 }
 
 .nav-flex { display: flex; justify-content: space-between; align-items: center; }
-.brand-logo { font-weight: 700; font-size: 1.5rem; color: var(--text-head); }
+
+/* LOGO UPDATE (Image Style) */
+.brand-logo { 
+    display: flex;         /* Use Flexbox to center image */
+    align-items: center;   /* Vertical Center */
+    text-decoration: none; 
+    border: none;          /* Removes any link borders */
+}
+
+.brand-logo img {
+    height: 40px;          /* Adjust height here (try 45px or 50px if small) */
+    width: auto;           /* Auto width keeps it from squishing */
+    object-fit: contain;   /* Ensures clarity */
+    display: block;        /* Removes bottom spacing gap */
+}
+
+/* Keep the rest of your CSS below this line (.nav-links, etc.) */
 
 .nav-links { display: flex; gap: 32px; align-items: center; }
 .nav-item { font-weight: 500; font-size: 0.95rem; color: var(--text-main); }
