@@ -1,49 +1,68 @@
-/* MVN FINHUB - COMPONENTS (PREMIUM) */
+/* MVN FINHUB - PREMIUM COMPONENTS */
 
-/* --- BUTTONS --- */
+/* --- 1. PREMIUM BUTTONS --- */
 .btn {
-    display: inline-flex; align-items: center; justify-content: center;
-    padding: 14px 32px; border-radius: 50px;
-    font-weight: 600; text-decoration: none; cursor: pointer; border: none;
-    font-family: var(--font-sans); transition: all 0.3s ease;
-}
-
-.btn-primary {
-    background: var(--gradient-action);
-    color: white;
-    box-shadow: 0 4px 15px rgba(5, 150, 105, 0.3);
-}
-.btn-primary:hover { transform: translateY(-3px); box-shadow: 0 8px 25px rgba(5, 150, 105, 0.5); }
-
-/* --- CARDS --- */
-.face-card, .service-card {
-    background: var(--surface-card);
-    border: 1px solid var(--border-color);
-    border-radius: var(--border-radius);
-    padding: 32px;
-    box-shadow: var(--shadow-sm);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px 28px;
+    border-radius: 50px;
+    font-weight: 600;
+    font-size: 1rem;
+    text-decoration: none;
     transition: all 0.3s ease;
-    height: 100%;
+    cursor: pointer;
+    font-family: var(--font-sans);
 }
-.face-card:hover { transform: translateY(-8px); box-shadow: var(--shadow-lg); border-color: transparent; }
 
-/* --- LISTS --- */
-.service-list li, .why-list li {
-    list-style: none; position: relative; padding-left: 32px; margin-bottom: 14px;
+/* The "Fintech Blue" Gradient Button */
+.btn-primary {
+    background: linear-gradient(135deg, #0A2540 0%, #1E40AF 100%);
+    color: white;
+    border: none;
+    box-shadow: 0 4px 12px rgba(10, 37, 64, 0.2);
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(10, 37, 64, 0.35);
+}
+
+/* Dark Mode Button Adjustment */
+[data-theme="dark"] .btn-primary {
+    background: linear-gradient(135deg, #38BDF8 0%, #0284C7 100%);
+    color: #0F172A; /* Dark text on bright button */
+}
+
+/* --- 2. GLASS CARDS (Global Helper) --- */
+.glass-panel {
+    background: var(--surface-glass);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
+}
+
+/* --- 3. INPUT FIELDS (Global Form Style) --- */
+input, select, textarea {
+    font-family: var(--font-sans);
+    background-color: rgba(255,255,255,0.8);
+    border: 1px solid var(--border-color);
     color: var(--text-main);
-}
-.service-list li::before, .why-list li::before {
-    content: "✓"; position: absolute; left: 0; color: var(--accent-emerald);
-    background: rgba(5, 150, 105, 0.1); width: 24px; height: 24px;
-    border-radius: 50%; text-align: center; line-height: 24px; font-weight: bold;
+    border-radius: 8px;
+    transition: 0.2s;
 }
 
-/* --- THEME TOGGLE BUTTON (Injected by JS) --- */
-.theme-btn {
-    background: none; border: 2px solid var(--border-color);
-    border-radius: 50%; width: 40px; height: 40px;
-    display: flex; align-items: center; justify-content: center;
-    cursor: pointer; font-size: 1.2rem; margin-left: 16px;
-    transition: all 0.2s;
+[data-theme="dark"] input, 
+[data-theme="dark"] select, 
+[data-theme="dark"] textarea {
+    background-color: rgba(15, 23, 42, 0.6);
+    color: white;
+    border-color: rgba(255,255,255,0.1);
 }
-.theme-btn:hover { background: var(--bg-body); border-color: var(--accent-emerald); }
+
+input:focus, select:focus, textarea:focus {
+    outline: none;
+    border-color: var(--accent-sky);
+    box-shadow: 0 0 0 3px rgba(14, 165, 233, 0.15);
+}
