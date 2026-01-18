@@ -8,123 +8,162 @@
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Merriweather:wght@400;700;900&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" href="assets/css/main.css?v=2">
+    <link rel="stylesheet" href="assets/css/main.css?v=platinum">
 
     <script src="assets/js/app.js" defer></script>
 
     <style>
-        /* --- 1. LAYOUT FIXES (Force Center) --- */
-        body {
-            background-color: var(--bg-body); /* Adaptive Background */
-        }
-        
+        /* --- PAGE SPECIFIC STYLES (Modern Contact Form) --- */
+
+        /* 1. LAYOUT (Centered Glass Card) */
         .contact-section {
             display: flex;
             justify-content: center;
-            padding: 60px 20px;
+            align-items: flex-start;
+            padding: 80px 20px;
+            min-height: 80vh;
         }
 
         .form-wrapper {
             width: 100%;
-            max-width: 550px; /* Perfect width for reading */
-            background: var(--surface-card); /* Adaptive Card Color */
-            padding: 48px;
-            border-radius: 16px; /* Softer corners */
-            box-shadow: var(--shadow-lg); /* Premium float effect */
-            border: 1px solid var(--border-color);
+            max-width: 600px;
+            background: rgba(255, 255, 255, 0.85); /* Glass */
+            backdrop-filter: blur(16px);
+            padding: 50px;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.8);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.06);
+            transition: transform 0.3s ease;
         }
-
-        /* --- 2. HEADER PATCH (Fixes the visible hamburger on desktop) --- */
-        @media (min-width: 769px) {
-            .mobile-toggle {
-                display: none !important; /* Forces hamburger to hide on Laptop */
-            }
+        
+        /* 2. HEADER */
+        .form-header { text-align: center; margin-bottom: 35px; }
+        .form-header h1 { 
+            font-size: 2.2rem; 
+            color: #0A2540; 
+            margin-bottom: 12px; 
+            font-family: 'Merriweather', serif; 
         }
+        .form-header p { color: #64748B; font-size: 1rem; line-height: 1.6; }
 
-        /* --- 3. FORM STYLING --- */
-        .form-header { text-align: center; margin-bottom: 32px; }
-        .form-header h1 { font-size: 2rem; color: var(--text-head); margin-bottom: 12px; letter-spacing: -0.5px; }
-        .form-header p { color: var(--text-muted); font-size: 0.95rem; line-height: 1.5; }
-
-        .form-group { margin-bottom: 20px; }
-        .form-label { display: block; margin-bottom: 8px; font-weight: 600; color: var(--text-main); font-size: 0.9rem; }
+        /* 3. FORM INPUTS */
+        .form-group { margin-bottom: 24px; }
+        .form-label { display: block; margin-bottom: 8px; font-weight: 600; color: #334155; font-size: 0.95rem; }
         
         .form-input, .form-select, .form-textarea {
             width: 100%;
-            padding: 12px 16px;
-            border: 1px solid var(--border-color);
-            border-radius: 8px;
+            padding: 14px 18px;
+            border: 1px solid #CBD5E1;
+            border-radius: 10px;
             font-family: 'Inter', sans-serif;
             font-size: 1rem;
-            background-color: var(--bg-body); /* Slightly distinct from card */
-            color: var(--text-main); /* Ensures text is visible in Dark Mode */
+            background-color: rgba(255, 255, 255, 0.6);
+            color: #1E293B;
             transition: all 0.2s;
         }
         
         .form-input:focus, .form-select:focus, .form-textarea:focus {
             outline: none;
-            border-color: var(--primary-navy);
-            box-shadow: 0 0 0 4px rgba(10, 37, 64, 0.1);
+            border-color: #0077B6;
+            background-color: #FFFFFF;
+            box-shadow: 0 0 0 4px rgba(0, 119, 182, 0.1);
         }
         
-        .form-textarea { min-height: 120px; resize: vertical; }
+        .form-textarea { min-height: 140px; resize: vertical; }
 
+        /* 4. CHECKBOX */
         .checkbox-group {
             display: flex;
             align-items: flex-start;
             gap: 12px;
-            margin-bottom: 24px;
-            padding: 4px 0;
+            margin-bottom: 30px;
+            padding: 10px 0;
         }
-        .checkbox-input { margin-top: 4px; width: 16px; height: 16px; cursor: pointer; }
-        .checkbox-label { font-size: 0.85rem; color: var(--text-muted); line-height: 1.4; cursor: pointer; }
+        .checkbox-input { margin-top: 4px; width: 18px; height: 18px; cursor: pointer; accent-color: #0077B6; }
+        .checkbox-label { font-size: 0.9rem; color: #64748B; line-height: 1.5; cursor: pointer; }
 
-        /* --- 4. MODERN ICONS (2026 Style) --- */
+        /* 5. BUTTON (Premium Gradient) */
+        .submit-btn {
+            width: 100%;
+            padding: 16px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            border: none;
+            border-radius: 10px;
+            background: linear-gradient(135deg, #0A2540 0%, #1E40AF 100%);
+            color: white;
+            box-shadow: 0 4px 12px rgba(10, 37, 64, 0.2);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(10, 37, 64, 0.3);
+        }
+
+        /* 6. SOCIAL ICONS */
         .icon-container {
-            margin-top: 40px;
-            padding-top: 24px;
-            border-top: 1px solid var(--border-color);
+            margin-top: 45px;
+            padding-top: 25px;
+            border-top: 1px solid #E2E8F0;
             display: flex;
             justify-content: center;
-            gap: 32px; /* Space between icons */
+            gap: 25px;
         }
 
         .social-icon {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 48px;
-            height: 48px;
+            display: flex; align-items: center; justify-content: center;
+            width: 50px; height: 50px;
             border-radius: 12px;
-            background-color: var(--bg-body);
-            color: var(--text-main);
+            background-color: white;
+            color: #64748B;
+            border: 1px solid #E2E8F0;
             transition: all 0.3s ease;
-            text-decoration: none;
-            border: 1px solid var(--border-color);
         }
-
-        .social-icon svg {
-            width: 24px;
-            height: 24px;
-            fill: currentColor;
-        }
-
-        /* Hover Effects */
+        .social-icon svg { width: 24px; height: 24px; fill: currentColor; }
         .social-icon:hover {
-            transform: translateY(-4px); /* Lifts up */
-            background-color: var(--primary-navy); /* Turns Navy/White */
-            color: var(--bg-body); /* Icon contrast */
-            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-            border-color: transparent;
+            transform: translateY(-4px);
+            background-color: #0A2540; color: white; border-color: #0A2540;
+            box-shadow: 0 4px 12px rgba(10, 37, 64, 0.15);
+        }
+
+        /* --- DARK MODE OVERRIDES (Nuclear Fix) --- */
+        [data-theme="dark"] .form-wrapper {
+            background: rgba(30, 41, 59, 0.7) !important;
+            border-color: rgba(255,255,255,0.05) !important;
+        }
+        [data-theme="dark"] .form-header h1 { color: #ffffff !important; }
+        [data-theme="dark"] .form-header p { color: #cbd5e1 !important; }
+        
+        [data-theme="dark"] .form-label { color: #e2e8f0 !important; }
+        [data-theme="dark"] .form-input, 
+        [data-theme="dark"] .form-select, 
+        [data-theme="dark"] .form-textarea {
+            background-color: rgba(15, 23, 42, 0.6) !important;
+            border-color: #475569 !important;
+            color: #ffffff !important;
+        }
+        [data-theme="dark"] .form-input:focus { border-color: #38bdf8 !important; }
+        
+        [data-theme="dark"] .checkbox-label { color: #cbd5e1 !important; }
+        
+        [data-theme="dark"] .social-icon {
+            background-color: rgba(15, 23, 42, 0.6) !important;
+            border-color: #475569 !important;
+            color: #cbd5e1 !important;
+        }
+        [data-theme="dark"] .social-icon:hover {
+            background-color: #38bdf8 !important;
+            color: #0f172a !important;
         }
 
         /* Mobile Adjustments */
         @media (max-width: 768px) {
-            .form-wrapper { padding: 24px; max-width: 100%; }
-            .form-header h1 { font-size: 1.75rem; }
-            .contact-section { padding: 20px 16px; }
+            .form-wrapper { padding: 30px 20px; }
+            .form-header h1 { font-size: 1.8rem; }
+            .contact-section { padding: 40px 16px; }
         }
     </style>
 </head>
@@ -132,15 +171,16 @@
 
     <header>
         <div class="container nav-flex">
-          <a href="index.html" class="brand-logo">
-    <div class="logo-icon-wrapper">
-        <img src="assets/images/logo-header.png" alt="MVN FinHub Logo">
-    </div>
-    <div class="brand-text">
-        <span class="text-mvn">MVN</span><span class="text-finhub">FinHub</span>
-    </div>
-</a>
-            <button class="mobile-toggle" id="mobile-menu-toggle">☰</button>
+            <a href="index.html" class="brand-logo">
+                <div class="logo-icon-wrapper">
+                    <img src="assets/images/logo-header.png" alt="MVN FinHub Logo">
+                </div>
+                <div class="brand-text">
+                    <span class="text-mvn">MVN</span><span class="text-finhub">FinHub</span>
+                </div>
+            </a>
+            
+            <button class="mobile-toggle" id="mobile-menu-toggle" aria-label="Toggle Menu">☰</button>
 
             <nav class="nav-links" id="nav-links">
                 <a href="index.html" class="nav-item">Home</a>
@@ -160,11 +200,11 @@
                 <p>Securely submit your documentation requirements. <br>Response within 24 hours.</p>
             </div>
 
-            <div id="successMessage" style="display: none; text-align: center; color: var(--accent-emerald); padding: 20px;">
+            <div id="successMessage" style="display: none; text-align: center; color: #10B981; padding: 20px;">
                 <h2 style="margin-bottom: 10px;">✓ Enquiry Sent</h2>
-                <p>Reference ID: <strong id="refIdDisplay" style="color: var(--text-head);"></strong></p>
-                <p style="margin-top: 10px; font-size: 0.9rem; color: var(--text-main);">Thank you. We will contact you shortly.</p>
-                <a href="index.html" class="btn btn-primary" style="margin-top: 15px; display: inline-block;">Return Home</a>
+                <p>Reference ID: <strong id="refIdDisplay" style="color: #0A2540;"></strong></p>
+                <p style="margin-top: 10px; font-size: 0.9rem; color: #64748B;">Thank you. We will contact you shortly.</p>
+                <a href="index.html" class="submit-btn" style="margin-top: 15px; display: inline-block; text-decoration: none; width: auto; padding: 10px 24px;">Return Home</a>
             </div>
 
             <form id="enquiryForm">
@@ -208,7 +248,7 @@
                     </label>
                 </div>
 
-                <button type="submit" class="submit-btn btn btn-primary" style="width: 100%; padding: 14px; font-size: 1rem; cursor: pointer; border: none; border-radius: 8px;">
+                <button type="submit" class="submit-btn">
                     Submit Enquiry
                 </button>
 
@@ -233,14 +273,55 @@
 
     <footer>
         <div class="container">
+            <div class="footer-logo-container">
+                <img src="assets/images/logo-3d-full.png" alt="MVN FinHub Premium" class="footer-3d-logo">
+            </div>
+
             <p>&copy; <span class="copyright-year">2026</span> MVN FinHub</p>
+            <p style="font-size: 0.9rem; margin-top: 10px; max-width: 600px; margin-left: auto; margin-right: auto;">
+                MVN FinHub provides strictly non-advisory financial process, documentation, and educational support.
+            </p>
+
             <div class="footer-links">
-                <a href="legal.html">Privacy</a>
+                <a href="legal.html">Privacy & Legal</a>
                 <a href="contact.html">Contact</a>
                 <a href="https://instagram.com/mvnfinhub" target="_blank">Instagram</a>
+                
+                <button id="footer-theme-btn" class="theme-btn-footer" onclick="toggleTheme()" aria-label="Toggle Dark Mode" style="cursor: pointer;">🌙</button>
             </div>
         </div>
     </footer>
+
+    <script>
+        // 1. Theme Logic
+        if(localStorage.getItem('theme') === 'dark') {
+            document.documentElement.setAttribute('data-theme', 'dark');
+            const btn = document.getElementById('footer-theme-btn');
+            if(btn) btn.textContent = '☀️';
+        }
+
+        function toggleTheme() {
+            const html = document.documentElement;
+            const btn = document.getElementById('footer-theme-btn');
+            const current = html.getAttribute('data-theme');
+
+            if (current === 'dark') {
+                html.setAttribute('data-theme', 'light');
+                localStorage.setItem('theme', 'light');
+                btn.textContent = '🌙';
+            } else {
+                html.setAttribute('data-theme', 'dark');
+                localStorage.setItem('theme', 'dark');
+                btn.textContent = '☀️';
+            }
+        }
+
+        // 2. Kill Ghost Icons
+        window.addEventListener('load', function() {
+            const ghosts = document.querySelectorAll('.theme-btn-floating, #theme-toggle-float');
+            ghosts.forEach(el => el.remove());
+        });
+    </script>
 
 </body>
 </html>
