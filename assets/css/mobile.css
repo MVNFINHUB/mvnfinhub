@@ -2,24 +2,26 @@
 
 @media (max-width: 768px) {
     
-    /* 1. HEADER & LOGO */
+   /* 1. HEADER & LOGO */
     .nav-flex {
-        flex-wrap: nowrap; /* Keeps logo and menu button on same line */
+        flex-wrap: nowrap; /* Forces logo and menu button to stay side-by-side */
         align-items: center;
-        gap: 15px;
+        gap: 10px;
+        justify-content: space-between;
     }
     
     .brand-logo {
-        gap: 10px; /* Slightly tighter gap on mobile */
+        gap: 8px; /* Tighter gap for mobile */
+        flex-shrink: 0; /* Prevents logo from squishing */
     }
 
-    /* Adjusted Mobile Size (Big enough to see, small enough to fit) */
+    /* Mobile Sizes */
     .brand-logo img {
-        height: 40px; 
+        height: 36px; /* Smaller but visible */
     }
 
     .brand-name {
-        font-size: 1.25rem; /* Readable but compact */
+        font-size: 1.2rem; /* Readable on small screens */
     }
 
     /* 2. HAMBURGER BUTTON */
