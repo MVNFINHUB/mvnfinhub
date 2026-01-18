@@ -2,20 +2,20 @@
 
 @media (max-width: 768px) {
     
-/* 1. MOBILE HEADER & LOGO */
+/* 1. MOBILE HEADER - TIGHT FIT */
     .brand-logo {
-        gap: 6px; /* Very tight gap on mobile */
+        gap: 0px; /* No gap on mobile either */
     }
 
-    /* Bigger Mobile Icon */
+    /* Mobile Icon */
     .logo-icon-wrapper img {
-        height: 48px; /* Increased from 44px */
-        margin-right: -2px; /* Pulls text closer */
+        height: 50px; /* Big for mobile */
+        margin-right: -8px; /* Pull text close */
     }
 
-    /* Readable Mobile Text */
+    /* Mobile Text */
     .brand-text {
-        font-size: 1.4rem; 
+        font-size: 1.5rem; 
     }
     /* 2. HAMBURGER BUTTON */
     .mobile-toggle {
