@@ -1,9 +1,9 @@
-/* MVN FINHUB - MAIN STYLES (FINAL PREMIUM BUILD) */
+/* MVN FINHUB - FINAL CORRECTED STYLES (Content Safe) */
 
 @import url('./variables.css');
 @import url('./components.css');
-@import url('./mobile.css');
 
+/* --- 1. GLOBAL LAYOUT & CENTERING (Crucial Fix) --- */
 html { scroll-behavior: smooth; }
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -12,194 +12,191 @@ body {
     background-color: var(--bg-body);
     color: var(--text-main);
     line-height: 1.6;
-    display: flex; flex-direction: column; min-height: 100vh;
-    transition: background-color 0.3s ease, color 0.3s ease;
+    display: flex; 
+    flex-direction: column; 
+    min-height: 100vh;
+}
+
+/* THE CONTAINER: This forces everything to the center */
+.container {
+    width: 100%;
+    max-width: 1200px;      /* Maximum width for big screens */
+    margin: 0 auto;         /* MAGIC CODE: Centers the box horizontally */
+    padding: 0 24px;        /* Safety gap so content never touches edges */
+    position: relative;
 }
 
 h1, h2, h3, h4 { font-family: var(--font-serif); color: var(--text-head); letter-spacing: -0.5px; margin-bottom: 16px; }
 a { text-decoration: none; color: inherit; transition: color 0.2s; }
+ul { list-style: none; } /* Reset default lists */
 
-/* --- 1. HEADER (Glass, Scrolls Away) --- */
+/* --- 2. HEADER --- */
 header {
     background-color: rgba(255, 255, 255, 0.95);
     backdrop-filter: blur(16px);
     -webkit-backdrop-filter: blur(16px);
     border-bottom: 1px solid rgba(0,0,0,0.05);
     padding: 12px 0;
-    position: relative; /* Scrolls away naturally */
+    position: relative;
     z-index: 1000;
     width: 100%;
 }
-
-body { padding-top: 0; }
 
 [data-theme="dark"] header {
     background-color: rgba(15, 23, 42, 0.9);
     border-bottom: 1px solid rgba(255,255,255,0.1);
 }
 
-.nav-flex { display: flex; justify-content: space-between; align-items: center; }
+.nav-flex { 
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center; 
+}
 
-/* --- 2. HEADER LOGO (Connected & Big) --- */
+/* LOGO */
 .brand-logo { 
     display: flex; align-items: center; gap: 0px; 
-    text-decoration: none; padding: 2px 0; overflow: visible;
+    text-decoration: none; padding: 2px 0;
 }
-
 .logo-icon-wrapper img {
-    height: 70px; /* Huge Size */
-    width: auto;
-    object-fit: contain;
-    filter: drop-shadow(0 4px 6px rgba(0,0,0,0.1));
-    transition: all 0.3s ease;
-    margin-right: -25px; /* Force Connection */
-    position: relative; z-index: 1;
+    height: 60px; width: auto; object-fit: contain;
+    margin-right: -20px; position: relative; z-index: 1;
 }
-
 .brand-text {
-    font-family: 'Merriweather', serif;
-    font-weight: 900;
-    font-size: 2.0rem;
-    line-height: 1;
-    letter-spacing: -1px;
-    display: flex; align-items: center;
-    position: relative; z-index: 2;
-    margin-left: -5px; 
+    font-family: 'Merriweather', serif; font-weight: 900; font-size: 1.8rem;
+    line-height: 1; letter-spacing: -1px; display: flex; align-items: center;
+    position: relative; z-index: 2; margin-left: -2px; 
 }
+.text-mvn { color: #0A2540; }
+.text-finhub { color: #0077B6; font-weight: 900; margin-left: 2px; }
 
-.text-mvn { color: #0A2540; background: none; }
-.text-finhub { color: #0077B6; background: none; font-weight: 900; margin-left: 2px; }
-
-/* Dark Mode Logo Effects */
-[data-theme="dark"] .logo-icon-wrapper img { filter: drop-shadow(0 0 10px rgba(0, 210, 255, 0.6)); }
-[data-theme="dark"] .text-mvn {
-    background: linear-gradient(180deg, #ffffff 0%, #94a3b8 100%);
-    -webkit-background-clip: text; -webkit-text-fill-color: transparent; color: transparent; 
-}
-[data-theme="dark"] .text-finhub {
-    background: linear-gradient(180deg, #00C8FF 0%, #E0F7FF 50%, #0077B6 100%);
-    -webkit-background-clip: text; -webkit-text-fill-color: transparent; color: transparent;
-    filter: drop-shadow(0 0 5px rgba(0, 200, 255, 0.4));
-}
-
+/* NAV MENU */
 .nav-links { display: flex; gap: 32px; align-items: center; }
 .nav-item { font-weight: 500; font-size: 0.95rem; color: var(--text-main); }
 .nav-item:hover { color: var(--accent-emerald); }
-.nav-item.btn-nav { background: var(--text-head); color: var(--bg-body); padding: 10px 20px; border-radius: 8px; }
+.nav-item.btn-nav { background: var(--text-head); color: var(--bg-body); padding: 10px 24px; border-radius: 8px; }
 .mobile-toggle { display: none; }
 
-/* --- 3. PREMIUM HERO SECTION (Spacious & Safe) --- */
+/* --- 3. HERO SECTION (Safe Margins) --- */
 .hero-premium {
     position: relative;
-    padding: 180px 0 100px 0;
+    padding: 100px 0;
     background-color: #F8FAFC;
     overflow: hidden;
 }
 
-/* Glow Blobs */
 .hero-glow { position: absolute; border-radius: 50%; filter: blur(90px); z-index: 0; opacity: 0.5; }
 .glow-left { width: 400px; height: 400px; background: rgba(0, 200, 255, 0.15); top: -100px; left: -100px; }
 .glow-right { width: 500px; height: 500px; background: rgba(10, 37, 64, 0.1); bottom: -100px; right: -100px; }
 
-/* The Glass Card - FINAL FIX */
 .hero-glass-card {
     position: relative;
     z-index: 1;
-    
-    /* Look: Frosted Glass (Spacious & Clear) */
-    background: rgba(255, 255, 255, 0.85) !important;
+    background: rgba(255, 255, 255, 0.85);
     backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
     border: 1px solid rgba(255, 255, 255, 0.9);
     border-radius: 24px;
-    
-    /* Padding: Spacious */
-    padding: 60px 40px !important;
-    
-    /* Size: Wide but Safe (No Edge Touching) */
-    width: 92% !important;        /* 4% Safety Gap on sides */
-    max-width: 950px !important;  /* Wide Premium Size (Not a small box) */
-    margin: 0 auto !important;    /* Perfectly Centered */
-    
+    padding: 60px 40px;
+    /* Center and constrain width */
+    width: 100%; max-width: 900px; margin: 0 auto; 
     text-align: center;
-    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.08) !important;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
 }
 
-/* Container Safety */
-.hero-premium .container {
-    display: flex !important; justify-content: center !important;
-    width: 100% !important; padding: 0 !important;
-}
+.hero-glass-card h1 { color: #0A2540; font-family: 'Merriweather', serif; font-weight: 800; font-size: 2.6rem; margin-bottom: 24px; line-height: 1.3; }
+.hero-glass-card p { color: #475569; font-size: 1.15rem; margin-bottom: 30px; line-height: 1.6; max-width: 750px; margin-left: auto; margin-right: auto; }
 
-/* Typography */
-.hero-glass-card h1 {
-    color: #0A2540; font-family: 'Merriweather', serif; font-weight: 800;
-    font-size: 2.8rem; margin-bottom: 20px; line-height: 1.2;
-}
-.hero-glass-card p {
-    color: #475569; font-size: 1.15rem; margin-bottom: 30px;
-    line-height: 1.6; max-width: 750px; margin-left: auto; margin-right: auto;
-}
-
-/* Trust Tags */
 .trust-indicators { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; margin-bottom: 35px; }
-.trust-tag {
-    font-size: 0.85rem; font-weight: 600; color: #0A2540;
-    background: rgba(0, 200, 255, 0.1); padding: 6px 16px;
-    border-radius: 20px; border: 1px solid rgba(0, 200, 255, 0.2);
+.trust-tag { font-size: 0.85rem; font-weight: 600; color: #0A2540; background: rgba(0, 200, 255, 0.1); padding: 6px 16px; border-radius: 20px; border: 1px solid rgba(0, 200, 255, 0.2); }
+.hero-micro-text { font-size: 0.85rem; color: #64748B; font-weight: 500; margin-top: 15px; }
+
+/* --- 4. CONTENT GRIDS (Restoring your layout) --- */
+.section-padding { padding: 60px 0; }
+.grid-4 { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; }
+
+.face-card {
+    background: var(--surface-card);
+    padding: 30px;
+    border-radius: 12px;
+    border: 1px solid var(--border-color);
+    box-shadow: 0 4px 6px rgba(0,0,0,0.02);
 }
-.btn-group { margin-bottom: 15px; }
-.hero-micro-text { font-size: 0.85rem; color: #64748B; font-weight: 500; }
-
-/* Hero Dark Mode */
-[data-theme="dark"] .hero-premium { background-color: #0F172A; }
-[data-theme="dark"] .hero-glass-card { background: rgba(30, 41, 59, 0.6) !important; border: 1px solid rgba(255,255,255,0.05); }
-[data-theme="dark"] .hero-glass-card h1 { color: #ffffff; }
-[data-theme="dark"] .hero-glass-card p { color: #cbd5e1; }
-[data-theme="dark"] .trust-tag { background: rgba(255, 255, 255, 0.1); color: #e2e8f0; border-color: rgba(255,255,255,0.1); }
-[data-theme="dark"] .hero-micro-text { color: #94A3B8; }
-
-/* --- 4. FOOTER (With 3D Logo & Theme Button) --- */
-footer {
+.face-card h3 { margin-bottom: 15px; color: var(--text-head); }
+.service-list li {
+    margin-bottom: 10px;
+    padding-left: 20px;
     position: relative;
-    background-color: #0F172A; /* Dark Slate */
+    font-size: 0.95rem;
+    color: var(--text-main);
+}
+.service-list li::before {
+    content: "✓"; color: var(--accent-emerald);
+    position: absolute; left: 0; top: 0; font-weight: bold;
+}
+
+.why-list li { margin-bottom: 12px; padding-left: 24px; position: relative; }
+.why-list li::before { content: "✓"; color: var(--accent-emerald); position: absolute; left: 0; font-weight: bold; }
+
+/* --- 5. FOOTER (With Right Corner Icon) --- */
+footer {
+    background-color: #0F172A; 
     color: #94A3B8;
-    padding: 60px 0;
+    padding: 60px 0; 
     text-align: center;
     margin-top: auto;
     border-top: 1px solid rgba(255,255,255,0.1);
 }
 
-/* 3D Footer Logo Style */
-.footer-logo-container { margin-bottom: 30px; text-align: center; }
-.footer-3d-logo {
-    max-width: 300px; width: 100%; height: auto;
-    /* Reflection Effect */
-    -webkit-box-reflect: below 0px linear-gradient(to bottom, rgba(0,0,0,0.0), rgba(0,0,0,0.2));
-}
-
+.footer-logo-container { margin-bottom: 30px; }
+.footer-3d-logo { max-width: 250px; width: 100%; height: auto; -webkit-box-reflect: below 0px linear-gradient(to bottom, rgba(0,0,0,0.0), rgba(0,0,0,0.2)); }
 .footer-links { margin-top: 24px; display: flex; justify-content: center; gap: 24px; }
-.footer-links a:hover { color: white; }
 
-/* Contact Teaser Fix */
-.contact-teaser { background-color: #0A2540 !important; color: white !important; }
-.contact-teaser h2, .contact-teaser p { color: white !important; }
-.contact-teaser .btn { background-color: white !important; color: #0A2540 !important; font-weight: 600; }
-
-/* Dark Mode Button (Bottom Right) */
-footer .container {
-    position: relative; display: flex; flex-direction: column; align-items: center; justify-content: center;
-}
-
+/* MOON ICON - BOTTOM RIGHT CORNER */
 .theme-btn-footer {
-    position: absolute; right: 0; top: 50%; transform: translateY(-50%);
-    width: 36px; height: 36px;
+    position: absolute;
+    bottom: 0; 
+    right: 0; /* Stays in the right corner of the container */
+    width: 40px; height: 40px;
     background: rgba(255, 255, 255, 0.1);
     border: 1px solid rgba(255, 255, 255, 0.2);
     border-radius: 8px;
     color: #94A3B8; cursor: pointer;
-    font-size: 1rem;
+    font-size: 1.2rem;
     display: flex; align-items: center; justify-content: center;
-    transition: all 0.2s ease;
 }
-.theme-btn-footer:hover { background-color: white; color: #0F172A; }
+.theme-btn-footer:hover { background: white; color: #0F172A; }
+
+/* --- 6. MOBILE RESPONSIVENESS --- */
+@media (max-width: 768px) {
+    .container { padding: 0 20px; } /* Prevent edge-to-edge */
+    
+    .brand-text { font-size: 1.4rem; }
+    .logo-icon-wrapper img { height: 50px; margin-right: -15px; }
+    
+    .mobile-toggle { display: block; font-size: 1.8rem; background: none; border: none; cursor: pointer; color: var(--text-head); }
+    
+    .nav-links {
+        display: none; position: absolute; top: 100%; left: 0; width: 100%;
+        flex-direction: column; background: #fff; padding: 20px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.1); border-radius: 0 0 12px 12px;
+        gap: 15px; z-index: 999; border-top: 1px solid #eee;
+    }
+    .nav-links.active { display: flex; }
+    .nav-item.btn-nav { background: #0A2540; color: white; margin-top: 10px; }
+
+    .hero-premium { padding: 80px 0 60px 0; }
+    .hero-glass-card { padding: 40px 20px; border-radius: 16px; }
+    
+    /* Footer Icon Adjustment for Mobile */
+    .theme-btn-footer { position: relative; margin: 20px auto 0 auto; right: auto; bottom: auto; }
+}
+
+/* --- 7. DARK MODE COLORS --- */
+[data-theme="dark"] .hero-premium { background-color: #0F172A; }
+[data-theme="dark"] .hero-glass-card { background: rgba(30, 41, 59, 0.6); border-color: rgba(255,255,255,0.05); }
+[data-theme="dark"] .hero-glass-card h1 { color: #ffffff; }
+[data-theme="dark"] .hero-glass-card p { color: #cbd5e1; }
+[data-theme="dark"] .trust-tag { background: rgba(255,255,255,0.1); color: #e2e8f0; }
+[data-theme="dark"] .logo-icon-wrapper img { filter: drop-shadow(0 0 10px rgba(0, 210, 255, 0.6)); }
+[data-theme="dark"] .text-mvn { color: white; }
+[data-theme="dark"] .text-finhub { color: #00C8FF; }
