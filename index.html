@@ -189,6 +189,36 @@
             </div>
         </div>
     </footer>
+<script>
+    (function() {
+        const btn = document.getElementById('footer-theme-btn');
+        const html = document.documentElement;
 
+        // 1. Check saved theme immediately
+        const saved = localStorage.getItem('theme');
+        if(saved === 'dark') {
+            html.setAttribute('data-theme', 'dark');
+            if(btn) btn.textContent = '☀️';
+        }
+
+        // 2. Add Click Listener
+        if(btn) {
+            btn.addEventListener('click', function(e) {
+                e.preventDefault();
+                const isDark = html.getAttribute('data-theme') === 'dark';
+                
+                if(isDark) {
+                    html.setAttribute('data-theme', 'light');
+                    localStorage.setItem('theme', 'light');
+                    btn.textContent = '🌙';
+                } else {
+                    html.setAttribute('data-theme', 'dark');
+                    localStorage.setItem('theme', 'dark');
+                    btn.textContent = '☀️';
+                }
+            });
+        }
+    })();
+</script>
 </body>
 </html>
