@@ -32,18 +32,28 @@ header {
 .nav-flex { display: flex; justify-content: space-between; align-items: center; }
 
 /* LOGO UPDATE (Image Style) */
+/* --- BRAND LOGO & NAME --- */
 .brand-logo { 
-    display: flex;         /* Use Flexbox to center image */
-    align-items: center;   /* Vertical Center */
+    display: flex; 
+    align-items: center; 
+    gap: 12px; /* Space between logo and text */
     text-decoration: none; 
-    border: none;          /* Removes any link borders */
 }
 
 .brand-logo img {
-    height: 40px;          /* Adjust height here (try 45px or 50px if small) */
-    width: auto;           /* Auto width keeps it from squishing */
-    object-fit: contain;   /* Ensures clarity */
-    display: block;        /* Removes bottom spacing gap */
+    height: 36px;  /* Slightly smaller to fit nicely */
+    width: auto;
+    object-fit: contain;
+}
+
+/* Unique Brand Name Design */
+.brand-name {
+    font-family: 'Merriweather', serif; /* Premium Serif Font */
+    font-weight: 700;
+    font-size: 1.3rem;
+    color: var(--text-head); /* Adapts to Dark Mode automatically */
+    letter-spacing: -0.5px;  /* Tight, modern spacing */
+    line-height: 1;
 }
 
 /* Keep the rest of your CSS below this line (.nav-links, etc.) */
