@@ -76,13 +76,13 @@
     /* Hero Mobile Fixes */
 @media (max-width: 768px) {
     .hero-premium { padding-top: 130px; }
- /* --- MOBILE HERO GAP FIX --- */
-    .hero-glass-card {
-        width: 90% !important;       /* Leave 5% gap on both sides */
-        max-width: 90% !important;
-        margin: 0 auto !important;   /* Center it */
-        padding: 40px 20px !important;
-    }
+ /* --- MOBILE HERO FIX --- */
+.hero-glass-card {
+    width: 90% !important;      /* Keep the 5% gap */
+    max-width: 90% !important;
+    margin: 0 auto !important;  /* Center it */
+    padding: 30px 20px !important; /* Smaller internal padding for phones */
+}
     /* --- FIX: FOOTER OVERLAP --- */
     footer .container {
         /* Adds BIG space at bottom so icon doesn't touch text */
