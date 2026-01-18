@@ -152,36 +152,38 @@ body {
 .glow-left { width: 400px; height: 400px; background: rgba(0, 200, 255, 0.15); top: -100px; left: -100px; }
 .glow-right { width: 500px; height: 500px; background: rgba(10, 37, 64, 0.1); bottom: -100px; right: -100px; }
 
-/* --- FINAL FIX: COMPACT CENTERED BOX (Not Landscape) --- */
+/* --- HERO CARD FIX (Strict Centering & Clarity) --- */
 .hero-glass-card {
     position: relative;
     z-index: 1;
-
-    /* 1. VISUAL: Solid White Box */
-    background: #ffffff !important;
-    border: 1px solid #e2e8f0 !important;
-    border-radius: 24px;
-
-    /* 2. SPACING: Internal padding */
-    padding: 60px 40px !important;
-
-    /* 3. SIZE FIX: Make it NARROWER (Compact Box) */
-    width: 90% !important;        /* Gap on sides on mobile */
-    max-width: 700px !important;  /* STOP at 700px (Prevents Landscape look) */
     
-    /* 4. ALIGNMENT: Dead Center */
-    margin: 0 auto !important;
-
+    /* 1. CLARITY FIX: Stronger background (0.95) so text is super clear */
+    background: rgba(255, 255, 255, 0.95) !important; 
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 1);
+    border-radius: 24px;
+    
+    /* 2. SPACING FIX: Internal breathing room */
+    padding: 60px 40px;
+    
+    /* 3. LAYOUT FIX: Force gaps on the sides */
+    width: 90% !important;        /* GUARANTEES it won't touch edges */
+    max-width: 800px !important;  /* Stops it from getting too wide */
+    margin-left: auto !important; /* Force Left Margin */
+    margin-right: auto !important;/* Force Right Margin */
+    
     text-align: center;
-    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1) !important;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1); /* Stronger shadow */
 }
 
-/* Ensure container allows centering */
+/* Ensure the parent container doesn't block centering */
 .hero-premium .container {
     display: flex !important;
     justify-content: center !important;
     align-items: center !important;
-    width: 100% !important;
+    flex-direction: column !important;
+    width: 100%;
 }
 /* Typography */
 .hero-glass-card h1 {
