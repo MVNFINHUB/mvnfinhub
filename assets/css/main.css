@@ -152,12 +152,12 @@ body {
 .glow-left { width: 400px; height: 400px; background: rgba(0, 200, 255, 0.15); top: -100px; left: -100px; }
 .glow-right { width: 500px; height: 500px; background: rgba(10, 37, 64, 0.1); bottom: -100px; right: -100px; }
 
-/* --- FINAL HERO FIX (Guaranteed Gaps) --- */
+/* --- FINAL FIX: COMPACT CENTERED BOX (Not Landscape) --- */
 .hero-glass-card {
     position: relative;
     z-index: 1;
 
-    /* 1. CLARITY: Solid White Background */
+    /* 1. VISUAL: Solid White Box */
     background: #ffffff !important;
     border: 1px solid #e2e8f0 !important;
     border-radius: 24px;
@@ -165,25 +165,24 @@ body {
     /* 2. SPACING: Internal padding */
     padding: 60px 40px !important;
 
-    /* 3. LAYOUT FIX: CHANGE THIS FROM 100% TO 90% */
-    width: 90% !important;        /* This creates the gap on left/right */
-    max-width: 850px !important;  /* Stops it from getting too big */
+    /* 3. SIZE FIX: Make it NARROWER (Compact Box) */
+    width: 90% !important;        /* Gap on sides on mobile */
+    max-width: 700px !important;  /* STOP at 700px (Prevents Landscape look) */
     
-    /* 4. ALIGNMENT: Force Center */
+    /* 4. ALIGNMENT: Dead Center */
     margin: 0 auto !important;
 
     text-align: center;
     box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1) !important;
 }
 
-/* Ensure the container centers the card */
+/* Ensure container allows centering */
 .hero-premium .container {
     display: flex !important;
     justify-content: center !important;
+    align-items: center !important;
     width: 100% !important;
-    padding: 0 !important; /* Remove container padding so we control gaps via the card */
 }
-
 /* Typography */
 .hero-glass-card h1 {
     color: #0A2540;
