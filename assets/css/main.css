@@ -46,37 +46,42 @@ body {
 
 .nav-flex { display: flex; justify-content: space-between; align-items: center; }
 
-/* --- BIGGER LOGO & TIGHTER SPACING --- */
+/* --- FINAL LOGO FIX: NO GAP & MAX SIZE --- */
 .brand-logo { 
     display: flex; 
     align-items: center; 
-    gap: 8px; /* REDUCED GAP: Connects logo to text */
+    gap: 0px; /* REMOVE FLEX GAP COMPLETELY */
     text-decoration: none; 
     padding: 2px 0;
 }
 
-/* 1. Even Bigger Icon */
+/* 1. Massive Icon */
 .logo-icon-wrapper img {
-    height: 60px; /* INCREASED SIZE (Was 54px) */
+    height: 65px; /* VERY LARGE (Matches Brand Name Scale) */
     width: auto;
     object-fit: contain;
     filter: drop-shadow(0 4px 6px rgba(0,0,0,0.1));
     transition: all 0.3s ease;
-    /* Negative margin to pull it slightly closer if image has built-in padding */
-    margin-right: -4px; 
+    
+    /* THE "STRANGE GAP" KILLER */
+    /* This pulls the text closer to the image, ignoring empty space in the PNG */
+    margin-right: -12px; 
 }
 
-/* 2. Brand Text */
+/* 2. Big, Solid Brand Text */
 .brand-text {
     font-family: 'Merriweather', serif;
     font-weight: 900;
-    font-size: 1.8rem; /* Slightly larger text to match new logo */
+    font-size: 2.0rem; /* Increased to match the big logo */
     line-height: 1;
     letter-spacing: -0.5px;
     display: flex;
-    align-items: baseline;
+    align-items: center; /* Vertically centered with logo */
+    
+    /* Push text slightly down if it feels too high compared to logo */
+    position: relative;
+    top: 2px;
 }
-
 /* "MVN" - Solid Navy (Clear in Day Mode) */
 .text-mvn {
     color: #0A2540; 
