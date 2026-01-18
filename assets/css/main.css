@@ -153,19 +153,28 @@ body {
 .glow-right { width: 500px; height: 500px; background: rgba(10, 37, 64, 0.1); bottom: -100px; right: -100px; }
 
 /* The Glass Card */
+/* --- FIX: HERO LAYOUT ALIGNMENT --- */
 .hero-glass-card {
     position: relative;
     z-index: 1;
+    
+    /* VISUAL STYLE */
     background: rgba(255, 255, 255, 0.7);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
     border: 1px solid rgba(255, 255, 255, 0.8);
     border-radius: 24px;
-    padding: 60px 40px;
+    
+    /* SPACING INSIDE THE BOX (Keeps text away from box edges) */
+    padding: 60px 40px; 
+    
+    /* ALIGNMENT FIX (Prevents Edge-to-Edge) */
+    width: 90%;            /* Forces space on left/right */
+    max-width: 1000px;     /* Stops it from getting too wide on big screens */
+    margin: 0 auto;        /* Perfectly centers the box */
+    
     text-align: center;
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.05);
-    max-width: 900px;
-    margin: 0 auto;
 }
 
 /* Typography */
