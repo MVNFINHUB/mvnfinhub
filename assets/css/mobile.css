@@ -73,11 +73,13 @@
         border-radius: 8px;
     }
 
-    /* 4. CONTENT ADJUSTMENTS */
-    .hero { padding-top: 60px; } 
-    .hero h1 { font-size: 2rem !important; }
-    .grid-4 { grid-template-columns: 1fr !important; }
-    .container { padding: 0 20px; }
+    /* Hero Mobile Fixes */
+@media (max-width: 768px) {
+    .hero-premium { padding-top: 130px; }
+    .hero-glass-card h1 { font-size: 1.8rem; }
+    .trust-indicators { gap: 8px; }
+    .trust-tag { font-size: 0.75rem; padding: 4px 12px; }
+}
 
     /* --- FIX: FOOTER OVERLAP --- */
     footer .container {
