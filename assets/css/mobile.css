@@ -1,17 +1,16 @@
-/* MVN FINHUB - MOBILE CORRECTIONS (FINAL v4) */
+/* MVN FINHUB - MOBILE STYLES (FINAL CLEAN VERSION) */
 
 @media (max-width: 768px) {
-    
-/* 1. MOBILE HEADER - TIGHT FIT */
+
+    /* --- 1. HEADER & LOGO (Tight & Big) --- */
     .brand-logo {
         gap: 0px;
     }
 
     /* Mobile Icon */
     .logo-icon-wrapper img {
-        height: 55px; /* Very big for mobile */
-        /* Aggressive pull for mobile */
-        margin-right: -18px; 
+        height: 55px; /* Big for mobile */
+        margin-right: -18px; /* Aggressive pull to connect text */
     }
 
     /* Mobile Text */
@@ -19,7 +18,8 @@
         font-size: 1.6rem;
         margin-left: -4px;
     }
-    /* 2. HAMBURGER BUTTON */
+
+    /* --- 2. HAMBURGER BUTTON --- */
     .mobile-toggle {
         display: block !important;
         font-size: 1.8rem;
@@ -31,7 +31,7 @@
         margin-left: auto; 
     }
 
-    /* 3. MENU DROPDOWN */
+    /* --- 3. MENU DROPDOWN --- */
     .nav-links {
         display: none !important;
         width: 100%;
@@ -63,32 +63,30 @@
     }
     .nav-item:last-child { border-bottom: none; }
     
-    /* --- FIX: MOBILE MENU BUTTON (Force Dark Text) --- */
+    /* Mobile Menu Button (Navy Text Fix) */
     .nav-item.btn-nav {
         margin-top: 10px;
         background-color: #ffffff !important; 
-        color: #0A2540 !important; /* NAVY BLUE TEXT (Fixes invisible text) */
+        color: #0A2540 !important; /* Forces readable Navy Blue text */
         border: 1px solid #e2e8f0;
         font-weight: 700;
         border-radius: 8px;
     }
 
-   /* Hero Mobile Fixes */
-@media (max-width: 768px) {
-    .hero-premium { padding-top: 130px; }
-    /* --- MOBILE HERO FIX --- */
-.hero-glass-card {
-    width: 92% !important;        /* 4% gap on left and right */
-    max-width: 92% !important;
-    margin: 0 auto !important;    /* Center it */
-    padding: 40px 20px !important; /* Good spacing */
-}
-    /* In public/assets/css/mobile.css */
+    /* --- 4. PREMIUM HERO MOBILE FIXES --- */
+    .hero-premium { 
+        padding-top: 130px; 
+    }
 
-@media (max-width: 768px) {
-    /* ... other mobile styles ... */
+    /* Hero Card: 92% Width (Safe Edges) */
+    .hero-glass-card {
+        width: 92% !important;        
+        max-width: 92% !important;
+        margin: 0 auto !important;    
+        padding: 40px 20px !important; 
+    }
 
-    /* KEEP THIS - IT MAKES TAGS LOOK GOOD ON PHONES */
+    /* Trust Tags: Neat Mobile Layout */
     .trust-indicators { 
         gap: 8px; 
     }
@@ -96,21 +94,20 @@
         font-size: 0.75rem; 
         padding: 4px 12px; 
     }
-}
-    }
-    /* --- FIX: FOOTER OVERLAP --- */
+
+    /* --- 5. FOOTER & MOON ICON FIX --- */
     footer .container {
-        /* Adds BIG space at bottom so icon doesn't touch text */
+        /* Big padding at bottom so icon doesn't overlap text */
         padding-bottom: 90px !important; 
         position: relative;
     }
 
-    /* Positions icon in that empty space */
+    /* Center the Moon Icon at the Bottom */
     .theme-btn-footer {
         position: absolute;
         bottom: 25px !important; 
         left: 50% !important;
-        transform: translateX(-50%) !important; /* Centers it */
+        transform: translateX(-50%) !important; /* Perfect Center */
         width: 44px;
         height: 44px;
         background-color: var(--surface-card);
