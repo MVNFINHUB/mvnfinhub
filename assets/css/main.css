@@ -32,44 +32,56 @@ header {
 .nav-flex { display: flex; justify-content: space-between; align-items: center; }
 
 /* LOGO UPDATE (Image Style) */
-/* --- PREMIUM BRANDING (LOGO & NAME) --- */
+/* --- FINAL PREMIUM BRANDING (LOGO + TEXT) --- */
 .brand-logo { 
     display: flex; 
     align-items: center; 
-    gap: 14px; /* More breathing room */
+    gap: 12px; 
     text-decoration: none; 
+    padding: 4px 0;
 }
 
-/* 1. Bigger, clearer Logo */
+/* 1. The Adaptive Logo Image (Glow Effect) */
 .brand-logo img {
-    height: 48px;  /* Increased from 36px to 48px for better visibility */
+    height: 44px;  /* Perfect balanced size */
     width: auto;
     object-fit: contain;
-    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.05)); /* Subtle 3D lift */
+    /* Cyan Glow to match your 3D style */
+    filter: drop-shadow(0 0 5px rgba(0, 200, 255, 0.4)); 
     transition: transform 0.3s ease;
 }
 
 .brand-logo:hover img {
-    transform: scale(1.05); /* Gentle zoom on hover */
+    transform: scale(1.05); /* Subtle lift on hover */
+    filter: drop-shadow(0 0 8px rgba(0, 200, 255, 0.7));
 }
 
-/* 2. "Top 1%" Brand Name Design */
+/* 2. The "Top 1%" Brand Name (Gradient Text) */
 .brand-name {
     font-family: 'Merriweather', serif;
-    font-weight: 800; /* Extra Bold */
-    font-size: 1.6rem; /* Larger and authoritative */
+    font-weight: 800; 
+    font-size: 1.5rem; 
     line-height: 1;
-    letter-spacing: -0.75px; /* Tighter spacing looks modern/expensive */
+    letter-spacing: -0.5px;
     
-    /* THE "PREMIUM" GRADIENT EFFECT */
-    background: linear-gradient(135deg, var(--text-head) 30%, var(--accent-emerald) 100%);
+    /* Premium Gradient: Deep Navy to Electric Cyan */
+    background: linear-gradient(135deg, #0A2540 20%, #00C8FF 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
-    color: var(--text-head); /* Fallback */
+    color: #0A2540; /* Fallback */
     
     position: relative;
-    top: 1px; /* Optical alignment correction */
+    top: 1px;
+}
+
+/* Dark Mode Adjustment for Text Gradient */
+[data-theme="dark"] .brand-name {
+    /* White to Cyan Gradient for Dark Mode */
+    background: linear-gradient(135deg, #FFFFFF 20%, #00C8FF 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
 }
 
 /* Keep the rest of your CSS below this line (.nav-links, etc.) */
