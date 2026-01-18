@@ -8,115 +8,126 @@
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Merriweather:wght@400;700;900&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" href="assets/css/main.css?v=2">
+    <link rel="stylesheet" href="assets/css/main.css?v=platinum">
 
     <script src="assets/js/app.js" defer></script>
 
     <style>
-        /* --- PAGE SPECIFIC STYLES --- */
-        
-        /* Notice Box Colors (Adaptive) */
-        :root {
-            --notice-bg: #EFF6FF;
-            --notice-border: #1E40AF;
-            --notice-text: #1E3A8A;
-        }
-        
-        [data-theme="dark"] {
-            --notice-bg: #172554; /* Deep Blue for Dark Mode */
-            --notice-border: #60A5FA; /* Lighter Blue Border */
-            --notice-text: #DBEAFE; /* Light Blue Text */
-        }
+        /* --- PAGE SPECIFIC STYLES (Modern & Premium) --- */
 
-        /* --- PAGE HEADER --- */
-        .page-header {
-            background-color: var(--surface-glass); /* Glass effect */
-            padding: 60px 0 40px;
-            border-bottom: 1px solid var(--border-color);
-            text-align: center;
-        }
-        .page-header h1 { margin-bottom: 16px; font-size: 2.2rem; color: var(--text-head); }
-        .page-header p {
-            color: var(--text-muted);
-            max-width: 700px;
-            margin: 0 auto;
-            font-size: 1.1rem;
-        }
-
-        /* --- INSIGHT DOMAINS GRID --- */
+        /* 1. INSIGHT DOMAINS GRID */
         .insights-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
             gap: 30px;
         }
 
+        /* 2. TOPIC CARD (Glass + Color Accents) */
         .topic-card {
-            background: var(--surface-card); /* Adaptive Card */
-            padding: 32px;
-            border-radius: 12px;
-            border: 1px solid var(--border-color);
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(12px);
+            padding: 35px;
+            border-radius: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.8);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.03);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            overflow: hidden;
         }
-        
+
+        /* Color Accent Lines at the Top */
+        .topic-card:nth-child(1) { border-top: 5px solid #0EA5E9; } /* Sky Blue */
+        .topic-card:nth-child(2) { border-top: 5px solid #10B981; } /* Emerald */
+        .topic-card:nth-child(3) { border-top: 5px solid #8B5CF6; } /* Purple */
+        .topic-card:nth-child(4) { border-top: 5px solid #F59E0B; } /* Amber */
+
         .topic-card:hover {
             transform: translateY(-5px);
-            box-shadow: var(--shadow-lg);
-            border-color: var(--accent-emerald);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.06);
         }
 
         .topic-card h3 {
-            font-size: 1.35rem;
+            font-size: 1.4rem;
             margin-bottom: 20px;
-            padding-bottom: 16px;
-            border-bottom: 2px solid var(--bg-body); /* Adaptive Line */
-            color: var(--text-head);
+            padding-bottom: 15px;
+            border-bottom: 2px solid #E2E8F0;
+            color: #0A2540;
+            font-family: 'Merriweather', serif;
         }
 
+        /* 3. LIST STYLING (Clean Bullets) */
         .topic-list li {
             position: relative;
-            padding-left: 24px;
+            padding-left: 28px;
             margin-bottom: 12px;
             list-style: none;
-            color: var(--text-main);
+            color: #334155;
+            font-weight: 500;
         }
-        
-        /* Bullet Point */
         .topic-list li::before {
-            content: "▪"; 
+            content: "•"; 
             position: absolute;
-            left: 0;
-            color: var(--accent-emerald);
-            font-size: 1.5rem;
-            line-height: 1rem;
-            top: 2px;
+            left: 0; top: -5px;
+            color: #0077B6;
+            font-size: 2rem;
+            line-height: 1.5rem;
         }
 
-        /* --- IMPORTANT NOTICE BOX --- */
+        /* 4. IMPORTANT NOTICE BOX (Premium Info Card) */
         .notice-box {
-            background-color: var(--notice-bg);
-            border-left: 4px solid var(--notice-border);
-            padding: 30px;
+            background: linear-gradient(135deg, #EFF6FF 0%, #DBEAFE 100%);
+            border-left: 5px solid #2563EB; /* Blue Border */
+            border-radius: 12px;
+            padding: 40px;
             margin-top: 60px;
-            border-radius: 8px;
+            box-shadow: 0 10px 30px rgba(37, 99, 235, 0.1);
+            position: relative;
         }
         
         .notice-box h2 {
             font-size: 1.25rem;
-            margin-bottom: 12px;
-            color: var(--notice-border); /* Matches border color */
+            margin-bottom: 16px;
+            color: #1E40AF;
+            font-weight: 700;
+            display: flex; align-items: center; gap: 10px;
         }
+        .notice-box h2::before { content: "ℹ️"; font-size: 1.4rem; }
         
-        .notice-box p {
-            color: var(--notice-text);
-        }
+        .notice-box p { color: #1E3A8A; font-weight: 500; }
 
-        /* --- RESPONSIVE --- */
+        /* --- DARK MODE OVERRIDES (Nuclear Fix) --- */
+        [data-theme="dark"] .topic-card {
+            background: rgba(30, 41, 59, 0.6) !important;
+            border-color: rgba(255,255,255,0.05) !important;
+            /* Restore top borders in dark mode */
+            border-top-width: 5px !important;
+        }
+        /* Restore Border Colors in Dark Mode */
+        [data-theme="dark"] .topic-card:nth-child(1) { border-top-color: #0EA5E9 !important; }
+        [data-theme="dark"] .topic-card:nth-child(2) { border-top-color: #10B981 !important; }
+        [data-theme="dark"] .topic-card:nth-child(3) { border-top-color: #8B5CF6 !important; }
+        [data-theme="dark"] .topic-card:nth-child(4) { border-top-color: #F59E0B !important; }
+
+        [data-theme="dark"] .topic-card h3 {
+            color: #ffffff !important;
+            border-bottom-color: rgba(255,255,255,0.1) !important;
+        }
+        [data-theme="dark"] .topic-list li { color: #cbd5e1 !important; }
+        
+        /* Notice Box Dark Mode */
+        [data-theme="dark"] .notice-box {
+            background: rgba(30, 58, 138, 0.4) !important; /* Deep Blue Glass */
+            border-left-color: #60A5FA !important;
+        }
+        [data-theme="dark"] .notice-box h2 { color: #93C5FD !important; }
+        [data-theme="dark"] .notice-box p { color: #DBEAFE !important; }
+
+        /* Responsive */
         @media (max-width: 768px) {
+            .topic-card { padding: 25px; }
             .insights-grid { grid-template-columns: 1fr; }
-            .topic-card { padding: 24px; }
-            .page-header h1 { font-size: 1.75rem; }
         }
     </style>
 </head>
@@ -124,15 +135,16 @@
 
     <header>
         <div class="container nav-flex">
-           <a href="index.html" class="brand-logo">
-    <div class="logo-icon-wrapper">
-        <img src="assets/images/logo-header.png" alt="MVN FinHub Logo">
-    </div>
-    <div class="brand-text">
-        <span class="text-mvn">MVN</span><span class="text-finhub">FinHub</span>
-    </div>
-</a>
-            <button class="mobile-toggle" id="mobile-menu-toggle">☰</button>
+            <a href="index.html" class="brand-logo">
+                <div class="logo-icon-wrapper">
+                    <img src="assets/images/logo-header.png" alt="MVN FinHub Logo">
+                </div>
+                <div class="brand-text">
+                    <span class="text-mvn">MVN</span><span class="text-finhub">FinHub</span>
+                </div>
+            </a>
+            
+            <button class="mobile-toggle" id="mobile-menu-toggle" aria-label="Toggle Menu">☰</button>
 
             <nav class="nav-links" id="nav-links">
                 <a href="index.html" class="nav-item">Home</a>
@@ -144,11 +156,18 @@
         </div>
     </header>
 
-    <section class="page-header">
+    <section class="hero-premium">
+        <div class="hero-glow glow-left"></div>
+        <div class="hero-glow glow-right"></div>
+
         <div class="container">
-            <h1>Insights & Financial Awareness</h1>
-            <p>MVN FinHub Insights provide clear, structured explanations of financial processes and real-world documentation scenarios.</p>
-            <p style="margin-top: 12px; font-weight: 500; opacity: 0.8;">All content is strictly educational and non-advisory.</p>
+            <div class="hero-glass-card">
+                <h1>Insights & Financial Awareness</h1>
+                <p>MVN FinHub Insights provide clear, structured explanations of financial processes and real-world documentation scenarios.</p>
+                <div class="hero-micro-text" style="font-size: 1rem; margin-top: 15px; opacity: 0.9;">
+                    All content is strictly educational and non-advisory.
+                </div>
+            </div>
         </div>
     </section>
 
@@ -206,6 +225,10 @@
 
     <footer>
         <div class="container">
+            <div class="footer-logo-container">
+                <img src="assets/images/logo-3d-full.png" alt="MVN FinHub Premium" class="footer-3d-logo">
+            </div>
+
             <p>&copy; <span class="copyright-year">2026</span> MVN FinHub</p>
             <p style="margin-top: 8px;">Content explains processes, not decisions. No predictions, comparisons, or outcomes.</p>
             <p style="margin-bottom: 24px;">Users remain solely responsible for financial decisions. MVN FinHub’s role is limited to education and process clarity.</p>
@@ -214,9 +237,42 @@
                 <a href="legal.html">Privacy & Legal</a>
                 <a href="contact.html">Contact</a>
                 <a href="https://instagram.com/mvnfinhub" target="_blank">Instagram</a>
+                
+                <button id="footer-theme-btn" class="theme-btn-footer" onclick="toggleTheme()" aria-label="Toggle Dark Mode" style="cursor: pointer;">🌙</button>
             </div>
         </div>
     </footer>
+
+    <script>
+        // 1. Theme Logic
+        if(localStorage.getItem('theme') === 'dark') {
+            document.documentElement.setAttribute('data-theme', 'dark');
+            const btn = document.getElementById('footer-theme-btn');
+            if(btn) btn.textContent = '☀️';
+        }
+
+        function toggleTheme() {
+            const html = document.documentElement;
+            const btn = document.getElementById('footer-theme-btn');
+            const current = html.getAttribute('data-theme');
+
+            if (current === 'dark') {
+                html.setAttribute('data-theme', 'light');
+                localStorage.setItem('theme', 'light');
+                btn.textContent = '🌙';
+            } else {
+                html.setAttribute('data-theme', 'dark');
+                localStorage.setItem('theme', 'dark');
+                btn.textContent = '☀️';
+            }
+        }
+
+        // 2. Kill Ghost Icons
+        window.addEventListener('load', function() {
+            const ghosts = document.querySelectorAll('.theme-btn-floating, #theme-toggle-float');
+            ghosts.forEach(el => el.remove());
+        });
+    </script>
 
 </body>
 </html>
