@@ -6,16 +6,18 @@
     <title>MVN FinHub | Financial Documentation & Process Support</title>
 
     <meta name="description" content="MVN FinHub: Premier non-advisory platform for physical share recovery, IEPF claims, financial structure awareness, and documentation services. Secure & Compliant.">
-   
+    
+    <meta name="theme-color" content="#F8FAFC">
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
     <link rel="stylesheet" href="assets/css/main.css?v=platinum_home">
     
-  <script src="assets/js/app.js" defer></script>
- <script data-goatcounter="https://mvnfinhub.goatcounter.com/count"
-        async src="//gc.zgo.at/count.js"></script>
+    <script src="assets/js/app.js" defer></script>
+    <script data-goatcounter="https://mvnfinhub.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+
     <style>
         /* --- HOME PAGE SPECIFIC PREMIUM STYLES --- */
 
@@ -155,22 +157,36 @@
         [data-theme="dark"] .grid-4 .face-card:nth-child(3) { border-top-color: #60a5fa !important; }
         [data-theme="dark"] .grid-4 .face-card:nth-child(4) { border-top-color: #34d399 !important; }
         
-        [data-theme="dark"] .face-card h3 { color: white !important; }
+        /* ✅ FIX: Changed h3 to h2 here to match HTML change */
+        [data-theme="dark"] .face-card h2 { color: white !important; }
         [data-theme="dark"] .face-card p { color: #cbd5e1 !important; }
     </style>
+
+    <script>
+        // CRITICAL: Set Theme BEFORE page loads to stop White Flash
+        if(localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.setAttribute('data-theme', 'dark');
+            const metaTheme = document.querySelector('meta[name="theme-color"]');
+            if(metaTheme) metaTheme.setAttribute('content', '#0F172A');
+        } else {
+            document.documentElement.setAttribute('data-theme', 'light');
+            const metaTheme = document.querySelector('meta[name="theme-color"]');
+            if(metaTheme) metaTheme.setAttribute('content', '#F8FAFC');
+        }
+    </script>
+
     <meta property="og:type" content="website">
-<meta property="og:url" content="https://mvnfinhub.github.io/">
-<meta property="og:title" content="MVN FinHub - Simplify Financial Documentation & Legacy Recovery">
-<meta property="og:description" content="Expert support for physical share recovery, IEPF claims, and financial process structuring. Strictly non-advisory.">
-<meta property="og:image" content="https://mvnfinhub.github.io/assets/images/logo-3d-full.png">
+    <meta property="og:url" content="https://mvnfinhub.github.io/">
+    <meta property="og:title" content="MVN FinHub - Simplify Financial Documentation & Legacy Recovery">
+    <meta property="og:description" content="Expert support for physical share recovery, IEPF claims, and financial process structuring. Strictly non-advisory.">
+    <meta property="og:image" content="https://mvnfinhub.github.io/assets/images/logo-3d-full.png">
 
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="MVN FinHub">
-<meta name="twitter:description" content="Simplify Financial Documentation & Legacy Recovery.">
-<meta name="twitter:image" content="https://mvnfinhub.github.io/assets/images/logo-3d-full.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="MVN FinHub">
+    <meta name="twitter:description" content="Simplify Financial Documentation & Legacy Recovery.">
+    <meta name="twitter:image" content="https://mvnfinhub.github.io/assets/images/logo-3d-full.png">
 
-<meta name="theme-color" content="#0F172A">
-  <link rel="icon" type="image/png" href="assets/images/favicon.png">
+    <link rel="icon" type="image/png" href="assets/images/favicon.png">
 </head>
 <body>
 
@@ -234,19 +250,19 @@
         <div class="container">
             <div class="grid-4">
                 <div class="face-card">
-                    <h3>Framework</h3>
+                    <h2>Framework</h2>
                     <p>A structured, rule-based, non-advisory financial process framework focused on compliance, documentation discipline, and transparency.</p>
                 </div>
                 <div class="face-card">
-                    <h3>Execution</h3>
+                    <h2>Execution</h2>
                     <p>Hands-on support for legacy asset recovery, physical share to demat conversion, IEPF claims, and complex financial documentation workflows.</p>
                 </div>
                 <div class="face-card">
-                    <h3>Financial Awareness</h3>
+                    <h2>Financial Awareness</h2>
                     <p>Clear explanations of financial processes and scenarios to improve understanding and preparedness — strictly educational, never advisory.</p>
                 </div>
                 <div class="face-card">
-                    <h3>Operational Status</h3>
+                    <h2>Operational Status</h2>
                     <p style="color: #10B981; font-weight: 600;">● System Active</p>
                     <p>Enquiries are securely accepted and processed through controlled systems.</p>
                 </div>
@@ -359,7 +375,7 @@
         </div>
 
         <script>
-            // 1. Theme Logic
+            // 1. Theme Logic (Footer logic updates button icon after page load)
             if(localStorage.getItem('theme') === 'dark') {
                 document.documentElement.setAttribute('data-theme', 'dark');
                 const btn = document.getElementById('footer-theme-btn');
@@ -367,18 +383,27 @@
             }
 
             function toggleTheme() {
+                // Calls the main function from app.js if available, or manual logic
+                if (window.toggleTheme) {
+                    window.toggleTheme();
+                    return;
+                }
+                // Fallback logic
                 const html = document.documentElement;
                 const btn = document.getElementById('footer-theme-btn');
                 const current = html.getAttribute('data-theme');
+                const metaTheme = document.querySelector('meta[name="theme-color"]');
 
                 if (current === 'dark') {
                     html.setAttribute('data-theme', 'light');
                     localStorage.setItem('theme', 'light');
                     btn.textContent = '🌙';
+                    if(metaTheme) metaTheme.setAttribute('content', '#F8FAFC');
                 } else {
                     html.setAttribute('data-theme', 'dark');
                     localStorage.setItem('theme', 'dark');
                     btn.textContent = '☀️';
+                    if(metaTheme) metaTheme.setAttribute('content', '#0F172A');
                 }
             }
 

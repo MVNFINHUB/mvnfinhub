@@ -41,16 +41,12 @@ document.addEventListener('DOMContentLoaded', () => {
         const btn = document.getElementById('footer-theme-btn');
         const current = html.getAttribute('data-theme');
         
-        let newTheme = 'light';
-        
         if (current === 'light' || !current) {
-            newTheme = 'dark';
             html.setAttribute('data-theme', 'dark');
             localStorage.setItem('theme', 'dark');
             if(btn) btn.textContent = '☀️';
             updateMetaThemeColor(true); // <--- Updates Phone Browser Color
         } else {
-            newTheme = 'light';
             html.setAttribute('data-theme', 'light');
             localStorage.setItem('theme', 'light');
             if(btn) btn.textContent = '🌙';
@@ -58,7 +54,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
 
-    // Initialize Theme on Load
+    // Initialize Theme on Load (Double Check)
     const savedTheme = localStorage.getItem('theme');
     if (savedTheme === 'dark') {
         updateMetaThemeColor(true);
@@ -75,10 +71,11 @@ document.addEventListener('DOMContentLoaded', () => {
     // ==========================================
     // 4. DATABASE & FORM LOGIC (SUPABASE)
     // ==========================================
-    const SUPABASE_URL = "https://fviufivewglglnxhlmmf.supabase.co";      
-    const SUPABASE_KEY = "sb_publishable_HYE7g0GyJbUfmldKTTAbeA_OUdc0Rah";
-
-    const enquiryForm = document.getElementById('enquiryForm');
+    // Replace these with your actual Supabase URL and Key when ready.
+     const SUPABASE_URL = "https://fviufivewglglnxhlmmf.supabase.co";      
+     const SUPABASE_KEY = "sb_publishable_HYE7g0GyJbUfmldKTTAbeA_OUdc0Rah";
+    
+     const enquiryForm = document.getElementById('enquiryForm');
     const successMessage = document.getElementById('successMessage');
     const refIdDisplay = document.getElementById('refIdDisplay');
 
