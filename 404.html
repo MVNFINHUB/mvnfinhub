@@ -65,11 +65,14 @@
         @keyframes rotate { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
 
         /* 3. TYPOGRAPHY */
-        .error-code {
+       .error-code {
             font-family: 'Merriweather', serif; font-size: 6rem; font-weight: 900; line-height: 1; margin-bottom: 20px;
             background: linear-gradient(135deg, #0F172A 0%, #1E40AF 100%);
-            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-            background-clip: text; text-fill-color: transparent;
+            -webkit-background-clip: text; 
+            -webkit-text-fill-color: transparent;
+            background-clip: text; 
+            /* text-fill-color: transparent; <-- REMOVED THIS LINE */
+            
             color: #0F172A; position: relative; z-index: 2;
         }
 
