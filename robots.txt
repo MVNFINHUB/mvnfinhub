@@ -1,15 +1,17 @@
 User-agent: *
 Allow: /
+
+# Core Pages
 Allow: /index.html
 Allow: /services.html
 Allow: /insights.html
 Allow: /about.html
 Allow: /contact.html
 
-# Hide technical assets from search results
+# Block Technical & Legal Pages
 Disallow: /assets/
-Disallow: /css/
-Disallow: /js/
+Disallow: /404.html
+Disallow: /legal.html
 
-# Path to your Sitemap
+# Sitemap Location
 Sitemap: https://mvnfinhub.github.io/sitemap.xml

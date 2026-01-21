@@ -3,13 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Us | MVN FinHub</title>
-
-    <meta name="description" content="MVN FinHub: Premier non-advisory platform for physical share recovery, IEPF claims, financial structure awareness, and documentation services. Secure & Compliant.">
     
+    <title>About Us | MVN FinHub</title>
+    <meta name="description" content="About MVN FinHub: An independent financial process intelligence platform. Built by Madhavan to provide non-advisory documentation support and system clarity.">
+    <meta name="keywords" content="MVN FinHub about, Madhavan founder, financial process platform, non-advisory fintech, independent financial intelligence, documentation support India">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://mvnfinhub.github.io/about.html">
+
     <meta name="theme-color" content="#F8FAFC" media="(prefers-color-scheme: light)">
     <meta name="theme-color" content="#0F172A" media="(prefers-color-scheme: dark)">
-    
+    <link rel="icon" type="image/png" href="assets/images/favicon.png">
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap">
@@ -20,12 +24,10 @@
    
     <link rel="preload" href="assets/css/main.css?v=final_perf" as="style">
     <link rel="stylesheet" href="assets/css/main.css?v=final_perf">
-
     <script src="assets/js/app.js" defer></script>
     <script data-goatcounter="https://mvnfinhub.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 
     <script>
-        // CRITICAL: Set Theme BEFORE page loads to stop White Flash
         if(localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
             document.documentElement.setAttribute('data-theme', 'dark');
             const metaTheme = document.querySelector('meta[name="theme-color"]');
@@ -38,7 +40,7 @@
     </script>
 
     <style>
-        /* --- PAGE SPECIFIC STYLES (Trust & Premium) --- */
+        /* --- PAGE SPECIFIC STYLES (MATCHING PREMIUM SYSTEM) --- */
         
         /* 1. LAYOUT UTILITIES */
         .container-narrow {
@@ -52,7 +54,7 @@
             position: relative;
             background: linear-gradient(135deg, #0F172A 0%, #1E40AF 100%);
             color: white;
-            padding: 120px 0;
+            padding: 100px 0;
             text-align: center;
             overflow: hidden;
         }
@@ -64,20 +66,49 @@
             opacity: 0.5;
         }
 
-        .about-hero h1 { 
-            color: white !important; 
-            margin-bottom: 24px; 
-            font-size: 3rem; 
-            font-family: 'Merriweather', serif;
-            position: relative; z-index: 2;
-        }
-        .about-hero p {
-            color: rgba(255,255,255,0.9);
-            font-size: 1.25rem;
-            max-width: 700px;
+        /* PREMIUM HERO CARD UPGRADE */
+        .hero-glass-card {
+            background: rgba(255, 255, 255, 0.1); /* Glass effect on dark bg */
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            padding: 40px;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            max-width: 900px;
             margin: 0 auto;
             position: relative; z-index: 2;
+            transition: transform 0.4s ease;
+        }
+        .hero-glass-card:hover {
+            transform: translateY(-3px);
+            border-color: rgba(255, 255, 255, 0.3);
+        }
+
+        .hero-glass-card h1 { 
+            color: white !important; 
+            margin-bottom: 20px; 
+            font-size: 2.8rem; 
+            font-family: 'Merriweather', serif;
+        }
+        .hero-glass-card p {
+            color: rgba(255,255,255,0.95);
+            font-size: 1.2rem;
             line-height: 1.6;
+        }
+        
+        /* Floating Icon Animation */
+        .hero-main-icon {
+            font-size: 3rem;
+            display: block;
+            margin-bottom: 15px;
+            animation: floatIcon 3s ease-in-out infinite;
+        }
+        @keyframes floatIcon {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-8px); }
+            100% { transform: translateY(0px); }
         }
 
         /* 3. CONTENT BLOCKS */
@@ -90,10 +121,11 @@
             display: inline-block;
             color: #0A2540;
             font-family: 'Merriweather', serif;
+            display: flex; align-items: center; gap: 12px;
         }
-        .content-block p { font-size: 1.05rem; color: #334155; line-height: 1.8; }
+        .content-block p { font-size: 1.05rem; color: #334155; line-height: 1.8; margin-bottom: 15px; }
 
-        /* 4. PHILOSOPHY GRID (Glass Cards) */
+        /* 4. PHILOSOPHY GRID (Premium Glass Cards) */
         .values-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -110,12 +142,27 @@
             box-shadow: 0 4px 15px rgba(0,0,0,0.03);
             transition: transform 0.3s ease;
         }
+        
+        /* Premium Hover Effect */
         .value-card:hover { 
             transform: translateY(-5px); 
-            box-shadow: 0 10px 25px rgba(16, 185, 129, 0.1);
+            box-shadow: 0 15px 30px rgba(16, 185, 129, 0.15);
         }
+        
         .value-card h3 { 
-            font-size: 1.15rem; margin-bottom: 0; color: #064E3B; font-weight: 600;
+            font-size: 1.25rem; margin-bottom: 0; color: #064E3B; font-weight: 600;
+            display: flex; align-items: center; gap: 10px;
+        }
+        
+        /* Icon Styling */
+        .topic-icon {
+            font-size: 1.5rem;
+            filter: grayscale(100%);
+            transition: all 0.3s ease;
+        }
+        .value-card:hover .topic-icon {
+            filter: grayscale(0%);
+            transform: scale(1.2);
         }
 
         /* 5. COMMITMENT SECTION (Royal Blue Highlight) */
@@ -143,23 +190,24 @@
             font-size: 1.2rem; color: #0284C7;
         }
 
-        /* 6. AUDIENCE LIST */
-        .audience-list li {
-            margin-bottom: 16px;
-            padding-left: 24px;
-            border-left: 4px solid #1E40AF; /* Navy Bar */
-            color: #334155;
-            list-style: none;
-            font-size: 1.05rem;
-            background: linear-gradient(90deg, #F8FAFC 0%, transparent 100%);
-            padding: 12px 24px;
-            border-radius: 0 8px 8px 0;
+        /* 6. FOUNDER SECTION (New) */
+        .founder-box {
+            background: rgba(255, 255, 255, 0.6);
+            border: 1px solid #E2E8F0;
+            border-radius: 16px;
+            padding: 40px;
+            margin-top: 40px;
         }
 
         /* --- DARK MODE OVERRIDES (Nuclear Fix) --- */
         [data-theme="dark"] .about-hero {
             background: linear-gradient(135deg, #0F172A 0%, #020617 100%) !important;
         }
+        [data-theme="dark"] .hero-glass-card {
+            background: rgba(30, 41, 59, 0.5) !important;
+            border-color: rgba(255,255,255,0.1) !important;
+        }
+
         [data-theme="dark"] .content-block h2 { color: #ffffff !important; border-bottom-color: rgba(255,255,255,0.1) !important; }
         [data-theme="dark"] .content-block p { color: #cbd5e1 !important; }
 
@@ -176,17 +224,15 @@
         }
         [data-theme="dark"] .commitment-section h2 { color: #38bdf8 !important; border-bottom-color: rgba(255,255,255,0.1) !important; }
         [data-theme="dark"] .commitment-list li { color: #cbd5e1 !important; }
-        
-        [data-theme="dark"] .audience-list li {
+
+        [data-theme="dark"] .founder-box {
             background: rgba(30, 41, 59, 0.6) !important;
-            color: #cbd5e1 !important;
-            border-left-color: #60A5FA !important;
+            border-color: rgba(255,255,255,0.05) !important;
         }
 
-        /* Responsive */
         @media (max-width: 768px) {
-            .about-hero h1 { font-size: 2.2rem; }
-            .section-padding { padding: 50px 0; }
+            .hero-glass-card { padding: 25px; }
+            .hero-glass-card h1 { font-size: 2rem; }
         }
     </style>
 </head>
@@ -219,8 +265,11 @@
 
     <section class="about-hero">
         <div class="container-narrow">
-            <h1>MVN FinHub</h1>
-            <p>MVN FinHub operates as a non-advisory financial process and documentation support platform focused on compliance, clarity, and education.</p>
+            <div class="hero-glass-card">
+                <span class="hero-main-icon">🛡️</span>
+                <h1>Platform Identity & Trust</h1>
+                <p>MVN FinHub is an independent financial process intelligence platform. We provide execution-level support for documentation and compliance systems.</p>
+            </div>
         </div>
     </section>
 
@@ -228,29 +277,59 @@
         <div class="container-narrow">
             
             <div class="content-block">
-                <h2>Why MVN FinHub Exists</h2>
-                <p>Financial processes and documentation are often complex, fragmented, and unclear for individuals and families.</p>
-                <p>Many people struggle with legacy assets, banking documentation, and compliance-related procedures due to lack of clear process understanding.</p>
-                <p>MVN FinHub exists to provide structured, neutral, and transparent support for navigating these processes without influencing financial decisions.</p>
+                <h2>Who We Are</h2>
+                <p>MVN FinHub is a documentation and process intelligence hub. We act as a bridge between individuals and the complex institutional frameworks of banking, legacy assets, and compliance.</p>
+                <p>We are not financial advisors. We do not manage portfolios or sell products. We operate independently to ensure that our focus remains strictly on system clarity and process execution.</p>
             </div>
 
             <div class="content-block">
-                <h2>Philosophy & Approach</h2>
-                <p>MVN FinHub focuses on how financial processes work, not what decisions users should make.</p>
+                <h2>Why We Exist</h2>
+                <p>Most financial failures occur not because of bad investment decisions, but because of poor documentation structure. Individuals struggle with legacy asset recovery, dormant accounts, and cross-border compliance because the "process" is often invisible.</p>
+                <p>Delays and rejections are systemic issues. MVN FinHub exists to make these opaque institutional processes transparent, predictable, and navigable.</p>
+            </div>
+
+            <div class="content-block">
+                <h2>How We Work</h2>
+                <p>Our approach is grounded in system logic rather than market sentiment.</p>
                 
                 <div class="values-grid">
                     <div class="value-card">
-                        <h3>Process-first, not product-first</h3>
+                        <h3><span class="topic-icon">⚙️</span> Process-First Thinking</h3>
                     </div>
                     <div class="value-card">
-                        <h3>Documentation clarity over assumptions</h3>
+                        <h3><span class="topic-icon">📄</span> Documentation Centric</h3>
                     </div>
                     <div class="value-card">
-                        <h3>Compliance and correctness over speed</h3>
+                        <h3><span class="topic-icon">⚖️</span> Neutral & Conflict-Free</h3>
                     </div>
                     <div class="value-card">
-                        <h3>Education and awareness over advice</h3>
+                        <h3><span class="topic-icon">🎓</span> Education Over Advice</h3>
                     </div>
+                </div>
+            </div>
+
+            <div class="content-block">
+                <h2><span style="color:#EF4444">🚫</span> What MVN FinHub Is NOT</h2>
+                <div class="founder-box" style="border-left: 5px solid #EF4444;">
+                    <p>To maintain absolute trust and compliance, we explicitly state our boundaries:</p>
+                    <ul class="commitment-list">
+                        <li style="color:#7F1D1D;"><strong>NOT a Financial Advisor:</strong> We do not provide investment recommendations.</li>
+                        <li style="color:#7F1D1D;"><strong>NOT a Product Seller:</strong> We do not sell insurance, mutual funds, or stocks.</li>
+                        <li style="color:#7F1D1D;"><strong>NOT a Replacement for Professionals:</strong> We support, but do not replace, CAs or Lawyers.</li>
+                        <li style="color:#7F1D1D;"><strong>NOT an Outcome Guarantor:</strong> We facilitate processes; institutions make final decisions.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="content-block">
+                <h2>About the Founder</h2>
+                <div class="founder-box">
+                    <h3 style="margin-top:0; color:#0F172A; font-size:1.4rem;">Madhavan</h3>
+                    <p style="font-weight:600; color:#0284C7; margin-bottom:15px;">Founder & Independent Platform Builder</p>
+                    
+                    <p>Madhavan built MVN FinHub based on a critical observation: while there is an abundance of "advice" on where to invest, there is a severe lack of clarity on how to manage the underlying documentation and systems.</p>
+                    <p>His focus is on understanding the mechanics of financial institutions—how they verify identity, process claims, and audit records. He views financial health through the lens of structural readiness rather than market performance.</p>
+                    <p>Madhavan is committed to building MVN FinHub as a responsible, long-term knowledge platform that prioritizes ethics, clarity, and user responsibility over speed or sales.</p>
                 </div>
             </div>
 
@@ -261,36 +340,27 @@
         <div class="container-narrow">
             
             <div class="content-block">
-                <h2>Non-Advisory Commitment</h2>
+                <h2>Independence & Ethics</h2>
+                <p>Our independence is our most valuable asset. It allows us to provide information that is unbiased and free from commercial pressure.</p>
                 <ul class="commitment-list">
-                    <li>MVN FinHub does not provide investment advice, recommendations, or opinions.</li>
-                    <li>The platform does not sell financial products or earn commissions.</li>
-                    <li>All financial decisions remain solely with the user.</li>
-                    <li>This non-advisory stance is maintained across all services, insights, and interactions.</li>
+                    <li><strong>No Commissions:</strong> We earn zero revenue from recommending products.</li>
+                    <li><strong>No Affiliations:</strong> We are not tied to any specific bank or AMC.</li>
+                    <li><strong>Information First:</strong> Our only goal is to ensure your documentation is accurate and compliant.</li>
                 </ul>
             </div>
 
             <div class="content-block" style="margin-bottom: 0;">
-                <h2>Privacy & Neutrality</h2>
-                <ul class="commitment-list">
-                    <li>Personal information is handled securely and only for enquiry and process support purposes.</li>
-                    <li>Data is not sold, traded, or shared with advertisers or financial institutions.</li>
-                    <li>MVN FinHub maintains neutrality and avoids conflicts of interest.</li>
-                </ul>
+                <h2>Responsibility & Boundaries</h2>
+                <p>We believe that understanding the system is the first step toward financial security. However, awareness is not advice. MVN FinHub provides the map, but the user must drive the car.</p>
+                <p>We encourage all users to consult with licensed professionals for specific legal, tax, or investment decisions. Our role is to ensure you are prepared, organized, and informed when you do so.</p>
             </div>
 
         </div>
     </section>
 
     <section class="section-padding">
-        <div class="container-narrow">
-            <h2>Who the Platform Is For</h2>
-            <ul class="audience-list" style="margin-top: 24px;">
-                <li>Individuals managing personal financial documentation</li>
-                <li>Families handling legacy assets or inheritance-related processes</li>
-                <li>Resident Indians (RI) and Non-Resident Indians (NRI) navigating compliance requirements</li>
-                <li>Users seeking clarity on financial processes without advice or selling</li>
-            </ul>
+        <div class="container-narrow" style="text-align:center;">
+            <p style="font-size:1.1rem; color:#64748B;">MVN FinHub is built for long-term clarity and trust. <br>Designed to grow responsibly. Focused on systems, not persuasion.</p>
         </div>
     </section>
 
@@ -324,12 +394,10 @@
         }
 
         function toggleTheme() {
-            // Uses global function from app.js if available
             if (window.toggleTheme) {
                 window.toggleTheme();
                 return;
             }
-            // Fallback logic
             const html = document.documentElement;
             const btn = document.getElementById('footer-theme-btn');
             const current = html.getAttribute('data-theme');

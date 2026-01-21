@@ -3,12 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Legal & Privacy | MVN FinHub</title>
     
-    <meta name="description" content="MVN FinHub: Premier non-advisory platform for physical share recovery, IEPF claims, financial structure awareness, and documentation services. Secure & Compliant.">
-    
+    <title>Legal Disclaimer & Privacy Policy | MVN FinHub</title>
+    <meta name="description" content="Legal and Privacy Policy for MVN FinHub. Defining the scope of non-advisory process support, limitation of liability, and data privacy commitments.">
+    <meta name="keywords" content="MVN FinHub legal, non-advisory disclaimer, financial privacy policy, data protection, terms of use, limitation of liability">
+    <meta name="robots" content="noindex, follow"> <link rel="canonical" href="https://mvnfinhub.github.io/legal.html">
+
     <meta name="theme-color" content="#F8FAFC" media="(prefers-color-scheme: light)">
     <meta name="theme-color" content="#0F172A" media="(prefers-color-scheme: dark)">
+    <link rel="icon" type="image/png" href="assets/images/favicon.png">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -20,12 +23,10 @@
 
     <link rel="preload" href="assets/css/main.css?v=final_perf" as="style">
     <link rel="stylesheet" href="assets/css/main.css?v=final_perf">
-    
     <script src="assets/js/app.js" defer></script>
     <script data-goatcounter="https://mvnfinhub.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 
     <script>
-        // CRITICAL: Set Theme BEFORE page loads to stop White Flash
         if(localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
             document.documentElement.setAttribute('data-theme', 'dark');
             const metaTheme = document.querySelector('meta[name="theme-color"]');
@@ -36,28 +37,64 @@
             if(metaTheme) metaTheme.setAttribute('content', '#F8FAFC');
         }
     </script>
-    <link rel="icon" type="image/png" href="assets/images/favicon.png">
 
     <style>
-        /* --- PAGE SPECIFIC STYLES (Premium Legal Look) --- */
+        /* --- PAGE SPECIFIC STYLES (MATCHING PREMIUM SYSTEM) --- */
         
-        /* Narrow Container for easier reading */
+        /* 1. LAYOUT UTILITIES */
         .container-narrow {
             max-width: 800px;
             margin: 0 auto;
             padding: 0 20px;
         }
 
-        /* --- LEGAL SECTIONS (Glass Cards) --- */
+        /* 2. HERO GLASS CARD (Premium) */
+        .hero-glass-card {
+            background: rgba(255, 255, 255, 0.65);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            padding: 40px;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.9);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.05);
+            text-align: center;
+            max-width: 900px;
+            margin: 0 auto;
+            transition: transform 0.4s ease;
+        }
+        .hero-glass-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.08);
+            border-color: rgba(14, 165, 233, 0.3);
+        }
+        .hero-main-icon {
+            font-size: 2.5rem;
+            display: block;
+            margin-bottom: 15px;
+            animation: floatIcon 3s ease-in-out infinite;
+        }
+        @keyframes floatIcon {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-8px); }
+            100% { transform: translateY(0px); }
+        }
+
+        /* 3. LEGAL SECTIONS (Premium Glass Cards) */
         .legal-section {
-            background: rgba(255, 255, 255, 0.8); /* Glass effect */
+            background: rgba(255, 255, 255, 0.8);
             backdrop-filter: blur(12px);
             padding: 40px;
             border-radius: 12px;
             border: 1px solid rgba(255, 255, 255, 0.6);
             margin-bottom: 30px;
             box-shadow: 0 4px 6px rgba(0,0,0,0.03);
-            transition: all 0.3s ease;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        /* Hover Lift Effect */
+        .legal-section:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
         }
 
         .legal-section h2 {
@@ -65,48 +102,66 @@
             margin-bottom: 20px;
             padding-bottom: 12px;
             border-bottom: 1px solid #e2e8f0;
-            color: #0A2540; /* Navy Blue */
+            color: #0A2540;
             font-family: 'Merriweather', serif;
+            display: flex; align-items: center; gap: 10px;
         }
 
-        .legal-section p { margin-bottom: 16px; color: var(--text-main); }
+        .legal-section p { margin-bottom: 16px; color: #334155; line-height: 1.7; }
 
         .legal-list { margin-left: 20px; margin-bottom: 20px; }
         .legal-list li {
             margin-bottom: 8px;
             padding-left: 10px;
-            color: var(--text-main);
-            list-style-type: disc; /* Simple bullets for legal text */
+            color: #475569;
+            list-style-type: disc;
         }
 
-        /* --- NON-ADVISORY BOX (Highlight) --- */
+        /* Icon Styling */
+        .topic-icon {
+            font-size: 1.4rem;
+            filter: grayscale(100%);
+            transition: all 0.3s ease;
+        }
+        .legal-section:hover .topic-icon {
+            filter: grayscale(0%);
+            transform: scale(1.1);
+        }
+
+        /* 4. DISCLAIMER BOX (Highlight) */
         .disclaimer-box {
-            background: #F8FAFC;
-            border-left: 5px solid #0A2540; /* Strong Navy Border */
+            background: linear-gradient(135deg, #F8FAFC 0%, #F1F5F9 100%);
+            border-left: 5px solid #0A2540;
             border-top: 1px solid #e2e8f0;
             border-right: 1px solid #e2e8f0;
             border-bottom: 1px solid #e2e8f0;
         }
         
         /* --- DARK MODE OVERRIDES --- */
+        [data-theme="dark"] .hero-glass-card {
+            background: rgba(30, 41, 59, 0.7) !important;
+            border-color: rgba(255,255,255,0.1) !important;
+        }
+        [data-theme="dark"] .hero-glass-card:hover { border-color: rgba(14, 165, 233, 0.5) !important; }
+
         [data-theme="dark"] .legal-section {
-            background: rgba(30, 41, 59, 0.6);
-            border-color: rgba(255,255,255,0.05);
+            background: rgba(30, 41, 59, 0.6) !important;
+            border-color: rgba(255,255,255,0.05) !important;
         }
         [data-theme="dark"] .legal-section h2 {
-            color: #ffffff;
-            border-bottom-color: rgba(255,255,255,0.1);
+            color: #ffffff !important; border-bottom-color: rgba(255,255,255,0.1) !important;
         }
-        [data-theme="dark"] .legal-list li { color: #cbd5e1; }
+        [data-theme="dark"] .legal-section p { color: #cbd5e1 !important; }
+        [data-theme="dark"] .legal-list li { color: #94a3b8 !important; }
         
         [data-theme="dark"] .disclaimer-box {
-            background: rgba(15, 23, 42, 0.8);
-            border-left-color: #38bdf8; /* Cyan accent in dark mode */
+            background: rgba(15, 23, 42, 0.8) !important;
+            border-left-color: #38bdf8 !important;
         }
 
-        /* Responsive */
         @media (max-width: 768px) {
             .legal-section { padding: 24px; }
+            .hero-glass-card { padding: 25px; }
         }
     </style>
 </head>
@@ -143,8 +198,9 @@
 
         <div class="container">
             <div class="hero-glass-card" style="max-width: 800px; padding: 40px;">
-                <h1>Legal & Privacy</h1>
-                <p style="margin-bottom: 0;">Legal clarity is provided to ensure transparency and user understanding.</p>
+                <span class="hero-main-icon">⚖️</span>
+                <h1>Legal Disclaimer & Privacy</h1>
+                <p style="margin-bottom: 0;">Defining boundaries, liability, and privacy commitments for the MVN FinHub platform.</p>
             </div>
         </div>
     </section>
@@ -153,64 +209,80 @@
         <div class="container-narrow">
 
             <section class="legal-section disclaimer-box">
-                <h2>Non-Advisory Disclaimer</h2>
-                <p>MVN FinHub operates strictly as a financial process facilitation, documentation support, and educational awareness platform.</p>
-                <p><strong>MVN FinHub is not a SEBI-registered investment advisor, portfolio manager, or research analyst.</strong></p>
-                
-                <p>MVN FinHub does not provide:</p>
+                <h2><span class="topic-icon">⚠️</span> General Disclaimer</h2>
+                <p>MVN FinHub provides content strictly for informational and educational purposes. The platform explains financial processes, documentation systems, and institutional frameworks.</p>
+                <p><strong>MVN FinHub is NOT a financial advisor, investment consultant, or legal firm.</strong></p>
+                <p>Nothing on this website constitutes:</p>
                 <ul class="legal-list">
-                    <li>Investment advice</li>
-                    <li>Buy or sell recommendations</li>
-                    <li>Financial opinions</li>
-                    <li>Guaranteed outcomes or returns</li>
+                    <li>Financial or investment advice</li>
+                    <li>Buy, sell, or hold recommendations for any asset</li>
+                    <li>Legal or tax counsel</li>
+                    <li>Guarantees of specific outcomes</li>
                 </ul>
-                <p>All financial decisions remain solely the responsibility of the user.</p>
+                <p>No content should be relied upon as a substitute for professional consultation with licensed experts.</p>
             </section>
 
             <section class="legal-section">
-                <h2>Privacy Policy</h2>
-                <p>MVN FinHub collects limited personal information, which may include:</p>
-                <ul class="legal-list">
-                    <li>Name</li>
-                    <li>Email address</li>
-                    <li>Phone number</li>
-                    <li>Service requirement details</li>
-                </ul>
+                <h2><span class="topic-icon">🤝</span> No Advisory Relationship</h2>
+                <p>Accessing this website, consuming its content, or submitting an enquiry does not create a client-advisor relationship between you and MVN FinHub.</p>
+                <p>Services provided are limited to process facilitation and documentation support. You remain solely responsible for your financial decisions and their consequences.</p>
+            </section>
 
-                <p>This information is collected only for the purpose of:</p>
-                <ul class="legal-list">
-                    <li>Responding to enquiries</li>
-                    <li>Providing documentation and process support</li>
-                </ul>
+            <section class="legal-section">
+                <h2><span class="topic-icon">🔍</span> Scope of Information</h2>
+                <p>All content is based on general financial processes and publicly available information regarding regulations (RBI, SEBI, Companies Act, etc.).</p>
+                <p>While we strive for accuracy, financial regulations and institutional procedures change frequently. MVN FinHub does not warrant that the information provided is exhaustive, current, or free from error.</p>
+            </section>
 
-                <p><strong>Privacy commitments:</strong></p>
+            <section class="legal-section">
+                <h2><span class="topic-icon">🛡️</span> Limitation of Liability</h2>
+                <p>MVN FinHub and its founder explicitly disclaim liability for any direct, indirect, or consequential loss arising from:</p>
                 <ul class="legal-list">
-                    <li>Personal data is not sold, traded, or shared with advertisers or financial institutions.</li>
-                    <li>Data is stored using secure, industry-standard systems.</li>
-                    <li>Users may request data deletion by contacting MVN FinHub.</li>
+                    <li>The use of information provided on this platform.</li>
+                    <li>Delays, rejections, or adverse decisions by banks, government authorities, or financial institutions.</li>
+                    <li>Errors or omissions in the documentation process.</li>
+                </ul>
+                <p>Use of this platform and its services is entirely at your own discretion and risk.</p>
+            </section>
+
+            <section class="legal-section">
+                <h2><span class="topic-icon">🔗</span> External Links</h2>
+                <p>This website may contain links to third-party websites (e.g., regulatory bodies, banks). These links are provided for reference only.</p>
+                <p>MVN FinHub does not endorse, control, or guarantee the accuracy of content on third-party sites. We are not responsible for the privacy practices or content of external platforms.</p>
+            </section>
+
+            <section class="legal-section">
+                <h2><span class="topic-icon">🔒</span> Privacy & Data Handling</h2>
+                <p>We respect your privacy and adhere to data minimization principles.</p>
+                <ul class="legal-list">
+                    <li><strong>Collection:</strong> We collect only essential information (Name, Contact, Requirement) necessary to address your enquiry.</li>
+                    <li><strong>Usage:</strong> Data is used solely for communication and process support.</li>
+                    <li><strong>No Sale of Data:</strong> We do not sell, trade, or share your personal information with advertisers or third-party marketing agencies.</li>
+                    <li><strong>Retention:</strong> Data is retained only as long as necessary to fulfill the service requirement.</li>
                 </ul>
             </section>
 
             <section class="legal-section">
-                <h2>Limitation of Liability</h2>
-                <p>MVN FinHub is not responsible for decisions, approvals, delays, or rejections made by:</p>
-                <ul class="legal-list">
-                    <li>Banks</li>
-                    <li>Financial institutions</li>
-                    <li>Companies</li>
-                    <li>Government authorities</li>
-                </ul>
-                <p>Outcomes of financial or documentation processes are outside the control of MVN FinHub. Information provided is for general awareness and process understanding only.</p>
+                <h2><span class="topic-icon">🍪</span> Cookies & Technical Data</h2>
+                <p>This website may use basic cookies or technical logs to ensure website functionality, security, and performance monitoring.</p>
+                <p>We do not use tracking cookies for behavioral profiling or invasive advertising.</p>
             </section>
 
             <section class="legal-section">
-                <h2>User Consent</h2>
-                <p>By submitting an enquiry or using the platform:</p>
-                <ul class="legal-list">
-                    <li>Users acknowledge the non-advisory nature of MVN FinHub.</li>
-                    <li>Users consent to being contacted regarding their enquiry.</li>
-                    <li>Users accept that MVN FinHub’s role is limited to documentation and process support.</li>
-                </ul>
+                <h2><span class="topic-icon">🏛️</span> Jurisdiction & Applicability</h2>
+                <p>The information on this platform is primarily intended for users navigating the Indian financial ecosystem (Residents and NRIs).</p>
+                <p>Users accessing the platform from other jurisdictions are responsible for compliance with their local laws. Any disputes arising from the use of this platform are subject to local laws applicable to the platform's operation.</p>
+            </section>
+
+            <section class="legal-section">
+                <h2><span class="topic-icon">🔄</span> Changes to Terms</h2>
+                <p>MVN FinHub reserves the right to update these Legal & Privacy terms at any time without prior notice. Continued use of the platform constitutes acceptance of the updated terms.</p>
+            </section>
+
+            <section class="legal-section">
+                <h2><span class="topic-icon">📬</span> Contact</h2>
+                <p>For any questions regarding these Legal Terms or our Privacy Policy, you may contact us via the <a href="contact.html" style="color:#0284C7; text-decoration:none; font-weight:600;">Contact Page</a>.</p>
+                <p><em>Note: Enquiries regarding legal interpretation of these terms will not constitute legal advice.</em></p>
             </section>
 
         </div>
@@ -245,12 +317,10 @@
         }
 
         function toggleTheme() {
-            // Uses global function from app.js if available
             if (window.toggleTheme) {
                 window.toggleTheme();
                 return;
             }
-            // Fallback logic
             const html = document.documentElement;
             const btn = document.getElementById('footer-theme-btn');
             const current = html.getAttribute('data-theme');

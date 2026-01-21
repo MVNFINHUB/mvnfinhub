@@ -72,10 +72,10 @@ document.addEventListener('DOMContentLoaded', () => {
     // 4. DATABASE & FORM LOGIC (SUPABASE)
     // ==========================================
     // Replace these with your actual Supabase URL and Key when ready.
-     const SUPABASE_URL = "https://fviufivewglglnxhlmmf.supabase.co";      
-     const SUPABASE_KEY = "sb_publishable_HYE7g0GyJbUfmldKTTAbeA_OUdc0Rah";
-    
-     const enquiryForm = document.getElementById('enquiryForm');
+    const SUPABASE_URL = "https://fviufivewglglnxhlmmf.supabase.co";      
+    const SUPABASE_KEY = "sb_publishable_HYE7g0GyJbUfmldKTTAbeA_OUdc0Rah";
+
+    const enquiryForm = document.getElementById('enquiryForm');
     const successMessage = document.getElementById('successMessage');
     const refIdDisplay = document.getElementById('refIdDisplay');
 
@@ -106,7 +106,8 @@ document.addEventListener('DOMContentLoaded', () => {
             };
 
             try {
-                if(!SUPABASE_URL || !SUPABASE_KEY) {
+                // FALLBACK: If keys are missing, simulate success for UI testing
+                if(!SUPABASE_URL || !SUPABASE_KEY || SUPABASE_URL.includes("YOUR_")) {
                     await new Promise(r => setTimeout(r, 1500)); 
                     enquiryForm.style.display = 'none';
                     if(refIdDisplay) refIdDisplay.textContent = refID;

@@ -3,12 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MVN FinHub | Financial Documentation & Process Support</title>
-
-    <meta name="description" content="MVN FinHub: Premier non-advisory platform for physical share recovery, IEPF claims, financial structure awareness, and documentation services. Secure & Compliant.">
     
+    <title>MVN FinHub | Financial Process & Documentation Intelligence</title>
+    <meta name="description" content="MVN FinHub: A global financial process intelligence platform. Decoding financial systems, documentation workflows, and institutional compliance. Strictly non-advisory.">
+    <meta name="keywords" content="financial process intelligence, documentation support, non-advisory fintech, Indian financial ecosystem, legacy asset recovery, banking compliance, financial system education">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://mvnfinhub.github.io/">
+
     <meta name="theme-color" content="#F8FAFC" media="(prefers-color-scheme: light)">
     <meta name="theme-color" content="#0F172A" media="(prefers-color-scheme: dark)">
+    <link rel="icon" type="image/png" href="assets/images/favicon.png">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -20,12 +24,10 @@
     
     <link rel="preload" href="assets/css/main.css?v=final_perf" as="style">
     <link rel="stylesheet" href="assets/css/main.css?v=final_perf">
-    
     <script src="assets/js/app.js" defer></script>
     <script data-goatcounter="https://mvnfinhub.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 
     <script>
-        // CRITICAL: Set Theme BEFORE page loads to stop White Flash
         if(localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
             document.documentElement.setAttribute('data-theme', 'dark');
             const metaTheme = document.querySelector('meta[name="theme-color"]');
@@ -40,7 +42,7 @@
     <style>
         /* --- HOME PAGE SPECIFIC PREMIUM STYLES --- */
 
-        /* 1. HERO SECTION UPGRADE (Prism Glass Effect) */
+        /* 1. HERO SECTION (Matches Services/Insights Premium Look) */
         .hero-premium {
             background-image: 
                 radial-gradient(at 0% 0%, rgba(14, 165, 233, 0.1) 0px, transparent 50%),
@@ -50,44 +52,104 @@
         .hero-glass-card {
             background: rgba(255, 255, 255, 0.85);
             backdrop-filter: blur(20px);
-            border: double 1px transparent;
+            border: 1px solid rgba(255, 255, 255, 0.9);
             border-radius: 24px;
-            background-image: linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.9)), 
-                              linear-gradient(135deg, #0EA5E9 0%, #10B981 100%);
-            background-origin: border-box;
-            background-clip: padding-box, border-box;
             padding: 60px 40px;
             box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.1);
             position: relative;
             overflow: hidden;
+            text-align: center;
+            transition: transform 0.4s ease;
+        }
+        .hero-glass-card:hover {
+            transform: translateY(-3px);
+            border-color: rgba(14, 165, 233, 0.3);
         }
 
-        /* Hero Text Gradient */
         .hero-glass-card h1 {
             background: linear-gradient(135deg, #0F172A 0%, #1E40AF 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            
-            /* Fallback color */
-            color: #0F172A;
+            color: #0F172A; /* Fallback */
             margin-bottom: 24px;
             line-height: 1.2;
+            font-family: 'Merriweather', serif;
         }
 
-        /* 2. FEATURED SERVICE RIBBON */
+        /* Floating Icon Animation */
+        .hero-main-icon {
+            font-size: 3rem;
+            display: block;
+            margin-bottom: 20px;
+            animation: floatIcon 3s ease-in-out infinite;
+        }
+        @keyframes floatIcon {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-8px); }
+            100% { transform: translateY(0px); }
+        }
+
+        /* 2. PREMIUM BUTTONS (CREATIVE UPGRADE) */
+        .btn-group {
+            display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; margin-bottom: 30px;
+        }
+
+        /* Base Premium Button Style */
+        .btn-premium {
+            text-decoration: none;
+            padding: 14px 32px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+            display: inline-flex; align-items: center; justify-content: center;
+        }
+
+        /* Primary Button: "Explore Intelligence" (Solid + Shine) */
+        .btn-premium.primary {
+            background: #0A2540;
+            color: white;
+            box-shadow: 0 4px 15px rgba(10, 37, 64, 0.3);
+            border: 1px solid transparent;
+        }
+        /* Shine Effect */
+        .btn-premium.primary::after {
+            content: ''; position: absolute; top: 0; left: -100%; width: 50%; height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transform: skewX(-20deg); transition: 0.5s;
+        }
+        .btn-premium.primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(10, 37, 64, 0.5);
+        }
+        .btn-premium.primary:hover::after { left: 150%; }
+
+        /* Secondary Button: "Submit Query" (Glass Highlighter) */
+        .btn-premium.secondary {
+            background: rgba(255, 255, 255, 0.5);
+            color: #0A2540;
+            border: 2px solid #0EA5E9; /* Visible Highlighter Border */
+            backdrop-filter: blur(5px);
+        }
+        .btn-premium.secondary:hover {
+            background: #0EA5E9;
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 0 20px rgba(14, 165, 233, 0.4); /* Glow Effect */
+        }
+
+        /* 3. FEATURED RIBBON */
         .featured-ribbon {
             background: linear-gradient(90deg, #EFF6FF 0%, #F0FDF4 100%);
             border: 1px solid #BAE6FD;
             border-radius: 50px;
             padding: 8px 20px;
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
+            display: inline-flex; align-items: center; gap: 10px;
             margin-bottom: 20px;
-            font-size: 0.9rem;
-            color: #0369A1;
-            font-weight: 600;
+            font-size: 0.9rem; color: #0369A1; font-weight: 600;
         }
         .ribbon-dot {
             width: 8px; height: 8px; background: #0EA5E9; border-radius: 50%;
@@ -96,24 +158,18 @@
         }
         @keyframes pulse { 0% { opacity: 1; } 50% { opacity: 0.5; } 100% { opacity: 1; } }
 
-        /* 3. TRUST INDICATORS */
+        /* 4. TRUST INDICATORS */
         .trust-indicators { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; margin-bottom: 35px; }
         .trust-tag {
             font-size: 0.85rem; font-weight: 600; 
-            color: #334155; 
-            background: white;
-            padding: 8px 16px; 
-            border-radius: 50px; 
+            color: #334155; background: white;
+            padding: 8px 16px; border-radius: 50px; 
             border: 1px solid #E2E8F0;
             display: flex; align-items: center; gap: 6px;
             box-shadow: 0 2px 5px rgba(0,0,0,0.03);
         }
-        .trust-tag::before { content: "🛡️"; font-size: 0.8rem; }
-        .trust-tag:nth-child(2)::before { content: "🔒"; }
-        .trust-tag:nth-child(3)::before { content: "⚙️"; }
-        .trust-tag:nth-child(4)::before { content: "✅"; }
 
-        /* 4. FACE CARDS */
+        /* 5. FACE CARDS */
         .face-card {
             background: rgba(255, 255, 255, 0.8);
             backdrop-filter: blur(12px);
@@ -121,25 +177,42 @@
             border-radius: 16px;
             border: 1px solid rgba(255,255,255,0.6);
             box-shadow: 0 4px 6px rgba(0,0,0,0.02);
-            transition: transform 0.3s ease;
-            position: relative;
-            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative; overflow: hidden;
+            display: flex; flex-direction: column; gap: 15px;
         }
         
+        .face-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.08);
+        }
+
         /* Color Coding the Grid */
         .grid-4 .face-card:nth-child(1) { border-top: 4px solid #64748B; } 
         .grid-4 .face-card:nth-child(2) { border-top: 4px solid #F59E0B; } 
         .grid-4 .face-card:nth-child(3) { border-top: 4px solid #3B82F6; } 
         .grid-4 .face-card:nth-child(4) { border-top: 4px solid #10B981; } 
 
-        .face-card:hover { transform: translateY(-5px); }
+        .face-card h2, .face-card h3 {
+            font-family: 'Merriweather', serif; color: #0A2540; margin: 0;
+            display: flex; align-items: center; gap: 10px;
+        }
+
+        .topic-icon { font-size: 1.4rem; filter: grayscale(100%); transition: all 0.3s ease; }
+        .face-card:hover .topic-icon { filter: grayscale(0%); transform: scale(1.1); }
+
+        .service-list li {
+            list-style: none; position: relative; padding-left: 20px; margin-bottom: 8px; color: #475569;
+        }
+        .service-list li::before {
+            content: "•"; position: absolute; left: 0; color: #94A3B8; font-weight: bold;
+        }
 
         /* --- NUCLEAR DARK MODE OVERRIDES --- */
         [data-theme="dark"] .hero-premium { background-image: none !important; }
         
         [data-theme="dark"] .hero-glass-card {
             background: rgba(30, 41, 59, 0.7) !important;
-            background-image: none !important;
             border: 1px solid rgba(255,255,255,0.1) !important;
         }
         [data-theme="dark"] .hero-glass-card h1 {
@@ -148,44 +221,50 @@
             color: #ffffff !important;
         }
         
+        /* Dark Mode Buttons */
+        [data-theme="dark"] .btn-premium.primary {
+            background: #38bdf8 !important; color: #0f172a !important;
+            box-shadow: 0 0 15px rgba(56, 189, 248, 0.4) !important;
+        }
+        [data-theme="dark"] .btn-premium.secondary {
+            background: transparent !important;
+            border-color: #38bdf8 !important; /* Visible Neon Border */
+            color: #38bdf8 !important;
+        }
+        [data-theme="dark"] .btn-premium.secondary:hover {
+            background: #38bdf8 !important; color: #0f172a !important;
+            box-shadow: 0 0 25px rgba(56, 189, 248, 0.5) !important;
+        }
+
         [data-theme="dark"] .featured-ribbon {
             background: rgba(15, 23, 42, 0.6) !important;
-            border-color: #38bdf8 !important;
-            color: #7dd3fc !important;
+            border-color: #38bdf8 !important; color: #7dd3fc !important;
         }
         
         [data-theme="dark"] .trust-tag {
             background: rgba(30, 41, 59, 0.6) !important;
-            border-color: #475569 !important;
-            color: #cbd5e1 !important;
+            border-color: #475569 !important; color: #cbd5e1 !important;
         }
 
         [data-theme="dark"] .face-card {
             background: rgba(30, 41, 59, 0.6) !important;
             border-color: rgba(255,255,255,0.05) !important;
         }
-        /* Restore border tops in dark mode */
         [data-theme="dark"] .grid-4 .face-card:nth-child(1) { border-top-color: #94a3b8 !important; }
         [data-theme="dark"] .grid-4 .face-card:nth-child(2) { border-top-color: #fbbf24 !important; }
         [data-theme="dark"] .grid-4 .face-card:nth-child(3) { border-top-color: #60a5fa !important; }
         [data-theme="dark"] .grid-4 .face-card:nth-child(4) { border-top-color: #34d399 !important; }
         
-        [data-theme="dark"] .face-card h2 { color: white !important; }
-        [data-theme="dark"] .face-card p { color: #cbd5e1 !important; }
+        [data-theme="dark"] .face-card h2, [data-theme="dark"] .face-card h3 { color: white !important; }
+        [data-theme="dark"] .face-card p, [data-theme="dark"] .service-list li { color: #cbd5e1 !important; }
+
+        @media (max-width: 768px) {
+            .hero-glass-card { padding: 30px 20px; }
+            .grid-4 { grid-template-columns: 1fr; }
+            .btn-group { flex-direction: column; width: 100%; }
+            .btn-premium { width: 100%; }
+        }
     </style>
-
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://mvnfinhub.github.io/">
-    <meta property="og:title" content="MVN FinHub - Simplify Financial Documentation & Legacy Recovery">
-    <meta property="og:description" content="Expert support for physical share recovery, IEPF claims, and financial process structuring. Strictly non-advisory.">
-    <meta property="og:image" content="https://mvnfinhub.github.io/assets/images/logo-3d-full.png">
-
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="MVN FinHub">
-    <meta name="twitter:description" content="Simplify Financial Documentation & Legacy Recovery.">
-    <meta name="twitter:image" content="https://mvnfinhub.github.io/assets/images/logo-3d-full.png">
-
-    <link rel="icon" type="image/png" href="assets/images/favicon.png">
 </head>
 <body>
 
@@ -221,26 +300,33 @@
         <div class="container">
             <div class="hero-glass-card">
                 
+                <span class="hero-main-icon">💠</span>
+
                 <div class="featured-ribbon">
                     <div class="ribbon-dot"></div>
-                    Featured: Financial Structure & Readiness
+                    Financial Process Intelligence & Support
                 </div>
 
-                <h1>Simplify Financial Documentation & Legacy Recovery</h1>
-                <p>Independent, strictly non-advisory process support for physical share recovery, IEPF claims, NRI banking, and financial documentation.</p>
+                <h1>Financial Process & Documentation Intelligence</h1>
+                <p>A global gateway for decoding financial systems, institutional workflows, and documentation compliance. Independent, educational, and strictly non-advisory.</p>
                 
                 <div class="trust-indicators">
-                    <span class="trust-tag">Strictly Non-Advisory</span>
-                    <span class="trust-tag">Secure & Private</span>
-                    <span class="trust-tag">Process-Driven</span>
-                    <span class="trust-tag">Compliance-First</span>
+                    <span class="trust-tag">🛡️ Independent Platform</span>
+                    <span class="trust-tag">🔒 Privacy First</span>
+                    <span class="trust-tag">⚙️ Process Oriented</span>
+                    <span class="trust-tag">✅ Non-Advisory</span>
                 </div>
 
                 <div class="btn-group">
-                    <a href="contact.html" class="btn btn-primary" style="background: #0A2540; color: white; padding: 12px 30px; border-radius: 50px; display: inline-block; font-weight: 600; box-shadow: 0 4px 14px 0 rgba(10,37,64,0.39);">Start an Enquiry</a>
+                    <a href="insights.html" class="btn-premium primary">
+                        Explore Intelligence
+                    </a>
+                    <a href="contact.html" class="btn-premium secondary">
+                        Submit Query →
+                    </a>
                 </div>
                 
-                <div class="hero-micro-text">No login required • Response within 24 hours</div>
+                <div class="hero-micro-text">Institutional-Grade Process Knowledge • India & Global Scope</div>
             </div>
         </div>
     </section>
@@ -249,21 +335,20 @@
         <div class="container">
             <div class="grid-4">
                 <div class="face-card">
-                    <h2>Framework</h2>
-                    <p>A structured, rule-based, non-advisory financial process framework focused on compliance, documentation discipline, and transparency.</p>
+                    <h2><span class="topic-icon">🧠</span> What We Do</h2>
+                    <p>We decode complex financial systems into clear, actionable process steps. We bridge the gap between regulatory policy and institutional execution.</p>
                 </div>
                 <div class="face-card">
-                    <h2>Execution</h2>
-                    <p>Hands-on support for legacy asset recovery, physical share to demat conversion, IEPF claims, and complex financial documentation workflows.</p>
+                    <h2><span class="topic-icon">🚫</span> What We Are Not</h2>
+                    <p>We are NOT financial advisors. We do not provide investment recommendations, sell products, or guarantee market outcomes.</p>
                 </div>
                 <div class="face-card">
-                    <h2>Financial Awareness</h2>
-                    <p>Clear explanations of financial processes and scenarios to improve understanding and preparedness — strictly educational, never advisory.</p>
+                    <h2><span class="topic-icon">🌏</span> Core Intelligence</h2>
+                    <p>Focusing on Financial Foundations, Indian Ecosystems, Global Markets, and Compliance Frameworks. Strictly educational.</p>
                 </div>
                 <div class="face-card">
-                    <h2>Operational Status</h2>
-                    <p style="color: #10B981; font-weight: 600;">● System Active</p>
-                    <p>Enquiries are securely accepted and processed through controlled systems.</p>
+                    <h2><span class="topic-icon">⚠️</span> Why Processes Fail</h2>
+                    <p>Failures often stem from documentation inconsistency, sequencing errors, and legacy data gaps—not just market forces.</p>
                 </div>
             </div>
         </div>
@@ -271,84 +356,58 @@
 
     <section class="section-padding" style="background-color: var(--surface-card);">
         <div class="container">
-            <h2 style="text-align: center; margin-bottom: 40px; font-size: 1.8rem;">What We Help With</h2>
+            <h2 style="text-align: center; margin-bottom: 40px; font-size: 1.8rem; font-family: 'Merriweather', serif;">Process Support & Direction</h2>
             <div class="grid-4">
                 <div class="face-card">
-                    <h3>Shares & Legacy Asset Recovery</h3>
+                    <h3><span class="topic-icon">📜</span> Legacy Recovery</h3>
                     <ul class="service-list">
-                        <li>Physical share certificate to demat</li>
-                        <li>Transmission (death claims)</li>
-                        <li>IEPF claim documentation support</li>
+                        <li>Physical share transmission</li>
+                        <li>IEPF claim documentation</li>
+                        <li>Succession process guidance</li>
                     </ul>
                 </div>
                 <div class="face-card">
-                    <h3>RI & NRI Documentation Support</h3>
+                    <h3><span class="topic-icon">✈️</span> NRI Compliance</h3>
                     <ul class="service-list">
-                        <li>PAN, Aadhaar, Passport, Voter ID</li>
-                        <li>NRO / NRE banking documentation</li>
-                        <li>Re-KYC and account reactivation</li>
+                        <li>Cross-border documentation</li>
+                        <li>NRO/NRE account workflows</li>
+                        <li>Identity verification support</li>
                     </ul>
                 </div>
                 <div class="face-card">
-                    <h3>Banking & Loan Documentation</h3>
+                    <h3><span class="topic-icon">🏦</span> Banking Systems</h3>
                     <ul class="service-list">
-                        <li>Account opening & KYC support</li>
-                        <li>Nominee updates</li>
-                        <li>Loan documentation assistance</li>
+                        <li>KYC lifecycle management</li>
+                        <li>Dormant account reactivation</li>
+                        <li>Audit-trail preparation</li>
                     </ul>
                 </div>
                 <div class="face-card">
-                    <h3>Financial Structuring Awareness (Non-Advisory)</h3>
+                    <h3><span class="topic-icon">⚖️</span> Independence</h3>
                     <ul class="service-list">
-                        <li>Understanding personal financial structure</li>
-                        <li>Scenario awareness and documentation readiness</li>
+                        <li>No commissions or fees</li>
+                        <li>No product affiliations</li>
+                        <li>User retains responsibility</li>
                     </ul>
                 </div>
             </div>
-            <a href="services.html" style="display: block; text-align: center; margin-top: 30px; font-weight: 600; color: #0077B6;">View Full Services →</a>
+            
+            <div style="text-align: center; margin-top: 40px;">
+                <p style="margin-bottom: 20px; color: #64748B;">Need structured support for a specific case?</p>
+                <a href="services.html" style="display: inline-block; font-weight: 600; color: #0077B6; text-decoration: none; border: 1px solid #0077B6; padding: 10px 24px; border-radius: 50px; transition: all 0.3s;">View Full Services</a>
+            </div>
         </div>
     </section>
 
     <section class="section-padding">
         <div class="container">
-            <h2 style="text-align: center; margin-bottom: 30px;">Why Clients Choose MVN FinHub</h2>
+            <h2 style="text-align: center; margin-bottom: 30px; font-family: 'Merriweather', serif;">Ethics & Responsibility</h2>
             <ul class="why-list" style="max-width: 800px; margin: 0 auto; padding: 30px; border-radius: 12px; border: 1px solid rgba(0,0,0,0.05); background: rgba(255,255,255,0.6);">
-                <li>No investment advice or product selling</li>
-                <li>No commissions or conflicts of interest</li>
-                <li>Secure handling of personal information</li>
-                <li>Clear process explanations</li>
-                <li>Designed for real-world paperwork and family coordination</li>
+                <li style="margin-bottom: 10px;"><strong>Neutrality:</strong> We operate without conflict of interest or commercial pressure.</li>
+                <li style="margin-bottom: 10px;"><strong>Responsibility:</strong> We provide the map; the user must drive the car. Decisions remain yours.</li>
+                <li style="margin-bottom: 10px;"><strong>Privacy:</strong> We collect minimal data solely for process support.</li>
+                <li><strong>Clarity:</strong> We prioritize clear, jargon-free explanations of complex systems.</li>
             </ul>
-        </div>
-    </section>
-
-    <section class="section-padding">
-        <div class="container">
-            <h2 style="text-align: center; margin-bottom: 30px;">Common Questions</h2>
-            <div class="faq-container">
-                
-                <details class="faq-item">
-                    <summary class="faq-question">Do I need to visit India personally?</summary>
-                    <div class="faq-answer">
-                        For most processes like share recovery or banking documentation, physical presence is not required. We coordinate the paperwork remotely, though specific bank rules may vary.
-                    </div>
-                </details>
-
-                <details class="faq-item">
-                    <summary class="faq-question">Do you offer investment advice?</summary>
-                    <div class="faq-answer">
-                        No. MVN FinHub is strictly a process and documentation support service. We do not sell financial products, offer trading tips, or provide investment advisory services.
-                    </div>
-                </details>
-
-                <details class="faq-item">
-                    <summary class="faq-question">How long does the IEPF claim process take?</summary>
-                    <div class="faq-answer">
-                        Timelines vary based on government processing speeds and the complexity of the case. Generally, it takes between 6 to 12 months for final approval and transfer.
-                    </div>
-                </details>
-
-            </div>
         </div>
     </section>
     
@@ -374,7 +433,7 @@
         </div>
 
         <script>
-            // 1. Theme Logic (Footer logic updates button icon after page load)
+            // 1. Theme Logic
             if(localStorage.getItem('theme') === 'dark') {
                 document.documentElement.setAttribute('data-theme', 'dark');
                 const btn = document.getElementById('footer-theme-btn');
@@ -382,12 +441,10 @@
             }
 
             function toggleTheme() {
-                // Calls the main function from app.js if available, or manual logic
                 if (window.toggleTheme) {
                     window.toggleTheme();
                     return;
                 }
-                // Fallback logic
                 const html = document.documentElement;
                 const btn = document.getElementById('footer-theme-btn');
                 const current = html.getAttribute('data-theme');

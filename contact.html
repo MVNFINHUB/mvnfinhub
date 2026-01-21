@@ -3,12 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact Us | MVN FinHub</title>
-
-    <meta name="description" content="MVN FinHub: Premier non-advisory platform for physical share recovery, IEPF claims, financial structure awareness, and documentation services. Secure & Compliant.">
     
+    <title>Contact & Enquiry Support | MVN FinHub</title>
+    <meta name="description" content="Contact MVN FinHub for non-advisory financial process support. Submit enquiries for documentation, legacy assets, and compliance clarification.">
+    <meta name="keywords" content="MVN FinHub contact, financial documentation enquiry, legacy asset support, NRI banking help, non-advisory financial contact, process support India">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://mvnfinhub.github.io/contact.html">
+
     <meta name="theme-color" content="#F8FAFC" media="(prefers-color-scheme: light)">
     <meta name="theme-color" content="#0F172A" media="(prefers-color-scheme: dark)">
+    <link rel="icon" type="image/png" href="assets/images/favicon.png">
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -20,12 +24,10 @@
    
     <link rel="preload" href="assets/css/main.css?v=final_perf" as="style">
     <link rel="stylesheet" href="assets/css/main.css?v=final_perf">
-
     <script src="assets/js/app.js" defer></script>
     <script data-goatcounter="https://mvnfinhub.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 
     <script>
-        // CRITICAL: Set Theme BEFORE page loads to stop White Flash
         if(localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
             document.documentElement.setAttribute('data-theme', 'dark');
             const metaTheme = document.querySelector('meta[name="theme-color"]');
@@ -38,21 +40,51 @@
     </script>
 
     <style>
-        /* --- PAGE SPECIFIC STYLES (Modern Contact Form) --- */
+        /* --- PAGE SPECIFIC STYLES (MATCHING PREMIUM SYSTEM) --- */
 
-        /* 1. LAYOUT (Centered Glass Card) */
+        /* 1. HERO CARD (Glass Premium) */
+        .hero-glass-card {
+            background: rgba(255, 255, 255, 0.65);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            padding: 40px;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.9);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.05);
+            text-align: center;
+            max-width: 900px;
+            margin: 0 auto;
+            transition: transform 0.4s ease;
+        }
+        .hero-glass-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.08);
+            border-color: rgba(14, 165, 233, 0.3);
+        }
+        .hero-main-icon {
+            font-size: 2.5rem;
+            display: block;
+            margin-bottom: 15px;
+            animation: floatIcon 3s ease-in-out infinite;
+        }
+        @keyframes floatIcon {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-8px); }
+            100% { transform: translateY(0px); }
+        }
+
+        /* 2. FORM LAYOUT */
         .contact-section {
             display: flex;
             justify-content: center;
             align-items: flex-start;
-            padding: 80px 20px;
-            min-height: 80vh;
+            padding: 60px 20px;
         }
 
         .form-wrapper {
             width: 100%;
             max-width: 600px;
-            background: rgba(255, 255, 255, 0.85); /* Glass */
+            background: rgba(255, 255, 255, 0.85);
             backdrop-filter: blur(16px);
             padding: 50px;
             border-radius: 20px;
@@ -61,132 +93,116 @@
             transition: transform 0.3s ease;
         }
         
-        /* 2. HEADER */
         .form-header { text-align: center; margin-bottom: 35px; }
         .form-header h1 { 
-            font-size: 2.2rem; 
-            color: #0A2540; 
-            margin-bottom: 12px; 
-            font-family: 'Merriweather', serif; 
+            font-size: 2rem; color: #0A2540; margin-bottom: 12px; font-family: 'Merriweather', serif; 
         }
         .form-header p { color: #64748B; font-size: 1rem; line-height: 1.6; }
 
-        /* 3. FORM INPUTS */
+        /* 3. INPUT STYLES */
         .form-group { margin-bottom: 24px; }
         .form-label { display: block; margin-bottom: 8px; font-weight: 600; color: #334155; font-size: 0.95rem; }
         
         .form-input, .form-select, .form-textarea {
-            width: 100%;
-            padding: 14px 18px;
-            border: 1px solid #CBD5E1;
-            border-radius: 10px;
-            font-family: 'Inter', sans-serif;
-            font-size: 1rem;
-            background-color: rgba(255, 255, 255, 0.6);
-            color: #1E293B;
+            width: 100%; padding: 14px 18px;
+            border: 1px solid #CBD5E1; border-radius: 10px;
+            font-family: 'Inter', sans-serif; font-size: 1rem;
+            background-color: rgba(255, 255, 255, 0.6); color: #1E293B;
             transition: all 0.2s;
         }
-        
         .form-input:focus, .form-select:focus, .form-textarea:focus {
-            outline: none;
-            border-color: #0077B6;
-            background-color: #FFFFFF;
+            outline: none; border-color: #0077B6; background-color: #FFFFFF;
             box-shadow: 0 0 0 4px rgba(0, 119, 182, 0.1);
         }
-        
         .form-textarea { min-height: 140px; resize: vertical; }
 
-        /* 4. CHECKBOX */
         .checkbox-group {
-            display: flex;
-            align-items: flex-start;
-            gap: 12px;
-            margin-bottom: 30px;
-            padding: 10px 0;
+            display: flex; align-items: flex-start; gap: 12px;
+            margin-bottom: 30px; padding: 10px 0;
         }
         .checkbox-input { margin-top: 4px; width: 18px; height: 18px; cursor: pointer; accent-color: #0077B6; }
         .checkbox-label { font-size: 0.9rem; color: #64748B; line-height: 1.5; cursor: pointer; }
 
-        /* 5. BUTTON (Premium Gradient) */
+        /* 4. PREMIUM BUTTON */
         .submit-btn {
-            width: 100%;
-            padding: 16px;
-            font-size: 1rem;
-            font-weight: 600;
-            cursor: pointer;
-            border: none;
-            border-radius: 10px;
+            width: 100%; padding: 16px;
+            font-size: 1rem; font-weight: 600; cursor: pointer;
+            border: none; border-radius: 10px;
             background: linear-gradient(135deg, #0A2540 0%, #1E40AF 100%);
-            color: white;
-            box-shadow: 0 4px 12px rgba(10, 37, 64, 0.2);
+            color: white; box-shadow: 0 4px 12px rgba(10, 37, 64, 0.2);
             transition: transform 0.2s, box-shadow 0.2s;
         }
         .submit-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 20px rgba(10, 37, 64, 0.3);
+            transform: translateY(-2px); box-shadow: 0 8px 20px rgba(10, 37, 64, 0.3);
+        }
+
+        /* 5. INFO CONTENT SECTIONS (For Compliance Text) */
+        .info-container {
+            max-width: 800px; margin: 0 auto; padding: 0 20px 80px;
+        }
+        .content-block { margin-bottom: 40px; }
+        .content-block h2 {
+            font-size: 1.6rem; margin-bottom: 16px; color: #0A2540;
+            font-family: 'Merriweather', serif; display: flex; align-items: center; gap: 10px;
+        }
+        .info-list li {
+            position: relative; padding-left: 24px; margin-bottom: 10px;
+            list-style: none; color: #475569; font-size: 1rem;
+        }
+        .info-list li::before {
+            content: "•"; position: absolute; left: 0; color: #0284C7; font-weight: bold;
         }
 
         /* 6. SOCIAL ICONS */
         .icon-container {
-            margin-top: 45px;
-            padding-top: 25px;
-            border-top: 1px solid #E2E8F0;
-            display: flex;
-            justify-content: center;
-            gap: 25px;
+            margin-top: 45px; padding-top: 25px; border-top: 1px solid #E2E8F0;
+            display: flex; justify-content: center; gap: 25px;
         }
-
         .social-icon {
             display: flex; align-items: center; justify-content: center;
-            width: 50px; height: 50px;
-            border-radius: 12px;
-            background-color: white;
-            color: #64748B;
-            border: 1px solid #E2E8F0;
+            width: 50px; height: 50px; border-radius: 12px;
+            background-color: white; color: #64748B; border: 1px solid #E2E8F0;
             transition: all 0.3s ease;
         }
         .social-icon svg { width: 24px; height: 24px; fill: currentColor; }
         .social-icon:hover {
-            transform: translateY(-4px);
-            background-color: #0A2540; color: white; border-color: #0A2540;
-            box-shadow: 0 4px 12px rgba(10, 37, 64, 0.15);
+            transform: translateY(-4px); background-color: #0A2540; color: white; border-color: #0A2540;
         }
 
-        /* --- DARK MODE OVERRIDES (Nuclear Fix) --- */
+        /* --- DARK MODE OVERRIDES --- */
+        [data-theme="dark"] .hero-glass-card {
+            background: rgba(30, 41, 59, 0.7) !important;
+            border-color: rgba(255,255,255,0.1) !important;
+        }
+        [data-theme="dark"] .hero-glass-card:hover { border-color: rgba(14, 165, 233, 0.5) !important; }
+
         [data-theme="dark"] .form-wrapper {
             background: rgba(30, 41, 59, 0.7) !important;
             border-color: rgba(255,255,255,0.05) !important;
         }
         [data-theme="dark"] .form-header h1 { color: #ffffff !important; }
         [data-theme="dark"] .form-header p { color: #cbd5e1 !important; }
-        
         [data-theme="dark"] .form-label { color: #e2e8f0 !important; }
-        [data-theme="dark"] .form-input, 
-        [data-theme="dark"] .form-select, 
-        [data-theme="dark"] .form-textarea {
+        [data-theme="dark"] .form-input, [data-theme="dark"] .form-select, [data-theme="dark"] .form-textarea {
             background-color: rgba(15, 23, 42, 0.6) !important;
-            border-color: #475569 !important;
-            color: #ffffff !important;
+            border-color: #475569 !important; color: #ffffff !important;
         }
-        [data-theme="dark"] .form-input:focus { border-color: #38bdf8 !important; }
-        
         [data-theme="dark"] .checkbox-label { color: #cbd5e1 !important; }
         
         [data-theme="dark"] .social-icon {
             background-color: rgba(15, 23, 42, 0.6) !important;
-            border-color: #475569 !important;
-            color: #cbd5e1 !important;
+            border-color: #475569 !important; color: #cbd5e1 !important;
         }
         [data-theme="dark"] .social-icon:hover {
-            background-color: #38bdf8 !important;
-            color: #0f172a !important;
+            background-color: #38bdf8 !important; color: #0f172a !important;
         }
 
-        /* Mobile Adjustments */
+        [data-theme="dark"] .content-block h2 { color: #fff !important; }
+        [data-theme="dark"] .info-list li { color: #cbd5e1 !important; }
+
         @media (max-width: 768px) {
             .form-wrapper { padding: 30px 20px; }
-            .form-header h1 { font-size: 1.8rem; }
-            .contact-section { padding: 40px 16px; }
+            .hero-glass-card { padding: 25px; }
         }
     </style>
 </head>
@@ -217,12 +233,28 @@
 
     <main>
 
+    <section class="hero-premium">
+        <div class="hero-glow glow-left"></div>
+        <div class="hero-glow glow-right"></div>
+
+        <div class="container">
+            <div class="hero-glass-card">
+                <span class="hero-main-icon">📬</span>
+                <h1>Contact & Enquiry Support</h1>
+                <p>A controlled channel for financial process support, documentation assistance, and compliance clarity.</p>
+                <div class="hero-micro-text" style="font-size: 1rem; margin-top: 15px; opacity: 0.9;">
+                    Strictly Non-Advisory • Response within 24 Hours
+                </div>
+            </div>
+        </div>
+    </section>
+
     <section class="contact-section">
         <div class="form-wrapper">
             
             <div class="form-header">
-                <h1>Start an Enquiry</h1>
-                <p>Securely submit your documentation requirements. <br>Response within 24 hours.</p>
+                <h1>Submit Your Query</h1>
+                <p>Please ensure your enquiry relates to process, documentation, or compliance. We do not provide investment advice.</p>
             </div>
 
             <div id="successMessage" style="display: none; text-align: center; color: #10B981; padding: 20px;">
@@ -263,13 +295,13 @@
 
                 <div class="form-group">
                     <label for="message" class="form-label">Your Requirement</label>
-                    <textarea id="message" class="form-textarea" required minlength="20" placeholder="Please describe your specific requirement..."></textarea>
+                    <textarea id="message" class="form-textarea" required minlength="20" placeholder="Describe your documentation or process requirement..."></textarea>
                 </div>
 
                 <div class="checkbox-group">
                     <input type="checkbox" id="consent" class="checkbox-input" required>
                     <label for="consent" class="checkbox-label">
-                        I agree to the Privacy Policy and authorize MVN FinHub to contact me regarding this enquiry.
+                        I understand this platform is non-advisory and authorize MVN FinHub to contact me regarding this process enquiry.
                     </label>
                 </div>
 
@@ -296,6 +328,37 @@
         </div>
     </section>
 
+    <section class="info-container">
+        
+        <div class="content-block">
+            <h2>When to Contact Us</h2>
+            <ul class="info-list">
+                <li>You need help interpreting bank notices or rejection letters.</li>
+                <li>You require assistance with physical share transmission or IEPF claims.</li>
+                <li>You are an NRI needing guidance on NRO/NRE documentation.</li>
+                <li>You need to structure your family's financial documents for future readiness.</li>
+            </ul>
+        </div>
+
+        <div class="content-block">
+            <h2><span style="color:#EF4444">⚠️</span> When NOT to Contact Us</h2>
+            <ul class="info-list">
+                <li>Requests for stock tips, mutual fund recommendations, or market predictions.</li>
+                <li>Requests for tax evasion schemes or illegal document manipulation.</li>
+                <li>Urgent requests for guaranteed outcomes (institutional timelines apply).</li>
+                <li>Legal representation in court (we are process experts, not litigators).</li>
+            </ul>
+        </div>
+
+        <div class="content-block">
+            <h2>Privacy & Data Responsibility</h2>
+            <p style="color:#475569; font-size:1rem; line-height:1.6;">
+                We collect data solely for the purpose of handling your enquiry. Your information is never sold, shared, or used for unrelated marketing. By submitting this form, you acknowledge that MVN FinHub provides information and process support, not binding financial advice.
+            </p>
+        </div>
+
+    </section>
+
     </main>
     <footer>
         <div class="container">
@@ -304,10 +367,9 @@
             </div>
 
             <p>&copy; <span class="copyright-year">2026</span> MVN FinHub</p>
-            <p style="font-size: 0.9rem; margin-top: 10px; max-width: 600px; margin-left: auto; margin-right: auto;">
-                MVN FinHub provides strictly non-advisory financial process, documentation, and educational support.
-            </p>
-
+            <p style="margin-top: 8px;">MVN FinHub is a support and awareness platform, not a decision-making authority.</p>
+            <p style="margin-bottom: 24px;">Trust is built through transparency, boundaries, and consistency. The platform’s role ends at process clarity and documentation support.</p>
+            
             <div class="footer-links">
                 <a href="legal.html">Privacy & Legal</a>
                 <a href="contact.html">Contact</a>
@@ -319,7 +381,7 @@
     </footer>
 
     <script>
-        // 1. Theme Logic (Synced with app.js)
+        // 1. Theme Logic
         if(localStorage.getItem('theme') === 'dark') {
             document.documentElement.setAttribute('data-theme', 'dark');
             const btn = document.getElementById('footer-theme-btn');
@@ -327,12 +389,10 @@
         }
 
         function toggleTheme() {
-            // Uses global function from app.js if available
             if (window.toggleTheme) {
                 window.toggleTheme();
                 return;
             }
-            // Fallback
             const html = document.documentElement;
             const btn = document.getElementById('footer-theme-btn');
             const current = html.getAttribute('data-theme');
