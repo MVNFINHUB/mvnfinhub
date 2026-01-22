@@ -6,7 +6,6 @@
     
     <title>Process Support & Documentation Services | MVN FinHub</title>
     <meta name="description" content="MVN FinHub Services: Execution-level support for financial documentation, legacy asset recovery, IEPF claims, NRI compliance, and banking process navigation. Non-advisory.">
-    <meta name="keywords" content="financial documentation support, legacy share recovery, IEPF claim assistance, NRI banking compliance, KYC process support, financial structure organization, non-advisory financial services">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://mvnfinhub.github.io/services.html">
 
@@ -22,8 +21,8 @@
         <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     </noscript>
 
-    <link rel="preload" href="assets/css/main.css?v=final_perf" as="style">
-    <link rel="stylesheet" href="assets/css/main.css?v=final_perf">
+    <link rel="preload" href="assets/css/main.css?v=final_v3" as="style">
+    <link rel="stylesheet" href="assets/css/main.css?v=final_v3">
     <script src="assets/js/app.js" defer></script>
     <script data-goatcounter="https://mvnfinhub.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 
@@ -40,11 +39,12 @@
     </script>
 
     <style>
-        /* --- PAGE SPECIFIC STYLES --- */
+        /* --- PREMIUM STYLES FOR SERVICES PAGE --- */
+        
+        /* 1. HERO */
         .hero-glass-card {
             background: rgba(255, 255, 255, 0.65);
             backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
             padding: 40px;
             border-radius: 20px;
             border: 1px solid rgba(255, 255, 255, 0.9);
@@ -52,12 +52,6 @@
             text-align: center;
             max-width: 900px;
             margin: 0 auto;
-            transition: transform 0.4s ease;
-        }
-        .hero-glass-card:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.08);
-            border-color: rgba(14, 165, 233, 0.3);
         }
         .hero-main-icon {
             font-size: 2.5rem;
@@ -66,236 +60,186 @@
             animation: floatIcon 3s ease-in-out infinite;
         }
 
-        /* PRIMARY SERVICE BOX */
-        .primary-service {
-            background: linear-gradient(135deg, rgba(240, 249, 255, 0.8) 0%, rgba(224, 242, 254, 0.8) 100%);
-            backdrop-filter: blur(12px);
-            border: 1px solid rgba(186, 230, 253, 0.6);
-            border-top: 5px solid #0284C7;
-            border-radius: 20px;
-            padding: 50px;
-            margin-bottom: 70px;
-            box-shadow: 0 25px 50px -12px rgba(2, 132, 199, 0.15);
+        /* 2. CORE OFFERING GRID (Top 3) */
+        .core-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+
+        a.core-card {
+            display: flex;
+            flex-direction: column;
+            text-decoration: none;
+            background: linear-gradient(145deg, #ffffff 0%, #f0f9ff 100%);
+            padding: 40px;
+            border-radius: 24px;
+            border: 1px solid rgba(255, 255, 255, 0.8);
+            box-shadow: 0 15px 40px -10px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
             position: relative;
             overflow: hidden;
+            border-top: 6px solid #0284C7;
+        }
+
+        /* Hover Effect for Core Cards */
+        a.core-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 25px 60px -15px rgba(2, 132, 199, 0.2);
+            border-color: #38BDF8;
+        }
+
+        /* Badge */
+        .core-badge {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: rgba(2, 132, 199, 0.1);
+            color: #0284C7;
+            font-size: 0.75rem;
+            font-weight: 700;
+            padding: 6px 14px;
+            border-radius: 50px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* 3. FOUNDATION LAYER (Financial Structure - Restored Full Content) */
+        .foundation-card {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(14, 165, 233, 0.2);
+            border-radius: 20px;
+            padding: 40px;
+            margin-bottom: 60px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+            text-decoration: none;
+            display: block;
+            color: inherit;
+            position: relative;
             transition: transform 0.3s ease;
         }
-        .primary-service:hover { transform: translateY(-3px); }
-        .primary-service::after {
-            content: ''; position: absolute; top: -60px; right: -60px;
-            width: 250px; height: 250px;
-            background: radial-gradient(circle, rgba(2, 132, 199, 0.08) 0%, transparent 70%);
-            border-radius: 50%; pointer-events: none;
+        .foundation-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.06);
+            border-color: #0EA5E9;
+        }
+        .foundation-badge {
+            background: #F1F5F9;
+            color: #475569;
+            display: inline-block;
+            padding: 6px 16px;
+            border-radius: 30px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            border: 1px solid #E2E8F0;
         }
 
-        .primary-badge {
-            background: linear-gradient(90deg, #0284C7, #0369A1);
-            color: #ffffff;
-            display: inline-flex; align-items: center; gap: 8px;
-            padding: 8px 18px; border-radius: 30px;
-            font-size: 0.85rem; font-weight: 700;
-            margin-bottom: 24px; text-transform: uppercase; letter-spacing: 0.8px;
-            box-shadow: 0 4px 12px rgba(2, 132, 199, 0.3);
-        }
-        .primary-badge::before { content: "★"; font-size: 1rem; color: #FFD700; }
-
-        .primary-service h2 {
-            font-size: 2.2rem; color: #0C4A6E;
-            margin-bottom: 20px; font-family: 'Merriweather', serif;
-            position: relative; z-index: 2;
-        }
-
-        .boundary-box {
-            background-color: rgba(255, 255, 255, 0.8); 
-            border-left: 4px solid #0284C7;
-            padding: 24px; margin-top: 40px;
-            font-size: 0.95rem; border-radius: 0 12px 12px 0;
-            color: #334155; position: relative; z-index: 2;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.03);
-        }
-
-        /* SERVICES GRID & CARDS */
+        /* 4. STANDARD GRID */
         .services-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
-            gap: 35px;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
         }
-        
-        /* CARD INTERACTIVITY */
+
         a.service-card {
             display: flex;
             flex-direction: column;
-            gap: 15px;
-            text-decoration: none; /* No underline */
-            background: rgba(255, 255, 255, 0.8);
-            backdrop-filter: blur(12px);
+            text-decoration: none;
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(10px);
             padding: 35px;
             border-radius: 16px;
-            border: 1px solid rgba(255, 255, 255, 0.8);
+            border: 1px solid rgba(255, 255, 255, 0.6);
             box-shadow: 0 4px 15px rgba(0,0,0,0.03);
-            transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
-            position: relative; overflow: hidden;
-            cursor: pointer; /* Ensures hand icon appears */
+            transition: all 0.3s ease;
+            position: relative;
+            border-top: 5px solid transparent;
         }
 
-        /* Hover Effects */
         a.service-card:hover {
             transform: translateY(-5px);
             box-shadow: 0 15px 30px rgba(0,0,0,0.08);
-            border-color: #0EA5E9; /* Blue border on hover */
+            background: white;
         }
 
-        /* Arrow Indicator on Hover */
-        a.service-card h3::after {
-            content: ' →';
-            opacity: 0;
-            margin-left: 8px;
-            transition: opacity 0.3s ease, transform 0.3s ease;
-            display: inline-block;
-            color: #0EA5E9;
-        }
-        a.service-card:hover h3::after {
-            opacity: 1;
-            transform: translateX(5px);
-        }
+        /* Color Coding */
+        a.service-card:nth-child(4n+1) { border-top-color: #0EA5E9; }
+        a.service-card:nth-child(4n+2) { border-top-color: #10B981; }
+        a.service-card:nth-child(4n+3) { border-top-color: #8B5CF6; }
+        a.service-card:nth-child(4n+4) { border-top-color: #F59E0B; }
 
-        /* Color Accents */
-        a.service-card:nth-child(3n+1) { border-top: 5px solid #0EA5E9; }
-        a.service-card:nth-child(3n+2) { border-top: 5px solid #10B981; }
-        a.service-card:nth-child(3n+3) { border-top: 5px solid #8B5CF6; }
-
-        a.service-card h3 {
-            font-size: 1.35rem; margin-bottom: 10px; padding-bottom: 15px;
-            border-bottom: 2px solid #E2E8F0; color: #0A2540;
-            font-family: 'Merriweather', serif;
-            display: flex; align-items: center; gap: 12px;
-        }
-        .topic-icon {
-            font-size: 1.6rem; line-height: 1;
-            filter: grayscale(100%); transition: all 0.3s ease;
-            display: inline-block;
-        }
-        a.service-card:hover .topic-icon {
-            filter: grayscale(0%); transform: scale(1.2) rotate(5deg);
-        }
-
-        /* LIST STYLING */
-        .card-list { margin: 0; padding: 0; }
+        /* Typography */
+        h2, h3 { font-family: 'Merriweather', serif; color: #0F172A; margin-bottom: 15px; }
+        .topic-icon { font-size: 2rem; display: block; margin-bottom: 10px; }
+        
+        /* List Styles (Restored Exact Formatting) */
+        .card-list { margin: 0; padding: 0; margin-top: 15px; }
         .card-list li {
-            list-style: none; margin-bottom: 12px;
-            font-size: 0.95rem; line-height: 1.5; color: #475569;
-            position: relative; padding-left: 20px;
+            list-style: none;
+            margin-bottom: 10px;
+            font-size: 0.95rem;
+            line-height: 1.6;
+            color: #475569;
+            padding-left: 20px;
+            position: relative;
         }
         .card-list li::before {
-            content: "•"; position: absolute; left: 0; top: 0px;
-            color: #94A3B8; font-weight: bold;
+            content: "•"; position: absolute; left: 0; color: #0EA5E9; font-weight: bold;
         }
-        .card-label {
-            font-weight: 700; color: #0F172A; display: block; margin-bottom: 2px;
-        }
+        .card-label { font-weight: 700; color: #0F172A; }
 
-        /* EXCLUSION / GLOBAL SECTIONS */
-        .global-section {
-            background: rgba(255, 255, 255, 0.6);
-            border-radius: 16px; padding: 40px; margin-top: 60px;
-            border: 1px solid rgba(255, 255, 255, 0.8);
-        }
-        .global-section h2 {
-            font-size: 1.6rem; color: #1E293B; margin-bottom: 20px;
-            display: flex; align-items: center; gap: 12px;
-        }
-        .exclusion-box {
-            background: linear-gradient(135deg, #FEF2F2 0%, #FFF1F2 100%);
-            border: 1px solid #FECACA; border-left: 5px solid #EF4444;
-        }
-        .exclusion-box h2 { color: #991B1B; }
-        .cross-list li {
-            position: relative; padding-left: 26px; margin-bottom: 10px;
-            color: #7F1D1D; font-weight: 600; list-style: none;
-        }
-        .cross-list li::before { 
-            content: "✕"; position: absolute; left: 0; top: 1px; color: #EF4444; 
-        }
-
-        /* NEW BUTTON STYLE FOR DEEP DIVE */
-        .btn-deep-dive {
-            display: inline-block;
-            margin-top: 25px;
-            padding: 12px 30px;
-            background: #0284C7;
-            color: white;
-            text-decoration: none;
+        /* Buttons */
+        .card-btn {
+            margin-top: auto;
+            align-self: flex-start;
+            padding: 10px 20px;
+            background: transparent;
+            border: 1px solid #E2E8F0;
             border-radius: 50px;
+            font-size: 0.85rem;
             font-weight: 600;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(2, 132, 199, 0.3);
+            color: #64748B;
+            margin-top: 25px;
+            transition: all 0.3s;
         }
-        .btn-deep-dive:hover {
-            background: #0369A1;
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(2, 132, 199, 0.4);
-        }
-
-        @keyframes floatIcon {
-            0% { transform: translateY(0px); }
-            50% { transform: translateY(-8px); }
-            100% { transform: translateY(0px); }
+        a.core-card:hover .card-btn, 
+        a.service-card:hover .card-btn,
+        .foundation-card:hover .card-btn {
+            background: #0EA5E9;
+            color: white;
+            border-color: #0EA5E9;
         }
 
-        /* --- DARK MODE OVERRIDES --- */
-        [data-theme="dark"] .hero-glass-card {
-            background: rgba(30, 41, 59, 0.7) !important;
-            border-color: rgba(255,255,255,0.1) !important;
-        }
-        [data-theme="dark"] .hero-glass-card:hover { border-color: rgba(14, 165, 233, 0.5) !important; }
+        /* Dark Mode */
+        [data-theme="dark"] .hero-glass-card { background: rgba(30, 41, 59, 0.7); border-color: rgba(255,255,255,0.1); }
+        [data-theme="dark"] a.core-card { background: linear-gradient(145deg, #1e293b 0%, #0f172a 100%); border-color: rgba(255,255,255,0.1); border-top-color: #38BDF8; }
+        [data-theme="dark"] a.core-card h3 { color: white; }
+        [data-theme="dark"] .foundation-card { background: rgba(30, 41, 59, 0.6); border-color: rgba(255,255,255,0.1); }
+        [data-theme="dark"] .foundation-badge { background: rgba(255,255,255,0.1); color: #cbd5e1; border-color: transparent; }
+        [data-theme="dark"] a.service-card { background: rgba(30, 41, 59, 0.6); border-color: rgba(255,255,255,0.05); }
+        [data-theme="dark"] a.service-card:hover { background: rgba(30, 41, 59, 0.9); }
+        [data-theme="dark"] h2, [data-theme="dark"] h3 { color: white; }
+        [data-theme="dark"] .card-list li { color: #cbd5e1; }
+        [data-theme="dark"] .card-label { color: #e2e8f0; }
+        [data-theme="dark"] .card-btn { border-color: rgba(255,255,255,0.2); color: #94A3B8; }
 
-        [data-theme="dark"] .primary-service {
-            background: rgba(30, 41, 59, 0.6) !important;
-            border-color: #38bdf8 !important; border-top-color: #38bdf8 !important;
-        }
-        [data-theme="dark"] .primary-service h2 { color: #ffffff !important; }
-        
-        [data-theme="dark"] .boundary-box {
-            background-color: rgba(15, 23, 42, 0.6) !important;
-            border-left-color: #38bdf8 !important; color: #cbd5e1 !important;
-        }
+        @keyframes floatIcon { 0% { transform: translateY(0px); } 50% { transform: translateY(-8px); } 100% { transform: translateY(0px); } }
 
-        /* Anchor Card Dark Mode */
-        [data-theme="dark"] a.service-card {
-            background: rgba(30, 41, 59, 0.6) !important;
-            border-color: rgba(255,255,255,0.05) !important;
-            border-top-width: 5px !important;
-        }
-        [data-theme="dark"] a.service-card:hover {
-            border-color: #38bdf8 !important;
-        }
-        [data-theme="dark"] a.service-card:nth-child(3n+1) { border-top-color: #0EA5E9 !important; }
-        [data-theme="dark"] a.service-card:nth-child(3n+2) { border-top-color: #10B981 !important; }
-        [data-theme="dark"] a.service-card:nth-child(3n+3) { border-top-color: #8B5CF6 !important; }
+        /* Global Sections */
+        .global-section { background: rgba(255,255,255,0.6); border-radius: 16px; padding: 40px; margin-top: 60px; border: 1px solid rgba(255,255,255,0.8); }
+        [data-theme="dark"] .global-section { background: rgba(30,41,59,0.6); border-color: rgba(255,255,255,0.05); }
+        .exclusion-box { background: linear-gradient(135deg, #FEF2F2 0%, #FFF1F2 100%); border: 1px solid #FECACA; border-left: 5px solid #EF4444; }
+        [data-theme="dark"] .exclusion-box { background: rgba(69,10,10,0.4); border-color: #7f1d1d; border-left-color: #ef4444; }
+        .exclusion-box h2 { color: #991B1B; }
+        [data-theme="dark"] .exclusion-box h2 { color: #fca5a5; }
+        .cross-list li { padding-left: 26px; list-style: none; position: relative; margin-bottom: 10px; color: #7F1D1D; font-weight: 600; }
+        [data-theme="dark"] .cross-list li { color: #fca5a5; }
+        .cross-list li::before { content: "✕"; position: absolute; left: 0; color: #EF4444; }
 
-        [data-theme="dark"] a.service-card h3 {
-            color: #ffffff !important; border-bottom-color: rgba(255,255,255,0.1) !important;
-        }
-        [data-theme="dark"] .card-list li { color: #cbd5e1 !important; }
-        [data-theme="dark"] .card-label { color: #e2e8f0 !important; }
-
-        [data-theme="dark"] .global-section {
-            background: rgba(30, 41, 59, 0.6) !important;
-            border-color: rgba(255,255,255,0.05) !important;
-        }
-        [data-theme="dark"] .global-section h2 { color: #fff !important; }
-        
-        [data-theme="dark"] .exclusion-box {
-            background: rgba(69, 10, 10, 0.4) !important; 
-            border-color: #7f1d1d !important; border-left-color: #ef4444 !important;
-        }
-        [data-theme="dark"] .exclusion-box h2, [data-theme="dark"] .cross-list li { color: #fca5a5 !important; }
-
-        @media (max-width: 768px) {
-            .primary-service { padding: 30px 24px; }
-            .services-grid { grid-template-columns: 1fr; }
-            .hero-glass-card { padding: 25px; }
-        }
+        @media (max-width: 768px) { .core-grid { grid-template-columns: 1fr; } .services-grid { grid-template-columns: 1fr; } }
     </style>
 </head>
 <body>
@@ -344,62 +288,77 @@
     <section class="section-padding">
         <div class="container">
         
-        <div class="primary-service">
-            <div class="primary-badge">Core Offering</div>
-            <h2><span class="topic-icon" style="margin-right:15px; font-size:2rem;">🏗️</span> Financial Structure & Readiness</h2>
-            
-            <div style="margin-top: 24px;">
-                <ul class="card-list" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px;">
-                    <li><span class="card-label">What it is:</span> Systematic organization of financial records across all asset classes.</li>
-                    <li><span class="card-label">Why it exists:</span> To prevent future transmission delays caused by fragmented records.</li>
-                    <li><span class="card-label">How it helps:</span> Identifies gaps in nominees, KYC, and linking before a crisis occurs.</li>
-                    <li><span class="card-label">We Do:</span> Map assets, checking linking status, and organize physical records.</li>
-                    <li><span class="card-label">We Don't Do:</span> Plan investments or advise on asset allocation.</li>
-                </ul>
-            </div>
-
-            <div style="text-align: center;">
-                <a href="service-structure.html" class="btn-deep-dive">View Full Process Scope & Details →</a>
-            </div>
-
-            <div class="boundary-box">
-                <strong>Explicit Boundary Statement:</strong><br>
-                This service is strictly educational and process-oriented. No investment advice, planning, or recommendations are provided.
-            </div>
-        </div>
-
-        <div class="services-grid">
+        <h2 style="text-align: center; margin-bottom: 40px; font-size: 2rem; color: var(--text-head);">Core Offerings</h2>
         
-            <a href="service-shares.html" class="service-card">
-                <h3><span class="topic-icon">📜</span> Shares & Legacy Assets</h3>
+        <div class="core-grid">
+            
+            <a href="service-shares.html" class="core-card">
+                <div class="core-badge">Flagship</div>
+                <span class="topic-icon">📜</span>
+                <h3>Shares & Legacy Assets</h3>
                 <ul class="card-list">
                     <li><span class="card-label">Focus:</span> Recovery of physical share certificates and IEPF claims.</li>
                     <li><span class="card-label">Context:</span> Legacy assets often face rejection due to name mismatches or signature gaps.</li>
                     <li><span class="card-label">We Do:</span> Handle transmission, succession documentation, and IEPF filing.</li>
                     <li><span class="card-label">We Don't Do:</span> Provide legal representation in court.</li>
                 </ul>
+                <div class="card-btn">Explore Shares Service →</div>
             </a>
 
-            <a href="service-nri.html" class="service-card">
-                <h3><span class="topic-icon">✈️</span> NRI Documentation</h3>
+            <a href="service-nri.html" class="core-card" style="border-top-color: #6366F1;">
+                <div class="core-badge" style="color: #6366F1; background: rgba(99, 102, 241, 0.1);">Cross-Border</div>
+                <span class="topic-icon">✈️</span>
+                <h3>NRI Documentation</h3>
                 <ul class="card-list">
                     <li><span class="card-label">Focus:</span> Cross-border compliance for Non-Resident Indians.</li>
                     <li><span class="card-label">Context:</span> NRIs face stricter scrutiny and longer validation timelines (FATCA/CRS).</li>
                     <li><span class="card-label">We Do:</span> Assist with NRO/NRE documentation and Apostille guidance.</li>
                     <li><span class="card-label">We Don't Do:</span> File international taxes or advise on forex rates.</li>
                 </ul>
+                <div class="card-btn">View NRI Support →</div>
             </a>
 
-            <a href="service-identity.html" class="service-card">
-                <h3><span class="topic-icon">🆔</span> Identity & Core Docs</h3>
+            <a href="service-identity.html" class="core-card" style="border-top-color: #10B981;">
+                <div class="core-badge" style="color: #10B981; background: rgba(16, 185, 129, 0.1);">Foundation</div>
+                <span class="topic-icon">🆔</span>
+                <h3>Identity & Core Docs</h3>
                 <ul class="card-list">
                     <li><span class="card-label">Focus:</span> PAN, Aadhaar, and Passport consistency.</li>
                     <li><span class="card-label">Context:</span> Identity data mismatches are the root cause of 90% of financial rejections.</li>
                     <li><span class="card-label">We Do:</span> Assist in linking and correcting core identity data.</li>
                     <li><span class="card-label">We Don't Do:</span> Create fake or forged identity documents.</li>
                 </ul>
+                <div class="card-btn">Check Identity Services →</div>
             </a>
 
+        </div>
+
+        <a href="service-structure.html" class="foundation-card">
+            <div class="foundation-badge">Foundational Process Service</div>
+            <h2><span class="topic-icon" style="display:inline-block; vertical-align:middle; margin-right:10px;">🏗️</span> Financial Structure & Readiness</h2>
+            
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-top: 15px;">
+                <div>
+                    <ul class="card-list">
+                        <li><span class="card-label">What it is:</span> Systematic organization of financial records across all asset classes.</li>
+                        <li><span class="card-label">Why it exists:</span> To prevent future transmission delays caused by fragmented records.</li>
+                        <li><span class="card-label">How it helps:</span> Identifies gaps in nominees, KYC, and linking before a crisis occurs.</li>
+                    </ul>
+                </div>
+                <div>
+                    <ul class="card-list">
+                        <li><span class="card-label">We Do:</span> Map assets, checking linking status, and organize physical records.</li>
+                        <li><span class="card-label">We Don't Do:</span> Plan investments or advise on asset allocation.</li>
+                    </ul>
+                    <div class="card-btn" style="margin-top: 15px;">View Full Process Scope →</div>
+                </div>
+            </div>
+        </a>
+
+        <h2 style="text-align: center; margin: 50px 0 30px; font-size: 1.8rem; opacity: 0.9;">Operational Support</h2>
+
+        <div class="services-grid">
+        
             <a href="service-banking.html" class="service-card">
                 <h3><span class="topic-icon">🏦</span> Banking & Loan Docs</h3>
                 <ul class="card-list">
@@ -408,6 +367,7 @@
                     <li><span class="card-label">We Do:</span> Ensure loan and account documents meet audit liability standards.</li>
                     <li><span class="card-label">We Don't Do:</span> Influence loan approval decisions.</li>
                 </ul>
+                <div class="card-btn">View Details →</div>
             </a>
 
             <a href="service-process.html" class="service-card">
@@ -418,6 +378,7 @@
                     <li><span class="card-label">We Do:</span> Create a step-by-step execution roadmap.</li>
                     <li><span class="card-label">We Don't Do:</span> Bypass mandatory regulatory checks.</li>
                 </ul>
+                <div class="card-btn">View Details →</div>
             </a>
 
             <a href="service-research.html" class="service-card">
@@ -428,6 +389,7 @@
                     <li><span class="card-label">We Do:</span> Research and explain specific procedural requirements.</li>
                     <li><span class="card-label">We Don't Do:</span> Offer opinions on the quality of a regulation.</li>
                 </ul>
+                <div class="card-btn">View Details →</div>
             </a>
 
             <a href="service-interpretation.html" class="service-card">
@@ -438,6 +400,7 @@
                     <li><span class="card-label">We Do:</span> Translate technical notices into clear action items.</li>
                     <li><span class="card-label">We Don't Do:</span> Draft legal responses to court notices.</li>
                 </ul>
+                <div class="card-btn">View Details →</div>
             </a>
 
             <a href="service-navigation.html" class="service-card">
@@ -448,12 +411,12 @@
                     <li><span class="card-label">We Do:</span> Set realistic timeline expectations based on current stage.</li>
                     <li><span class="card-label">We Don't Do:</span> Make decisions on behalf of the client.</li>
                 </ul>
+                <div class="card-btn">View Details →</div>
             </a>
 
         </div>
 
-        <div class="services-grid" style="margin-top: 60px; grid-template-columns: 1fr 1fr;">
-        
+        <div class="services-grid" style="margin-top: 80px; grid-template-columns: 1fr 1fr;">
             <div class="global-section">
                 <h2><span style="font-size:1.5rem">🔄</span> How Our Services Work</h2>
                 <ul class="card-list">
