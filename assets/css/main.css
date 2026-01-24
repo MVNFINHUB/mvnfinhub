@@ -149,9 +149,13 @@ header {
 .btn-nav:hover { transform: translateY(-2px); box-shadow: 0 10px 20px rgba(0,0,0,0.15); }
 
 /* Mobile Menu Button */
-.mobile-toggle { 
-    display: none; font-size: 1.8rem; background: none; 
-    border: none; color: var(--text-head); cursor: pointer; z-index: 1001; 
+#mobile-menu-toggle, .mobile-toggle {
+    display: block !important;
+    z-index: 2147483647 !important; /* Maximum possible layer */
+    position: relative !important;
+    cursor: pointer !important;
+    pointer-events: auto !important; /* Force clickability */
+}
 }
 
 /* --- 5. HERO SECTIONS --- */
