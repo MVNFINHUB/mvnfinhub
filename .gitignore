@@ -1,0 +1,29 @@
+# Dependencies
+node_modules/
+
+# Large media files
+*.mp4
+*.mov
+*.avi
+*.mkv
+
+# Archives
+*.zip
+*.rar
+*.7z
+
+# Design files
+*.psd
+*.fig
+*.ai
+
+# Executables
+*.exe
+*.msi
+
+# System files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
