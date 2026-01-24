@@ -3,43 +3,94 @@
    
    <url>
       <loc>https://mvnfinhub.github.io/</loc>
-      <lastmod>2026-01-21</lastmod>
+      <lastmod>2026-01-24</lastmod>
       <changefreq>weekly</changefreq>
       <priority>1.00</priority>
    </url>
    <url>
       <loc>https://mvnfinhub.github.io/index.html</loc>
-      <lastmod>2026-01-21</lastmod>
+      <lastmod>2026-01-24</lastmod>
       <changefreq>weekly</changefreq>
+      <priority>1.00</priority>
+   </url>
+   <url>
+      <loc>https://mvnfinhub.github.io/services.html</loc>
+      <lastmod>2026-01-24</lastmod>
+      <changefreq>weekly</changefreq>
+      <priority>0.90</priority>
+   </url>
+   <url>
+      <loc>https://mvnfinhub.github.io/insights.html</loc>
+      <lastmod>2026-01-24</lastmod>
+      <changefreq>weekly</changefreq>
+      <priority>0.90</priority>
+   </url>
+   <url>
+      <loc>https://mvnfinhub.github.io/about.html</loc>
+      <lastmod>2026-01-24</lastmod>
+      <changefreq>monthly</changefreq>
+      <priority>0.70</priority>
+   </url>
+   <url>
+      <loc>https://mvnfinhub.github.io/contact.html</loc>
+      <lastmod>2026-01-24</lastmod>
+      <changefreq>monthly</changefreq>
+      <priority>0.70</priority>
+   </url>
+
+   <url>
+      <loc>https://mvnfinhub.github.io/financial-structure.html</loc>
+      <lastmod>2026-01-24</lastmod>
+      <changefreq>monthly</changefreq>
+      <priority>0.80</priority>
+   </url>
+   <url>
+      <loc>https://mvnfinhub.github.io/legacy-recovery.html</loc>
+      <lastmod>2026-01-24</lastmod>
+      <changefreq>monthly</changefreq>
+      <priority>0.80</priority>
+   </url>
+   <url>
+      <loc>https://mvnfinhub.github.io/nri-support.html</loc>
+      <lastmod>2026-01-24</lastmod>
+      <changefreq>monthly</changefreq>
+      <priority>0.80</priority>
+   </url>
+   <url>
+      <loc>https://mvnfinhub.github.io/process-compliance.html</loc>
+      <lastmod>2026-01-24</lastmod>
+      <changefreq>monthly</changefreq>
+      <priority>0.80</priority>
+   </url>
+   <url>
+      <loc>https://mvnfinhub.github.io/custom-research.html</loc>
+      <lastmod>2026-01-24</lastmod>
+      <changefreq>monthly</changefreq>
+      <priority>0.80</priority>
+   </url>
+   <url>
+      <loc>https://mvnfinhub.github.io/process-navigation.html</loc>
+      <lastmod>2026-01-24</lastmod>
+      <changefreq>monthly</changefreq>
+      <priority>0.80</priority>
+   </url>
+   <url>
+      <loc>https://mvnfinhub.github.io/document-interpretation.html</loc>
+      <lastmod>2026-01-24</lastmod>
+      <changefreq>monthly</changefreq>
+      <priority>0.80</priority>
+   </url>
+   <url>
+      <loc>https://mvnfinhub.github.io/identity-docs.html</loc>
+      <lastmod>2026-01-24</lastmod>
+      <changefreq>monthly</changefreq>
+      <priority>0.80</priority>
+   </url>
+   <url>
+      <loc>https://mvnfinhub.github.io/banking-loan.html</loc>
+      <lastmod>2026-01-24</lastmod>
+      <changefreq>monthly</changefreq>
       <priority>0.80</priority>
    </url>
 
-   <url>
-      <loc>https://mvnfinhub.github.io/services.html</loc>
-      <lastmod>2026-01-21</lastmod>
-      <changefreq>monthly</changefreq>
-      <priority>0.90</priority>
-   </url>
-
-   <url>
-      <loc>https://mvnfinhub.github.io/insights.html</loc>
-      <lastmod>2026-01-21</lastmod>
-      <changefreq>weekly</changefreq>
-      <priority>0.90</priority>
-   </url>
-
-   <url>
-      <loc>https://mvnfinhub.github.io/about.html</loc>
-      <lastmod>2026-01-21</lastmod>
-      <changefreq>monthly</changefreq>
-      <priority>0.70</priority>
-   </url>
-
-   <url>
-      <loc>https://mvnfinhub.github.io/contact.html</loc>
-      <lastmod>2026-01-21</lastmod>
-      <changefreq>monthly</changefreq>
-      <priority>0.70</priority>
-   </url>
-
-   </urlset>
+</urlset>

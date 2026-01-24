@@ -2,22 +2,19 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://mvnfinhub.goatcounter.com https://gc.zgo.at; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self' https://mvnfinhub.goatcounter.com;">
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Page Not Found | MVN FinHub</title>
     
-    <meta name="theme-color" content="#F8FAFC" media="(prefers-color-scheme: light)">
-    <meta name="theme-color" content="#0F172A" media="(prefers-color-scheme: dark)">
+    <title>Page Not Found | MVN FinHub</title>
+    <meta name="theme-color" content="#0F172A">
+
+    <link rel="icon" type="image/png" href="assets/images/favicon.png">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap">
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
-    <noscript>
-        <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    </noscript>
-
-    <link rel="preload" href="assets/css/main.css?v=final_perf" as="style">
-    <link rel="stylesheet" href="assets/css/main.css?v=final_perf">
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=Inter:wght@300;400;500;600&family=Poppins:wght@400;500;600;700;800&family=Source+Serif+4:opsz,wght@8..60,400;600;700&display=swap" rel="stylesheet">
     
     <script src="assets/js/app.js" defer></script>
     <script data-goatcounter="https://mvnfinhub.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
@@ -25,86 +22,150 @@
     <script>
         if(localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
             document.documentElement.setAttribute('data-theme', 'dark');
-            const metaTheme = document.querySelector('meta[name="theme-color"]');
-            if(metaTheme) metaTheme.setAttribute('content', '#0F172A');
         } else {
             document.documentElement.setAttribute('data-theme', 'light');
-            const metaTheme = document.querySelector('meta[name="theme-color"]');
-            if(metaTheme) metaTheme.setAttribute('content', '#F8FAFC');
         }
     </script>
-    <link rel="icon" type="image/png" href="assets/images/favicon.png">
 
     <style>
-        /* 404 Specific Centering */
+        /* --- 1. EXECUTIVE DESIGN SYSTEM --- */
+        :root {
+            --font-display: 'Poppins', sans-serif;
+            --font-ui: 'IBM Plex Sans', sans-serif;
+            --font-body: 'Inter', sans-serif;
+            
+            /* Light Mode */
+            --bg-body: #F8FAFC;
+            --bg-card: #FFFFFF;
+            --text-head: #0F172A;
+            --text-body: #334155;
+            --text-muted: #64748B;
+            --primary: #0F172A;
+            --accent: #0EA5E9;
+            --accent-glow: rgba(14, 165, 233, 0.15);
+            --border: #E2E8F0;
+            --hero-gradient: linear-gradient(135deg, #EFF6FF 0%, #F8FAFC 100%);
+            --shadow-float: 0 25px 50px -12px rgba(0,0,0,0.1);
+        }
+
+        [data-theme="dark"] {
+            /* Dark Mode */
+            --bg-body: #020617;
+            --bg-card: #0F172A;
+            --text-head: #F8FAFC;
+            --text-body: #94A3B8;
+            --text-muted: #64748B;
+            --primary: #F8FAFC;
+            --accent: #38BDF8;
+            --accent-glow: rgba(56, 189, 248, 0.15);
+            --border: rgba(255, 255, 255, 0.08);
+            --hero-gradient: linear-gradient(135deg, #0B1120 0%, #020617 100%);
+            --shadow-float: 0 30px 60px -12px rgba(0,0,0,0.5);
+        }
+
+        /* Global Reset */
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        html { height: 100%; }
         body {
+            background-color: var(--bg-body); color: var(--text-body);
+            font-family: var(--font-body); line-height: 1.7; overflow-x: hidden;
+            transition: background 0.3s ease;
             display: flex; flex-direction: column; min-height: 100vh;
         }
-        main {
-            flex: 1; display: flex; align-items: center; justify-content: center;
-            padding: 40px 20px;
-        }
+
+        h1, h2, h3, h4 { font-family: var(--font-display); font-weight: 700; color: var(--text-head); }
+        a { text-decoration: none; color: inherit; transition: 0.3s; }
         
-        /* Premium Glass Error Card */
+        /* Premium Texture */
+        body::before {
+            content: ""; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background-image: radial-gradient(var(--border) 1px, transparent 1px);
+            background-size: 30px 30px; opacity: 0.4; pointer-events: none; z-index: -1;
+        }
+
+        /* --- 3. HEADER --- */
+        header { position: absolute; top: 0; width: 100%; z-index: 100; padding: 20px 0; background: transparent; }
+        .container { max-width: 1280px; margin: 0 auto; padding: 0 25px; }
+        .nav-flex { display: flex; justify-content: space-between; align-items: center; }
+
+        .brand-logo {
+            display: flex; align-items: center; gap: 12px; padding: 8px 16px; border-radius: 12px;
+            background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.05);
+            backdrop-filter: blur(12px); transition: 0.3s;
+        }
+        .brand-logo:hover { border-color: var(--accent); background: var(--accent-glow); transform: translateY(-1px); }
+        .logo-icon-wrapper img { height: 40px; width: auto; filter: drop-shadow(0 4px 6px rgba(0,0,0,0.1)); }
+        .brand-text { font-family: var(--font-display); font-weight: 700; font-size: 1.4rem; color: var(--text-head); letter-spacing: -0.5px; }
+        .text-finhub { color: var(--accent); }
+
+        .nav-links { display: flex; gap: 30px; align-items: center; background: rgba(255,255,255,0.02); padding: 5px 20px; border-radius: 50px; border: 1px solid rgba(255,255,255,0.05); }
+        .nav-item { font-family: var(--font-ui); font-weight: 600; font-size: 0.9rem; color: var(--text-head); opacity: 0.8; position: relative; }
+        .nav-item::after { content: ''; position: absolute; bottom: -4px; left: 50%; transform: translateX(-50%); width: 0; height: 2px; background: var(--accent); transition: 0.3s; }
+        .nav-item:hover, .nav-item.active { opacity: 1; }
+        .nav-item:hover::after, .nav-item.active::after { width: 100%; }
+        .btn-nav { background: var(--text-head); color: var(--bg-body) !important; padding: 8px 22px; border-radius: 50px; font-family: var(--font-ui); font-weight: 600; font-size: 0.85rem; box-shadow: 0 4px 20px rgba(0,0,0,0.1); transition: 0.3s; }
+        .mobile-toggle { display: none; font-size: 1.5rem; background: none; border: none; color: var(--text-head); cursor: pointer; }
+
+        /* --- 4. 404 MAIN SECTION --- */
+        main { flex: 1; display: flex; align-items: center; justify-content: center; position: relative; padding: 120px 20px; overflow: hidden; }
+        .aurora { position: absolute; top: -50%; right: -50%; width: 150%; height: 150%; background: radial-gradient(circle, var(--accent-glow) 0%, transparent 60%); filter: blur(80px); animation: pulse 10s infinite alternate; z-index: 0; pointer-events: none; }
+        @keyframes pulse { 0% { transform: scale(1); } 100% { transform: scale(1.1); } }
+
         .error-glass-card {
-            background: rgba(255, 255, 255, 0.65);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            padding: 60px 40px;
-            border-radius: 24px;
-            border: 1px solid rgba(255, 255, 255, 0.9);
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.1);
-            text-align: center;
-            max-width: 600px;
-            width: 100%;
-            transition: transform 0.4s ease;
+            background: var(--bg-card); backdrop-filter: blur(20px);
+            padding: 60px 40px; border-radius: 24px;
+            border: 1px solid var(--border); box-shadow: var(--shadow-float);
+            text-align: center; max-width: 600px; width: 100%; position: relative; z-index: 2;
+            transition: 0.4s;
         }
-        .error-glass-card:hover {
-            transform: translateY(-3px);
-            border-color: rgba(14, 165, 233, 0.3);
-        }
+        .error-glass-card:hover { transform: translateY(-5px); border-color: var(--accent); }
+
+        .hero-main-icon { font-size: 4rem; display: block; margin-bottom: 20px; animation: float 6s ease-in-out infinite; }
+        @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-15px); } }
 
         .error-code {
-            font-family: 'Merriweather', serif; font-size: 6rem; font-weight: 900; line-height: 1; margin-bottom: 10px;
-            background: linear-gradient(135deg, #0F172A 0%, #1E40AF 100%);
-            -webkit-background-clip: text; 
-            -webkit-text-fill-color: transparent;
-            background-clip: text; 
-            color: #0F172A; position: relative; z-index: 2;
+            font-family: var(--font-display); font-size: 5rem; font-weight: 800;
+            line-height: 1; margin-bottom: 10px; color: var(--accent);
+            opacity: 0.9; letter-spacing: -2px;
         }
         
-        .error-title {
-            font-size: 1.5rem; color: #334155; margin-bottom: 20px; font-weight: 600;
-        }
-        
-        /* Floating Icon */
-        .hero-main-icon {
-            font-size: 3rem; display: block; margin-bottom: 10px;
-            animation: floatIcon 3s ease-in-out infinite;
-        }
-        @keyframes floatIcon {
-            0% { transform: translateY(0px); }
-            50% { transform: translateY(-8px); }
-            100% { transform: translateY(0px); }
-        }
+        .error-title { font-family: var(--font-display); font-size: 2rem; color: var(--text-head); margin-bottom: 15px; }
+        .error-desc { font-family: var(--font-body); font-size: 1.1rem; color: var(--text-muted); margin-bottom: 35px; line-height: 1.6; }
 
-        /* Dark Mode Overrides */
-        [data-theme="dark"] .error-glass-card {
-            background: rgba(30, 41, 59, 0.7) !important;
-            border-color: rgba(255,255,255,0.1) !important;
+        /* Premium Button */
+        .btn-primary {
+            display: inline-flex; align-items: center; gap: 10px;
+            background: var(--text-head); color: var(--bg-body);
+            padding: 14px 35px; border-radius: 50px;
+            font-family: var(--font-ui); font-weight: 600; font-size: 1rem;
+            transition: 0.3s; box-shadow: 0 10px 20px rgba(0,0,0,0.1);
         }
-        [data-theme="dark"] .error-code {
-            background: none !important;
-            -webkit-text-fill-color: #ffffff !important;
-            color: #ffffff !important;
-        }
-        [data-theme="dark"] .error-title { color: #ffffff !important; }
-        [data-theme="dark"] p { color: #cbd5e1 !important; }
+        .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 15px 30px rgba(0,0,0,0.2); background: var(--accent); }
+
+        /* --- 5. FOOTER --- */
+        footer { background: #020617; color: #94A3B8; padding: 80px 0 40px; border-top: 1px solid rgba(255,255,255,0.05); margin-top: auto; }
+        .footer-grid { display: grid; grid-template-columns: 1.5fr 1fr 1fr; gap: 60px; }
+        .footer-logo { height: 45px; opacity: 0.9; margin-bottom: 20px; }
+        .footer-desc { font-size: 0.9rem; line-height: 1.6; opacity: 0.8; max-width: 320px; margin-bottom: 20px; }
+        .footer-col h4 { color: #FFF; font-size: 0.9rem; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 25px; }
+        .footer-links a { display: block; color: #94A3B8; margin-bottom: 14px; font-size: 0.9rem; font-family: var(--font-ui); transition: 0.3s; }
+        .footer-links a:hover { color: var(--accent); transform: translateX(5px); }
+        .footer-bottom { margin-top: 60px; padding-top: 30px; border-top: 1px solid rgba(255,255,255,0.05); display: flex; justify-content: space-between; align-items: center; font-size: 0.85rem; opacity: 0.6; }
         
-        /* Button Fix for Dark Mode */
-        [data-theme="dark"] .btn-primary {
-            background: #38BDF8 !important; color: #0F172A !important;
-            box-shadow: 0 0 15px rgba(56, 189, 248, 0.4) !important;
+        .footer-social-icon { width: 36px; height: 36px; border-radius: 50%; background: rgba(255,255,255,0.05); display: inline-flex; align-items: center; justify-content: center; margin-right: 10px; transition: 0.3s; color: #FFF; border: 1px solid rgba(255,255,255,0.1); }
+        .footer-social-icon:hover { background: var(--accent); border-color: var(--accent); transform: translateY(-3px); }
+        .footer-social-icon svg { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+        
+        .status-badge { display: flex; align-items: center; gap: 8px; color: #10B981; font-weight: 600; }
+        .status-ping { display: inline-block; width: 8px; height: 8px; background: #10B981; border-radius: 50%; box-shadow: 0 0 10px #10B981; }
+
+        @media (max-width: 992px) {
+            .error-code { font-size: 4rem; }
+            .error-title { font-size: 1.5rem; }
+            .footer-grid { grid-template-columns: 1fr; text-align: center; gap: 40px; }
+            .footer-bottom { flex-direction: column; gap: 20px; }
+            .mobile-toggle { display: block; }
+            .nav-links { display: none; }
         }
     </style>
 </head>
@@ -113,16 +174,10 @@
     <header>
         <div class="container nav-flex">
             <a href="index.html" class="brand-logo">
-                <div class="logo-icon-wrapper">
-                    <img src="assets/images/logo-header.png" alt="MVN FinHub Logo" width="131" height="88">
-                </div>
-                <div class="brand-text">
-                    <span class="text-mvn">MVN</span><span class="text-finhub">FinHub</span>
-                </div>
+                <div class="logo-icon-wrapper"><img src="assets/images/logo-header.png" alt="MVN Logo"></div>
+                <div class="brand-text"><span class="text-mvn">MVN</span><span class="text-finhub">FinHub</span></div>
             </a>
-            
-            <button class="mobile-toggle" id="mobile-menu-toggle" aria-label="Toggle Menu">☰</button>
-
+            <button class="mobile-toggle" id="mobile-menu-toggle" aria-label="Menu">☰</button>
             <nav class="nav-links" id="nav-links">
                 <a href="index.html" class="nav-item">Home</a>
                 <a href="services.html" class="nav-item">Services</a>
@@ -134,64 +189,83 @@
     </header>
 
     <main>
-        <div class="container" style="display:flex; justify-content:center;">
+        <div class="aurora"></div>
+        <div class="container" style="display:flex; justify-content:center; width:100%;">
             <div class="error-glass-card">
                 <span class="hero-main-icon">⚠️</span>
                 <div class="error-code">404</div>
-                <div class="error-title">Page Not Found</div>
-                <p style="margin-bottom: 30px; color: #64748B; font-size: 1.1rem;">
+                <h1 class="error-title">Page Not Found</h1>
+                <p class="error-desc">
                     The page you are looking for might have been moved, removed, or is temporarily unavailable.
                 </p>
-                <a href="index.html" class="btn btn-primary" style="padding: 12px 30px;">Return Home</a>
+                <a href="index.html" class="btn-primary">
+                    Return Home
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+                </a>
             </div>
         </div>
     </main>
 
     <footer>
         <div class="container">
-            <div class="footer-logo-container">
-                <img src="assets/images/logo-3d-full.png" alt="MVN FinHub Premium" class="footer-3d-logo" width="158" height="105">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <img src="assets/images/logo-3d-full.png" alt="MVN FinHub" class="footer-logo">
+                    <p class="footer-desc">MVN FinHub empowers individuals with clarity through strictly non-advisory process and documentation support. We decode institutional complexity.</p>
+                    <p style="font-size:0.85rem; color:#64748B; margin-top:20px;">Services are provided on an independent, fixed-fee basis. MVN FinHub does not provide financial, legal, or investment advice and is not responsible for decisions or outcomes. All decisions remain solely the responsibility of the user.</p>
+                    
+                    <div style="margin-top: 20px;">
+                        <a href="https://instagram.com/mvnfinhub" target="_blank" class="footer-social-icon" aria-label="Instagram">
+                            <svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+                        </a>
+                        <a href="mailto:mvnfinhub.contact@gmail.com" class="footer-social-icon" aria-label="Email">
+                            <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                        </a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h4>Explore</h4>
+                    <div class="footer-links">
+                        <a href="index.html">Home</a>
+                        <a href="services.html">Services</a>
+                        <a href="insights.html">Intelligence</a>
+                        <a href="about.html">About Us</a>
+                        <a href="contact.html">Get Support</a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h4>Legal & Policy</h4>
+                    <div class="footer-links">
+                        <a href="legal.html">Privacy Policy</a>
+                        <a href="legal.html">Terms of Service</a>
+                        <a href="legal.html">Disclaimer</a>
+                    </div>
+                </div>
             </div>
-            <p>&copy; 2026 MVN FinHub</p>
-            
-            <div class="footer-links">
-                <a href="legal.html">Privacy & Legal</a>
-                <a href="contact.html">Contact</a>
-                <button id="footer-theme-btn" class="theme-btn-footer" onclick="toggleTheme()" aria-label="Toggle Dark Mode" style="cursor: pointer;">🌙</button>
+            <div class="footer-bottom">
+                <div class="status-badge">
+                    <span class="status-ping"></span> System Operational
+                </div>
+                <span>&copy; 2026 MVN FinHub. All Rights Reserved.</span>
+                <button class="theme-btn" onclick="toggleTheme()" style="background:none; border:none; cursor:pointer; font-size:1.2rem; color:#FFF;">🌙</button>
             </div>
         </div>
     </footer>
 
     <script>
-        if(localStorage.getItem('theme') === 'dark') {
-            document.documentElement.setAttribute('data-theme', 'dark');
-            const btn = document.getElementById('footer-theme-btn');
-            if(btn) btn.textContent = '☀️';
-        }
-
         function toggleTheme() {
-            if (window.toggleTheme) { window.toggleTheme(); return; }
             const html = document.documentElement;
-            const btn = document.getElementById('footer-theme-btn');
-            const current = html.getAttribute('data-theme');
-            const metaTheme = document.querySelector('meta[name="theme-color"]');
-
-            if (current === 'dark') {
-                html.setAttribute('data-theme', 'light');
-                localStorage.setItem('theme', 'light');
-                btn.textContent = '🌙';
-                if(metaTheme) metaTheme.setAttribute('content', '#F8FAFC');
+            const btn = document.querySelector('.theme-btn');
+            if (html.getAttribute('data-theme') === 'dark') {
+                html.setAttribute('data-theme', 'light'); localStorage.setItem('theme', 'light'); btn.textContent = '🌙';
             } else {
-                html.setAttribute('data-theme', 'dark');
-                localStorage.setItem('theme', 'dark');
-                btn.textContent = '☀️';
-                if(metaTheme) metaTheme.setAttribute('content', '#0F172A');
+                html.setAttribute('data-theme', 'dark'); localStorage.setItem('theme', 'dark'); btn.textContent = '☀️';
             }
         }
-        
-        window.addEventListener('load', function() {
-            const ghosts = document.querySelectorAll('.theme-btn-floating, #theme-toggle-float');
-            ghosts.forEach(el => el.remove());
+
+        // Mobile Menu
+        document.getElementById('mobile-menu-toggle').addEventListener('click', function() {
+            document.getElementById('nav-links').classList.toggle('active');
         });
     </script>
 </body>

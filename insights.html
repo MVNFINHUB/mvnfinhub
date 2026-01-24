@@ -2,215 +2,247 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://mvnfinhub.goatcounter.com https://gc.zgo.at; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self' https://mvnfinhub.goatcounter.com;">
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <title>Insights & Financial Process Intelligence | MVN FinHub</title>
     <meta name="description" content="MVN FinHub Insights: An institutional knowledge base explaining financial systems, banking compliance, legacy asset recovery, NRI processes, and market structures. Non-advisory.">
-    <meta name="keywords" content="financial system structure, banking compliance process, KYC verification, IEPF claim process, NRI banking rules, market volatility, legacy share recovery, documentation intelligence">
-    <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://mvnfinhub.github.io/insights.html">
 
-    <meta name="theme-color" content="#F8FAFC" media="(prefers-color-scheme: light)">
-    <meta name="theme-color" content="#0F172A" media="(prefers-color-scheme: dark)">
     <link rel="icon" type="image/png" href="assets/images/favicon.png">
+    <meta name="theme-color" content="#0F172A">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap">
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
-    <noscript>
-        <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    </noscript>
-
-    <link rel="preload" href="assets/css/main.css?v=final_perf" as="style">
-    <link rel="stylesheet" href="assets/css/main.css?v=final_perf">
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=Inter:wght@300;400;500;600&family=Poppins:wght@400;500;600;700;800&family=Source+Serif+4:opsz,wght@8..60,400;600;700&display=swap" rel="stylesheet">
+    
     <script src="assets/js/app.js" defer></script>
     <script data-goatcounter="https://mvnfinhub.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 
     <script>
         if(localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
             document.documentElement.setAttribute('data-theme', 'dark');
-            const metaTheme = document.querySelector('meta[name="theme-color"]');
-            if(metaTheme) metaTheme.setAttribute('content', '#0F172A');
         } else {
             document.documentElement.setAttribute('data-theme', 'light');
-            const metaTheme = document.querySelector('meta[name="theme-color"]');
-            if(metaTheme) metaTheme.setAttribute('content', '#F8FAFC');
         }
     </script>
 
     <style>
-        /* --- PAGE SPECIFIC STYLES (PRESERVING YOUR DESIGN) --- */
-
-        /* 1. INSIGHT DOMAINS GRID */
-        .insights-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
-            gap: 30px;
+        /* --- 1. EXECUTIVE DESIGN SYSTEM --- */
+        :root {
+            --font-display: 'Poppins', sans-serif;
+            --font-ui: 'IBM Plex Sans', sans-serif;
+            --font-body: 'Inter', sans-serif;
+            
+            /* Light Mode */
+            --bg-body: #F8FAFC;
+            --bg-card: #FFFFFF;
+            --text-head: #0F172A;
+            --text-body: #334155;
+            --text-muted: #64748B;
+            --primary: #0F172A;
+            --accent: #0EA5E9;
+            --accent-glow: rgba(14, 165, 233, 0.15);
+            --border: #E2E8F0;
+            --hero-gradient: linear-gradient(135deg, #EFF6FF 0%, #F8FAFC 100%);
+            --shadow-float: 0 20px 40px -10px rgba(0,0,0,0.08);
+            --glass-bg: rgba(255, 255, 255, 0.85);
         }
 
-        /* 2. TOPIC CARD (Glass + Color Accents) */
-        .topic-card {
-            background: rgba(255, 255, 255, 0.8);
-            backdrop-filter: blur(12px);
-            padding: 35px;
-            border-radius: 16px;
-            border: 1px solid rgba(255, 255, 255, 0.8);
-            box-shadow: 0 4px 15px rgba(0,0,0,0.03);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            position: relative;
-            overflow: hidden;
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
+        [data-theme="dark"] {
+            /* Dark Mode */
+            --bg-body: #020617;
+            --bg-card: #0F172A;
+            --text-head: #F8FAFC;
+            --text-body: #94A3B8;
+            --text-muted: #64748B;
+            --primary: #F8FAFC;
+            --accent: #38BDF8;
+            --accent-glow: rgba(56, 189, 248, 0.15);
+            --border: rgba(255, 255, 255, 0.08);
+            --hero-gradient: linear-gradient(135deg, #0B1120 0%, #020617 100%);
+            --shadow-float: 0 25px 50px -12px rgba(0,0,0,0.5);
+            --glass-bg: rgba(2, 6, 23, 0.85);
         }
 
-        /* Color Accent Lines at the Top - Rotating Colors */
-        .topic-card:nth-child(4n+1) { border-top: 5px solid #0EA5E9; } /* Blue */
-        .topic-card:nth-child(4n+2) { border-top: 5px solid #10B981; } /* Emerald */
-        .topic-card:nth-child(4n+3) { border-top: 5px solid #8B5CF6; } /* Purple */
-        .topic-card:nth-child(4n+4) { border-top: 5px solid #F59E0B; } /* Amber */
-
-        /* Unique Feature: Card Hover "Lift" */
-        .topic-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 30px rgba(0,0,0,0.08);
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; }
+        body {
+            background-color: var(--bg-body); color: var(--text-body);
+            font-family: var(--font-body); line-height: 1.7; overflow-x: hidden;
+            transition: background 0.3s ease;
         }
 
-        .topic-card h3 {
-            font-size: 1.4rem;
-            margin-bottom: 10px;
-            padding-bottom: 15px;
-            border-bottom: 2px solid #E2E8F0;
-            color: #0A2540;
-            font-family: 'Merriweather', serif;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
+        h1, h2, h3, h4 { font-family: var(--font-display); font-weight: 700; color: var(--text-head); }
         
-        /* Premium Icon Styling */
-        .topic-icon {
-            font-size: 1.6rem;
-            line-height: 1;
-            filter: grayscale(100%);
-            transition: all 0.3s ease;
-            display: inline-block;
+        body::before {
+            content: ""; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+            pointer-events: none; z-index: 9999;
         }
 
-        /* Icon Animation on Hover */
-        .topic-card:hover .topic-icon {
-            filter: grayscale(0%);
-            transform: scale(1.2) rotate(5deg);
-        }
+        a { text-decoration: none; color: inherit; transition: 0.3s; }
+        img { max-width: 100%; display: block; }
+        ul { list-style: none; }
 
-        /* HERO CARD UPGRADE (Making the Top Section look like a Premium Card) */
-        .hero-glass-card {
-            background: rgba(255, 255, 255, 0.65); /* slightly more opaque for hero */
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            padding: 40px;
-            border-radius: 20px;
-            border: 1px solid rgba(255, 255, 255, 0.9);
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.05);
-            text-align: center;
-            max-width: 900px;
-            margin: 0 auto;
-            transition: transform 0.4s ease;
-        }
+        /* --- 3. HEADER (Standardized) --- */
+        header { position: absolute; top: 0; width: 100%; z-index: 100; padding: 20px 0; background: transparent; }
+        .container { max-width: 1280px; margin: 0 auto; padding: 0 25px; }
+        .nav-flex { display: flex; justify-content: space-between; align-items: center; }
 
-        /* Hero Hover Effect */
-        .hero-glass-card:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.08);
-            border-color: rgba(14, 165, 233, 0.3); /* Subtle blue hint */
+        .brand-logo {
+            display: flex; align-items: center; gap: 12px; padding: 8px 16px; border-radius: 12px;
+            background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.05);
+            backdrop-filter: blur(12px); transition: 0.3s;
         }
+        .brand-logo:hover { border-color: var(--accent); background: var(--accent-glow); transform: translateY(-1px); }
+        .logo-icon-wrapper img { height: 40px; width: auto; filter: drop-shadow(0 4px 6px rgba(0,0,0,0.1)); }
+        .brand-text { font-family: var(--font-display); font-weight: 700; font-size: 1.4rem; color: var(--text-head); letter-spacing: -0.5px; }
+        .text-finhub { color: var(--accent); }
+
+        .nav-links { display: flex; gap: 30px; align-items: center; background: rgba(255,255,255,0.02); padding: 5px 20px; border-radius: 50px; border: 1px solid rgba(255,255,255,0.05); }
+        .nav-item { font-family: var(--font-ui); font-weight: 600; font-size: 0.9rem; color: var(--text-head); opacity: 0.8; position: relative; }
+        .nav-item::after { content: ''; position: absolute; bottom: -4px; left: 50%; transform: translateX(-50%); width: 0; height: 2px; background: var(--accent); transition: 0.3s; }
+        .nav-item:hover, .nav-item.active { opacity: 1; }
+        .nav-item:hover::after, .nav-item.active::after { width: 100%; }
+        .btn-nav { background: var(--text-head); color: var(--bg-body) !important; padding: 8px 22px; border-radius: 50px; font-family: var(--font-ui); font-weight: 600; font-size: 0.85rem; box-shadow: 0 4px 20px rgba(0,0,0,0.1); transition: 0.3s; }
+        .mobile-toggle { display: none; font-size: 1.5rem; background: none; border: none; color: var(--text-head); cursor: pointer; }
+
+        /* --- 4. CINEMATIC HERO --- */
+        .hero-section { padding: 160px 0 100px; background: var(--hero-gradient); position: relative; overflow: hidden; }
+        .aurora { position: absolute; top: -50%; right: -50%; width: 150%; height: 150%; background: radial-gradient(circle, var(--accent-glow) 0%, transparent 60%); filter: blur(80px); animation: pulse 10s infinite alternate; z-index: 0; }
         
-        /* Hero H1 Icon Styling */
-        .hero-main-icon {
-            font-size: 2.5rem;
-            display: block;
-            margin-bottom: 15px;
-            animation: floatIcon 3s ease-in-out infinite;
-        }
+        .hero-split { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; position: relative; z-index: 2; }
+        
+        .live-badge { display: inline-flex; align-items: center; gap: 10px; padding: 6px 14px; background: rgba(255,255,255,0.5); border: 1px solid var(--border); border-radius: 50px; font-size: 0.75rem; font-weight: 700; color: #10B981; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 25px; backdrop-filter: blur(5px); font-family: var(--font-ui); }
+        .live-dot { width: 8px; height: 8px; background: #10B981; border-radius: 50%; box-shadow: 0 0 10px #10B981; animation: blink 2s infinite; }
+        @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
 
-        @keyframes floatIcon {
-            0% { transform: translateY(0px); }
-            50% { transform: translateY(-8px); }
-            100% { transform: translateY(0px); }
+        .hero-title { font-family: var(--font-display); font-size: 3.5rem; line-height: 1.1; color: var(--text-head); margin-bottom: 25px; letter-spacing: -1px; }
+        .hero-subtitle { font-family: var(--font-body); font-size: 1.1rem; color: var(--text-body); margin-bottom: 35px; max-width: 95%; font-weight: 300; }
+        
+        .hero-image-frame {
+            position: relative; border-radius: 24px; overflow: hidden;
+            box-shadow: var(--shadow-float); border: 1px solid var(--border);
+            transform: perspective(1000px) rotateY(-5deg); transition: 0.5s ease; height: 400px;
         }
+        .hero-image-frame:hover { transform: perspective(1000px) rotateY(0deg); }
+        .hero-image-frame img { width: 100%; height: 100%; display: block; object-fit: cover; }
 
-        /* Content Text Styling inside Cards */
-        .topic-card p {
-            font-size: 0.95rem;
-            line-height: 1.6;
-            color: #334155;
-            margin-bottom: 10px;
+        /* --- 5. DASHBOARD LAYOUT (Bento) --- */
+        .dashboard-section { padding-bottom: 100px; position: relative; margin-top: -40px; z-index: 10; }
+        
+        /* Sticky Nav */
+        .category-bar-wrapper { position: sticky; top: 20px; z-index: 50; padding: 0 10px; margin-bottom: 50px; }
+        .category-bar {
+            display: flex; gap: 10px; overflow-x: auto; padding: 12px 20px;
+            background: var(--glass-bg); backdrop-filter: blur(20px);
+            border: 1px solid var(--border); border-radius: 50px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.08); max-width: fit-content; margin: 0 auto;
         }
-
-        .topic-card strong {
-            color: #0F172A;
-            font-weight: 600;
+        .cat-btn {
+            border: none; background: transparent; padding: 8px 20px; border-radius: 50px;
+            font-family: var(--font-ui); font-size: 0.85rem; font-weight: 600; color: var(--text-muted);
+            cursor: pointer; transition: 0.3s; white-space: nowrap; text-decoration: none; display: inline-block;
         }
+        .cat-btn:hover, .cat-btn.active { background: var(--text-head); color: var(--bg-body); box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
 
-        /* 3. NOTICE BOX */
+        /* ZONE HEADERS */
+        .insight-zone { scroll-margin-top: 100px; margin-bottom: 80px; }
+        .zone-header { display: flex; align-items: center; gap: 15px; margin-bottom: 30px; padding-bottom: 15px; border-bottom: 1px solid var(--border); }
+        .zone-number { font-family: var(--font-display); font-size: 3rem; font-weight: 700; color: var(--border); line-height: 1; }
+        .zone-title { font-family: var(--font-display); font-size: 1.5rem; font-weight: 700; color: var(--text-head); margin: 0; }
+
+        /* BENTO GRID */
+        .bento-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 25px; }
+
+        .bento-card {
+            background: var(--bg-card); border-radius: 20px; border: 1px solid var(--border);
+            padding: 30px; display: flex; flex-direction: column;
+            transition: 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+            position: relative; overflow: hidden; height: 100%;
+        }
+        .bento-card:hover { transform: translateY(-5px); border-color: var(--accent); box-shadow: var(--shadow-float); }
+        
+        /* IMAGE SLOTS */
+        .card-image-slot {
+            height: 180px; margin: -30px -30px 20px -30px; overflow: hidden; border-bottom: 1px solid var(--border); background: var(--accent-glow);
+        }
+        .card-image-slot img { width: 100%; height: 100%; object-fit: cover; transition: 0.5s; }
+        .bento-card:hover .card-image-slot img { transform: scale(1.05); }
+
+        .card-meta { display: flex; justify-content: space-between; margin-bottom: 15px; font-size: 0.75rem; font-family: var(--font-ui); color: var(--accent); font-weight: 700; letter-spacing: 0.5px; text-transform: uppercase; }
+        .card-title { font-family: var(--font-display); font-size: 1.2rem; font-weight: 700; color: var(--text-head); margin-bottom: 12px; line-height: 1.3; }
+        .card-text { font-size: 0.95rem; color: var(--text-muted); line-height: 1.6; flex-grow: 1; font-family: var(--font-body); }
+        .card-text strong { color: var(--text-head); font-weight: 600; font-family: var(--font-ui); }
+
+        /* FEATURE CARD (SPLIT LAYOUT FIX) */
+        .feature-card {
+            grid-column: 1 / -1; display: grid; grid-template-columns: 1fr 1.2fr; gap: 0; padding: 0;
+            background: var(--bg-card); overflow: hidden; border: 1px solid var(--accent);
+        }
+        .feature-card .card-image-slot { height: 100%; margin: 0; border-bottom: none; border-right: 1px solid var(--border); }
+        .feature-card .card-content { padding: 40px; display: flex; flex-direction: column; justify-content: center; }
+
+        .span-2 { grid-column: span 2; }
+        .span-3 { grid-column: span 3; }
+
+        /* READ BUTTON */
+        .read-btn {
+            margin-top: 20px; display: inline-flex; align-items: center; gap: 5px;
+            font-family: var(--font-ui); font-size: 0.85rem; font-weight: 600; color: var(--text-head);
+            text-decoration: none; border-bottom: 1px solid transparent; transition: 0.3s;
+            align-self: flex-start;
+        }
+        .read-btn:hover { color: var(--accent); border-bottom-color: var(--accent); gap: 8px; }
+
+        /* NOTICE BOX */
         .notice-box {
-            background: linear-gradient(135deg, #EFF6FF 0%, #DBEAFE 100%);
-            border-left: 5px solid #2563EB;
-            border-radius: 12px;
-            padding: 40px;
-            margin-top: 60px;
-            box-shadow: 0 10px 30px rgba(37, 99, 235, 0.1);
+            grid-column: 1 / -1; margin-top: 20px;
+            background: rgba(220, 38, 38, 0.03); border: 1px solid rgba(220, 38, 38, 0.15);
+            border-radius: 16px; padding: 40px; text-align: center; border-left: 4px solid #DC2626;
         }
+        .notice-title { color: #DC2626; font-weight: 700; margin-bottom: 10px; display: flex; align-items: center; justify-content: center; gap: 10px; font-family: var(--font-ui); letter-spacing: 1px; }
+        .notice-text { color: var(--text-muted); font-size: 0.95rem; max-width: 800px; margin: 0 auto; }
+
+        /* FOOTER */
+        footer { background: #020617; color: #94A3B8; padding: 80px 0 40px; border-top: 1px solid rgba(255,255,255,0.05); }
+        .footer-grid { display: grid; grid-template-columns: 1.5fr 1fr 1fr; gap: 60px; }
+        .footer-logo { height: 45px; opacity: 0.9; margin-bottom: 20px; }
+        .footer-desc { font-size: 0.9rem; line-height: 1.6; opacity: 0.8; max-width: 320px; margin-bottom: 20px; }
+        .footer-col h4 { color: #FFF; font-size: 0.9rem; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 25px; }
+        .footer-links a { display: block; color: #94A3B8; margin-bottom: 14px; font-size: 0.9rem; font-family: var(--font-ui); transition: 0.3s; }
+        .footer-links a:hover { color: var(--accent); transform: translateX(5px); }
+        .footer-bottom { margin-top: 60px; padding-top: 30px; border-top: 1px solid rgba(255,255,255,0.05); display: flex; justify-content: space-between; align-items: center; font-size: 0.85rem; opacity: 0.6; }
         
-        .notice-box h2 {
-            font-size: 1.25rem;
-            margin-bottom: 16px;
-            color: #1E40AF;
-            font-weight: 700;
-            display: flex; align-items: center; gap: 10px;
-        }
-        .notice-box p { color: #1E3A8A; font-weight: 500; }
-
-        /* --- DARK MODE OVERRIDES --- */
-        [data-theme="dark"] .topic-card {
-            background: rgba(30, 41, 59, 0.6) !important;
-            border-color: rgba(255,255,255,0.05) !important;
-            border-top-width: 5px !important;
-        }
-        /* Restore Border Colors in Dark Mode */
-        [data-theme="dark"] .topic-card:nth-child(4n+1) { border-top-color: #0EA5E9 !important; }
-        [data-theme="dark"] .topic-card:nth-child(4n+2) { border-top-color: #10B981 !important; }
-        [data-theme="dark"] .topic-card:nth-child(4n+3) { border-top-color: #8B5CF6 !important; }
-        [data-theme="dark"] .topic-card:nth-child(4n+4) { border-top-color: #F59E0B !important; }
-
-        [data-theme="dark"] .topic-card h3 {
-            color: #ffffff !important;
-            border-bottom-color: rgba(255,255,255,0.1) !important;
-        }
-        [data-theme="dark"] .topic-card p { color: #cbd5e1 !important; }
-        [data-theme="dark"] .topic-card strong { color: #e2e8f0 !important; }
-
-        /* Dark Mode for Hero */
-        [data-theme="dark"] .hero-glass-card {
-            background: rgba(30, 41, 59, 0.7) !important;
-            border-color: rgba(255,255,255,0.1) !important;
-        }
-        [data-theme="dark"] .hero-glass-card:hover {
-            border-color: rgba(14, 165, 233, 0.5) !important;
-        }
+        .footer-social-icon { width: 36px; height: 36px; border-radius: 50%; background: rgba(255,255,255,0.05); display: inline-flex; align-items: center; justify-content: center; margin-right: 10px; transition: 0.3s; color: #FFF; border: 1px solid rgba(255,255,255,0.1); }
+        .footer-social-icon:hover { background: var(--accent); border-color: var(--accent); transform: translateY(-3px); }
+        .footer-social-icon svg { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
         
-        [data-theme="dark"] .notice-box {
-            background: rgba(30, 58, 138, 0.4) !important;
-            border-left-color: #60A5FA !important;
-        }
-        [data-theme="dark"] .notice-box h2 { color: #93C5FD !important; }
-        [data-theme="dark"] .notice-box p { color: #DBEAFE !important; }
+        .status-badge { display: flex; align-items: center; gap: 8px; color: #10B981; font-weight: 600; }
+        .status-ping { display: inline-block; width: 8px; height: 8px; background: #10B981; border-radius: 50%; box-shadow: 0 0 10px #10B981; }
 
-        @media (max-width: 768px) {
-            .topic-card { padding: 25px; }
-            .insights-grid { grid-template-columns: 1fr; }
-            .hero-glass-card { padding: 25px; }
+        .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s ease; }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+        .delay-1 { transition-delay: 0.1s; }
+        .delay-2 { transition-delay: 0.2s; }
+        .delay-3 { transition-delay: 0.3s; }
+
+        @media (max-width: 992px) {
+            .hero-split { grid-template-columns: 1fr; gap: 40px; }
+            .hero-title { font-size: 2.5rem; }
+            .bento-grid { grid-template-columns: 1fr; }
+            .span-2, .span-3 { grid-column: auto; }
+            .feature-card { grid-template-columns: 1fr; }
+            .feature-card .card-image-slot { height: 250px; border-right: none; border-bottom: 1px solid var(--border); }
+            .feature-card .card-content { padding: 30px; }
+            .category-bar { justify-content: flex-start; }
+            .footer-grid { grid-template-columns: 1fr; text-align: center; gap: 40px; }
+            .footer-bottom { flex-direction: column; gap: 20px; }
+            .mobile-toggle { display: block; }
+            .nav-links { display: none; }
         }
     </style>
 </head>
@@ -219,188 +251,370 @@
     <header>
         <div class="container nav-flex">
             <a href="index.html" class="brand-logo">
-                <div class="logo-icon-wrapper">
-                    <img src="assets/images/logo-header.png" alt="MVN FinHub Logo" width="131" height="88">
-                </div>
-                <div class="brand-text">
-                    <span class="text-mvn">MVN</span><span class="text-finhub">FinHub</span>
-                </div>
+                <div class="logo-icon-wrapper"><img src="assets/images/logo-header.png" alt="MVN Logo"></div>
+                <div class="brand-text"><span class="text-mvn">MVN</span><span class="text-finhub">FinHub</span></div>
             </a>
-            
-            <button class="mobile-toggle" id="mobile-menu-toggle" aria-label="Toggle Menu">☰</button>
-
+            <button class="mobile-toggle" id="mobile-menu-toggle" aria-label="Menu">☰</button>
             <nav class="nav-links" id="nav-links">
                 <a href="index.html" class="nav-item">Home</a>
                 <a href="services.html" class="nav-item">Services</a>
-                <a href="insights.html" class="nav-item">Insights</a>
+                <a href="insights.html" class="nav-item active btn-nav">Insights</a>
                 <a href="about.html" class="nav-item">About</a>
-                <a href="contact.html" class="nav-item btn-nav">Contact</a>
+                <a href="contact.html" class="nav-item">Contact</a>
             </nav>
         </div>
     </header>
 
     <main>
 
-    <section class="hero-premium">
-        <div class="hero-glow glow-left"></div>
-        <div class="hero-glow glow-right"></div>
+        <section class="hero-section">
+            <div class="aurora"></div>
+            <div class="container">
+                <div class="hero-split">
+                    <div class="hero-content reveal">
+                        <div class="live-badge">
+                            <div class="live-dot"></div>
+                            <span id="live-topic-ticker">Live Intelligence</span>
+                        </div>
 
-        <div class="container">
-            <div class="hero-glass-card">
-                <span class="hero-main-icon">⚛️</span>
-                <h1>Financial Systems & Process Intelligence</h1>
-                <p>A Knowledge Hub explaining how financial systems, regulations, markets, and institutions work — without influencing decisions.</p>
-                <div class="hero-micro-text" style="font-size: 1rem; margin-top: 15px; opacity: 0.9;">
-                    Research Platform • Institutional Knowledge Base • Non-Advisory
+                        <h1 class="hero-title">Financial Systems & Documentation Intelligence</h1>
+                        <p class="hero-subtitle">A Knowledge Hub explaining how financial systems, regulations, markets, and institutions work — without influencing decisions.</p>
+                        
+                        <div style="margin-top: 35px; font-size: 0.9rem; color: var(--text-muted); display:flex; gap:20px; font-weight:600; font-family: var(--font-ui);">
+                            <span>✓ Institutional Research</span>
+                            <span>✓ Independent Logic</span>
+                        </div>
+                    </div>
+
+                    <div class="hero-image-frame reveal delay-1">
+                        <img src="assets/images/insights-hero.png" alt="System Intelligence Visualization">
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <section class="section-padding">
-        <div class="container">
-            
-            <div class="insights-grid">
+        <section class="dashboard-section">
+            <div class="container">
                 
-                <article class="topic-card">
-                    <h3><span class="topic-icon">🏛️</span> Financial System Foundations</h3>
-                    <p><strong>System Structure:</strong> A financial system is the infrastructure linking those with capital (savers) to those who need it (borrowers), managed by intermediaries to ensure safety.</p>
-                    <p><strong>Role of Documentation:</strong> Documentation is not just bureaucracy; it is the fundamental "Trust Layer." It acts as the legal evidence required to verify ownership and prevent systemic fraud.</p>
-                    <p><strong>Verification vs. Speed:</strong> Financial processes prioritize verification over speed. Checks by custodians and registrars ensure that assets move only between verified identities.</p>
-                </article>
+                <div class="category-bar-wrapper reveal">
+                    <div class="category-bar">
+                        <a href="#system" class="cat-btn active">System Foundations</a>
+                        <a href="#markets" class="cat-btn">Markets & Economy</a>
+                        <a href="#compliance" class="cat-btn">Regulatory & Compliance</a>
+                        <a href="#process" class="cat-btn">Process Intelligence</a>
+                    </div>
+                </div>
 
-                <article class="topic-card">
-                    <h3><span class="topic-icon">🇮🇳</span> Indian Financial Ecosystem</h3>
-                    <p><strong>Twin-Pillar Regulation:</strong> The ecosystem is anchored by the RBI (ensuring banking stability and liquidity) and SEBI (governing market transparency and investor protection).</p>
-                    <p><strong>Policy vs. Execution:</strong> While regulations are uniform, individual institutions develop their own Standard Operating Procedures (SOPs). This explains why different banks may require slightly different documents for the same process.</p>
-                    <p><strong>Compliance Evolution:</strong> Regulations constantly evolve to improve transparency, requiring systems to update legacy records periodically.</p>
-                </article>
+                <div id="system" class="insight-zone reveal">
+                    <div class="zone-header">
+                        <span class="zone-number">01</span>
+                        <h2 class="zone-title">System Architecture</h2>
+                    </div>
+                    
+                    <div class="bento-grid">
+                        
+                        <article class="bento-card span-2 feature-card">
+                            <div class="card-image-slot">
+                                <img src="assets/images/insight-1.png" alt="System Foundations">
+                            </div>
+                            <div class="card-content">
+                                <div class="card-meta"><span>🏛️ CORE INFRASTRUCTURE</span></div>
+                                <h3 class="card-title">Financial System Foundations</h3>
+                                <div class="card-text">
+                                    <p><strong>System Structure:</strong> A financial system is the infrastructure linking those with capital (savers) to those who need it (borrowers), managed by intermediaries to ensure safety.</p>
+                                    <p><strong>Role of Documentation:</strong> Documentation is not just bureaucracy; it is the fundamental "Trust Layer." It acts as the legal evidence required to verify ownership and prevent systemic fraud.</p>
+                                    <p><strong>Verification vs. Speed:</strong> Financial processes prioritize verification over speed. Checks by custodians and registrars ensure that assets move only between verified identities.</p>
+                                </div>
+                                <a href="#" class="read-btn">Read Analysis →</a>
+                            </div>
+                        </article>
 
-                <article class="topic-card">
-                    <h3><span class="topic-icon">🌏</span> Global Systems & Economy</h3>
-                    <p><strong>Interconnectivity:</strong> Financial markets are globally linked. Changes in liquidity by major central banks transmit through exchange rates, affecting borrowing costs worldwide.</p>
-                    <p><strong>Transmission Mechanism:</strong> When global interest rates rise, capital flows often shift from emerging to developed markets, impacting domestic currency values and import costs.</p>
-                    <p><strong>System Maturity:</strong> Developed systems rely heavily on automated integration, while emerging systems often balance rapid digital adoption with existing legacy verification frameworks.</p>
-                </article>
+                        <article class="bento-card">
+                            <div class="card-image-slot">
+                                <img src="assets/images/insight-2.png" alt="Indian Ecosystem">
+                            </div>
+                            <div class="card-meta"><span>🇮🇳 REGION</span></div>
+                            <h3 class="card-title">Indian Financial Ecosystem</h3>
+                            <div class="card-text">
+                                <p><strong>Twin-Pillar Regulation:</strong> The ecosystem is anchored by the RBI (ensuring banking stability and liquidity) and SEBI (governing market transparency and investor protection).</p>
+                                <p><strong>Policy vs. Execution:</strong> While regulations are uniform, individual institutions develop their own Standard Operating Procedures (SOPs). This explains why different banks may require slightly different documents for the same process.</p>
+                                <p><strong>Compliance Evolution:</strong> Regulations constantly evolve to improve transparency, requiring systems to update legacy records periodically.</p>
+                            </div>
+                            <a href="#" class="read-btn">Read Analysis →</a>
+                        </article>
 
-                <article class="topic-card">
-                    <h3><span class="topic-icon">📊</span> Economy & Markets</h3>
-                    <p><strong>Function of Markets:</strong> Markets exist primarily for "Price Discovery" and "Risk Transfer," allowing participants to hedge against future uncertainty.</p>
-                    <p><strong>Volatility as a Feature:</strong> Volatility is not a malfunction; it is the structural adjustment of prices to new information. Market cycles (expansion and contraction) are natural systemic behaviors.</p>
-                    <p><strong>Institutional Response:</strong> Institutions manage uncertainty not by predicting the future, but by adhering to strict risk management processes and diversification protocols.</p>
-                </article>
+                        <article class="bento-card span-3">
+                            <div class="card-image-slot" style="height:250px;">
+                                <img src="assets/images/insight-3.png" alt="Global Systems">
+                            </div>
+                            <div class="card-meta"><span>🌏 MACRO</span></div>
+                            <h3 class="card-title">Global Systems & Economy</h3>
+                            <div class="card-text">
+                                <p><strong>Interconnectivity:</strong> Financial markets are globally linked. Changes in liquidity by major central banks transmit through exchange rates, affecting borrowing costs worldwide.</p>
+                                <p><strong>Transmission Mechanism:</strong> When global interest rates rise, capital flows often shift from emerging to developed markets, impacting domestic currency values and import costs.</p>
+                                <p><strong>System Maturity:</strong> Developed systems rely heavily on automated integration, while emerging systems often balance rapid digital adoption with existing legacy verification frameworks.</p>
+                            </div>
+                            <a href="#" class="read-btn">Read Analysis →</a>
+                        </article>
+                    </div>
+                </div>
 
-                <article class="topic-card">
-                    <h3><span class="topic-icon">🗞️</span> News Decoded</h3>
-                    <p><strong>Process-First Analysis:</strong> We analyze news by its structural impact. When the RBI changes repo rates or SEBI issues a circular, the effect is mechanical—not emotional.</p>
-                    <p><strong>Operational Impact:</strong> A policy change triggers specific process updates: banks adjust lending software, and Registrars (RTAs) update compliance checklists.</p>
-                    <p><strong>Historical Patterns:</strong> Major regulatory shifts are typically followed by a period of "administrative alignment," where institutions freeze certain processes temporarily to upgrade their systems.</p>
-                </article>
+                <div id="markets" class="insight-zone reveal">
+                    <div class="zone-header">
+                        <span class="zone-number">02</span>
+                        <h2 class="zone-title">Market Dynamics</h2>
+                    </div>
+                    
+                    <div class="bento-grid">
+                        
+                        <article class="bento-card span-2">
+                            <div class="card-image-slot">
+                                <img src="assets/images/insight-4.png" alt="Markets">
+                            </div>
+                            <div class="card-meta"><span>📊 MARKETS</span></div>
+                            <h3 class="card-title">Economy & Markets</h3>
+                            <div class="card-text">
+                                <p><strong>Function of Markets:</strong> Markets exist primarily for "Price Discovery" and "Risk Transfer," allowing participants to hedge against future uncertainty.</p>
+                                <p><strong>Volatility as a Feature:</strong> Volatility is not a malfunction; it is the structural adjustment of prices to new information. Market cycles are natural systemic behaviors.</p>
+                                <p><strong>Institutional Response:</strong> Institutions manage uncertainty not by predicting the future, but by adhering to strict risk management processes and diversification protocols.</p>
+                            </div>
+                            <a href="#" class="read-btn">Read Analysis →</a>
+                        </article>
 
-                <article class="topic-card">
-                    <h3><span class="topic-icon">🔐</span> Banking & Compliance</h3>
-                    <p><strong>Continuous KYC:</strong> KYC (Know Your Customer) is a continuous lifecycle, not a one-time event. Periodic re-KYC is mandatory to meet audit standards and prevent fraud.</p>
-                    <p><strong>Dormancy Logic:</strong> Account dormancy is an automated security feature, not a penalty. It freezes inactive funds to prevent unauthorized withdrawals in the absence of the account holder.</p>
-                    <p><strong>Audit Trails:</strong> Banks cannot bypass steps because every action creates a liability trail. Compliance adherence is strictly monitored to protect the institution's license.</p>
-                </article>
+                        <article class="bento-card">
+                            <div class="card-image-slot">
+                                <img src="assets/images/insight-5.png" alt="News Analysis">
+                            </div>
+                            <div class="card-meta"><span>🗞️ ANALYSIS</span></div>
+                            <h3 class="card-title">News Decoded</h3>
+                            <div class="card-text">
+                                <p><strong>Process-First Analysis:</strong> We analyze news by its structural impact. When the RBI changes repo rates or SEBI issues a circular, the effect is mechanical—not emotional.</p>
+                                <p><strong>Operational Impact:</strong> A policy change triggers specific process updates: banks adjust lending software, and Registrars (RTAs) update compliance checklists.</p>
+                                <p><strong>Historical Patterns:</strong> Major regulatory shifts are typically followed by a period of "administrative alignment," where institutions freeze certain processes temporarily to upgrade their systems.</p>
+                            </div>
+                            <a href="#" class="read-btn">Read Analysis →</a>
+                        </article>
+                    </div>
+                </div>
 
-                <article class="topic-card">
-                    <h3><span class="topic-icon">📜</span> Legacy Assets & IEPF</h3>
-                    <p><strong>The Physical Era:</strong> Physical share certificates persist due to generational gaps in record-keeping. Converting them requires bridging decades-old paper records with modern digital Demat systems.</p>
-                    <p><strong>Transmission vs. Succession:</strong> "Transmission" is the transfer to a nominee by law. "Succession" involves legal heirs and often requires court orders if no nomination exists.</p>
-                    <p><strong>Role of IEPF:</strong> The Investor Education and Protection Fund acts as a sovereign custodian for unclaimed assets. Claims are rejected if the "chain of title" documentation is not 100% complete.</p>
-                </article>
+                <div id="compliance" class="insight-zone reveal">
+                    <div class="zone-header">
+                        <span class="zone-number">03</span>
+                        <h2 class="zone-title">Regulatory & Compliance</h2>
+                    </div>
+                    
+                    <div class="bento-grid">
+                        
+                        <article class="bento-card">
+                            <div class="card-image-slot">
+                                <img src="assets/images/insight-6.png" alt="Banking">
+                            </div>
+                            <div class="card-meta"><span>🔐 SECURITY</span></div>
+                            <h3 class="card-title">Banking & Compliance</h3>
+                            <div class="card-text">
+                                <p><strong>Continuous KYC:</strong> KYC (Know Your Customer) is a continuous lifecycle, not a one-time event. Periodic re-KYC is mandatory to meet audit standards and prevent fraud.</p>
+                                <p><strong>Dormancy Logic:</strong> Account dormancy is an automated security feature, not a penalty. It freezes inactive funds to prevent unauthorized withdrawals in the absence of the account holder.</p>
+                                <p><strong>Audit Trails:</strong> Banks cannot bypass steps because every action creates a liability trail. Compliance adherence is strictly monitored to protect the institution's license.</p>
+                            </div>
+                            <a href="#" class="read-btn">Read Analysis →</a>
+                        </article>
 
-                <article class="topic-card">
-                    <h3><span class="topic-icon">✈️</span> NRI Process Awareness</h3>
-                    <p><strong>Status Definition:</strong> "NRI" is a functional status based on days spent abroad. This status legally mandates the separation of domestic (NRO) and foreign (NRE) funds.</p>
-                    <p><strong>Cross-Border Scrutiny:</strong> NRIs face higher compliance checks due to global anti-money laundering treaties (FATCA/CRS). Banks must report specific data to international tax authorities.</p>
-                    <p><strong>Document Validation:</strong> Overseas documents often require "Apostille" (international legalization) to be valid in India, adding time to the verification process.</p>
-                </article>
+                        <article class="bento-card">
+                            <div class="card-image-slot">
+                                <img src="assets/images/insight-7.png" alt="Legacy Assets">
+                            </div>
+                            <div class="card-meta"><span>📜 ASSETS</span></div>
+                            <h3 class="card-title">Legacy Assets & IEPF</h3>
+                            <div class="card-text">
+                                <p><strong>The Physical Era:</strong> Physical share certificates persist due to generational gaps in record-keeping. Converting them requires bridging decades-old paper records with modern digital Demat systems.</p>
+                                <p><strong>Transmission vs. Succession:</strong> "Transmission" is the transfer to a nominee by law. "Succession" involves legal heirs and often requires court orders if no nomination exists.</p>
+                                <p><strong>Role of IEPF:</strong> The Investor Education and Protection Fund acts as a sovereign custodian for unclaimed assets. Claims are rejected if the "chain of title" documentation is not 100% complete.</p>
+                            </div>
+                            <a href="#" class="read-btn">Read Analysis →</a>
+                        </article>
 
-                <article class="topic-card">
-                    <h3><span class="topic-icon">📂</span> Documentation Intelligence</h3>
-                    <p><strong>Consistency is Key:</strong> Financial systems prioritize exact data matching. A name mismatch (e.g., missing middle name) looks like a "Third Party Entry" to a system, causing automatic rejection.</p>
-                    <p><strong>Sequencing Matters:</strong> Processes must happen in a specific order. For example, updating a PAN card <em>before</em> the bank account prevents data conflict errors.</p>
-                    <p><strong>Automation Limits:</strong> Modern systems are automated and binary. They cannot "understand" intent; they only validate that input data matches the existing master record perfectly.</p>
-                </article>
+                        <article class="bento-card">
+                            <div class="card-image-slot">
+                                <img src="assets/images/insight-8.png" alt="NRI Process">
+                            </div>
+                            <div class="card-meta"><span>✈️ CROSS-BORDER</span></div>
+                            <h3 class="card-title">NRI Process Awareness</h3>
+                            <div class="card-text">
+                                <p><strong>Status Definition:</strong> "NRI" is a functional status based on days spent abroad. This status legally mandates the separation of domestic (NRO) and foreign (NRE) funds.</p>
+                                <p><strong>Cross-Border Scrutiny:</strong> NRIs face higher compliance checks due to global anti-money laundering treaties (FATCA/CRS). Banks must report specific data to international tax authorities.</p>
+                                <p><strong>Document Validation:</strong> Overseas documents often require "Apostille" (international legalization) to be valid in India, adding time to the verification process.</p>
+                            </div>
+                            <a href="#" class="read-btn">Read Analysis →</a>
+                        </article>
+                    </div>
+                </div>
 
-                <article class="topic-card">
-                    <h3><span class="topic-icon">💡</span> Financial Awareness</h3>
-                    <p><strong>Awareness vs. Advice:</strong> Awareness is knowing how the system works; advice is being told what to do. This platform provides system intelligence to reduce administrative friction.</p>
-                    <p><strong>Platform Limitations:</strong> No general information platform can account for an individual's specific legal or tax nuances.</p>
-                    <p><strong>Professional Judgment:</strong> Users remain responsible for their decisions. Complex financial matters require the specific judgment of qualified legal and financial professionals.</p>
-                </article>
+                <div id="process" class="insight-zone reveal">
+                    <div class="zone-header">
+                        <span class="zone-number">04</span>
+                        <h2 class="zone-title">Process Intelligence</h2>
+                    </div>
+                    
+                    <div class="bento-grid">
+                        
+                        <article class="bento-card span-2">
+                            <div class="card-image-slot">
+                                <img src="assets/images/insight-9.png" alt="Documentation">
+                            </div>
+                            <div class="card-meta"><span>📂 EXECUTION</span></div>
+                            <h3 class="card-title">Documentation Intelligence</h3>
+                            <div class="card-text">
+                                <p><strong>Consistency is Key:</strong> Financial systems prioritize exact data matching. A name mismatch (e.g., missing middle name) looks like a "Third Party Entry" to a system, causing automatic rejection.</p>
+                                <p><strong>Sequencing Matters:</strong> Processes must happen in a specific order. For example, updating a PAN card <em>before</em> the bank account prevents data conflict errors.</p>
+                                <p><strong>Automation Limits:</strong> Modern systems are automated and binary. They cannot "understand" intent; they only validate that input data matches the existing master record perfectly.</p>
+                            </div>
+                            <a href="#" class="read-btn">Read Analysis →</a>
+                        </article>
+
+                        <article class="bento-card">
+                            <div class="card-image-slot">
+                                <img src="assets/images/insight-10.png" alt="Financial Awareness">
+                            </div>
+                            <div class="card-meta"><span>💡 EDUCATION</span></div>
+                            <h3 class="card-title">Financial Awareness</h3>
+                            <div class="card-text">
+                                <p><strong>Awareness vs. Advice:</strong> Awareness is knowing how the system works; advice is being told what to do. This platform provides system intelligence to reduce administrative friction.</p>
+                                <p><strong>Platform Limitations:</strong> No general information platform can account for an individual's specific legal or tax nuances.</p>
+                                <p><strong>Professional Judgment:</strong> Users remain responsible for their decisions. Complex financial matters require the specific judgment of qualified legal and financial professionals.</p>
+                            </div>
+                            <a href="#" class="read-btn">Read Analysis →</a>
+                        </article>
+                    </div>
+                </div>
+
+                <div class="notice-box reveal">
+                    <div class="notice-title">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+                        IMPORTANT NOTICE
+                    </div>
+                    <div class="notice-text">
+                        <p>All insights are provided for general awareness and educational purposes only.</p>
+                        <p>MVN FinHub does not provide investment advice, recommendations, or opinions. Users remain solely responsible for their financial decisions.</p>
+                    </div>
+                </div>
 
             </div>
-
-            <div class="notice-box">
-                <h2><span style="font-size:1.5rem">ℹ️</span> IMPORTANT NOTICE</h2>
-                <p>All insights are provided for general awareness and educational purposes only.</p>
-                <p>MVN FinHub does not provide investment advice, recommendations, or opinions. Users remain solely responsible for their financial decisions.</p>
-            </div>
-
-        </div>
-    </section>
+        </section>
 
     </main>
+
     <footer>
         <div class="container">
-            <div class="footer-logo-container">
-                <img src="assets/images/logo-3d-full.png" alt="MVN FinHub Premium" class="footer-3d-logo" width="158" height="105">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <img src="assets/images/logo-3d-full.png" alt="MVN FinHub" class="footer-logo">
+                    <p class="footer-desc">MVN FinHub empowers individuals with clarity through strictly non-advisory process and documentation support. We decode institutional complexity.</p>
+                    <p style="font-size:0.85rem; color:#64748B; margin-top:20px;">Services are provided on an independent, fixed-fee basis. MVN FinHub does not provide financial, legal, or investment advice and is not responsible for decisions or outcomes. All decisions remain solely the responsibility of the user.</p>
+                    
+                    <div style="margin-top: 20px;">
+                        <a href="https://instagram.com/mvnfinhub" target="_blank" class="footer-social-icon" aria-label="Instagram">
+                            <svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+                        </a>
+                        <a href="mailto:mvnfinhub.contact@gmail.com" class="footer-social-icon" aria-label="Email">
+                            <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                        </a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h4>Explore</h4>
+                    <div class="footer-links">
+                        <a href="index.html">Home</a>
+                        <a href="services.html">Services</a>
+                        <a href="insights.html">Intelligence</a>
+                        <a href="about.html">About Us</a>
+                        <a href="contact.html">Get Support</a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h4>Legal & Policy</h4>
+                    <div class="footer-links">
+                        <a href="legal.html">Privacy Policy</a>
+                        <a href="legal.html">Terms of Service</a>
+                        <a href="legal.html">Disclaimer</a>
+                    </div>
+                </div>
             </div>
-
-            <p>&copy; <span class="copyright-year">2026</span> MVN FinHub</p>
-            <p style="margin-top: 8px;">Content explains processes, not decisions. No predictions, comparisons, or outcomes.</p>
-            <p style="margin-bottom: 24px;">Users remain solely responsible for financial decisions. MVN FinHub’s role is limited to education and process clarity.</p>
-            
-            <div class="footer-links">
-                <a href="legal.html">Privacy & Legal</a>
-                <a href="contact.html">Contact</a>
-                <a href="https://instagram.com/mvnfinhub" target="_blank">Instagram</a>
-                
-                <button id="footer-theme-btn" class="theme-btn-footer" onclick="toggleTheme()" aria-label="Toggle Dark Mode" style="cursor: pointer;">🌙</button>
+            <div class="footer-bottom">
+                <div class="status-badge">
+                    <span class="status-ping"></span> System Operational
+                </div>
+                <span>&copy; 2026 MVN FinHub. All Rights Reserved.</span>
+                <button class="theme-btn" onclick="toggleTheme()" style="background:none; border:none; cursor:pointer; font-size:1.2rem; color:#FFF;">🌙</button>
             </div>
         </div>
     </footer>
 
     <script>
-        // 1. Theme Logic
-        if(localStorage.getItem('theme') === 'dark') {
-            document.documentElement.setAttribute('data-theme', 'dark');
-            const btn = document.getElementById('footer-theme-btn');
-            if(btn) btn.textContent = '☀️';
-        }
-
         function toggleTheme() {
-            if (window.toggleTheme) {
-                window.toggleTheme();
-                return;
-            }
             const html = document.documentElement;
-            const btn = document.getElementById('footer-theme-btn');
-            const current = html.getAttribute('data-theme');
-            const metaTheme = document.querySelector('meta[name="theme-color"]');
-
-            if (current === 'dark') {
-                html.setAttribute('data-theme', 'light');
-                localStorage.setItem('theme', 'light');
-                btn.textContent = '🌙';
-                if(metaTheme) metaTheme.setAttribute('content', '#F8FAFC');
+            const btn = document.querySelector('.theme-btn');
+            if (html.getAttribute('data-theme') === 'dark') {
+                html.setAttribute('data-theme', 'light'); localStorage.setItem('theme', 'light'); btn.textContent = '🌙';
             } else {
-                html.setAttribute('data-theme', 'dark');
-                localStorage.setItem('theme', 'dark');
-                btn.textContent = '☀️';
-                if(metaTheme) metaTheme.setAttribute('content', '#0F172A');
+                html.setAttribute('data-theme', 'dark'); localStorage.setItem('theme', 'dark'); btn.textContent = '☀️';
             }
         }
 
-        // 2. Kill Ghost Icons
-        window.addEventListener('load', function() {
-            const ghosts = document.querySelectorAll('.theme-btn-floating, #theme-toggle-float');
-            ghosts.forEach(el => el.remove());
+        const reveals = document.querySelectorAll(".reveal");
+        window.addEventListener('scroll', () => {
+            reveals.forEach(el => {
+                const rect = el.getBoundingClientRect();
+                if (rect.top < window.innerHeight - 100) el.classList.add("active");
+            });
         });
-    </script>
+        window.dispatchEvent(new Event('scroll'));
 
+        // Mobile Menu
+        document.getElementById('mobile-menu-toggle').addEventListener('click', function() {
+            document.getElementById('nav-links').classList.toggle('active');
+        });
+
+        // Sticky Nav & Active State
+        const sections = document.querySelectorAll('.insight-zone');
+        const navLinks = document.querySelectorAll('.cat-btn');
+
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                if (scrollY >= sectionTop - 200) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href').includes(current)) {
+                    link.classList.add('active');
+                }
+            });
+        });
+
+        // Live Ticker Logic
+        const topics = [
+            "System Architecture", 
+            "Market Dynamics", 
+            "Regulatory Compliance", 
+            "Process Intelligence",
+            "Global Economy",
+            "Banking Protocols"
+        ];
+        let topicIndex = 0;
+        const tickerElement = document.getElementById('live-topic-ticker');
+        
+        setInterval(() => {
+            tickerElement.style.opacity = '0';
+            setTimeout(() => {
+                topicIndex = (topicIndex + 1) % topics.length;
+                tickerElement.innerText = topics[topicIndex];
+                tickerElement.style.opacity = '1';
+            }, 500);
+        }, 3000);
+    </script>
 </body>
 </html>

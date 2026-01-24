@@ -5,586 +5,656 @@
     <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://mvnfinhub.goatcounter.com https://gc.zgo.at; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self' https://mvnfinhub.goatcounter.com;">
     <meta http-equiv="X-Content-Type-Options" content="nosniff">
     <meta name="referrer" content="strict-origin-when-cross-origin">
-
-    <link rel="preload" href="assets/images/logo-header.png" as="image">
-    <link rel="preload" href="assets/images/logo-3d-full.png" as="image">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <title>MVN FinHub | Financial Process & Documentation Intelligence</title>
     <meta name="description" content="MVN FinHub: A global financial process intelligence platform. Decoding financial systems, documentation workflows, and institutional compliance. Strictly non-advisory.">
-    <meta name="keywords" content="financial process intelligence, documentation support, non-advisory fintech, Indian financial ecosystem, legacy asset recovery, banking compliance, financial system education">
-    <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://mvnfinhub.github.io/">
 
-    <meta name="theme-color" content="#F8FAFC" media="(prefers-color-scheme: light)">
-    <meta name="theme-color" content="#0F172A" media="(prefers-color-scheme: dark)">
     <link rel="icon" type="image/png" href="assets/images/favicon.png">
+    <meta name="theme-color" content="#F8FAFC" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#020617" media="(prefers-color-scheme: dark)">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap">
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
-    <noscript>
-        <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    </noscript>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=Inter:wght@300;400;500;600&family=Poppins:wght@400;500;600;700;800&family=Source+Serif+4:opsz,wght@8..60,400;600;700&display=swap" rel="stylesheet">
     
-    <link rel="preload" href="assets/css/main.css?v=final_perf" as="style">
-    <link rel="stylesheet" href="assets/css/main.css?v=final_perf">
     <script src="assets/js/app.js" defer></script>
     <script data-goatcounter="https://mvnfinhub.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 
     <script>
         if(localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
             document.documentElement.setAttribute('data-theme', 'dark');
-            const metaTheme = document.querySelector('meta[name="theme-color"]');
-            if(metaTheme) metaTheme.setAttribute('content', '#0F172A');
         } else {
             document.documentElement.setAttribute('data-theme', 'light');
-            const metaTheme = document.querySelector('meta[name="theme-color"]');
-            if(metaTheme) metaTheme.setAttribute('content', '#F8FAFC');
         }
     </script>
 
     <style>
-        /* --- HOME PAGE SPECIFIC PREMIUM STYLES --- */
-
-        /* 1. HERO SECTION */
-        .hero-premium {
-            background-image: 
-                radial-gradient(at 0% 0%, rgba(14, 165, 233, 0.1) 0px, transparent 50%),
-                radial-gradient(at 100% 100%, rgba(16, 185, 129, 0.1) 0px, transparent 50%);
+        /* --- 1. WORLD-CLASS DESIGN SYSTEM --- */
+        :root {
+            /* TYPOGRAPHY */
+            --font-heading: 'Poppins', sans-serif;
+            --font-ui: 'IBM Plex Sans', sans-serif;
+            --font-body: 'Inter', sans-serif;
+            --font-doc: 'Source Serif 4', serif;
+            
+            /* Light Mode */
+            --bg-body: #F8FAFC;
+            --bg-card: #FFFFFF;
+            --text-head: #0F172A;
+            --text-body: #334155;
+            --text-muted: #64748B;
+            --primary: #0F172A;
+            --accent: #0EA5E9;
+            --accent-glow: rgba(14, 165, 233, 0.2);
+            --border: #E2E8F0;
+            --hero-gradient: linear-gradient(135deg, #EFF6FF 0%, #F8FAFC 100%);
         }
 
-        .hero-glass-card {
-            background: rgba(255, 255, 255, 0.85);
-            backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.9);
-            border-radius: 24px;
-            padding: 60px 40px;
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.1);
-            position: relative;
-            overflow: hidden;
-            text-align: center;
-            transition: transform 0.4s ease;
-        }
-        .hero-glass-card:hover {
-            transform: translateY(-3px);
-            border-color: rgba(14, 165, 233, 0.3);
+        [data-theme="dark"] {
+            /* Dark Mode */
+            --bg-body: #020617;
+            --bg-card: #0F172A;
+            --text-head: #F8FAFC;
+            --text-body: #94A3B8;
+            --text-muted: #64748B;
+            --primary: #F8FAFC;
+            --accent: #38BDF8;
+            --accent-glow: rgba(56, 189, 248, 0.2);
+            --border: rgba(255, 255, 255, 0.08);
+            --hero-gradient: linear-gradient(135deg, #0B1120 0%, #020617 100%);
         }
 
-        .hero-glass-card h1 {
-            background: linear-gradient(135deg, #0F172A 0%, #1E40AF 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            color: #0F172A; /* Fallback */
-            margin-bottom: 24px;
-            line-height: 1.2;
-            font-family: 'Merriweather', serif;
+        /* --- 2. GLOBAL RESET & VISUALS --- */
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; }
+        body {
+            background-color: var(--bg-body); color: var(--text-body);
+            font-family: var(--font-body); /* Inter applied globally */
+            line-height: 1.6; overflow-x: hidden;
+            transition: background 0.3s, color 0.3s; position: relative;
         }
 
-        /* Floating Icon Animation */
-        .hero-main-icon {
-            font-size: 3rem;
-            display: block;
-            margin-bottom: 20px;
-            animation: floatIcon 3s ease-in-out infinite;
-        }
-        @keyframes floatIcon {
-            0% { transform: translateY(0px); }
-            50% { transform: translateY(-8px); }
-            100% { transform: translateY(0px); }
-        }
-
-        /* 2. PREMIUM BUTTONS */
-        .btn-group {
-            display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; margin-bottom: 30px;
-        }
-
-        .btn-premium {
-            text-decoration: none;
-            padding: 14px 32px;
-            border-radius: 50px;
-            font-weight: 600;
-            font-size: 1rem;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            position: relative;
-            overflow: hidden;
-            display: inline-flex; align-items: center; justify-content: center;
-        }
-
-        .btn-premium.primary {
-            background: #0A2540;
-            color: white;
-            box-shadow: 0 4px 15px rgba(10, 37, 64, 0.3);
-            border: 1px solid transparent;
-        }
-        .btn-premium.primary::after {
-            content: ''; position: absolute; top: 0; left: -100%; width: 50%; height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
-            transform: skewX(-20deg); transition: 0.5s;
-        }
-        .btn-premium.primary:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 25px rgba(10, 37, 64, 0.5);
-        }
-        .btn-premium.primary:hover::after { left: 150%; }
-
-        .btn-premium.secondary {
-            background: rgba(255, 255, 255, 0.5);
-            color: #0A2540;
-            border: 2px solid #0EA5E9; 
-            backdrop-filter: blur(5px);
-        }
-        .btn-premium.secondary:hover {
-            background: #0EA5E9;
-            color: white;
-            transform: translateY(-3px);
-            box-shadow: 0 0 20px rgba(14, 165, 233, 0.4);
-        }
-
-        /* 3. FEATURED RIBBON */
-        .featured-ribbon {
-            background: linear-gradient(90deg, #EFF6FF 0%, #F0FDF4 100%);
-            border: 1px solid #BAE6FD;
-            border-radius: 50px;
-            padding: 8px 20px;
-            display: inline-flex; align-items: center; gap: 10px;
-            margin-bottom: 20px;
-            font-size: 0.9rem; color: #0369A1; font-weight: 600;
-        }
-        .ribbon-dot {
-            width: 8px; height: 8px; background: #0EA5E9; border-radius: 50%;
-            box-shadow: 0 0 0 2px rgba(14, 165, 233, 0.3);
-            animation: pulse 2s infinite;
-        }
-        @keyframes pulse { 0% { opacity: 1; } 50% { opacity: 0.5; } 100% { opacity: 1; } }
-
-        /* 4. TRUST INDICATORS */
-        .trust-indicators { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; margin-bottom: 35px; }
-        .trust-tag {
-            font-size: 0.85rem; font-weight: 600; 
-            color: #334155; background: white;
-            padding: 8px 16px; border-radius: 50px; 
-            border: 1px solid #E2E8F0;
-            display: flex; align-items: center; gap: 6px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.03);
-        }
-
-        /* 5. FACE CARDS */
-        .face-card {
-            background: rgba(255, 255, 255, 0.8);
-            backdrop-filter: blur(12px);
-            padding: 30px;
-            border-radius: 16px;
-            border: 1px solid rgba(255,255,255,0.6);
-            box-shadow: 0 4px 6px rgba(0,0,0,0.02);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            position: relative; overflow: hidden;
-            display: flex; flex-direction: column; gap: 15px;
-        }
-        
-        .face-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 30px rgba(0,0,0,0.08);
-        }
-
-        /* Color Coding */
-        .grid-4 .face-card:nth-child(1) { border-top: 4px solid #64748B; } 
-        .grid-4 .face-card:nth-child(2) { border-top: 4px solid #F59E0B; } 
-        .grid-4 .face-card:nth-child(3) { border-top: 4px solid #3B82F6; } 
-        .grid-4 .face-card:nth-child(4) { border-top: 4px solid #10B981; } 
-
-        .face-card h2, .face-card h3 {
-            font-family: 'Merriweather', serif; color: #0A2540; margin: 0;
-            display: flex; align-items: center; gap: 10px;
-        }
-
-        .topic-icon { font-size: 1.4rem; filter: grayscale(100%); transition: all 0.3s ease; }
-        .face-card:hover .topic-icon { filter: grayscale(0%); transform: scale(1.1); }
-
-        .service-list li {
-            list-style: none; position: relative; padding-left: 20px; margin-bottom: 8px; color: #475569;
-        }
-        .service-list li::before {
-            content: "•"; position: absolute; left: 0; color: #94A3B8; font-weight: bold;
-        }
-
-        /* 6. NEW INTERACTIVE FAQ STYLES (NO DARK MODE FLASH) */
-        .faq-container-box {
-            max-width: 800px; 
-            margin: 0 auto; 
-            padding: 30px; 
-            border-radius: 12px; 
-            border: 1px solid rgba(0,0,0,0.05); 
-            background: rgba(255,255,255,0.6);
-        }
-        
-        details.faq-item {
-            margin-bottom: 15px;
-            border-bottom: 1px solid rgba(0,0,0,0.1);
-            padding-bottom: 15px;
-        }
-        details.faq-item:last-child { border-bottom: none; }
-        
-        summary.faq-question {
-            font-size: 1.1rem;
-            font-weight: 600;
+        /* Headings use Poppins */
+        h1, h2, h3, h4, h5, h6 {
+            font-family: var(--font-heading);
+            font-weight: 700;
             color: var(--text-head);
-            cursor: pointer;
-            list-style: none;
-            position: relative;
-            padding-right: 30px;
-            transition: color 0.3s;
-        }
-        summary.faq-question:hover { color: #0EA5E9; }
-        
-        /* Custom Accordion Marker */
-        summary.faq-question::-webkit-details-marker { display: none; }
-        summary.faq-question::after {
-            content: '+';
-            position: absolute;
-            right: 0;
-            top: 0;
-            font-size: 1.2rem;
-            color: #64748B;
-        }
-        details[open] summary.faq-question::after { content: '−'; }
-        
-        .faq-answer {
-            margin-top: 10px;
-            font-size: 0.95rem;
-            color: var(--text-main);
-            line-height: 1.6;
-            padding-left: 5px;
         }
 
-        /* --- NUCLEAR DARK MODE OVERRIDES --- */
-        [data-theme="dark"] .hero-premium { background-image: none !important; }
+        /* Noise Texture */
+        body::before {
+            content: ""; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+            pointer-events: none; z-index: 9999;
+        }
+        a { text-decoration: none; color: inherit; transition: 0.3s; }
+        img { max-width: 100%; display: block; }
+        ul { list-style: none; }
+
+        /* --- 3. PREMIUM HEADER --- */
+        header {
+            position: absolute; top: 0; width: 100%; z-index: 100;
+            padding: 20px 0; background: transparent;
+        }
+        .container { max-width: 1240px; margin: 0 auto; padding: 0 25px; }
+        .nav-flex { display: flex; justify-content: space-between; align-items: center; }
+
+        /* BRAND LOGO */
+        .brand-logo {
+            display: flex; align-items: center; gap: 10px;
+            padding: 6px 14px; border-radius: 12px;
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.05);
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+        .brand-logo:hover {
+            border-color: var(--accent); background: var(--accent-glow);
+            transform: translateY(-1px);
+        }
+        .logo-icon-wrapper img { height: 40px; width: auto; filter: drop-shadow(0 4px 6px rgba(0,0,0,0.1)); }
         
-        [data-theme="dark"] .hero-glass-card {
-            background: rgba(30, 41, 59, 0.7) !important;
-            border: 1px solid rgba(255,255,255,0.1) !important;
+        /* BRAND TEXT */
+        .brand-text {
+            font-family: var(--font-heading);
+            font-weight: 700; 
+            font-size: 1.4rem;
+            color: var(--text-head); letter-spacing: -0.5px; line-height: 1;
         }
-        [data-theme="dark"] .hero-glass-card h1 {
-            background: none !important;
-            -webkit-text-fill-color: #ffffff !important;
-            color: #ffffff !important;
+        .text-finhub { color: var(--accent); }
+
+        /* NAV LINKS */
+        .nav-links { display: flex; gap: 30px; align-items: center; background: rgba(255,255,255,0.02); padding: 5px 20px; border-radius: 50px; border: 1px solid rgba(255,255,255,0.05); }
+        .nav-item { 
+            font-family: var(--font-ui);
+            font-weight: 600; font-size: 0.9rem; color: var(--text-head); 
+            opacity: 0.8; position: relative; 
         }
+        .nav-item::after {
+            content: ''; position: absolute; bottom: -4px; left: 50%; transform: translateX(-50%);
+            width: 0; height: 2px; background: var(--accent); transition: 0.3s;
+        }
+        .nav-item:hover, .nav-item.active { opacity: 1; }
+        .nav-item:hover::after, .nav-item.active::after { width: 100%; }
+
+        /* CONTACT BTN */
+        .btn-nav {
+            background: var(--text-head); color: var(--bg-body) !important;
+            padding: 8px 22px; border-radius: 50px; 
+            font-family: var(--font-ui); font-weight: 600; font-size: 0.85rem;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1); transition: all 0.3s;
+        }
+        .btn-nav:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(0,0,0,0.2); }
+
+        .mobile-toggle { display: none; font-size: 1.5rem; background: none; border: none; color: var(--text-head); cursor: pointer; }
+
+        /* --- 4. HERO SECTION --- */
+        .hero-section {
+            padding: 160px 0 100px;
+            background: var(--hero-gradient);
+            position: relative; overflow: hidden;
+        }
+        .aurora {
+            position: absolute; top: -50%; right: -50%; width: 150%; height: 150%;
+            background: radial-gradient(circle, var(--accent-glow) 0%, transparent 60%);
+            filter: blur(80px); animation: pulse 10s infinite alternate; z-index: 0;
+        }
+        @keyframes pulse { 0% { transform: scale(1); } 100% { transform: scale(1.1); } }
+
+        .hero-split { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 50px; align-items: center; position: relative; z-index: 2; }
         
-        [data-theme="dark"] .btn-premium.primary {
-            background: #38bdf8 !important; color: #0f172a !important;
-            box-shadow: 0 0 15px rgba(56, 189, 248, 0.4) !important;
+        /* LIVE COUNTER BADGE */
+        .live-badge {
+            display: inline-flex; align-items: center; gap: 10px;
+            padding: 5px 14px; background: rgba(255,255,255,0.5); border: 1px solid var(--border);
+            border-radius: 50px; font-size: 0.75rem; font-weight: 600; color: var(--accent);
+            text-transform: uppercase; letter-spacing: 1px; margin-bottom: 20px; backdrop-filter: blur(5px);
+            font-family: var(--font-ui);
         }
-        [data-theme="dark"] .btn-premium.secondary {
-            background: transparent !important;
-            border-color: #38bdf8 !important; /* Visible Neon Border */
-            color: #38bdf8 !important;
+        .live-dot {
+            width: 6px; height: 6px; background: #10B981; border-radius: 50%;
+            box-shadow: 0 0 8px #10B981; animation: blink 2s infinite;
         }
-        [data-theme="dark"] .btn-premium.secondary:hover {
-            background: #38bdf8 !important; color: #0f172a !important;
-            box-shadow: 0 0 25px rgba(56, 189, 248, 0.5) !important;
+        @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
+        #badge-text { transition: opacity 0.5s ease; font-family: var(--font-ui); }
+
+        /* HERO TITLE */
+        .hero-title {
+            font-family: var(--font-heading);
+            font-size: 3rem;
+            line-height: 1.15; color: var(--text-head);
+            margin-bottom: 20px; letter-spacing: -0.5px;
+        }
+        .hero-subtitle {
+            font-family: var(--font-body);
+            font-size: 1.1rem;
+            color: var(--text-body); margin-bottom: 35px;
+            max-width: 95%; font-weight: 300;
         }
 
-        [data-theme="dark"] .featured-ribbon {
-            background: rgba(15, 23, 42, 0.6) !important;
-            border-color: #38bdf8 !important; color: #7dd3fc !important;
+        .hero-btns { display: flex; gap: 15px; flex-wrap: wrap; }
+        .btn-xl {
+            padding: 14px 32px; border-radius: 12px; font-weight: 600; font-size: 0.95rem;
+            transition: all 0.3s ease; display: inline-flex; align-items: center; gap: 10px;
+            font-family: var(--font-ui);
         }
+        .btn-primary { 
+            background: var(--accent); color: white; box-shadow: 0 10px 30px rgba(14, 165, 233, 0.3); 
+            position: relative; overflow: hidden;
+        }
+        .btn-primary:hover { transform: translateY(-3px); background: #0284C7; }
+        .btn-outline { border: 1px solid var(--border); color: var(--text-head); background: rgba(255,255,255,0.05); }
+        .btn-outline:hover { background: var(--text-head); color: var(--bg-body); border-color: var(--text-head); }
+
+        .hero-visual {
+            height: 460px; background: var(--bg-card); border-radius: 20px;
+            border: 1px solid var(--border); box-shadow: 0 20px 50px -10px rgba(0,0,0,0.1);
+            display: flex; align-items: center; justify-content: center;
+            transform: perspective(1000px) rotateY(-5deg) rotateX(2deg);
+            transition: transform 0.5s ease;
+        }
+        .hero-visual:hover { transform: perspective(1000px) rotateY(0deg) rotateX(0deg); }
         
-        [data-theme="dark"] .trust-tag {
-            background: rgba(30, 41, 59, 0.6) !important;
-            border-color: #475569 !important; color: #cbd5e1 !important;
-        }
-
-        [data-theme="dark"] .face-card {
-            background: rgba(30, 41, 59, 0.6) !important;
-            border-color: rgba(255,255,255,0.05) !important;
-        }
-        [data-theme="dark"] .grid-4 .face-card:nth-child(1) { border-top-color: #94a3b8 !important; }
-        [data-theme="dark"] .grid-4 .face-card:nth-child(2) { border-top-color: #fbbf24 !important; }
-        [data-theme="dark"] .grid-4 .face-card:nth-child(3) { border-top-color: #60a5fa !important; }
-        [data-theme="dark"] .grid-4 .face-card:nth-child(4) { border-top-color: #34d399 !important; }
+        /* --- 5. CARDS & CONTENT --- */
+        .section-padding { padding: 90px 0; }
+        .card-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; margin-top: -80px; position: relative; z-index: 5; }
         
-        [data-theme="dark"] .face-card h2, [data-theme="dark"] .face-card h3 { color: white !important; }
-        [data-theme="dark"] .face-card p, [data-theme="dark"] .service-list li { color: #cbd5e1 !important; }
-
-        /* DARK MODE FAQ FIXES */
-        [data-theme="dark"] .faq-container-box {
-            background: rgba(30, 41, 59, 0.6) !important;
-            border-color: rgba(255,255,255,0.1) !important;
+        .smart-card {
+            background: var(--bg-card); padding: 35px; border-radius: 18px;
+            border: 1px solid var(--border); transition: 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+            display: flex; flex-direction: column; height: 100%; position: relative; overflow: hidden;
         }
-        [data-theme="dark"] summary.faq-question { color: #f8fafc !important; }
-        [data-theme="dark"] summary.faq-question:hover { color: #38bdf8 !important; }
-        [data-theme="dark"] .faq-answer { color: #cbd5e1 !important; }
-        [data-theme="dark"] details.faq-item { border-bottom-color: rgba(255,255,255,0.1); }
+        .smart-card:hover { transform: translateY(-10px); box-shadow: 0 20px 40px -10px rgba(0,0,0,0.1); border-color: var(--accent); }
+        .card-icon { font-size: 2rem; margin-bottom: 18px; }
+        
+        .card-title { 
+            font-family: var(--font-heading);
+            font-size: 1.25rem; margin-bottom: 12px; 
+        }
+        .card-desc { 
+            font-family: var(--font-body);
+            font-size: 0.95rem; color: var(--text-muted); line-height: 1.6; flex-grow: 1; margin-bottom: 20px; 
+        }
+        .card-link { font-family: var(--font-ui); font-weight: 700; color: var(--accent); font-size: 0.9rem; display: flex; align-items: center; gap: 5px; }
 
+        .highlight-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px; margin-top: 50px; }
+        .highlight-item { padding: 25px; border-left: 3px solid var(--border); transition: 0.3s; }
+        .highlight-item:hover { border-left-color: var(--accent); background: var(--accent-glow); }
+
+        .ethics-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 40px; margin-top: 40px; }
+        
+        /* FAQ Styles */
+        details.faq { padding: 20px 0; border-bottom: 1px solid var(--border); }
+        summary.ques { 
+            font-family: var(--font-heading);
+            font-weight: 600; color: var(--text-head); font-size: 1.05rem; 
+            cursor: pointer; position: relative; list-style: none; padding-right: 30px; 
+        }
+        summary.ques::after { content: '+'; position: absolute; right: 0; color: var(--accent); font-size: 1.4rem; top: -4px; }
+        details[open] summary.ques::after { content: '−'; }
+        .ans { margin-top: 15px; color: var(--text-body); font-family: var(--font-body); font-size: 0.95rem; line-height: 1.6; padding-left: 15px; border-left: 2px solid var(--accent); }
+
+        /* --- 6. FOOTER (PREMIUM) --- */
+        footer {
+            background: #020617; color: #94A3B8; padding: 70px 0 30px;
+            margin-top: 100px; position: relative; overflow: hidden;
+            border-top: 1px solid rgba(255,255,255,0.05);
+        }
+        .footer-watermark {
+            position: absolute; bottom: -20px; right: -20px; font-size: 15rem; font-weight: 900;
+            color: rgba(255,255,255,0.02); font-family: var(--font-heading); pointer-events: none;
+        }
+        .footer-grid { display: grid; grid-template-columns: 1.5fr 1fr 1fr; gap: 50px; position: relative; z-index: 2; margin-bottom: 50px; }
+        
+        .footer-logo { height: 50px; filter: brightness(1.2); opacity: 0.95; margin-bottom: 20px; }
+        .footer-desc { font-family: var(--font-body); font-size: 0.9rem; opacity: 0.7; max-width: 320px; margin-bottom: 25px; }
+        
+        .footer-col h4 { 
+            color: white; margin-bottom: 20px; font-size: 0.95rem; font-weight: 700; 
+            letter-spacing: 1px; text-transform: uppercase; font-family: var(--font-ui); 
+        }
+        .footer-links a { display: block; color: #94A3B8; margin-bottom: 12px; transition: 0.3s; font-family: var(--font-ui); font-size: 0.9rem; }
+        .footer-links a:hover { color: var(--accent); transform: translateX(5px); }
+
+        /* SOCIAL ICONS */
+        .social-row { display: flex; gap: 15px; align-items: center; }
+        .icon-link {
+            width: 40px; height: 40px; border-radius: 50%;
+            background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1);
+            display: flex; align-items: center; justify-content: center;
+            color: white; transition: 0.3s;
+        }
+        .icon-link:hover { background: var(--accent); border-color: var(--accent); transform: translateY(-3px); }
+        .icon-link svg { width: 18px; height: 18px; fill: currentColor; stroke: currentColor; }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255,255,255,0.05); padding-top: 25px;
+            display: flex; justify-content: space-between; align-items: center;
+            font-size: 0.85rem; opacity: 0.6; position: relative; z-index: 2;
+            font-family: var(--font-ui);
+        }
+        .status-badge { display: flex; align-items: center; gap: 8px; color: #10B981; font-weight: 600; }
+        .status-ping { width: 8px; height: 8px; background: #10B981; border-radius: 50%; box-shadow: 0 0 10px #10B981; }
+
+        /* ANIMATIONS */
+        .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s ease; }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+        .delay-1 { transition-delay: 0.1s; }
+        .delay-2 { transition-delay: 0.2s; }
+        .delay-3 { transition-delay: 0.3s; }
+
+        /* --- 7. MOBILE RESPONSIVE --- */
         @media (max-width: 768px) {
-            .hero-glass-card { padding: 30px 20px; }
-            .grid-4 { grid-template-columns: 1fr; }
-            .btn-group { flex-direction: column; width: 100%; }
-            .btn-premium { width: 100%; }
+            header { padding: 15px 0; }
+            .hero-section { padding: 120px 0 80px; text-align: center; }
+            .hero-split { grid-template-columns: 1fr; gap: 40px; }
+            .hero-title { font-size: 2.4rem; }
+            .hero-subtitle { margin: 0 auto 30px; }
+            .hero-btns { justify-content: center; flex-direction: column; width: 100%; }
+            .btn-xl { width: 100%; justify-content: center; }
+            
+            .card-grid { margin-top: 40px; grid-template-columns: 1fr; }
+            .highlight-grid { grid-template-columns: 1fr; }
+            .ethics-grid { grid-template-columns: 1fr; }
+            .footer-grid { grid-template-columns: 1fr; text-align: center; gap: 30px; }
+            .footer-desc { margin: 0 auto 20px; }
+            .social-row { justify-content: center; }
+            .footer-bottom { flex-direction: column; gap: 15px; }
+            
+            .mobile-toggle { display: block; }
+            .nav-links { 
+                display: none; position: absolute; top: 100%; left: 0; width: 100%; 
+                background: var(--bg-card); flex-direction: column; padding: 25px; 
+                box-shadow: 0 10px 30px rgba(0,0,0,0.2); border-bottom: 1px solid var(--border);
+            }
+            .nav-links.active { display: flex; animation: slideDown 0.3s ease; }
+            @keyframes slideDown { from { opacity:0; transform:translateY(-10px); } to { opacity:1; transform:translateY(0); } }
         }
     </style>
 </head>
 <body>
 
+    <button id="back-to-top" onclick="window.scrollTo({top: 0, behavior: 'smooth'});" 
+        style="position:fixed; bottom:30px; right:30px; width:50px; height:50px; background:var(--accent); color:white; border:none; border-radius:50%; font-size:1.5rem; cursor:pointer; opacity:0; transition:0.3s; z-index:999; box-shadow:0 10px 20px rgba(0,0,0,0.2);">↑</button>
+
     <header>
         <div class="container nav-flex">
             <a href="index.html" class="brand-logo">
                 <div class="logo-icon-wrapper">
-                    <img src="assets/images/logo-header.png" alt="MVN FinHub Logo" width="131" height="88">
+                    <img src="assets/images/logo-header.png" alt="MVN Logo">
                 </div>
                 <div class="brand-text">
                     <span class="text-mvn">MVN</span><span class="text-finhub">FinHub</span>
                 </div>
             </a>
             
-            <button class="mobile-toggle" id="mobile-menu-toggle" aria-label="Toggle Menu">☰</button>
+            <button class="mobile-toggle" id="mobile-menu-toggle" aria-label="Menu">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
+            </button>
 
             <nav class="nav-links" id="nav-links">
-                <a href="index.html" class="nav-item">Home</a>
+                <a href="index.html" class="nav-item active">Home</a>
                 <a href="services.html" class="nav-item">Services</a>
                 <a href="insights.html" class="nav-item">Insights</a>
                 <a href="about.html" class="nav-item">About</a>
-                <a href="contact.html" class="nav-item btn-nav">Contact</a>
+                <a href="contact.html" class="btn-nav">Contact</a>
             </nav>
         </div>
     </header>
 
     <main>
 
-    <section class="hero-premium">
-        <div class="hero-glow glow-left"></div>
-        <div class="hero-glow glow-right"></div>
-
+    <section class="hero-section">
+        <div class="aurora"></div>
         <div class="container">
-            <div class="hero-glass-card">
-                
-                <span class="hero-main-icon">💠</span>
+            <div class="hero-split">
+                <div class="hero-content reveal">
+                    <div class="live-badge">
+                        <div class="live-dot"></div>
+                        <span id="badge-text">Financial Process Intelligence</span>
+                    </div>
 
-                <div class="featured-ribbon">
-                    <div class="ribbon-dot"></div>
-                    Financial Process Intelligence & Support
+                    <h1 class="hero-title">Financial Process & Documentation Intelligence</h1>
+                    <p class="hero-subtitle">A global gateway for decoding financial systems, institutional workflows, and documentation compliance. Independent, educational, and strictly non-advisory.</p>
+                    <p class="hero-subtitle" style="margin-top: -25px; font-size: 1rem; opacity: 0.8;">Designed for individuals, families, and NRIs navigating financial processes, documentation, and institutional workflows.</p>
+                    
+                    <div class="hero-btns">
+                        <a href="insights.html" class="btn-xl btn-primary">
+                            Explore Intelligence <span>→</span>
+                        </a>
+                        <a href="contact.html" class="btn-xl btn-outline">
+                            Submit Query
+                        </a>
+                    </div>
+
+                    <div style="margin-top: 35px; font-size: 0.85rem; color: var(--text-muted); display:flex; gap:20px; font-weight:600; font-family: var(--font-ui);">
+                        <span>✓ Independent Platform</span>
+                        <span>✓ Privacy First</span>
+                        <span>✓ Process Oriented</span>
+                        <span>✓ Non-Advisory</span>
+                    </div>
                 </div>
 
-                <h1>Financial Process & Documentation Intelligence</h1>
-                <p>A global gateway for decoding financial systems, institutional workflows, and documentation compliance. Independent, educational, and strictly non-advisory.</p>
-                <p style="margin-top: 10px; margin-bottom: 25px; font-size: 0.95rem; opacity: 0.9;">Designed for individuals, families, and NRIs navigating financial processes, documentation, and institutional workflows.</p>
-
-                <div class="trust-indicators">
-                    <span class="trust-tag">🛡️ Independent Platform</span>
-                    <span class="trust-tag">🔒 Privacy First</span>
-                    <span class="trust-tag">⚙️ Process Oriented</span>
-                    <span class="trust-tag">✅ Non-Advisory</span>
+                <div class="hero-visual reveal delay-1">
+                    <img src="assets/images/hero-dashboard.png" alt="Financial Process Intelligence" style="width: 100%; height: 100%; object-fit: cover; border-radius: 24px;">
                 </div>
-
-                <div class="btn-group">
-                    <a href="insights.html" class="btn-premium primary">
-                        Explore Intelligence
-                    </a>
-                    <a href="contact.html" class="btn-premium secondary">
-                        Submit Query →
-                    </a>
-                </div>
-                
-                <div class="hero-micro-text">Institutional-Grade Process Knowledge • India & Global Scope</div>
             </div>
         </div>
     </section>
 
     <section class="section-padding">
         <div class="container">
-            <div class="grid-4">
-                <div class="face-card">
-                    <h2><span class="topic-icon">🧠</span> What We Do</h2>
-                    <p>We explain how financial systems and institutional processes function. We decode documentation workflows, provide educational intelligence, and offer structured process support—building clarity without influencing decisions.</p>
+            <div class="card-grid">
+                <div class="smart-card reveal delay-1">
+                    <div class="card-icon">🧠</div>
+                    <h3 class="card-title">What We Do</h3>
+                    <p class="card-desc">We explain how financial systems and institutional processes function. We decode documentation workflows, provide educational intelligence, and offer structured process support—building clarity without influencing decisions.</p>
+                    <a href="services.html" class="card-link">View Scope →</a>
                 </div>
-                <div class="face-card">
-                    <h2><span class="topic-icon">🚫</span> What We Are Not</h2>
-                    <p>We are NOT financial advisors. We do not provide investment guidance, sell products, predict market outcomes, or offer performance guarantees.</p>
+                <div class="smart-card reveal delay-2">
+                    <div class="card-icon" style="filter: hue-rotate(140deg);">🚫</div>
+                    <h3 class="card-title">What We Are Not</h3>
+                    <p class="card-desc">We are NOT financial advisors. We do not provide investment guidance, sell products, predict market outcomes, or offer performance guarantees.</p>
+                    <a href="about.html" class="card-link" style="color: #B45309;">Read Ethics →</a>
                 </div>
-                <div class="face-card">
-                    <h2><span class="topic-icon">🌏</span> Core Intelligence</h2>
-                    <p>Depth-focused intelligence on Financial System Foundations, Indian & Global Ecosystems, Process-First News Decoding, and Institutional Documentation Compliance workflows.</p>
+                <div class="smart-card reveal delay-3">
+                    <div class="card-icon" style="filter: hue-rotate(90deg);">🌏</div>
+                    <h3 class="card-title">Core Intelligence</h3>
+                    <p class="card-desc">Depth-focused intelligence on Financial System Foundations, Indian & Global Ecosystems, Process-First News Decoding, and Institutional Documentation Compliance workflows.</p>
+                    <a href="insights.html" class="card-link" style="color: #059669;">Browse Insights →</a>
                 </div>
-                <div class="face-card">
-                    <h2><span class="topic-icon">⚠️</span> Why Processes Fail</h2>
-                    <p>Failures often stem from documentation inconsistencies, sequencing errors, institutional risk controls, and legacy data gaps—not just market forces.</p>
+                <div class="smart-card reveal delay-1">
+                    <div class="card-icon" style="filter: hue-rotate(320deg);">⚠️</div>
+                    <h3 class="card-title">Why Processes Fail</h3>
+                    <p class="card-desc">Failures often stem from documentation inconsistencies, sequencing errors, institutional risk controls, and legacy data gaps—not just market forces.</p>
+                    <a href="service-process.html" class="card-link" style="color: #DC2626;">Learn Why →</a>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="section-padding" style="background-color: var(--surface-card);">
+    <section class="section-padding">
         <div class="container">
-            <h2 style="text-align: center; margin-bottom: 40px; font-size: 1.8rem; font-family: 'Merriweather', serif;">Process Support & Direction</h2>
-            <div class="grid-4">
-                <div class="face-card">
-                    <h3><span class="topic-icon">📜</span> Legacy Recovery</h3>
-                    <ul class="service-list">
+            <h2 class="reveal" style="text-align: center; margin-bottom: 40px; color: var(--text-head); font-family: var(--font-heading);">Ethics & Responsibility</h2>
+            <div class="ethics-grid">
+                <div class="ethics-item reveal delay-1">
+                    <h4 style="color:var(--text-head); font-weight:700; margin-bottom:10px;">Neutrality</h4>
+                    <p style="color:var(--text-muted); font-family: var(--font-body);">We operate without conflict of interest, commissions, or commercial pressure.</p>
+                </div>
+                <div class="ethics-item reveal delay-2">
+                    <h4 style="color:var(--text-head); font-weight:700; margin-bottom:10px;">Responsibility</h4>
+                    <p style="color:var(--text-muted); font-family: var(--font-body);">We provide the system map; the user must drive. All decisions remain yours.</p>
+                </div>
+                <div class="ethics-item reveal delay-3">
+                    <h4 style="color:var(--text-head); font-weight:700; margin-bottom:10px;">Privacy</h4>
+                    <p style="color:var(--text-muted); font-family: var(--font-body);">We collect minimal data solely for process support and documentation execution.</p>
+                </div>
+                <div class="ethics-item reveal delay-1">
+                    <h4 style="color:var(--text-head); font-weight:700; margin-bottom:10px;">Clarity</h4>
+                    <p style="color:var(--text-muted); font-family: var(--font-body);">We prioritize clear, jargon-free explanations of complex institutional systems.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-padding highlight-section">
+        <div class="container">
+            <h2 class="reveal" style="text-align: center; margin-bottom: 50px; color: var(--text-head); font-family: var(--font-heading);">Process Support & Direction</h2>
+            <div class="highlight-grid">
+                <div class="highlight-item reveal delay-1">
+                    <div style="font-size:1.2rem; font-weight:700; color:var(--text-head); margin-bottom:10px; font-family: var(--font-heading);">📜 Legacy Recovery</div>
+                    <ul style="color:var(--text-muted); font-size:0.9rem; list-style-type: disc; padding-left: 20px; font-family: var(--font-body);">
                         <li>Physical share transmission</li>
                         <li>IEPF claim documentation</li>
                         <li>Succession process guidance</li>
                     </ul>
                 </div>
-                <div class="face-card">
-                    <h3><span class="topic-icon">✈️</span> NRI Compliance</h3>
-                    <ul class="service-list">
+                <div class="highlight-item reveal delay-2">
+                    <div style="font-size:1.2rem; font-weight:700; color:var(--text-head); margin-bottom:10px; font-family: var(--font-heading);">✈️ NRI Compliance</div>
+                    <ul style="color:var(--text-muted); font-size:0.9rem; list-style-type: disc; padding-left: 20px; font-family: var(--font-body);">
                         <li>Cross-border documentation</li>
                         <li>NRO/NRE account workflows</li>
                         <li>Identity verification support</li>
                     </ul>
                 </div>
-                <div class="face-card">
-                    <h3><span class="topic-icon">🏦</span> Banking Systems</h3>
-                    <ul class="service-list">
+                <div class="highlight-item reveal delay-3">
+                    <div style="font-size:1.2rem; font-weight:700; color:var(--text-head); margin-bottom:10px; font-family: var(--font-heading);">🏦 Banking Systems</div>
+                    <ul style="color:var(--text-muted); font-size:0.9rem; list-style-type: disc; padding-left: 20px; font-family: var(--font-body);">
                         <li>KYC lifecycle management</li>
                         <li>Dormant account reactivation</li>
                         <li>Audit-trail preparation</li>
                     </ul>
                 </div>
-                <div class="face-card">
-                    <h3><span class="topic-icon">⚖️</span> Independence</h3>
-                    <ul class="service-list">
-                        <li>No commissions or fees</li>
-                        <li>No product affiliations</li>
-                        <li>User retains responsibility</li>
-                    </ul>
+                
+                <div class="highlight-item reveal delay-1">
+                    <div style="font-size:1.2rem; font-weight:700; color:var(--text-head); margin-bottom:10px; font-family: var(--font-heading);">⚖️ Independence</div>
+                    <p style="color:var(--text-muted); font-size:0.9rem; font-family: var(--font-body);">
+                        MVN FinHub does not receive commissions, referral fees, or incentives from any bank, platform, broker, or institution. We have no product affiliations and do not influence user decisions.
+                    </p>
+                </div>
+                
+                <div class="highlight-item reveal delay-2">
+                    <div style="font-size:1.2rem; font-weight:700; color:var(--text-head); margin-bottom:10px; font-family: var(--font-heading);">💼 Fees & Responsibility</div>
+                    <p style="color:var(--text-muted); font-size:0.9rem; font-family: var(--font-body);">
+                        MVN FinHub provides services on a direct, fixed-fee basis for documentation, process, and informational support. We do not sell financial products or execute actions. All decisions and outcomes remain the responsibility of the user.
+                    </p>
                 </div>
             </div>
-            
-            <div style="text-align: center; margin-top: 40px;">
-                <p style="margin-bottom: 20px; color: #64748B;">
-                    Need structured support for a specific case?
-                </p>
-                <a href="services.html" style="display: inline-block; font-weight: 600; color: #0077B6; text-decoration: none; border: 1px solid #0077B6; padding: 10px 24px; border-radius: 50px; transition: all 0.3s;">View Full Services</a>
+
+            <div class="reveal" style="text-align: center; margin-top: 50px;">
+                <p style="margin-bottom: 20px; color: var(--text-muted);">Need structured support for a specific case?</p>
+                <a href="services.html" class="btn-xl btn-primary" style="border-radius: 50px; padding: 12px 40px; border-width: 2px;">
+                    View Full Services <span>→</span>
+                </a>
             </div>
         </div>
     </section>
 
-    <section class="section-padding">
-        <div class="container">
-            <h2 style="text-align: center; margin-bottom: 30px; font-family: 'Merriweather', serif;">Ethics & Responsibility</h2>
-            <ul class="why-list" style="max-width: 800px; margin: 0 auto; padding: 30px; border-radius: 12px; border: 1px solid rgba(0,0,0,0.05); background: rgba(255,255,255,0.6);">
-                <li style="margin-bottom: 10px;"><strong>Neutrality:</strong> We operate without conflict of interest, commissions, or commercial pressure.</li>
-                <li style="margin-bottom: 10px;"><strong>Responsibility:</strong> We provide the system map; the user must drive. All decisions remain yours.</li>
-                <li style="margin-bottom: 10px;"><strong>Privacy:</strong> We collect minimal data solely for process support and documentation execution.</li>
-                <li><strong>Clarity:</strong> We prioritize clear, jargon-free explanations of complex institutional systems.</li>
-            </ul>
-        </div>
-    </section>
-
-    <section class="section-padding">
-        <div class="container">
-            <h2 style="text-align: center; margin-bottom: 30px; font-family: 'Merriweather', serif;">Frequently Asked Questions — Using MVN FinHub</h2>
-            
-            <div class="faq-container-box">
-                
-                <details class="faq-item">
-                    <summary class="faq-question">Is MVN FinHub a financial advisory platform?</summary>
-                    <div class="faq-answer">
-                        No. MVN FinHub is not a financial advisory platform. The platform provides educational and informational content focused on financial systems, institutional processes, and documentation workflows. It does not provide advice, recommendations, or opinions, and it does not influence financial decisions.
-                    </div>
+    <section class="section-padding" style="background: var(--bg-card); border-top: 1px solid var(--border);">
+        <div class="container" style="max-width: 800px;">
+            <h2 class="reveal" style="text-align: center; margin-bottom: 40px; color: var(--text-head); font-family: var(--font-heading);">Frequently Asked Questions — Using MVN FinHub</h2>
+            <div class="faq-box">
+                <details class="faq reveal delay-1">
+                    <summary class="ques">Is MVN FinHub a financial advisory platform?</summary>
+                    <div class="ans">No. MVN FinHub is not a financial advisory platform. The platform provides educational and informational content focused on financial systems, institutional processes, and documentation workflows. It does not provide advice, recommendations, or opinions, and it does not influence financial decisions.</div>
                 </details>
-
-                <details class="faq-item">
-                    <summary class="faq-question">Can I make financial decisions based on the information provided here?</summary>
-                    <div class="faq-answer">
-                        No. The information provided on MVN FinHub is intended to improve awareness and understanding only. It should not be used as a basis for making financial, investment, legal, or tax decisions. Responsibility for decisions always remains with the individual.
-                    </div>
+                <details class="faq reveal delay-2">
+                    <summary class="ques">Can I make financial decisions based on this information?</summary>
+                    <div class="ans">No. The information provided on MVN FinHub is intended to improve awareness and understanding only. It should not be used as a basis for making financial, investment, legal, or tax decisions. Responsibility for decisions always remains with the individual.</div>
                 </details>
-
-                <details class="faq-item">
-                    <summary class="faq-question">Do you recommend investments, products, or strategies?</summary>
-                    <div class="faq-answer">
-                        No. MVN FinHub does not recommend investments, financial products, strategies, or courses of action. The platform remains neutral and non-influential, focusing only on explaining how systems and processes operate.
-                    </div>
+                <details class="faq reveal delay-3">
+                    <summary class="ques">Do you recommend investments or products?</summary>
+                    <div class="ans">No. MVN FinHub does not recommend investments, financial products, strategies, or courses of action. The platform remains neutral and non-influential, focusing only on explaining how systems and processes operate.</div>
                 </details>
-
-                <details class="faq-item">
-                    <summary class="faq-question">What kind of help can I receive through your services?</summary>
-                    <div class="faq-answer">
-                        Services offered by MVN FinHub are process-oriented and non-advisory. They focus on explaining documentation requirements, clarifying institutional processes, interpreting communications, and supporting structured understanding where financial processes feel unclear or complex.
-                    </div>
+                <details class="faq reveal delay-1">
+                    <summary class="ques">What kind of help can I receive through your services?</summary>
+                    <div class="ans">Services offered by MVN FinHub are process-oriented and non-advisory. They focus on explaining documentation requirements, clarifying institutional processes, interpreting communications, and supporting structured understanding where financial processes feel unclear or complex.</div>
                 </details>
-
-                <details class="faq-item">
-                    <summary class="faq-question">Who is this platform most useful for?</summary>
-                    <div class="faq-answer">
-                        MVN FinHub is most useful for individuals, families, and NRIs who are navigating banking processes, compliance requirements, legacy assets, cross-border documentation, or institutional financial workflows.
-                    </div>
+                <details class="faq reveal delay-2">
+                    <summary class="ques">Who is this platform most useful for?</summary>
+                    <div class="ans">MVN FinHub is most useful for individuals, families, and NRIs who are navigating banking processes, compliance requirements, legacy assets, cross-border documentation, or institutional financial workflows.</div>
                 </details>
-
-                <details class="faq-item">
-                    <summary class="faq-question">How is my information handled if I contact MVN FinHub?</summary>
-                    <div class="faq-answer">
-                        Only minimal information required to respond to an enquiry is collected. Information is used strictly for communication and clarification purposes and is not sold, shared, or used beyond its stated intent. Details are handled in line with the platform’s privacy and data responsibility principles.
-                    </div>
+                <details class="faq reveal delay-3">
+                    <summary class="ques">How is my information handled if I contact MVN FinHub?</summary>
+                    <div class="ans">Only minimal information required to respond to an enquiry is collected. Information is used strictly for communication and clarification purposes and is not sold, shared, or used beyond its stated intent. Details are handled in line with the platform’s privacy and data responsibility principles.</div>
                 </details>
-
             </div>
         </div>
     </section>
     
     </main>
+    
     <footer>
+        <div class="footer-watermark">MVN</div>
+        
         <div class="container">
-            <div class="footer-logo-container">
-               <img src="assets/images/logo-3d-full.png" alt="MVN FinHub Premium" class="footer-3d-logo" width="158" height="105">
+            <div class="footer-grid">
+                
+                <div class="footer-col">
+                    <img src="assets/images/logo-3d-full.png" alt="MVN FinHub" class="footer-logo">
+                    <p class="footer-desc" style="font-size: 0.9rem; opacity: 0.7; max-width: 320px; margin-bottom: 25px;">MVN FinHub empowers individuals with clarity through strictly non-advisory process and documentation support. We decode institutional complexity.</p>
+                    <p style="margin-bottom: 24px; color: #64748B; font-size: 0.85rem; margin-top:10px;">Services are provided on an independent, fixed-fee basis. MVN FinHub does not provide financial, legal, or investment advice and is not responsible for decisions or outcomes. All decisions remain solely the responsibility of the user.</p>
+                    
+                    <div class="social-row">
+                        <a href="https://instagram.com/mvnfinhub" target="_blank" class="icon-link" aria-label="Instagram">
+                            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor">
+                                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                            </svg>
+                        </a>
+                        <a href="mailto:mvnfinhub.contact@gmail.com" class="icon-link" aria-label="Email">
+                            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor">
+                                <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Explore</h4>
+                    <div class="footer-links">
+                        <a href="index.html">Home</a>
+                        <a href="services.html">Services</a>
+                        <a href="insights.html">Intelligence</a>
+                        <a href="about.html">About Us</a>
+                        <a href="contact.html">Get Support</a>
+                    </div>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Legal & Policy</h4>
+                    <div class="footer-links">
+                        <a href="legal.html">Privacy Policy</a>
+                        <a href="legal.html">Terms of Service</a>
+                        <a href="legal.html">Disclaimer</a>
+                    </div>
+                </div>
             </div>
 
-            <p>&copy; 2026 MVN FinHub</p>
-            <p style="font-size: 0.9rem; margin-top: 10px; max-width: 600px; margin-left: auto; margin-right: auto;">
-                MVN FinHub provides strictly non-advisory financial process, documentation, and educational support.
-            </p>
-
-            <div class="footer-links">
-                <a href="legal.html">Privacy & Legal</a>
-                <a href="contact.html">Contact</a>
-                <a href="https://instagram.com/mvnfinhub" target="_blank">Instagram</a>
-                
-                <button id="footer-theme-btn" class="theme-btn-footer" onclick="toggleTheme()" aria-label="Toggle Dark Mode" style="cursor: pointer;">🌙</button>
+            <div class="footer-bottom">
+                <div class="status-badge">
+                    <span class="status-ping"></span> System Operational
+                </div>
+                <span>&copy; 2026 MVN FinHub. All Rights Reserved.</span>
+                <button class="theme-btn" onclick="toggleTheme()" aria-label="Toggle Theme">🌙</button>
             </div>
         </div>
-
-        <script>
-            // 1. Theme Logic
-            if(localStorage.getItem('theme') === 'dark') {
-                document.documentElement.setAttribute('data-theme', 'dark');
-                const btn = document.getElementById('footer-theme-btn');
-                if(btn) btn.textContent = '☀️';
-            }
-
-            function toggleTheme() {
-                if (window.toggleTheme) {
-                    window.toggleTheme();
-                    return;
-                }
-                const html = document.documentElement;
-                const btn = document.getElementById('footer-theme-btn');
-                const current = html.getAttribute('data-theme');
-                const metaTheme = document.querySelector('meta[name="theme-color"]');
-
-                if (current === 'dark') {
-                    html.setAttribute('data-theme', 'light');
-                    localStorage.setItem('theme', 'light');
-                    btn.textContent = '🌙';
-                    if(metaTheme) metaTheme.setAttribute('content', '#F8FAFC');
-                } else {
-                    html.setAttribute('data-theme', 'dark');
-                    localStorage.setItem('theme', 'dark');
-                    btn.textContent = '☀️';
-                    if(metaTheme) metaTheme.setAttribute('content', '#0F172A');
-                }
-            }
-
-            // 2. Kill Ghost Icons
-            window.addEventListener('load', function() {
-                const ghosts = document.querySelectorAll('.theme-btn-floating, #theme-toggle-float');
-                ghosts.forEach(el => el.remove());
-            });
-        </script>
     </footer>
+
+    <script>
+        // Theme Toggle
+        if(localStorage.getItem('theme') === 'dark') {
+            document.documentElement.setAttribute('data-theme', 'dark');
+            document.querySelector('.theme-btn').textContent = '☀️';
+        }
+        function toggleTheme() {
+            const html = document.documentElement;
+            const btn = document.querySelector('.theme-btn');
+            if (html.getAttribute('data-theme') === 'dark') {
+                html.setAttribute('data-theme', 'light'); localStorage.setItem('theme', 'light'); btn.textContent = '🌙';
+            } else {
+                html.setAttribute('data-theme', 'dark'); localStorage.setItem('theme', 'dark'); btn.textContent = '☀️';
+            }
+        }
+
+        // Mobile Menu
+        document.getElementById('mobile-menu-toggle').addEventListener('click', function() {
+            document.getElementById('nav-links').classList.toggle('active');
+        });
+
+        // Scroll Effects
+        const backToTop = document.getElementById('back-to-top');
+        const reveals = document.querySelectorAll(".reveal");
+        window.addEventListener('scroll', function() {
+            if (window.scrollY > 300) { backToTop.style.opacity = '1'; backToTop.style.pointerEvents = 'all'; } 
+            else { backToTop.style.opacity = '0'; backToTop.style.pointerEvents = 'none'; }
+            
+            for (var i = 0; i < reveals.length; i++) {
+                var windowHeight = window.innerHeight;
+                var elementTop = reveals[i].getBoundingClientRect().top;
+                var elementVisible = 120;
+                if (elementTop < windowHeight - elementVisible) {
+                    reveals[i].classList.add("active");
+                }
+            }
+        });
+        window.dispatchEvent(new Event('scroll'));
+
+        // --- LIVE COUNTER SCRIPT (Hero Section) ---
+        const badgeText = document.getElementById('badge-text');
+        const messages = ['Financial Process Intelligence', '3 Core Offerings', 'New Insights Available', 'Process Documentation'];
+        let msgIndex = 0;
+
+        setInterval(() => {
+            msgIndex = (msgIndex + 1) % messages.length;
+            badgeText.style.opacity = 0; // Fade out
+            setTimeout(() => {
+                badgeText.innerText = messages[msgIndex];
+                badgeText.style.opacity = 1; // Fade in
+            }, 500);
+        }, 3000); // Change every 3 seconds
+    </script>
 
 </body>
 </html>

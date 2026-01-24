@@ -1,15 +1,25 @@
 User-agent: *
 Allow: /
 
-# Core Pages
+# Core Navigation
 Allow: /index.html
 Allow: /services.html
 Allow: /insights.html
 Allow: /about.html
 Allow: /contact.html
 
-# Block Technical & Legal Pages
-Disallow: /assets/
+# Service Detail Pages (High Priority)
+Allow: /financial-structure.html
+Allow: /legacy-recovery.html
+Allow: /nri-support.html
+Allow: /process-compliance.html
+Allow: /custom-research.html
+Allow: /process-navigation.html
+Allow: /document-interpretation.html
+Allow: /identity-docs.html
+Allow: /banking-loan.html
+
+# Block System & Error Pages
 Disallow: /404.html
 Disallow: /legal.html
 

@@ -2,309 +2,348 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://mvnfinhub.goatcounter.com https://gc.zgo.at; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self' https://mvnfinhub.goatcounter.com;">
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <title>Process Support & Documentation Services | MVN FinHub</title>
     <meta name="description" content="MVN FinHub Services: Execution-level support for financial documentation, legacy asset recovery, IEPF claims, NRI compliance, and banking process navigation. Non-advisory.">
-    <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://mvnfinhub.github.io/services.html">
 
-    <meta name="theme-color" content="#F8FAFC" media="(prefers-color-scheme: light)">
-    <meta name="theme-color" content="#0F172A" media="(prefers-color-scheme: dark)">
     <link rel="icon" type="image/png" href="assets/images/favicon.png">
+    <meta name="theme-color" content="#F8FAFC" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#020617" media="(prefers-color-scheme: dark)">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap">
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
-    <noscript>
-        <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    </noscript>
-
-    <link rel="preload" href="assets/css/main.css?v=final_mobile_fix_v2" as="style">
-    <link rel="stylesheet" href="assets/css/main.css?v=final_mobile_fix_v2">
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=Inter:wght@300;400;500;600&family=Poppins:wght@400;500;600;700;800&family=Source+Serif+4:opsz,wght@8..60,400;600;700&display=swap" rel="stylesheet">
+    
     <script src="assets/js/app.js" defer></script>
     <script data-goatcounter="https://mvnfinhub.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 
     <script>
         if(localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
             document.documentElement.setAttribute('data-theme', 'dark');
-            const metaTheme = document.querySelector('meta[name="theme-color"]');
-            if(metaTheme) metaTheme.setAttribute('content', '#0F172A');
         } else {
             document.documentElement.setAttribute('data-theme', 'light');
-            const metaTheme = document.querySelector('meta[name="theme-color"]');
-            if(metaTheme) metaTheme.setAttribute('content', '#F8FAFC');
         }
     </script>
 
     <style>
-        /* --- PAGE SPECIFIC STYLES --- */
-        
-        /* 1. HERO */
-        .hero-glass-card {
-            background: rgba(255, 255, 255, 0.65);
-            backdrop-filter: blur(16px);
-            padding: 40px;
-            border-radius: 20px;
-            border: 1px solid rgba(255, 255, 255, 0.9);
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.05);
-            text-align: center;
-            max-width: 900px;
-            margin: 0 auto;
-        }
-        .hero-main-icon {
-            font-size: 2.5rem;
-            display: block;
-            margin-bottom: 15px;
-            animation: floatIcon 3s ease-in-out infinite;
-        }
-
-        /* 2. CORE OFFERING GRID (Top 3) */
-        .core-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr); /* Default Desktop: 3 Columns */
-            gap: 30px;
-            margin-bottom: 60px;
-        }
-
-        a.core-card {
-            display: flex;
-            flex-direction: column;
-            text-decoration: none;
-            background: linear-gradient(145deg, #ffffff 0%, #f0f9ff 100%);
-            padding: 40px;
-            border-radius: 24px;
-            border: 1px solid rgba(255, 255, 255, 0.8);
-            box-shadow: 0 15px 40px -10px rgba(0, 0, 0, 0.08);
-            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-            position: relative;
-            overflow: hidden;
-            border-top: 6px solid #0284C7;
-        }
-
-        a.core-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 25px 60px -15px rgba(2, 132, 199, 0.2);
-            border-color: #38BDF8;
-        }
-
-        /* Badge */
-        .core-badge {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            background: rgba(2, 132, 199, 0.1);
-            color: #0284C7;
-            font-size: 0.75rem;
-            font-weight: 700;
-            padding: 6px 14px;
-            border-radius: 50px;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
-        /* 3. FOUNDATION LAYER */
-        .foundation-card {
-            background: rgba(255, 255, 255, 0.8);
-            backdrop-filter: blur(12px);
-            border: 1px solid rgba(14, 165, 233, 0.2);
-            border-radius: 20px;
-            padding: 40px;
-            margin-bottom: 60px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.03);
-            text-decoration: none;
-            display: block;
-            color: inherit;
-            position: relative;
-            transition: transform 0.3s ease;
-        }
-        .foundation-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 40px rgba(0,0,0,0.06);
-            border-color: #0EA5E9;
-        }
-        .foundation-badge {
-            background: #F1F5F9;
-            color: #475569;
-            display: inline-block;
-            padding: 6px 16px;
-            border-radius: 30px;
-            font-size: 0.85rem;
-            font-weight: 700;
-            margin-bottom: 20px;
-            border: 1px solid #E2E8F0;
-        }
-        .foundation-content-grid {
-            display: grid; 
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
-            gap: 30px; 
-            margin-top: 15px;
-        }
-
-        /* 4. STANDARD GRID */
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 30px;
-        }
-
-        /* SPECIAL CLASS FOR BOTTOM INFO SECTION - This fixes your mobile issue */
-        .info-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr; /* Desktop: 2 Columns */
-            gap: 30px;
-            margin-top: 80px;
-        }
-
-        a.service-card {
-            display: flex;
-            flex-direction: column;
-            text-decoration: none;
-            background: rgba(255, 255, 255, 0.7);
-            backdrop-filter: blur(10px);
-            padding: 35px;
-            border-radius: 16px;
-            border: 1px solid rgba(255, 255, 255, 0.6);
-            box-shadow: 0 4px 15px rgba(0,0,0,0.03);
-            transition: all 0.3s ease;
-            position: relative;
-            border-top: 5px solid transparent;
-        }
-
-        a.service-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 30px rgba(0,0,0,0.08);
-            background: white;
-        }
-
-        /* Color Coding */
-        a.service-card:nth-child(4n+1) { border-top-color: #0EA5E9; }
-        a.service-card:nth-child(4n+2) { border-top-color: #10B981; }
-        a.service-card:nth-child(4n+3) { border-top-color: #8B5CF6; }
-        a.service-card:nth-child(4n+4) { border-top-color: #F59E0B; }
-
-        /* Typography */
-        h2, h3 { font-family: 'Merriweather', serif; color: #0F172A; margin-bottom: 15px; }
-        .topic-icon { font-size: 2rem; display: block; margin-bottom: 10px; }
-        
-        /* List Styles */
-        .card-list { margin: 0; padding: 0; margin-top: 15px; }
-        .card-list li {
-            list-style: none;
-            margin-bottom: 10px;
-            font-size: 0.95rem;
-            line-height: 1.6;
-            color: #475569;
-            padding-left: 20px;
-            position: relative;
-        }
-        .card-list li::before {
-            content: "•"; position: absolute; left: 0; color: #0EA5E9; font-weight: bold;
-        }
-        .card-label { font-weight: 700; color: #0F172A; }
-
-        /* Buttons */
-        .card-btn {
-            margin-top: auto;
-            align-self: flex-start;
-            padding: 10px 20px;
-            background: transparent;
-            border: 1px solid #E2E8F0;
-            border-radius: 50px;
-            font-size: 0.85rem;
-            font-weight: 600;
-            color: #64748B;
-            margin-top: 25px;
-            transition: all 0.3s;
-        }
-        a.core-card:hover .card-btn, 
-        a.service-card:hover .card-btn,
-        .foundation-card:hover .card-btn {
-            background: #0EA5E9;
-            color: white;
-            border-color: #0EA5E9;
-        }
-
-        /* Dark Mode */
-        [data-theme="dark"] .hero-glass-card { background: rgba(30, 41, 59, 0.7); border-color: rgba(255,255,255,0.1); }
-        [data-theme="dark"] a.core-card { background: linear-gradient(145deg, #1e293b 0%, #0f172a 100%); border-color: rgba(255,255,255,0.1); border-top-color: #38BDF8; }
-        [data-theme="dark"] a.core-card h3 { color: white; }
-        [data-theme="dark"] .foundation-card { background: rgba(30, 41, 59, 0.6); border-color: rgba(255,255,255,0.1); }
-        [data-theme="dark"] .foundation-badge { background: rgba(255,255,255,0.1); color: #cbd5e1; border-color: transparent; }
-        [data-theme="dark"] a.service-card { background: rgba(30, 41, 59, 0.6); border-color: rgba(255,255,255,0.05); }
-        [data-theme="dark"] a.service-card:hover { background: rgba(30, 41, 59, 0.9); }
-        [data-theme="dark"] h2, [data-theme="dark"] h3 { color: white; }
-        [data-theme="dark"] .card-list li { color: #cbd5e1; }
-        [data-theme="dark"] .card-label { color: #e2e8f0; }
-        [data-theme="dark"] .card-btn { border-color: rgba(255,255,255,0.2); color: #94A3B8; }
-
-        @keyframes floatIcon { 0% { transform: translateY(0px); } 50% { transform: translateY(-8px); } 100% { transform: translateY(0px); } }
-
-        /* Global Sections */
-        .global-section { background: rgba(255,255,255,0.6); border-radius: 16px; padding: 40px; border: 1px solid rgba(255,255,255,0.8); }
-        [data-theme="dark"] .global-section { background: rgba(30,41,59,0.6); border-color: rgba(255,255,255,0.05); }
-        .exclusion-box { background: linear-gradient(135deg, #FEF2F2 0%, #FFF1F2 100%); border: 1px solid #FECACA; border-left: 5px solid #EF4444; }
-        [data-theme="dark"] .exclusion-box { background: rgba(69,10,10,0.4); border-color: #7f1d1d; border-left-color: #ef4444; }
-        .exclusion-box h2 { color: #991B1B; }
-        [data-theme="dark"] .exclusion-box h2 { color: #fca5a5; }
-        .cross-list li { padding-left: 26px; list-style: none; position: relative; margin-bottom: 10px; color: #7F1D1D; font-weight: 600; }
-        [data-theme="dark"] .cross-list li { color: #fca5a5; }
-        .cross-list li::before { content: "✕"; position: absolute; left: 0; color: #EF4444; }
-
-        /* --- MOBILE RESPONSIVE FIXES --- */
-        @media (max-width: 768px) {
-            .core-grid { grid-template-columns: 1fr; } /* Stack Top 3 */
-            .services-grid { grid-template-columns: 1fr; } /* Stack Grid */
-            .info-grid { grid-template-columns: 1fr; margin-top: 40px; } /* FORCE STACK "How Our Services Work" */
-            .foundation-content-grid { grid-template-columns: 1fr; } /* Stack Foundation */
+        /* --- 1. IMPORTING DESIGN SYSTEM FROM INDEX --- */
+        :root {
+            /* TYPOGRAPHY */
+            --font-heading: 'Poppins', sans-serif;
+            --font-ui: 'IBM Plex Sans', sans-serif;
+            --font-body: 'Inter', sans-serif;
             
-            .hero-glass-card, .foundation-card, a.core-card, a.service-card {
-                padding: 25px; /* Comfortable padding */
-            }
-            .hero-main-icon { font-size: 2rem; }
-            h1 { font-size: 1.8rem; }
+            /* Light Mode */
+            --bg-body: #F8FAFC;
+            --bg-card: #FFFFFF;
+            --text-head: #0F172A;
+            --text-body: #334155;
+            --text-muted: #64748B;
+            --primary: #0F172A;
+            --accent: #0EA5E9;
+            --accent-glow: rgba(14, 165, 233, 0.2);
+            --border: #E2E8F0;
+            --hero-gradient: linear-gradient(135deg, #EFF6FF 0%, #F8FAFC 100%);
+        }
+
+        [data-theme="dark"] {
+            /* Dark Mode */
+            --bg-body: #020617;
+            --bg-card: #0F172A;
+            --text-head: #F8FAFC;
+            --text-body: #94A3B8;
+            --text-muted: #64748B;
+            --primary: #F8FAFC;
+            --accent: #38BDF8;
+            --accent-glow: rgba(56, 189, 248, 0.2);
+            --border: rgba(255, 255, 255, 0.08);
+            --hero-gradient: linear-gradient(135deg, #0B1120 0%, #020617 100%);
+        }
+
+        /* --- 2. GLOBAL RESET --- */
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; }
+        body {
+            background-color: var(--bg-body); color: var(--text-body);
+            font-family: var(--font-body); line-height: 1.6; overflow-x: hidden;
+            transition: background 0.3s, color 0.3s;
+        }
+
+        h1, h2, h3, h4, h5, h6 { font-family: var(--font-heading); font-weight: 700; color: var(--text-head); }
+
+        /* Noise Texture */
+        body::before {
+            content: ""; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+            pointer-events: none; z-index: 9999;
+        }
+        a { text-decoration: none; color: inherit; transition: 0.3s; }
+        img { max-width: 100%; display: block; }
+        ul { list-style: none; }
+
+        /* --- 3. COMPONENTS --- */
+        /* Header */
+        header { position: absolute; top: 0; width: 100%; z-index: 100; padding: 20px 0; background: transparent; }
+        .container { max-width: 1240px; margin: 0 auto; padding: 0 25px; }
+        .nav-flex { display: flex; justify-content: space-between; align-items: center; }
+
+        .brand-logo {
+            display: flex; align-items: center; gap: 10px; padding: 6px 14px; border-radius: 12px;
+            background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.05);
+            backdrop-filter: blur(10px); transition: 0.3s;
+        }
+        .brand-logo:hover { border-color: var(--accent); background: var(--accent-glow); transform: translateY(-1px); }
+        .logo-icon-wrapper img { height: 40px; width: auto; filter: drop-shadow(0 4px 6px rgba(0,0,0,0.1)); }
+        .brand-text { font-family: var(--font-heading); font-weight: 700; font-size: 1.4rem; color: var(--text-head); letter-spacing: -0.5px; line-height: 1; }
+        .text-finhub { color: var(--accent); }
+
+        .nav-links { display: flex; gap: 30px; align-items: center; background: rgba(255,255,255,0.02); padding: 5px 20px; border-radius: 50px; border: 1px solid rgba(255,255,255,0.05); }
+        .nav-item { font-family: var(--font-ui); font-weight: 600; font-size: 0.9rem; color: var(--text-head); opacity: 0.8; position: relative; }
+        .nav-item::after { content: ''; position: absolute; bottom: -4px; left: 50%; transform: translateX(-50%); width: 0; height: 2px; background: var(--accent); transition: 0.3s; }
+        .nav-item:hover, .nav-item.active { opacity: 1; }
+        .nav-item:hover::after, .nav-item.active::after { width: 100%; }
+        .btn-nav { background: var(--text-head); color: var(--bg-body) !important; padding: 8px 22px; border-radius: 50px; font-family: var(--font-ui); font-weight: 600; font-size: 0.85rem; box-shadow: 0 4px 20px rgba(0,0,0,0.1); transition: 0.3s; }
+        .btn-nav:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(0,0,0,0.2); }
+        .mobile-toggle { display: none; font-size: 1.5rem; background: none; border: none; color: var(--text-head); cursor: pointer; }
+
+        /* Hero */
+        .hero-section { padding: 160px 0 100px; background: var(--hero-gradient); position: relative; overflow: hidden; }
+        .aurora { position: absolute; top: -50%; right: -50%; width: 150%; height: 150%; background: radial-gradient(circle, var(--accent-glow) 0%, transparent 60%); filter: blur(80px); animation: pulse 10s infinite alternate; z-index: 0; }
+        @keyframes pulse { 0% { transform: scale(1); } 100% { transform: scale(1.1); } }
+        .hero-split { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 50px; align-items: center; position: relative; z-index: 2; }
+
+        .live-badge { display: inline-flex; align-items: center; gap: 10px; padding: 5px 14px; background: rgba(255,255,255,0.5); border: 1px solid var(--border); border-radius: 50px; font-size: 0.75rem; font-weight: 600; color: var(--accent); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 20px; backdrop-filter: blur(5px); font-family: var(--font-ui); }
+        .live-dot { width: 6px; height: 6px; background: #10B981; border-radius: 50%; box-shadow: 0 0 8px #10B981; animation: blink 2s infinite; }
+        @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
+
+        .hero-title { font-family: var(--font-heading); font-size: 3rem; line-height: 1.15; color: var(--text-head); margin-bottom: 20px; letter-spacing: -0.5px; }
+        .hero-subtitle { font-family: var(--font-body); font-size: 1.1rem; color: var(--text-body); margin-bottom: 35px; max-width: 95%; font-weight: 300; }
+        
+        .hero-btns { display: flex; gap: 15px; flex-wrap: wrap; }
+        .btn-xl { padding: 14px 32px; border-radius: 12px; font-weight: 600; font-size: 0.95rem; transition: 0.3s; display: inline-flex; align-items: center; gap: 10px; font-family: var(--font-ui); }
+        .btn-primary { background: var(--accent); color: white; box-shadow: 0 10px 30px rgba(14, 165, 233, 0.3); }
+        .btn-primary:hover { transform: translateY(-3px); background: #0284C7; }
+        .btn-outline { border: 1px solid var(--border); color: var(--text-head); background: rgba(255,255,255,0.05); }
+        .btn-outline:hover { background: var(--text-head); color: var(--bg-body); border-color: var(--text-head); }
+
+        .hero-visual { height: 460px; background: var(--bg-card); border-radius: 20px; border: 1px solid var(--border); box-shadow: 0 20px 50px -10px rgba(0,0,0,0.1); transform: perspective(1000px) rotateY(-5deg) rotateX(2deg); transition: 0.5s; display: flex; align-items: center; justify-content: center; overflow: hidden; }
+        .hero-visual:hover { transform: perspective(1000px) rotateY(0deg) rotateX(0deg); }
+
+        /* Cards & Grids */
+        .section-padding { padding: 90px 0; }
+        
+        /* MARGIN FIX: Keeping content visible below headings */
+        .card-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; margin-top: 40px; position: relative; z-index: 5; }
+        
+        .smart-card {
+            background: var(--bg-card); padding: 35px; border-radius: 18px; border: 1px solid var(--border);
+            transition: 0.4s cubic-bezier(0.25, 0.8, 0.25, 1); display: flex; flex-direction: column; height: 100%; position: relative; overflow: hidden;
+        }
+        .smart-card:hover { transform: translateY(-10px); box-shadow: 0 20px 40px -10px rgba(0,0,0,0.1); border-color: var(--accent); }
+        .card-icon { font-size: 2rem; margin-bottom: 18px; }
+        .card-title { font-family: var(--font-heading); font-size: 1.25rem; margin-bottom: 15px; font-weight: 700; }
+        
+        .card-list { margin: 10px 0 20px; padding-left: 0; list-style: none; flex-grow: 1; }
+        .card-list li { position: relative; padding-left: 20px; margin-bottom: 12px; font-size: 0.95rem; color: var(--text-muted); line-height: 1.6; font-family: var(--font-body); }
+        .card-list li::before { content: "•"; position: absolute; left: 0; color: var(--accent); font-weight: bold; }
+        .card-label { font-weight: 600; color: var(--text-head); font-family: var(--font-ui); }
+        
+        .card-link { font-family: var(--font-ui); font-weight: 700; color: var(--accent); font-size: 0.9rem; display: flex; align-items: center; gap: 5px; margin-top: auto; }
+
+        /* Highlights */
+        .highlight-section { background: var(--bg-card); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+        
+        /* Exclusion/Warning Grid */
+        .exclusion-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; margin-top: 40px; }
+        .warning-card {
+            background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(10px);
+            border: 1px solid rgba(220, 38, 38, 0.2); border-left: 4px solid #DC2626;
+            padding: 25px; border-radius: 12px; transition: 0.3s;
+        }
+        [data-theme="dark"] .warning-card { background: rgba(220, 38, 38, 0.05); border-color: rgba(220, 38, 38, 0.3); }
+        .warning-card:hover { transform: translateY(-3px); box-shadow: 0 10px 30px rgba(220, 38, 38, 0.1); }
+        .warning-title { color: #DC2626; font-family: var(--font-heading); font-weight: 700; font-size: 1.05rem; margin-bottom: 8px; display: flex; align-items: center; gap: 10px; }
+        [data-theme="dark"] .warning-title { color: #F87171; }
+
+        /* Footer */
+        footer { background: #020617; color: #94A3B8; padding: 70px 0 30px; margin-top: 100px; position: relative; overflow: hidden; border-top: 1px solid rgba(255,255,255,0.05); }
+        .footer-watermark { position: absolute; bottom: -20px; right: -20px; font-size: 15rem; font-weight: 900; color: rgba(255,255,255,0.02); font-family: var(--font-heading); pointer-events: none; }
+        .footer-grid { display: grid; grid-template-columns: 1.5fr 1fr 1fr; gap: 50px; position: relative; z-index: 2; margin-bottom: 50px; }
+        .footer-logo { height: 50px; filter: brightness(1.2); opacity: 0.95; margin-bottom: 20px; }
+        .footer-col h4 { color: white; margin-bottom: 20px; font-size: 0.95rem; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; font-family: var(--font-ui); }
+        .footer-links a { display: block; color: #94A3B8; margin-bottom: 12px; transition: 0.3s; font-family: var(--font-ui); font-size: 0.9rem; }
+        .footer-links a:hover { color: var(--accent); transform: translateX(5px); }
+        .social-row { display: flex; gap: 15px; align-items: center; }
+        .icon-link { width: 40px; height: 40px; border-radius: 50%; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); display: flex; align-items: center; justify-content: center; color: white; transition: 0.3s; }
+        .icon-link:hover { background: var(--accent); border-color: var(--accent); transform: translateY(-3px); }
+        .icon-link svg { width: 18px; height: 18px; fill: currentColor; }
+        .footer-bottom { border-top: 1px solid rgba(255,255,255,0.05); padding-top: 25px; display: flex; justify-content: space-between; align-items: center; font-size: 0.85rem; opacity: 0.6; position: relative; z-index: 2; font-family: var(--font-ui); }
+        .status-badge { display: flex; align-items: center; gap: 8px; color: #10B981; font-weight: 600; }
+        .status-ping { width: 8px; height: 8px; background: #10B981; border-radius: 50%; box-shadow: 0 0 10px #10B981; }
+
+        /* Animation Classes */
+        .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s ease; }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+        .delay-1 { transition-delay: 0.1s; }
+        .delay-2 { transition-delay: 0.2s; }
+        .delay-3 { transition-delay: 0.3s; }
+
+        @media (max-width: 768px) {
+            header { padding: 15px 0; }
+            .hero-section { padding: 120px 0 80px; text-align: center; }
+            .hero-split { grid-template-columns: 1fr; gap: 40px; }
+            .hero-title { font-size: 2.4rem; }
+            .hero-btns { justify-content: center; width: 100%; }
+            .card-grid, .exclusion-grid { margin-top: 40px; grid-template-columns: 1fr; }
+            .footer-grid { grid-template-columns: 1fr; text-align: center; gap: 30px; }
+            .footer-bottom { flex-direction: column; gap: 15px; }
+            .mobile-toggle { display: block; }
+            .nav-links { display: none; position: absolute; top: 100%; left: 0; width: 100%; background: var(--bg-card); flex-direction: column; padding: 25px; box-shadow: 0 10px 30px rgba(0,0,0,0.2); border-bottom: 1px solid var(--border); }
+            .nav-links.active { display: flex; animation: slideDown 0.3s ease; }
+            @keyframes slideDown { from { opacity:0; transform:translateY(-10px); } to { opacity:1; transform:translateY(0); } }
         }
     </style>
 </head>
 <body>
 
+    <button id="back-to-top" onclick="window.scrollTo({top: 0, behavior: 'smooth'});" 
+        style="position:fixed; bottom:30px; right:30px; width:50px; height:50px; background:var(--accent); color:white; border:none; border-radius:50%; font-size:1.5rem; cursor:pointer; opacity:0; transition:0.3s; z-index:999; box-shadow:0 10px 20px rgba(0,0,0,0.2);">↑</button>
+
     <header>
         <div class="container nav-flex">
             <a href="index.html" class="brand-logo">
                 <div class="logo-icon-wrapper">
-                    <img src="assets/images/logo-header.png" alt="MVN FinHub Logo" width="131" height="88">
+                    <img src="assets/images/logo-header.png" alt="MVN Logo">
                 </div>
                 <div class="brand-text">
                     <span class="text-mvn">MVN</span><span class="text-finhub">FinHub</span>
                 </div>
             </a>
             
-            <button class="mobile-toggle" id="mobile-menu-toggle" aria-label="Toggle Menu">☰</button>
+            <button class="mobile-toggle" id="mobile-menu-toggle" aria-label="Menu">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
+            </button>
 
             <nav class="nav-links" id="nav-links">
                 <a href="index.html" class="nav-item">Home</a>
                 <a href="services.html" class="nav-item active">Services</a>
                 <a href="insights.html" class="nav-item">Insights</a>
                 <a href="about.html" class="nav-item">About</a>
-                <a href="contact.html" class="nav-item btn-nav">Contact</a>
+                <a href="contact.html" class="btn-nav">Contact</a>
             </nav>
         </div>
     </header>
 
     <main>
 
-    <section class="hero-premium">
-        <div class="hero-glow glow-left"></div>
-        <div class="hero-glow glow-right"></div>
-
+    <section class="hero-section">
+        <div class="aurora"></div>
         <div class="container">
-            <div class="hero-glass-card">
-                <span class="hero-main-icon">💠</span>
-                <h1>Financial Structure & Service Execution</h1>
-                <p>Execution-level support for financial documentation, legacy asset recovery, and institutional process navigation.</p>
-                <div class="hero-micro-text" style="font-size: 1rem; margin-top: 15px; opacity: 0.9;">
-                    Strictly Non-Advisory • Process & Documentation Focused
+            <div class="hero-split">
+                <div class="hero-content reveal">
+                    <div class="live-badge">
+                        <div class="live-dot"></div>
+                        <span id="badge-text">Service Execution</span>
+                    </div>
+
+                    <h1 class="hero-title">Financial Structure & Service Execution</h1>
+                    <p class="hero-subtitle">Execution-level support for financial documentation, legacy asset recovery, and institutional process navigation.</p>
+                    
+                    <div class="hero-btns">
+                        <a href="contact.html" class="btn-xl btn-primary">
+                            Get Process Support <span>→</span>
+                        </a>
+                        <a href="#core-offerings" class="btn-xl btn-outline">
+                            View Offerings
+                        </a>
+                    </div>
+
+                    <div style="margin-top: 35px; font-size: 0.85rem; color: var(--text-muted); display:flex; gap:20px; font-weight:600; font-family: var(--font-ui);">
+                        <span>✓ Strictly Non-Advisory</span>
+                        <span>✓ Documentation Focused</span>
+                    </div>
+                </div>
+
+                <div class="hero-visual reveal delay-1">
+                    <img src="assets/images/services-hero.png" alt="Services Overview" style="width: 100%; height: 100%; object-fit: cover; border-radius: 20px;">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="core-offerings" class="section-padding">
+        <div class="container">
+            <h2 class="reveal" style="text-align: center; margin-bottom: 50px; font-family: var(--font-heading);">Core Offerings</h2>
+            
+            <div class="card-grid">
+                
+                <a href="service-shares.html" class="smart-card reveal delay-1" style="text-decoration:none; color:inherit; border-top: 5px solid #0EA5E9;">
+                    <div style="position:absolute; top:25px; right:25px; background:rgba(14,165,233,0.1); color:var(--accent); font-size:0.75rem; padding:5px 12px; border-radius:50px; font-weight:700; font-family: var(--font-ui);">FLAGSHIP</div>
+                    <div class="card-icon">📜</div>
+                    <h3 class="card-title">Shares & Legacy Assets</h3>
+                    <ul class="card-list">
+                        <li><span class="card-label">Focus:</span> Recovery of physical share certificates and IEPF claims.</li>
+                        <li><span class="card-label">Context:</span> Legacy assets often face rejection due to name mismatches or signature gaps.</li>
+                        <li style="color:var(--text-head);"><span class="card-label">We Do:</span> Handle transmission, succession documentation, and IEPF filing.</li>
+                        <li><span class="card-label">We Don't Do:</span> Provide legal representation in court.</li>
+                    </ul>
+                    <span class="card-link">Explore Shares Service →</span>
+                </a>
+
+                <a href="service-nri.html" class="smart-card reveal delay-2" style="text-decoration:none; color:inherit; border-top: 5px solid #6366F1;">
+                    <div style="position:absolute; top:25px; right:25px; background:rgba(99,102,241,0.1); color:#6366F1; font-size:0.75rem; padding:5px 12px; border-radius:50px; font-weight:700; font-family: var(--font-ui);">CROSS-BORDER</div>
+                    <div class="card-icon">✈️</div>
+                    <h3 class="card-title">NRI Documentation</h3>
+                    <ul class="card-list">
+                        <li><span class="card-label">Focus:</span> Cross-border compliance for Non-Resident Indians.</li>
+                        <li><span class="card-label">Context:</span> NRIs face stricter scrutiny and longer validation timelines (FATCA/CRS).</li>
+                        <li style="color:var(--text-head);"><span class="card-label">We Do:</span> Assist with NRO/NRE documentation and Apostille guidance.</li>
+                        <li><span class="card-label">We Don't Do:</span> File international taxes or advise on forex rates.</li>
+                    </ul>
+                    <span class="card-link">View NRI Support →</span>
+                </a>
+
+                <a href="service-identity.html" class="smart-card reveal delay-3" style="text-decoration:none; color:inherit; border-top: 5px solid #10B981;">
+                    <div style="position:absolute; top:25px; right:25px; background:rgba(16,185,129,0.1); color:#10B981; font-size:0.75rem; padding:5px 12px; border-radius:50px; font-weight:700; font-family: var(--font-ui);">FOUNDATION</div>
+                    <div class="card-icon">🆔</div>
+                    <h3 class="card-title">Identity & Core Docs</h3>
+                    <ul class="card-list">
+                        <li><span class="card-label">Focus:</span> PAN, Aadhaar, and Passport consistency.</li>
+                        <li><span class="card-label">Context:</span> Identity data mismatches are the root cause of 90% of financial rejections.</li>
+                        <li style="color:var(--text-head);"><span class="card-label">We Do:</span> Assist in linking and correcting core identity data.</li>
+                        <li><span class="card-label">We Don't Do:</span> Create fake or forged identity documents.</li>
+                    </ul>
+                    <span class="card-link">Check Identity Services →</span>
+                </a>
+
+            </div>
+        </div>
+    </section>
+
+    <section class="section-padding highlight-section">
+        <div class="container">
+            <div class="hero-split" style="align-items: flex-start;">
+                <div class="reveal">
+                    <div class="live-badge" style="margin-bottom:15px; background:rgba(16,185,129,0.1); color:#10B981; border:none;">Foundational Process</div>
+                    <h2 style="font-size:2.5rem; line-height:1.2; font-family: var(--font-heading);">Financial Structure & Readiness</h2>
+                    <ul class="card-list" style="margin-top:25px; font-size:1.05rem;">
+                        <li><span class="card-label">What it is:</span> Systematic organization of financial records across all asset classes.</li>
+                        <li><span class="card-label">Why it exists:</span> To prevent future transmission delays caused by fragmented records.</li>
+                        <li><span class="card-label">How it helps:</span> Identifies gaps in nominees, KYC, and linking before a crisis occurs.</li>
+                    </ul>
+                </div>
+                
+                <div class="smart-card reveal delay-1" style="border-left: 6px solid #10B981; padding:40px; border-top:none;">
+                    <ul class="card-list">
+                        <li style="margin-bottom:20px; font-size:1.1rem; color:var(--text-head);"><span class="card-label">We Do:</span> Map assets, check linking status, and organize physical records.</li>
+                        <li style="opacity:0.8;"><span class="card-label">We Don't Do:</span> Plan investments or advise on asset allocation.</li>
+                    </ul>
+                    <a href="service-structure.html" class="btn-xl btn-primary" style="margin-top:30px; justify-content: center;">View Full Process Scope →</a>
                 </div>
             </div>
         </div>
@@ -312,230 +351,251 @@
 
     <section class="section-padding">
         <div class="container">
-        
-        <h2 style="text-align: center; margin-bottom: 40px; font-size: 2rem; color: var(--text-head);">Core Offerings</h2>
-        
-        <div class="core-grid">
-            
-            <a href="service-shares.html" class="core-card">
-                <div class="core-badge">Flagship</div>
-                <span class="topic-icon">📜</span>
-                <h3>Shares & Legacy Assets</h3>
-                <ul class="card-list">
-                    <li><span class="card-label">Focus:</span> Recovery of physical share certificates and IEPF claims.</li>
-                    <li><span class="card-label">Context:</span> Legacy assets often face rejection due to name mismatches or signature gaps.</li>
-                    <li><span class="card-label">We Do:</span> Handle transmission, succession documentation, and IEPF filing.</li>
-                    <li><span class="card-label">We Don't Do:</span> Provide legal representation in court.</li>
-                </ul>
-                <div class="card-btn">Explore Shares Service →</div>
-            </a>
-
-            <a href="service-nri.html" class="core-card" style="border-top-color: #6366F1;">
-                <div class="core-badge" style="color: #6366F1; background: rgba(99, 102, 241, 0.1);">Cross-Border</div>
-                <span class="topic-icon">✈️</span>
-                <h3>NRI Documentation</h3>
-                <ul class="card-list">
-                    <li><span class="card-label">Focus:</span> Cross-border compliance for Non-Resident Indians.</li>
-                    <li><span class="card-label">Context:</span> NRIs face stricter scrutiny and longer validation timelines (FATCA/CRS).</li>
-                    <li><span class="card-label">We Do:</span> Assist with NRO/NRE documentation and Apostille guidance.</li>
-                    <li><span class="card-label">We Don't Do:</span> File international taxes or advise on forex rates.</li>
-                </ul>
-                <div class="card-btn">View NRI Support →</div>
-            </a>
-
-            <a href="service-identity.html" class="core-card" style="border-top-color: #10B981;">
-                <div class="core-badge" style="color: #10B981; background: rgba(16, 185, 129, 0.1);">Foundation</div>
-                <span class="topic-icon">🆔</span>
-                <h3>Identity & Core Docs</h3>
-                <ul class="card-list">
-                    <li><span class="card-label">Focus:</span> PAN, Aadhaar, and Passport consistency.</li>
-                    <li><span class="card-label">Context:</span> Identity data mismatches are the root cause of 90% of financial rejections.</li>
-                    <li><span class="card-label">We Do:</span> Assist in linking and correcting core identity data.</li>
-                    <li><span class="card-label">We Don't Do:</span> Create fake or forged identity documents.</li>
-                </ul>
-                <div class="card-btn">Check Identity Services →</div>
-            </a>
-
-        </div>
-
-        <a href="service-structure.html" class="foundation-card">
-            <div class="foundation-badge">Foundational Process Service</div>
-            <h2><span class="topic-icon" style="display:inline-block; vertical-align:middle; margin-right:10px;">🏗️</span> Financial Structure & Readiness</h2>
-            
-            <div class="foundation-content-grid">
-                <div>
+            <h2 class="reveal" style="text-align: center; margin-bottom: 60px; font-family: var(--font-heading);">Operational Support</h2>
+            <div class="card-grid">
+                
+                <a href="service-banking.html" class="smart-card reveal delay-1" style="text-decoration:none; color:inherit; border-top: 5px solid #0EA5E9;">
+                    <div class="card-icon">🏦</div>
+                    <h3 class="card-title">Banking & Loan Docs</h3>
                     <ul class="card-list">
-                        <li><span class="card-label">What it is:</span> Systematic organization of financial records across all asset classes.</li>
-                        <li><span class="card-label">Why it exists:</span> To prevent future transmission delays caused by fragmented records.</li>
-                        <li><span class="card-label">How it helps:</span> Identifies gaps in nominees, KYC, and linking before a crisis occurs.</li>
+                        <li><span class="card-label">Focus:</span> Navigating internal bank verification logic.</li>
+                        <li><span class="card-label">Context:</span> Banks stop processes immediately upon detecting data inconsistency.</li>
+                        <li><span class="card-label">We Do:</span> Ensure loan and account documents meet audit liability standards.</li>
+                        <li><span class="card-label">We Don't Do:</span> Influence loan approval decisions.</li>
+                    </ul>
+                    <span class="card-link">View Details →</span>
+                </a>
+
+                <a href="service-process.html" class="smart-card reveal delay-2" style="text-decoration:none; color:inherit; border-top: 5px solid #F59E0B;">
+                    <div class="card-icon">⚙️</div>
+                    <h3 class="card-title">Process & Compliance</h3>
+                    <ul class="card-list">
+                        <li><span class="card-label">Focus:</span> Sequencing institutional steps correctly.</li>
+                        <li><span class="card-label">Context:</span> Doing steps out of order (e.g., KYC before PAN update) causes rework.</li>
+                        <li><span class="card-label">We Do:</span> Create a step-by-step execution roadmap.</li>
+                        <li><span class="card-label">We Don't Do:</span> Bypass mandatory regulatory checks.</li>
+                    </ul>
+                    <span class="card-link">View Details →</span>
+                </a>
+
+                <a href="service-research.html" class="smart-card reveal delay-3" style="text-decoration:none; color:inherit; border-top: 5px solid #8B5CF6;">
+                    <div class="card-icon">🔍</div>
+                    <h3 class="card-title">Custom Info & Research</h3>
+                    <ul class="card-list">
+                        <li><span class="card-label">Focus:</span> Public-information-based system explanations.</li>
+                        <li><span class="card-label">Context:</span> Users often need context on specific regulations without advice.</li>
+                        <li><span class="card-label">We Do:</span> Research and explain specific procedural requirements.</li>
+                        <li><span class="card-label">We Don't Do:</span> Offer opinions on the quality of a regulation.</li>
+                    </ul>
+                    <span class="card-link">View Details →</span>
+                </a>
+
+                <a href="service-interpretation.html" class="smart-card reveal delay-1" style="text-decoration:none; color:inherit; border-top: 5px solid #0EA5E9;">
+                    <div class="card-icon">🧐</div>
+                    <h3 class="card-title">Document Interpretation</h3>
+                    <ul class="card-list">
+                        <li><span class="card-label">Focus:</span> Decoding institutional language.</li>
+                        <li><span class="card-label">Context:</span> Bank notices and rejection letters use complex compliance terminology.</li>
+                        <li><span class="card-label">We Do:</span> Translate technical notices into clear action items.</li>
+                        <li><span class="card-label">We Don't Do:</span> Draft legal responses to court notices.</li>
+                    </ul>
+                    <span class="card-link">View Details →</span>
+                </a>
+
+                <a href="service-navigation.html" class="smart-card reveal delay-2" style="text-decoration:none; color:inherit; border-top: 5px solid #10B981;">
+                    <div class="card-icon">🧭</div>
+                    <h3 class="card-title">Process Navigation</h3>
+                    <ul class="card-list">
+                        <li><span class="card-label">Focus:</span> Guidance through multi-stage institutional workflows.</li>
+                        <li><span class="card-label">Context:</span> Delays often occur because users don't know the "next step" trigger.</li>
+                        <li><span class="card-label">We Do:</span> Set realistic timeline expectations based on current stage.</li>
+                        <li><span class="card-label">We Don't Do:</span> Make decisions on behalf of the client.</li>
+                    </ul>
+                    <span class="card-link">View Details →</span>
+                </a>
+
+            </div>
+        </div>
+    </section>
+
+    <section class="section-padding" style="background: var(--bg-card); border-top: 1px solid var(--border);">
+        <div class="container">
+            <div class="hero-split" style="margin-bottom: 80px;">
+                <div class="smart-card reveal delay-1">
+                    <h3 class="card-title">🔄 How Our Services Work</h3>
+                    <ul class="card-list">
+                        <li><span class="card-label">1. Information Review:</span> We audit your existing documents for completeness.</li>
+                        <li><span class="card-label">2. Structuring:</span> We organize the data into an institutional-ready format.</li>
+                        <li><span class="card-label">3. Process Clarity:</span> We explain the exact steps required by the institution.</li>
+                        <li><span class="card-label">4. User Responsibility:</span> You retain final authority and sign all submissions.</li>
                     </ul>
                 </div>
-                <div>
+
+                <div class="smart-card reveal delay-2">
+                    <h3 class="card-title">📉 Why Processes Fail</h3>
                     <ul class="card-list">
-                        <li><span class="card-label">We Do:</span> Map assets, checking linking status, and organize physical records.</li>
-                        <li><span class="card-label">We Don't Do:</span> Plan investments or advise on asset allocation.</li>
+                        <li><span class="card-label">Inconsistency:</span> A name spelled differently on two documents.</li>
+                        <li><span class="card-label">Sequencing:</span> Updating a bank account before updating the underlying PAN.</li>
+                        <li><span class="card-label">Legacy Gaps:</span> Missing records from decades ago (physical era).</li>
+                        <li><span class="card-label">Risk Checks:</span> Institutions rejecting valid claims due to liability fears.</li>
                     </ul>
-                    <div class="card-btn" style="margin-top: 15px;">View Full Process Scope →</div>
                 </div>
             </div>
-        </a>
 
-        <h2 style="text-align: center; margin: 50px 0 30px; font-size: 1.8rem; opacity: 0.9;">Operational Support</h2>
+            <div class="reveal">
+                <div style="text-align: center; margin-bottom: 50px;">
+                    <span style="font-size:3rem; display:block; margin-bottom:15px; animation: float 3s infinite ease-in-out;">⚠️</span>
+                    <h3 style="font-size: 2.2rem; font-family: var(--font-heading); font-weight: 700;">What We Do NOT Provide</h3>
+                </div>
+                
+                <div class="exclusion-grid">
+                    
+                    <div class="warning-card">
+                        <div class="warning-title"><span>📉</span> No Investment Advice</div>
+                        <p style="font-size:0.9rem; color:var(--text-muted); font-family: var(--font-body);">We do not provide stock or mutual fund recommendations.</p>
+                    </div>
 
-        <div class="services-grid">
-        
-            <a href="service-banking.html" class="service-card">
-                <h3><span class="topic-icon">🏦</span> Banking & Loan Docs</h3>
-                <ul class="card-list">
-                    <li><span class="card-label">Focus:</span> Navigating internal bank verification logic.</li>
-                    <li><span class="card-label">Context:</span> Banks stop processes immediately upon detecting data inconsistency.</li>
-                    <li><span class="card-label">We Do:</span> Ensure loan and account documents meet audit liability standards.</li>
-                    <li><span class="card-label">We Don't Do:</span> Influence loan approval decisions.</li>
-                </ul>
-                <div class="card-btn">View Details →</div>
-            </a>
+                    <div class="warning-card">
+                        <div class="warning-title"><span>📝</span> No Tax Opinions</div>
+                        <p style="font-size:0.9rem; color:var(--text-muted); font-family: var(--font-body);">We do not file taxes or provide tax planning services.</p>
+                    </div>
 
-            <a href="service-process.html" class="service-card">
-                <h3><span class="topic-icon">⚙️</span> Process & Compliance</h3>
-                <ul class="card-list">
-                    <li><span class="card-label">Focus:</span> Sequencing institutional steps correctly.</li>
-                    <li><span class="card-label">Context:</span> Doing steps out of order (e.g., KYC before PAN update) causes rework.</li>
-                    <li><span class="card-label">We Do:</span> Create a step-by-step execution roadmap.</li>
-                    <li><span class="card-label">We Don't Do:</span> Bypass mandatory regulatory checks.</li>
-                </ul>
-                <div class="card-btn">View Details →</div>
-            </a>
+                    <div class="warning-card">
+                        <div class="warning-title"><span>⏳</span> No Guaranteed Outcomes</div>
+                        <p style="font-size:0.9rem; color:var(--text-muted); font-family: var(--font-body);">We cannot guarantee timelines controlled by institutions.</p>
+                    </div>
 
-            <a href="service-research.html" class="service-card">
-                <h3><span class="topic-icon">🔍</span> Custom Info & Research</h3>
-                <ul class="card-list">
-                    <li><span class="card-label">Focus:</span> Public-information-based system explanations.</li>
-                    <li><span class="card-label">Context:</span> Users often need context on specific regulations without advice.</li>
-                    <li><span class="card-label">We Do:</span> Research and explain specific procedural requirements.</li>
-                    <li><span class="card-label">We Don't Do:</span> Offer opinions on the quality of a regulation.</li>
-                </ul>
-                <div class="card-btn">View Details →</div>
-            </a>
+                    <div class="warning-card">
+                        <div class="warning-title"><span>⚖️</span> No Legal Representation</div>
+                        <p style="font-size:0.9rem; color:var(--text-muted); font-family: var(--font-body);">We do not represent clients in court or legal disputes.</p>
+                    </div>
 
-            <a href="service-interpretation.html" class="service-card">
-                <h3><span class="topic-icon">🧐</span> Document Interpretation</h3>
-                <ul class="card-list">
-                    <li><span class="card-label">Focus:</span> Decoding institutional language.</li>
-                    <li><span class="card-label">Context:</span> Bank notices and rejection letters use complex compliance terminology.</li>
-                    <li><span class="card-label">We Do:</span> Translate technical notices into clear action items.</li>
-                    <li><span class="card-label">We Don't Do:</span> Draft legal responses to court notices.</li>
-                </ul>
-                <div class="card-btn">View Details →</div>
-            </a>
+                    <div class="warning-card">
+                        <div class="warning-title"><span>🚫</span> No Portfolio Management</div>
+                        <p style="font-size:0.9rem; color:var(--text-muted); font-family: var(--font-body);">We do not manage assets or make decisions on your behalf.</p>
+                    </div>
 
-            <a href="service-navigation.html" class="service-card">
-                <h3><span class="topic-icon">🧭</span> Process Navigation</h3>
-                <ul class="card-list">
-                    <li><span class="card-label">Focus:</span> Guidance through multi-stage institutional workflows.</li>
-                    <li><span class="card-label">Context:</span> Delays often occur because users don't know the "next step" trigger.</li>
-                    <li><span class="card-label">We Do:</span> Set realistic timeline expectations based on current stage.</li>
-                    <li><span class="card-label">We Don't Do:</span> Make decisions on behalf of the client.</li>
-                </ul>
-                <div class="card-btn">View Details →</div>
-            </a>
+                    <div class="warning-card">
+                        <div class="warning-title"><span>🤝</span> No Influence</div>
+                        <p style="font-size:0.9rem; color:var(--text-muted); font-family: var(--font-body);">We cannot influence institutional decisions or approvals.</p>
+                    </div>
 
-        </div>
-
-        <div class="info-grid">
-            <div class="global-section">
-                <h2><span style="font-size:1.5rem">🔄</span> How Our Services Work</h2>
-                <ul class="card-list">
-                    <li><strong>1. Information Review:</strong> We audit your existing documents for completeness.</li>
-                    <li><strong>2. Structuring:</strong> We organize the data into an institutional-ready format.</li>
-                    <li><strong>3. Process Clarity:</strong> We explain the exact steps required by the institution.</li>
-                    <li><strong>4. User Responsibility:</strong> You retain final authority and sign all submissions.</li>
-                </ul>
+                </div>
             </div>
-
-            <div class="global-section">
-                <h2><span style="font-size:1.5rem">📉</span> Why Processes Fail</h2>
-                <ul class="card-list">
-                    <li><strong>Inconsistency:</strong> A name spelled differently on two documents.</li>
-                    <li><strong>Sequencing:</strong> Updating a bank account before updating the underlying PAN.</li>
-                    <li><strong>Legacy Gaps:</strong> Missing records from decades ago (physical era).</li>
-                    <li><strong>Risk Checks:</strong> Institutions rejecting valid claims due to liability fears.</li>
-                </ul>
-            </div>
-        </div>
-
-        <div class="global-section exclusion-box" style="margin-top: 40px;">
-            <h2><span style="font-size:1.5rem">⚠️</span> What We Do NOT Provide</h2>
-            <ul class="cross-list" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 10px;">
-                <li>Investment advice or planning</li>
-                <li>Stock or mutual fund recommendations</li>
-                <li>Tax filing or tax opinions</li>
-                <li>Portfolio management services</li>
-                <li>Guaranteed outcomes or timelines</li>
-                <li>Legal representation in courts</li>
-                <li>Influence over institutional decisions</li>
-            </ul>
-        </div>
 
         </div>
     </section>
 
     </main>
+
     <footer>
+        <div class="footer-watermark">MVN</div>
+        
         <div class="container">
-            <div class="footer-logo-container">
-                <img src="assets/images/logo-3d-full.png" alt="MVN FinHub Premium" class="footer-3d-logo" width="158" height="105">
+            <div class="footer-grid">
+                
+                <div class="footer-col">
+                    <img src="assets/images/logo-3d-full.png" alt="MVN FinHub" class="footer-logo">
+                    <p class="footer-desc" style="font-size: 0.9rem; opacity: 0.7; max-width: 320px; margin-bottom: 25px;">MVN FinHub empowers individuals with clarity through strictly non-advisory process and documentation support. We decode institutional complexity.</p>
+                    <p style="margin-bottom: 24px; color: #64748B; font-size: 0.85rem; margin-top:10px;">Services are provided on an independent, fixed-fee basis. MVN FinHub does not provide financial, legal, or investment advice and is not responsible for decisions or outcomes. All decisions remain solely the responsibility of the user.</p>
+                    
+                    <div class="social-row">
+                        <a href="https://instagram.com/mvnfinhub" target="_blank" class="icon-link" aria-label="Instagram">
+                            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor">
+                                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                            </svg>
+                        </a>
+                        <a href="mailto:mvnfinhub.contact@gmail.com" class="icon-link" aria-label="Email">
+                            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor">
+                                <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Explore</h4>
+                    <div class="footer-links">
+                        <a href="index.html">Home</a>
+                        <a href="services.html">Services</a>
+                        <a href="insights.html">Intelligence</a>
+                        <a href="about.html">About Us</a>
+                        <a href="contact.html">Get Support</a>
+                    </div>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Legal & Policy</h4>
+                    <div class="footer-links">
+                        <a href="legal.html">Privacy Policy</a>
+                        <a href="legal.html">Terms of Service</a>
+                        <a href="legal.html">Disclaimer</a>
+                    </div>
+                </div>
             </div>
 
-            <p>&copy; <span class="copyright-year">2026</span> MVN FinHub</p>
-            <p style="margin-top: 8px;">All services are process-driven and documentation-focused.</p>
-            <p style="margin-bottom: 24px;">All financial decisions remain solely with the user. MVN FinHub maintains a strictly non-advisory role.</p>
-            
-            <div class="footer-links">
-                <a href="legal.html">Privacy & Legal</a>
-                <a href="contact.html">Contact</a>
-                <a href="https://instagram.com/mvnfinhub" target="_blank">Instagram</a>
-                
-                <button id="footer-theme-btn" class="theme-btn-footer" onclick="toggleTheme()" aria-label="Toggle Dark Mode" style="cursor: pointer;">🌙</button>
+            <div class="footer-bottom">
+                <div class="status-badge">
+                    <span class="status-ping"></span> System Operational
+                </div>
+                <span>&copy; 2026 MVN FinHub. All Rights Reserved.</span>
+                <button class="theme-btn" onclick="toggleTheme()" aria-label="Toggle Theme">🌙</button>
             </div>
         </div>
     </footer>
 
     <script>
-        // 1. Theme Logic
+        // Theme Toggle
         if(localStorage.getItem('theme') === 'dark') {
             document.documentElement.setAttribute('data-theme', 'dark');
-            const btn = document.getElementById('footer-theme-btn');
-            if(btn) btn.textContent = '☀️';
+            document.querySelector('.theme-btn').textContent = '☀️';
         }
-
         function toggleTheme() {
-            if (window.toggleTheme) {
-                window.toggleTheme();
-                return;
-            }
             const html = document.documentElement;
-            const btn = document.getElementById('footer-theme-btn');
-            const current = html.getAttribute('data-theme');
-            const metaTheme = document.querySelector('meta[name="theme-color"]');
-
-            if (current === 'dark') {
-                html.setAttribute('data-theme', 'light');
-                localStorage.setItem('theme', 'light');
-                btn.textContent = '🌙';
-                if(metaTheme) metaTheme.setAttribute('content', '#F8FAFC');
+            const btn = document.querySelector('.theme-btn');
+            if (html.getAttribute('data-theme') === 'dark') {
+                html.setAttribute('data-theme', 'light'); localStorage.setItem('theme', 'light'); btn.textContent = '🌙';
             } else {
-                html.setAttribute('data-theme', 'dark');
-                localStorage.setItem('theme', 'dark');
-                btn.textContent = '☀️';
-                if(metaTheme) metaTheme.setAttribute('content', '#0F172A');
+                html.setAttribute('data-theme', 'dark'); localStorage.setItem('theme', 'dark'); btn.textContent = '☀️';
             }
         }
 
-        // 2. Kill Ghost Icons
-        window.addEventListener('load', function() {
-            const ghosts = document.querySelectorAll('.theme-btn-floating, #theme-toggle-float');
-            ghosts.forEach(el => el.remove());
+        // Mobile Menu
+        document.getElementById('mobile-menu-toggle').addEventListener('click', function() {
+            document.getElementById('nav-links').classList.toggle('active');
         });
+
+        // Scroll Effects
+        const backToTop = document.getElementById('back-to-top');
+        const reveals = document.querySelectorAll(".reveal");
+        window.addEventListener('scroll', function() {
+            if (window.scrollY > 300) { backToTop.style.opacity = '1'; backToTop.style.pointerEvents = 'all'; } 
+            else { backToTop.style.opacity = '0'; backToTop.style.pointerEvents = 'none'; }
+            
+            for (var i = 0; i < reveals.length; i++) {
+                var windowHeight = window.innerHeight;
+                var elementTop = reveals[i].getBoundingClientRect().top;
+                var elementVisible = 120;
+                if (elementTop < windowHeight - elementVisible) {
+                    reveals[i].classList.add("active");
+                }
+            }
+        });
+        window.dispatchEvent(new Event('scroll'));
+
+        // --- SERVICE ROTATOR SCRIPT ---
+        const badgeText = document.getElementById('badge-text');
+        const services = ['Shares & Legacy Assets', 'NRI Documentation', 'Identity Correction', 'Banking Process', 'Compliance Logic', 'Process Navigation'];
+        let serviceIndex = 0;
+
+        setInterval(() => {
+            badgeText.style.opacity = 0; 
+            setTimeout(() => {
+                serviceIndex = (serviceIndex + 1) % services.length;
+                badgeText.innerText = services[serviceIndex];
+                badgeText.style.opacity = 1; 
+            }, 500);
+        }, 3000); 
     </script>
 
 </body>

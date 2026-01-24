@@ -2,421 +2,537 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://mvnfinhub.goatcounter.com https://gc.zgo.at; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self' https://mvnfinhub.goatcounter.com;">
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <title>Contact & Enquiry Support | MVN FinHub</title>
     <meta name="description" content="Contact MVN FinHub for non-advisory financial process support. Submit enquiries for documentation, legacy assets, and compliance clarification.">
-    <meta name="keywords" content="MVN FinHub contact, financial documentation enquiry, legacy asset support, NRI banking help, non-advisory financial contact, process support India">
-    <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://mvnfinhub.github.io/contact.html">
 
-    <meta name="theme-color" content="#F8FAFC" media="(prefers-color-scheme: light)">
-    <meta name="theme-color" content="#0F172A" media="(prefers-color-scheme: dark)">
     <link rel="icon" type="image/png" href="assets/images/favicon.png">
-    
+    <meta name="theme-color" content="#0F172A">
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap">
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
-    <noscript>
-        <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    </noscript>
-   
-    <link rel="preload" href="assets/css/main.css?v=final_perf" as="style">
-    <link rel="stylesheet" href="assets/css/main.css?v=final_perf">
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=Inter:wght@300;400;500;600&family=Poppins:wght@400;500;600;700;800&family=Source+Serif+4:opsz,wght@8..60,400;600&display=swap" rel="stylesheet">
+    
     <script src="assets/js/app.js" defer></script>
     <script data-goatcounter="https://mvnfinhub.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 
     <script>
         if(localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
             document.documentElement.setAttribute('data-theme', 'dark');
-            const metaTheme = document.querySelector('meta[name="theme-color"]');
-            if(metaTheme) metaTheme.setAttribute('content', '#0F172A');
         } else {
             document.documentElement.setAttribute('data-theme', 'light');
-            const metaTheme = document.querySelector('meta[name="theme-color"]');
-            if(metaTheme) metaTheme.setAttribute('content', '#F8FAFC');
         }
     </script>
 
     <style>
-        /* --- PAGE SPECIFIC STYLES (MATCHING PREMIUM SYSTEM) --- */
-
-        /* 1. HERO CARD (Glass Premium) */
-        .hero-glass-card {
-            background: rgba(255, 255, 255, 0.65);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            padding: 40px;
-            border-radius: 20px;
-            border: 1px solid rgba(255, 255, 255, 0.9);
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.05);
-            text-align: center;
-            max-width: 900px;
-            margin: 0 auto;
-            transition: transform 0.4s ease;
-        }
-        .hero-glass-card:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.08);
-            border-color: rgba(14, 165, 233, 0.3);
-        }
-        .hero-main-icon {
-            font-size: 2.5rem;
-            display: block;
-            margin-bottom: 15px;
-            animation: floatIcon 3s ease-in-out infinite;
-        }
-        @keyframes floatIcon {
-            0% { transform: translateY(0px); }
-            50% { transform: translateY(-8px); }
-            100% { transform: translateY(0px); }
+        /* --- 1. EXECUTIVE DESIGN SYSTEM --- */
+        :root {
+            --font-display: 'Poppins', sans-serif;
+            --font-ui: 'IBM Plex Sans', sans-serif;
+            --font-body: 'Inter', sans-serif;
+            
+            --bg-body: #F1F5F9;
+            --bg-surface: #FFFFFF;
+            --text-main: #1E293B;
+            --text-muted: #64748B;
+            --accent-gold: #D97706; 
+            --accent-blue: #0EA5E9;
+            --border-light: #E2E8F0;
+            --hero-gradient: linear-gradient(135deg, #0F172A 0%, #1E293B 100%);
+            --shadow-float: 0 20px 40px -10px rgba(15, 23, 42, 0.1);
         }
 
-        /* 2. FORM LAYOUT */
-        .contact-section {
-            display: flex;
-            justify-content: center;
-            align-items: flex-start;
-            padding: 60px 20px;
+        [data-theme="dark"] {
+            --bg-body: #020617;
+            --bg-surface: #0F172A;
+            --text-main: #F8FAFC;
+            --text-muted: #94A3B8;
+            --primary: #F8FAFC;
+            --accent: #38BDF8;
+            --accent-glow: rgba(56, 189, 248, 0.15);
+            --border-light: rgba(255, 255, 255, 0.08);
+            --hero-gradient: linear-gradient(135deg, #0B1120 0%, #020617 100%);
+            --shadow-float: 0 25px 50px -12px rgba(0,0,0,0.5);
         }
 
-        .form-wrapper {
-            width: 100%;
-            max-width: 600px;
-            background: rgba(255, 255, 255, 0.85);
-            backdrop-filter: blur(16px);
-            padding: 50px;
-            border-radius: 20px;
-            border: 1px solid rgba(255, 255, 255, 0.8);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.06);
-            transition: transform 0.3s ease;
+        /* --- 2. GLOBAL RESET --- */
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; }
+        body {
+            background-color: var(--bg-body); color: var(--text-main);
+            font-family: var(--font-body); line-height: 1.6; overflow-x: hidden;
+            transition: background 0.3s ease;
+        }
+
+        h1, h2, h3, h4 { font-family: var(--font-display); font-weight: 700; color: var(--text-main); }
+        a { text-decoration: none; color: inherit; transition: 0.3s; }
+        ul { list-style: none; }
+
+        /* --- 3. HEADER --- */
+        header { position: absolute; top: 0; width: 100%; z-index: 100; padding: 20px 0; border-bottom: 1px solid rgba(255,255,255,0.05); }
+        .container { max-width: 1240px; margin: 0 auto; padding: 0 25px; }
+        .nav-flex { display: flex; justify-content: space-between; align-items: center; }
+
+        .brand-logo {
+            display: flex; align-items: center; gap: 12px; padding: 8px 16px; border-radius: 12px;
+            background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08);
+            backdrop-filter: blur(12px); transition: 0.3s;
+        }
+        .brand-logo:hover { border-color: var(--accent-blue); background: rgba(255,255,255,0.08); }
+        .logo-icon-wrapper img { height: 42px; width: auto; }
+        .brand-text { font-family: var(--font-display); font-weight: 700; font-size: 1.4rem; color: #FFFFFF; letter-spacing: -0.5px; }
+        
+        .nav-links { display: flex; gap: 30px; align-items: center; background: rgba(0,0,0,0.2); padding: 6px 24px; border-radius: 100px; border: 1px solid rgba(255,255,255,0.1); backdrop-filter: blur(10px); }
+        .nav-item { font-family: var(--font-ui); font-weight: 500; font-size: 0.95rem; color: rgba(255,255,255,0.8); position: relative; }
+        .nav-item:hover, .nav-item.active { color: #FFFFFF; }
+        .nav-item::after { content: ''; position: absolute; bottom: -6px; left: 50%; transform: translateX(-50%); width: 0; height: 2px; background: var(--accent-blue); transition: 0.3s; }
+        .nav-item:hover::after, .nav-item.active::after { width: 100%; }
+        .btn-nav { background: #FFFFFF; color: #0F172A !important; padding: 10px 24px; border-radius: 100px; font-weight: 600; box-shadow: 0 4px 20px rgba(0,0,0,0.1); }
+        .mobile-toggle { display: none; font-size: 1.5rem; background: none; border: none; color: #FFFFFF; cursor: pointer; }
+
+        /* --- 4. HERO SECTION --- */
+        .hero-section { padding: 160px 0 140px; background: var(--hero-gradient); position: relative; overflow: hidden; text-align: center; clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%); }
+        .aurora { position: absolute; top: -50%; right: -50%; width: 150%; height: 150%; background: radial-gradient(circle, var(--accent-glow) 0%, transparent 60%); filter: blur(80px); animation: pulse 10s infinite alternate; z-index: 0; }
+        @keyframes pulse { 0% { transform: scale(1); } 100% { transform: scale(1.1); } }
+        
+        .hero-content { position: relative; z-index: 2; max-width: 800px; margin: 0 auto; }
+        
+        .hero-icon-container {
+            width: 80px; height: 80px; margin: 0 auto 25px;
+            background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 20px;
+            display: flex; align-items: center; justify-content: center; backdrop-filter: blur(10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2); animation: float 6s ease-in-out infinite;
+        }
+        .hero-icon-container svg { width: 40px; height: 40px; stroke: #FFFFFF; stroke-width: 1.5; fill: none; }
+        @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+
+        .hero-title { font-family: var(--font-display); font-size: 3.2rem; line-height: 1.1; color: #FFFFFF; margin-bottom: 20px; letter-spacing: -1px; }
+        .hero-subtitle { font-family: var(--font-body); font-size: 1.15rem; color: rgba(255,255,255,0.8); max-width: 700px; margin: 0 auto; font-weight: 300; }
+        
+        .status-pill { display: inline-flex; align-items: center; gap: 8px; padding: 6px 14px; background: rgba(16, 185, 129, 0.15); border: 1px solid rgba(16, 185, 129, 0.3); border-radius: 50px; font-family: var(--font-ui); font-size: 0.75rem; font-weight: 700; color: #34D399; letter-spacing: 1px; margin-bottom: 20px; }
+        .status-dot { width: 6px; height: 6px; background: #34D399; border-radius: 50%; box-shadow: 0 0 10px #34D399; animation: blink 2s infinite; }
+        @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
+
+        /* --- 5. CONTACT GRID --- */
+        .content-overlap { margin-top: -100px; position: relative; z-index: 10; padding-bottom: 80px; }
+        .contact-grid { display: grid; grid-template-columns: 1.3fr 1fr; gap: 50px; align-items: start; }
+
+        /* FORM CARD */
+        .form-card {
+            background: var(--bg-surface); padding: 50px; border-radius: 20px;
+            box-shadow: var(--shadow-float); border: 1px solid var(--border-light);
+            position: relative; overflow: hidden;
+        }
+        .form-card::before { content: ""; position: absolute; top: 0; left: 0; width: 100%; height: 4px; background: linear-gradient(90deg, var(--accent-blue), #6366F1); }
+        
+        .form-header-internal { margin-bottom: 30px; border-bottom: 1px solid var(--border-light); padding-bottom: 20px; }
+        .form-header-internal h2 { font-size: 1.6rem; margin-bottom: 8px; }
+        
+        /* CLEAN LABEL STYLING */
+        .input-group { margin-bottom: 25px; }
+        .input-label { 
+            display: block; margin-bottom: 8px; 
+            font-family: var(--font-ui); font-size: 0.85rem; font-weight: 700; 
+            color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.5px;
         }
         
-        .form-header { text-align: center; margin-bottom: 35px; }
-        .form-header h1 { 
-            font-size: 2rem; color: #0A2540; margin-bottom: 12px; font-family: 'Merriweather', serif; 
-        }
-        .form-header p { color: #64748B; font-size: 1rem; line-height: 1.6; }
-
-        /* 3. INPUT STYLES */
-        .form-group { margin-bottom: 24px; }
-        .form-label { display: block; margin-bottom: 8px; font-weight: 600; color: #334155; font-size: 0.95rem; }
-        
-        .form-input, .form-select, .form-textarea {
-            width: 100%; padding: 14px 18px;
-            border: 1px solid #CBD5E1; border-radius: 10px;
-            font-family: 'Inter', sans-serif; font-size: 1rem;
-            background-color: rgba(255, 255, 255, 0.6); color: #1E293B;
-            transition: all 0.2s;
-        }
-        .form-input:focus, .form-select:focus, .form-textarea:focus {
-            outline: none; border-color: #0077B6; background-color: #FFFFFF;
-            box-shadow: 0 0 0 4px rgba(0, 119, 182, 0.1);
-        }
-        .form-textarea { min-height: 140px; resize: vertical; }
-
-        .checkbox-group {
-            display: flex; align-items: flex-start; gap: 12px;
-            margin-bottom: 30px; padding: 10px 0;
-        }
-        .checkbox-input { margin-top: 4px; width: 18px; height: 18px; cursor: pointer; accent-color: #0077B6; }
-        .checkbox-label { font-size: 0.9rem; color: #64748B; line-height: 1.5; cursor: pointer; }
-
-        /* 4. PREMIUM BUTTON */
-        .submit-btn {
-            width: 100%; padding: 16px;
-            font-size: 1rem; font-weight: 600; cursor: pointer;
-            border: none; border-radius: 10px;
-            background: linear-gradient(135deg, #0A2540 0%, #1E40AF 100%);
-            color: white; box-shadow: 0 4px 12px rgba(10, 37, 64, 0.2);
-            transition: transform 0.2s, box-shadow 0.2s;
-        }
-        .submit-btn:hover {
-            transform: translateY(-2px); box-shadow: 0 8px 20px rgba(10, 37, 64, 0.3);
-        }
-
-        /* 5. INFO CONTENT SECTIONS (For Compliance Text) */
-        .info-container {
-            max-width: 800px; margin: 0 auto; padding: 0 20px 80px;
-        }
-        .content-block { margin-bottom: 40px; }
-        .content-block h2 {
-            font-size: 1.6rem; margin-bottom: 16px; color: #0A2540;
-            font-family: 'Merriweather', serif; display: flex; align-items: center; gap: 10px;
-        }
-        .info-list li {
-            position: relative; padding-left: 24px; margin-bottom: 10px;
-            list-style: none; color: #475569; font-size: 1rem;
-        }
-        .info-list li::before {
-            content: "•"; position: absolute; left: 0; color: #0284C7; font-weight: bold;
-        }
-
-        /* 6. SOCIAL ICONS */
-        .icon-container {
-            margin-top: 45px; padding-top: 25px; border-top: 1px solid #E2E8F0;
-            display: flex; justify-content: center; gap: 25px;
-        }
-        .social-icon {
-            display: flex; align-items: center; justify-content: center;
-            width: 50px; height: 50px; border-radius: 12px;
-            background-color: white; color: #64748B; border: 1px solid #E2E8F0;
+        .premium-input, .premium-select, .premium-textarea {
+            width: 100%; padding: 14px 16px; background: var(--bg-body);
+            border: 1px solid var(--border-light); border-radius: 8px;
+            font-family: var(--font-body); font-size: 1rem; color: var(--text-main);
             transition: all 0.3s ease;
         }
-        .social-icon svg { width: 24px; height: 24px; fill: currentColor; }
-        .social-icon:hover {
-            transform: translateY(-4px); background-color: #0A2540; color: white; border-color: #0A2540;
+        .premium-input:focus, .premium-select:focus, .premium-textarea:focus {
+            outline: none; border-color: var(--accent-blue); background: var(--bg-surface);
+            box-shadow: 0 4px 12px rgba(14, 165, 233, 0.15); transform: translateY(-1px);
         }
+        .premium-textarea { min-height: 140px; resize: vertical; }
 
-        /* --- DARK MODE OVERRIDES --- */
-        [data-theme="dark"] .hero-glass-card {
-            background: rgba(30, 41, 59, 0.7) !important;
-            border-color: rgba(255,255,255,0.1) !important;
-        }
-        [data-theme="dark"] .hero-glass-card:hover { border-color: rgba(14, 165, 233, 0.5) !important; }
+        /* CHECKBOX */
+        .checkbox-container { display: flex; gap: 15px; align-items: flex-start; padding: 15px; background: rgba(14, 165, 233, 0.05); border-radius: 10px; border: 1px solid rgba(14, 165, 233, 0.1); margin-bottom: 30px; }
+        .checkbox-custom { width: 18px; height: 18px; border: 2px solid var(--text-muted); border-radius: 4px; display: grid; place-content: center; cursor: pointer; margin-top: 3px; flex-shrink: 0; }
+        input[type="checkbox"]:checked + .checkbox-custom { background: var(--accent-blue); border-color: var(--accent-blue); }
+        input[type="checkbox"] { display: none; }
+        .checkbox-text { font-size: 0.85rem; color: var(--text-muted); line-height: 1.5; font-family: var(--font-ui); }
 
-        [data-theme="dark"] .form-wrapper {
-            background: rgba(30, 41, 59, 0.7) !important;
-            border-color: rgba(255,255,255,0.05) !important;
+        /* SUBMIT BUTTON FIX */
+        .executive-btn {
+            width: 100%; padding: 16px; border: none; border-radius: 10px;
+            background: var(--accent-blue); /* Fixed to ensure visibility in both modes */
+            color: #FFFFFF;
+            font-family: var(--font-ui); font-weight: 600; font-size: 1rem;
+            cursor: pointer; transition: 0.3s; box-shadow: 0 10px 30px rgba(14, 165, 233, 0.2);
+            display: flex; justify-content: center; align-items: center; gap: 10px; position: relative; overflow: hidden;
         }
-        [data-theme="dark"] .form-header h1 { color: #ffffff !important; }
-        [data-theme="dark"] .form-header p { color: #cbd5e1 !important; }
-        [data-theme="dark"] .form-label { color: #e2e8f0 !important; }
-        [data-theme="dark"] .form-input, [data-theme="dark"] .form-select, [data-theme="dark"] .form-textarea {
-            background-color: rgba(15, 23, 42, 0.6) !important;
-            border-color: #475569 !important; color: #ffffff !important;
+        .executive-btn:hover { transform: translateY(-2px); background: #0284C7; box-shadow: 0 15px 40px rgba(14, 165, 233, 0.3); }
+        .executive-btn::after {
+            content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(255,255,255,0.1), transparent);
+            transform: rotate(45deg); animation: shine 3s infinite;
         }
-        [data-theme="dark"] .checkbox-label { color: #cbd5e1 !important; }
+        @keyframes shine { 0% { left: -100%; } 100% { left: 100%; } }
+
+        /* DIRECT CONNECT (SOCIAL) */
+        .social-connect { margin-top: 40px; padding-top: 30px; border-top: 1px solid var(--border-light); }
+        .social-title { text-align: center; font-size: 0.85rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 20px; font-weight: 700; }
+        .social-row { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; }
         
-        [data-theme="dark"] .social-icon {
-            background-color: rgba(15, 23, 42, 0.6) !important;
-            border-color: #475569 !important; color: #cbd5e1 !important;
+        .social-card {
+            display: flex; align-items: center; gap: 12px; padding: 12px 24px;
+            background: var(--bg-body); border: 1px solid var(--border-light); border-radius: 12px;
+            font-size: 0.9rem; font-weight: 600; color: var(--text-main); transition: 0.3s; text-decoration: none;
         }
-        [data-theme="dark"] .social-icon:hover {
-            background-color: #38bdf8 !important; color: #0f172a !important;
+        .social-card:hover { transform: translateY(-3px); border-color: var(--accent-blue); background: var(--bg-surface); box-shadow: 0 10px 20px rgba(0,0,0,0.05); }
+        .social-card svg { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+
+        /* RIGHT: PROTOCOL CARDS */
+        .protocol-stack { display: flex; flex-direction: column; gap: 25px; }
+        .protocol-card { background: var(--bg-surface); padding: 30px; border-radius: 16px; border: 1px solid var(--border-light); transition: 0.3s; position: relative; overflow: hidden; }
+        .protocol-card:hover { transform: translateX(5px); border-color: var(--accent-blue); box-shadow: var(--shadow-float); }
+        
+        .protocol-header { display: flex; align-items: center; gap: 12px; margin-bottom: 15px; padding-bottom: 15px; border-bottom: 1px solid var(--border-light); }
+        
+        /* Custom Gradient Icons */
+        .icon-gradient-green { width: 28px; height: 28px; fill: url(#gradGreen); }
+        .icon-gradient-red { width: 28px; height: 28px; fill: url(#gradRed); }
+        .icon-gradient-gold { width: 28px; height: 28px; fill: url(#gradGold); }
+
+        .protocol-title { font-size: 1.1rem; font-weight: 700; color: var(--text-main); margin: 0; }
+        .protocol-list li { position: relative; padding-left: 24px; margin-bottom: 12px; font-size: 0.9rem; color: var(--text-muted); font-family: var(--font-ui); }
+        .protocol-list li::before { content: ""; position: absolute; left: 6px; top: 9px; width: 6px; height: 6px; border-radius: 50%; background: var(--accent-blue); }
+
+        .proto-warning { border-left: 4px solid #EF4444; background: linear-gradient(to right, rgba(239, 68, 68, 0.02), transparent); }
+        .proto-warning .protocol-list li::before { background: #EF4444; }
+
+        /* SUCCESS */
+        #successMessage { display: none; text-align: center; padding: 40px 0; }
+        .ref-code { font-family: 'Courier New', monospace; font-weight: 700; color: var(--text-head); font-size: 1.2rem; margin: 15px 0; display: block; background: var(--bg-body); padding: 10px; border-radius: 8px; }
+
+        /* FOOTER */
+        footer { background: #020617; color: #94A3B8; padding: 80px 0 40px; border-top: 1px solid rgba(255,255,255,0.05); margin-top: 0; }
+        .footer-grid { display: grid; grid-template-columns: 1.5fr 1fr 1fr; gap: 60px; }
+        .footer-logo { height: 45px; opacity: 0.9; margin-bottom: 20px; }
+        .footer-desc { font-size: 0.9rem; line-height: 1.6; opacity: 0.8; max-width: 320px; margin-bottom: 20px; }
+        .footer-col h4 { color: #FFF; font-size: 0.9rem; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 25px; }
+        .footer-links a { display: block; color: #94A3B8; margin-bottom: 14px; font-size: 0.9rem; font-family: var(--font-ui); transition: 0.3s; }
+        .footer-links a:hover { color: var(--accent-blue); transform: translateX(5px); }
+        .footer-bottom { margin-top: 60px; padding-top: 30px; border-top: 1px solid rgba(255,255,255,0.05); display: flex; justify-content: space-between; align-items: center; font-size: 0.85rem; opacity: 0.6; }
+        
+        .footer-social-icon { width: 36px; height: 36px; border-radius: 50%; background: rgba(255,255,255,0.05); display: inline-flex; align-items: center; justify-content: center; margin-right: 10px; transition: 0.3s; color: #FFF; border: 1px solid rgba(255,255,255,0.1); }
+        .footer-social-icon:hover { background: var(--accent-blue); border-color: var(--accent-blue); transform: translateY(-3px); }
+        .footer-social-icon svg { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+
+        /* SYSTEM STATUS DOT FIX */
+        .status-badge { display: flex; align-items: center; gap: 8px; color: #10B981; font-weight: 600; }
+        .status-ping { 
+            display: inline-block; /* Essential fix for visibility */
+            width: 8px; height: 8px; 
+            background-color: #10B981; 
+            border-radius: 50%; 
+            box-shadow: 0 0 10px #10B981; 
         }
 
-        [data-theme="dark"] .content-block h2 { color: #fff !important; }
-        [data-theme="dark"] .info-list li { color: #cbd5e1 !important; }
+        .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s ease; }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+        .delay-1 { transition-delay: 0.1s; }
 
-        @media (max-width: 768px) {
-            .form-wrapper { padding: 30px 20px; }
-            .hero-glass-card { padding: 25px; }
+        @media (max-width: 992px) {
+            .contact-grid { grid-template-columns: 1fr; }
+            .hero-title { font-size: 2.5rem; }
+            .form-card { padding: 30px 20px; }
+            .footer-grid { grid-template-columns: 1fr; text-align: center; gap: 40px; }
+            .footer-bottom { flex-direction: column; gap: 20px; }
+            .mobile-toggle { display: block; }
+            .nav-links { display: none; }
         }
     </style>
+    
+    <svg style="width:0;height:0;position:absolute;" aria-hidden="true" focusable="false">
+      <defs>
+        <linearGradient id="gradGreen" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" style="stop-color:#10B981;stop-opacity:1" />
+          <stop offset="100%" style="stop-color:#059669;stop-opacity:1" />
+        </linearGradient>
+        <linearGradient id="gradRed" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" style="stop-color:#EF4444;stop-opacity:1" />
+          <stop offset="100%" style="stop-color:#B91C1C;stop-opacity:1" />
+        </linearGradient>
+        <linearGradient id="gradGold" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" style="stop-color:#F59E0B;stop-opacity:1" />
+          <stop offset="100%" style="stop-color:#D97706;stop-opacity:1" />
+        </linearGradient>
+      </defs>
+    </svg>
 </head>
 <body>
 
     <header>
         <div class="container nav-flex">
             <a href="index.html" class="brand-logo">
-                <div class="logo-icon-wrapper">
-                    <img src="assets/images/logo-header.png" alt="MVN FinHub Logo" width="131" height="88">
-                </div>
-                <div class="brand-text">
-                    <span class="text-mvn">MVN</span><span class="text-finhub">FinHub</span>
-                </div>
+                <div class="logo-icon-wrapper"><img src="assets/images/logo-header.png" alt="MVN Logo"></div>
+                <div class="brand-text"><span class="text-mvn">MVN</span><span class="text-finhub">FinHub</span></div>
             </a>
-            
-            <button class="mobile-toggle" id="mobile-menu-toggle" aria-label="Toggle Menu">☰</button>
-
+            <button class="mobile-toggle" id="mobile-menu-toggle" aria-label="Menu">☰</button>
             <nav class="nav-links" id="nav-links">
                 <a href="index.html" class="nav-item">Home</a>
                 <a href="services.html" class="nav-item">Services</a>
                 <a href="insights.html" class="nav-item">Insights</a>
                 <a href="about.html" class="nav-item">About</a>
-                <a href="contact.html" class="nav-item btn-nav">Contact</a>
+                <a href="contact.html" class="nav-item active btn-nav">Contact</a>
             </nav>
         </div>
     </header>
 
     <main>
 
-    <section class="hero-premium">
-        <div class="hero-glow glow-left"></div>
-        <div class="hero-glow glow-right"></div>
+        <section class="hero-section">
+            <div class="container">
+                <div class="hero-content reveal">
+                    <div class="status-pill">
+                        <div class="status-dot"></div>
+                        Secure Channel Active
+                    </div>
+                    
+                    <div class="hero-icon-container">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                            <polyline points="7 10 12 15 17 10"></polyline>
+                            <line x1="12" y1="15" x2="12" y2="3"></line>
+                        </svg>
+                    </div>
 
-        <div class="container">
-            <div class="hero-glass-card">
-                <span class="hero-main-icon">📬</span>
-                <h1>Contact & Enquiry Support</h1>
-                <p>A controlled channel for financial process support, documentation assistance, and compliance clarity.</p>
-                <div class="hero-micro-text" style="font-size: 1rem; margin-top: 15px; opacity: 0.9;">
-                    Strictly Non-Advisory • Response within 24 Hours
+                    <h1 class="hero-title">Contact & Enquiry Support</h1>
+                    <p class="hero-subtitle">A controlled channel for financial process support, documentation assistance, and compliance clarity.</p>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <section class="contact-section">
-        <div class="form-wrapper">
-            
-            <div class="form-header">
-                <h1>Submit Your Query</h1>
-                <p>Please ensure your enquiry relates to process, documentation, or compliance. We do not provide investment advice.</p>
+        <section class="content-overlap">
+            <div class="container">
+                <div class="contact-grid">
+                    
+                    <div class="form-card reveal delay-1">
+                        
+                        <div id="successMessage">
+                            <svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="2" style="margin-bottom:15px;"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+                            <h2>Enquiry Logged</h2>
+                            <p style="color:var(--text-muted); margin-bottom:10px;">Your request has been securely recorded.</p>
+                            <span class="ref-code" id="refIdDisplay"></span>
+                            <p style="font-size:0.9rem; color:var(--text-muted);">A confirmation has been sent to your dashboard.</p>
+                            <a href="index.html" class="executive-btn" style="width:auto; display:inline-block; margin-top:20px; padding:12px 30px;">Return Home</a>
+                        </div>
+
+                        <form id="enquiryForm">
+                            <div class="form-header-internal">
+                                <h2>Submit Your Query</h2>
+                                <p style="color:var(--text-muted); font-size:0.9rem;">Please ensure your enquiry relates to process, documentation, or compliance.</p>
+                            </div>
+
+                            <div class="input-group">
+                                <label for="fullName" class="input-label">Full Name</label>
+                                <input type="text" id="fullName" class="premium-input" required placeholder="Enter your full name">
+                            </div>
+
+                            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                                <div class="input-group">
+                                    <label for="email" class="input-label">Email Address</label>
+                                    <input type="email" id="email" class="premium-input" required placeholder="name@email.com">
+                                </div>
+                                <div class="input-group">
+                                    <label for="phone" class="input-label">Phone Number</label>
+                                    <input type="tel" id="phone" class="premium-input" required pattern="[0-9]{10}" placeholder="10-digit mobile">
+                                </div>
+                            </div>
+
+                            <div class="input-group">
+                                <label for="service" class="input-label">Service Type</label>
+                                <select id="service" class="premium-select" required>
+                                    <option value="" disabled selected>Select a service area...</option>
+                                    <option value="Financial Structure">Financial Structure & Readiness</option>
+                                    <option value="Legacy Recovery">Shares & Legacy Recovery</option>
+                                    <option value="NRI Support">NRI Documentation Support</option>
+                                    <option value="Banking">Banking & Loan Documentation</option>
+                                    <option value="Other">Other Query</option>
+                                </select>
+                            </div>
+
+                            <div class="input-group">
+                                <label for="message" class="input-label">Your Requirement</label>
+                                <textarea id="message" class="premium-textarea" required minlength="20" placeholder="Describe the specific process or document you need help with..."></textarea>
+                            </div>
+
+                            <div class="checkbox-container">
+                                <label class="checkbox-wrapper">
+                                    <input type="checkbox" id="consent" required>
+                                    <div class="checkbox-custom">
+                                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="4"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                                    </div>
+                                </label>
+                                <label for="consent" class="checkbox-text">
+                                    I understand this platform is non-advisory and authorize MVN FinHub to contact me regarding this process enquiry.
+                                </label>
+                            </div>
+
+                            <button type="submit" class="executive-btn">
+                                Submit Enquiry
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+                            </button>
+                        </form>
+
+                        <div class="social-connect">
+                            <div class="social-title">Direct Connect</div>
+                            <div class="social-row">
+                                <a href="mailto:mvnfinhub.contact@gmail.com" class="social-card">
+                                    <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                                    Email Support
+                                </a>
+                                <a href="https://instagram.com/mvnfinhub" target="_blank" class="social-card">
+                                    <svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+                                    Instagram
+                                </a>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="protocol-stack reveal delay-1">
+                        
+                        <div class="protocol-card">
+                            <div class="protocol-header">
+                                <svg class="icon-gradient-green" viewBox="0 0 24 24"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path></svg>
+                                <h3 class="protocol-title">When to Contact Us</h3>
+                            </div>
+                            <ul class="protocol-list">
+                                <li>You need help interpreting bank notices or rejection letters.</li>
+                                <li>You require assistance with physical share transmission or IEPF claims.</li>
+                                <li>You are an NRI needing guidance on NRO/NRE documentation.</li>
+                                <li>You need to structure your family's financial documents for future readiness.</li>
+                            </ul>
+                        </div>
+
+                        <div class="protocol-card proto-warning">
+                            <div class="protocol-header">
+                                <svg class="icon-gradient-red" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><line x1="4.93" y1="4.93" x2="19.07" y2="19.07"></line></svg>
+                                <h3 class="protocol-title" style="color:#EF4444;">When NOT to Contact Us</h3>
+                            </div>
+                            <ul class="protocol-list">
+                                <li>Requests for stock tips, mutual fund recommendations, or market predictions.</li>
+                                <li>Requests for tax evasion schemes or illegal document manipulation.</li>
+                                <li>Urgent requests for guaranteed outcomes (institutional timelines apply).</li>
+                                <li>Legal representation in court (we are process experts, not litigators).</li>
+                            </ul>
+                        </div>
+
+                        <div class="protocol-card">
+                            <div class="protocol-header">
+                                <svg class="icon-gradient-gold" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+                                <h3 class="protocol-title">Privacy & Data Responsibility</h3>
+                            </div>
+                            <p style="font-size:0.9rem; color:var(--text-muted); line-height:1.7;">
+                                We collect data solely for the purpose of handling your enquiry. Your information is never sold, shared, or used for unrelated marketing. By submitting this form, you acknowledge that MVN FinHub provides information and process support, not binding financial advice.
+                            </p>
+                        </div>
+
+                    </div>
+
+                </div>
             </div>
-
-            <div id="successMessage" style="display: none; text-align: center; color: #10B981; padding: 20px;">
-                <h2 style="margin-bottom: 10px;">✓ Enquiry Sent</h2>
-                <p>Reference ID: <strong id="refIdDisplay" style="color: #0A2540;"></strong></p>
-                <p style="margin-top: 10px; font-size: 0.9rem; color: #64748B;">Thank you. We will contact you shortly.</p>
-                <a href="index.html" class="submit-btn" style="margin-top: 15px; display: inline-block; text-decoration: none; width: auto; padding: 10px 24px;">Return Home</a>
-            </div>
-
-            <form id="enquiryForm">
-                
-                <div class="form-group">
-                    <label for="fullName" class="form-label">Full Name</label>
-                    <input type="text" id="fullName" class="form-input" required placeholder="Enter your full name">
-                </div>
-
-                <div class="form-group">
-                    <label for="email" class="form-label">Email Address</label>
-                    <input type="email" id="email" class="form-input" required placeholder="name@example.com">
-                </div>
-
-                <div class="form-group">
-                    <label for="phone" class="form-label">Phone Number</label>
-                    <input type="tel" id="phone" class="form-input" required pattern="[0-9]{10}" placeholder="10-digit mobile number">
-                </div>
-
-                <div class="form-group">
-                    <label for="service" class="form-label">Service Type</label>
-                    <select id="service" class="form-select" required>
-                        <option value="" disabled selected>Select a service...</option>
-                        <option value="Financial Structure">Financial Structure & Readiness</option>
-                        <option value="Legacy Recovery">Shares & Legacy Recovery</option>
-                        <option value="NRI Support">NRI Documentation Support</option>
-                        <option value="Banking">Banking & Loan Documentation</option>
-                        <option value="Other">Other Query</option>
-                    </select>
-                </div>
-
-                <div class="form-group">
-                    <label for="message" class="form-label">Your Requirement</label>
-                    <textarea id="message" class="form-textarea" required minlength="20" placeholder="Describe your documentation or process requirement..."></textarea>
-                </div>
-
-                <div class="checkbox-group">
-                    <input type="checkbox" id="consent" class="checkbox-input" required>
-                    <label for="consent" class="checkbox-label">
-                        I understand this platform is non-advisory and authorize MVN FinHub to contact me regarding this process enquiry.
-                    </label>
-                </div>
-
-                <button type="submit" class="submit-btn">
-                    Submit Enquiry
-                </button>
-
-            </form>
-
-            <div class="icon-container">
-                <a href="mailto:mvnfinhub.connect@gmail.com" class="social-icon" aria-label="Email Us">
-                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M20 4H4C2.9 4 2.01 4.9 2.01 6L2 18C2 19.1 2.9 20 4 20H20C21.1 20 22 19.1 22 18V6C22 4.9 21.1 4 20 4ZM20 8L12 13L4 8V6L12 11L20 6V8Z"/>
-                    </svg>
-                </a>
-
-                <a href="https://instagram.com/mvnfinhub" target="_blank" class="social-icon" aria-label="Visit Instagram">
-                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M7.8 2H16.2C19.4 2 22 4.6 22 7.8V16.2C22 19.4 19.4 22 16.2 22H7.8C4.6 22 2 19.4 2 16.2V7.8C2 4.6 4.6 2 7.8 2ZM7.6 4C5.6 4 4 5.6 4 7.6V16.4C4 18.4 5.6 20 7.6 20H16.4C18.4 20 20 18.4 20 16.4V7.6C20 5.6 18.4 4 16.4 4H7.6ZM12 7C14.8 7 17 9.2 17 12C17 14.8 14.8 17 12 17C9.2 17 7 14.8 7 12C7 9.2 9.2 7 12 7ZM12 9C10.3 9 9 10.3 9 12C9 13.7 10.3 15 12 15C13.7 15 15 13.7 15 12C15 10.3 13.7 9 12 9ZM17.25 5.5C17.94 5.5 18.5 6.06 18.5 6.75C18.5 7.44 17.94 8 17.25 8C16.56 8 16 7.44 16 6.75C16 6.06 16.56 5.5 17.25 5.5Z"/>
-                    </svg>
-                </a>
-            </div>
-
-        </div>
-    </section>
-
-    <section class="info-container">
-        
-        <div class="content-block">
-            <h2>When to Contact Us</h2>
-            <ul class="info-list">
-                <li>You need help interpreting bank notices or rejection letters.</li>
-                <li>You require assistance with physical share transmission or IEPF claims.</li>
-                <li>You are an NRI needing guidance on NRO/NRE documentation.</li>
-                <li>You need to structure your family's financial documents for future readiness.</li>
-            </ul>
-        </div>
-
-        <div class="content-block">
-            <h2><span style="color:#EF4444">⚠️</span> When NOT to Contact Us</h2>
-            <ul class="info-list">
-                <li>Requests for stock tips, mutual fund recommendations, or market predictions.</li>
-                <li>Requests for tax evasion schemes or illegal document manipulation.</li>
-                <li>Urgent requests for guaranteed outcomes (institutional timelines apply).</li>
-                <li>Legal representation in court (we are process experts, not litigators).</li>
-            </ul>
-        </div>
-
-        <div class="content-block">
-            <h2>Privacy & Data Responsibility</h2>
-            <p style="color:#475569; font-size:1rem; line-height:1.6;">
-                We collect data solely for the purpose of handling your enquiry. Your information is never sold, shared, or used for unrelated marketing. By submitting this form, you acknowledge that MVN FinHub provides information and process support, not binding financial advice.
-            </p>
-        </div>
-
-    </section>
+        </section>
 
     </main>
+
     <footer>
         <div class="container">
-            <div class="footer-logo-container">
-                <img src="assets/images/logo-3d-full.png" alt="MVN FinHub Premium" class="footer-3d-logo" width="158" height="105">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <img src="assets/images/logo-3d-full.png" alt="MVN FinHub" class="footer-logo">
+                    <p class="footer-desc">MVN FinHub empowers individuals with clarity through strictly non-advisory process and documentation support. We decode institutional complexity.</p>
+                    <p style="font-size:0.85rem; color:#64748B; margin-top:20px;">Services are provided on an independent, fixed-fee basis. MVN FinHub does not provide financial, legal, or investment advice and is not responsible for decisions or outcomes. All decisions remain solely the responsibility of the user.</p>
+                    
+                    <div style="margin-top: 20px;">
+                        <a href="https://instagram.com/mvnfinhub" target="_blank" class="footer-social-icon" aria-label="Instagram">
+                            <svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+                        </a>
+                        <a href="mailto:mvnfinhub.contact@gmail.com" class="footer-social-icon" aria-label="Email">
+                            <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                        </a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h4>Explore</h4>
+                    <div class="footer-links">
+                        <a href="index.html">Home</a>
+                        <a href="services.html">Services</a>
+                        <a href="insights.html">Intelligence</a>
+                        <a href="about.html">About Us</a>
+                        <a href="contact.html">Get Support</a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h4>Legal & Policy</h4>
+                    <div class="footer-links">
+                        <a href="legal.html">Privacy Policy</a>
+                        <a href="legal.html">Terms of Service</a>
+                        <a href="legal.html">Disclaimer</a>
+                    </div>
+                </div>
             </div>
-
-            <p>&copy; <span class="copyright-year">2026</span> MVN FinHub</p>
-            <p style="margin-top: 8px;">MVN FinHub is a support and awareness platform, not a decision-making authority.</p>
-            <p style="margin-bottom: 24px;">Trust is built through transparency, boundaries, and consistency. The platform’s role ends at process clarity and documentation support.</p>
-            
-            <div class="footer-links">
-                <a href="legal.html">Privacy & Legal</a>
-                <a href="contact.html">Contact</a>
-                <a href="https://instagram.com/mvnfinhub" target="_blank">Instagram</a>
-                
-                <button id="footer-theme-btn" class="theme-btn-footer" onclick="toggleTheme()" aria-label="Toggle Dark Mode" style="cursor: pointer;">🌙</button>
+            <div class="footer-bottom">
+                <div class="status-badge">
+                    <span class="status-ping"></span> System Operational
+                </div>
+                <span>&copy; 2026 MVN FinHub. All Rights Reserved.</span>
+                <button class="theme-btn" onclick="toggleTheme()" style="background:none; border:none; cursor:pointer; font-size:1.2rem; color:#FFF;">🌙</button>
             </div>
         </div>
     </footer>
 
     <script>
-        // 1. Theme Logic
-        if(localStorage.getItem('theme') === 'dark') {
-            document.documentElement.setAttribute('data-theme', 'dark');
-            const btn = document.getElementById('footer-theme-btn');
-            if(btn) btn.textContent = '☀️';
-        }
-
         function toggleTheme() {
-            if (window.toggleTheme) {
-                window.toggleTheme();
-                return;
-            }
             const html = document.documentElement;
-            const btn = document.getElementById('footer-theme-btn');
-            const current = html.getAttribute('data-theme');
-            const metaTheme = document.querySelector('meta[name="theme-color"]');
-
-            if (current === 'dark') {
-                html.setAttribute('data-theme', 'light');
-                localStorage.setItem('theme', 'light');
-                btn.textContent = '🌙';
-                if(metaTheme) metaTheme.setAttribute('content', '#F8FAFC');
+            const btn = document.querySelector('.theme-btn');
+            if (html.getAttribute('data-theme') === 'dark') {
+                html.setAttribute('data-theme', 'light'); localStorage.setItem('theme', 'light'); btn.textContent = '🌙';
             } else {
-                html.setAttribute('data-theme', 'dark');
-                localStorage.setItem('theme', 'dark');
-                btn.textContent = '☀️';
-                if(metaTheme) metaTheme.setAttribute('content', '#0F172A');
+                html.setAttribute('data-theme', 'dark'); localStorage.setItem('theme', 'dark'); btn.textContent = '☀️';
             }
         }
 
-        // 2. Kill Ghost Icons
-        window.addEventListener('load', function() {
-            const ghosts = document.querySelectorAll('.theme-btn-floating, #theme-toggle-float');
-            ghosts.forEach(el => el.remove());
+        const reveals = document.querySelectorAll(".reveal");
+        window.addEventListener('scroll', () => {
+            reveals.forEach(el => {
+                const rect = el.getBoundingClientRect();
+                if (rect.top < window.innerHeight - 100) el.classList.add("active");
+            });
         });
-    </script>
+        window.dispatchEvent(new Event('scroll'));
 
+        // Mobile Menu
+        document.getElementById('mobile-menu-toggle').addEventListener('click', function() {
+            document.getElementById('nav-links').classList.toggle('active');
+        });
+
+        // Form Logic
+        const form = document.getElementById('enquiryForm');
+        if(form) {
+            form.addEventListener('submit', (e) => {
+                e.preventDefault();
+                const btn = form.querySelector('.executive-btn');
+                btn.innerHTML = 'Verifying...';
+                
+                setTimeout(() => {
+                    form.style.display = 'none';
+                    document.getElementById('successMessage').style.display = 'block';
+                    document.getElementById('refIdDisplay').innerText = 'REF-' + Math.floor(100000 + Math.random() * 900000);
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                }, 1500);
+            });
+        }
+    </script>
 </body>
 </html>

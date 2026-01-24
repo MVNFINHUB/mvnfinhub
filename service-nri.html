@@ -2,145 +2,215 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://mvnfinhub.goatcounter.com https://gc.zgo.at; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self' https://mvnfinhub.goatcounter.com;">
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NRI Documentation & Compliance | MVN FinHub</title>
     
-    <meta name="theme-color" content="#F8FAFC" media="(prefers-color-scheme: light)">
-    <meta name="theme-color" content="#0F172A" media="(prefers-color-scheme: dark)">
+    <title>NRI Documentation & Compliance | MVN FinHub</title>
+    <meta name="description" content="Documentation readiness, cross-border compliance, and institutional coordination support for NRIs. Non-advisory documentation support.">
+    <meta name="theme-color" content="#0F172A">
+
     <link rel="icon" type="image/png" href="assets/images/favicon.png">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Merriweather:wght@300;400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=Inter:wght@300;400;500;600&family=Poppins:wght@400;500;600;700;800&family=Source+Serif+4:opsz,wght@8..60,400;600;700&display=swap" rel="stylesheet">
     
-    <link rel="stylesheet" href="assets/css/main.css?v=final_perf">
     <script src="assets/js/app.js" defer></script>
+    <script data-goatcounter="https://mvnfinhub.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+
+    <script>
+        if(localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.setAttribute('data-theme', 'dark');
+        } else {
+            document.documentElement.setAttribute('data-theme', 'light');
+        }
+    </script>
 
     <style>
-        /* --- PAGE SPECIFIC STYLES --- */
-        
-        /* Back Button Style */
-        .back-link-wrapper {
-            margin: 20px 0 40px;
+        /* --- 1. EXECUTIVE DESIGN SYSTEM --- */
+        :root {
+            --font-display: 'Poppins', sans-serif;
+            --font-ui: 'IBM Plex Sans', sans-serif;
+            --font-body: 'Inter', sans-serif;
+            --font-serif: 'Source Serif 4', serif;
+            
+            /* Light Mode */
+            --bg-body: #F8FAFC;
+            --bg-card: #FFFFFF;
+            --text-head: #0F172A;
+            --text-body: #334155;
+            --text-muted: #64748B;
+            --primary: #0F172A;
+            --accent: #0EA5E9;
+            --accent-glow: rgba(14, 165, 233, 0.15);
+            --border: #E2E8F0;
+            --hero-gradient: linear-gradient(135deg, #EFF6FF 0%, #F8FAFC 100%);
+            --shadow-float: 0 20px 40px -10px rgba(0,0,0,0.08);
         }
+
+        [data-theme="dark"] {
+            /* Dark Mode */
+            --bg-body: #020617;
+            --bg-card: #0F172A;
+            --text-head: #F8FAFC;
+            --text-body: #94A3B8;
+            --text-muted: #64748B;
+            --primary: #F8FAFC;
+            --accent: #38BDF8;
+            --accent-glow: rgba(56, 189, 248, 0.15);
+            --border: rgba(255, 255, 255, 0.08);
+            --hero-gradient: linear-gradient(135deg, #0B1120 0%, #020617 100%);
+            --shadow-float: 0 25px 50px -12px rgba(0,0,0,0.5);
+        }
+
+        /* Global Reset */
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; }
+        body {
+            background-color: var(--bg-body); color: var(--text-body);
+            font-family: var(--font-body); line-height: 1.7; overflow-x: hidden;
+            transition: background 0.3s ease;
+        }
+
+        h1, h2, h3, h4 { font-family: var(--font-display); font-weight: 700; color: var(--text-head); }
+        
+        /* Premium Texture */
+        body::before {
+            content: ""; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background-image: radial-gradient(var(--border) 1px, transparent 1px);
+            background-size: 30px 30px; opacity: 0.4; pointer-events: none; z-index: -1;
+        }
+
+        a { text-decoration: none; color: inherit; transition: 0.3s; }
+        img { max-width: 100%; display: block; }
+        ul { list-style: none; }
+
+        /* --- 3. HEADER --- */
+        header { position: absolute; top: 0; width: 100%; z-index: 100; padding: 20px 0; background: transparent; }
+        .container { max-width: 1280px; margin: 0 auto; padding: 0 25px; }
+        .nav-flex { display: flex; justify-content: space-between; align-items: center; }
+
+        .brand-logo {
+            display: flex; align-items: center; gap: 12px; padding: 8px 16px; border-radius: 12px;
+            background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.05);
+            backdrop-filter: blur(12px); transition: 0.3s;
+        }
+        .brand-logo:hover { border-color: var(--accent); background: var(--accent-glow); transform: translateY(-1px); }
+        .logo-icon-wrapper img { height: 40px; width: auto; filter: drop-shadow(0 4px 6px rgba(0,0,0,0.1)); }
+        .brand-text { font-family: var(--font-display); font-weight: 700; font-size: 1.4rem; color: var(--text-head); letter-spacing: -0.5px; }
+        .text-finhub { color: var(--accent); }
+
+        .nav-links { display: flex; gap: 30px; align-items: center; background: rgba(255,255,255,0.02); padding: 5px 20px; border-radius: 50px; border: 1px solid rgba(255,255,255,0.05); }
+        .nav-item { font-family: var(--font-ui); font-weight: 600; font-size: 0.9rem; color: var(--text-head); opacity: 0.8; position: relative; }
+        .nav-item::after { content: ''; position: absolute; bottom: -4px; left: 50%; transform: translateX(-50%); width: 0; height: 2px; background: var(--accent); transition: 0.3s; }
+        .nav-item:hover, .nav-item.active { opacity: 1; }
+        .nav-item:hover::after, .nav-item.active::after { width: 100%; }
+        .btn-nav { background: var(--text-head); color: var(--bg-body) !important; padding: 8px 22px; border-radius: 50px; font-family: var(--font-ui); font-weight: 600; font-size: 0.85rem; box-shadow: 0 4px 20px rgba(0,0,0,0.1); transition: 0.3s; }
+        .mobile-toggle { display: none; font-size: 1.5rem; background: none; border: none; color: var(--text-head); cursor: pointer; }
+
+        /* --- 4. HERO SECTION --- */
+        .hero-section { padding: 140px 0 80px; background: var(--hero-gradient); position: relative; overflow: hidden; text-align: center; clip-path: polygon(0 0, 100% 0, 100% 95%, 0 100%); }
+        .aurora { position: absolute; top: -50%; right: -50%; width: 150%; height: 150%; background: radial-gradient(circle, var(--accent-glow) 0%, transparent 60%); filter: blur(80px); animation: pulse 10s infinite alternate; z-index: 0; }
+        
+        .hero-content { position: relative; z-index: 2; max-width: 800px; margin: 0 auto; }
+        
+        /* Back Link */
         .back-link {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            text-decoration: none;
-            color: #64748B;
-            font-weight: 600;
-            transition: color 0.3s;
+            display: inline-flex; align-items: center; gap: 8px; 
+            font-family: var(--font-ui); font-size: 0.9rem; font-weight: 600; 
+            color: var(--accent); margin-bottom: 20px; text-transform: uppercase; letter-spacing: 1px;
         }
-        .back-link:hover { color: #0EA5E9; }
+        .back-link:hover { transform: translateX(-5px); text-decoration: underline; }
 
-        /* Document Hero */
-        .doc-hero {
-            text-align: center;
-            margin-bottom: 50px;
-            padding-bottom: 30px;
-            border-bottom: 1px solid rgba(0,0,0,0.1);
-        }
-        .doc-hero h1 {
-            font-family: 'Merriweather', serif;
-            font-size: 2.5rem;
-            color: #0F172A;
-            margin-bottom: 15px;
-        }
-        .doc-badge {
-            display: inline-block;
-            background: linear-gradient(90deg, #0284C7, #0369A1);
-            color: white;
-            padding: 6px 16px;
-            border-radius: 50px;
-            font-size: 0.85rem;
-            font-weight: 600;
-            box-shadow: 0 4px 10px rgba(2, 132, 199, 0.2);
-        }
+        .hero-title { font-family: var(--font-display); font-size: 3rem; line-height: 1.1; color: var(--text-head); margin-bottom: 15px; letter-spacing: -1px; }
+        .hero-subtitle { font-family: var(--font-body); font-size: 1.1rem; color: var(--text-muted); max-width: 600px; margin: 0 auto; font-weight: 300; }
 
-        /* Glass Content Cards */
-        .doc-card {
-            background: rgba(255, 255, 255, 0.7);
-            backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.8);
-            border-radius: 20px;
-            padding: 40px;
-            margin-bottom: 40px;
-            box-shadow: 0 10px 30px -5px rgba(0,0,0,0.03);
-            position: relative;
-            overflow: hidden;
+        /* --- 5. CONTENT LAYOUT --- */
+        .content-section { padding: 60px 0 100px; }
+        .content-grid { max-width: 900px; margin: 0 auto; display: flex; flex-direction: column; gap: 40px; }
+
+        /* GLASS CARD (Service Block) */
+        .service-card {
+            background: var(--bg-card); border-radius: 20px; border: 1px solid var(--border);
+            box-shadow: var(--shadow-float); overflow: hidden; position: relative;
+            transition: 0.4s;
         }
+        .service-card:hover { transform: translateY(-3px); border-color: var(--accent); }
         
-        /* Left Border Accents */
-        .doc-card.blue-accent { border-left: 5px solid #0EA5E9; }
-        .doc-card.indigo-accent { border-left: 5px solid #6366F1; }
-        .doc-card.red-accent { border-left: 5px solid #EF4444; background: linear-gradient(to right, #FEF2F2, white); }
+        /* HERO VISUAL */
+        .hero-visual { height: 400px; width: 100%; position: relative; overflow: hidden; border-bottom: 1px solid var(--border); margin-bottom: 40px; border-radius: 20px; box-shadow: var(--shadow-float); }
+        .hero-visual img { width: 100%; height: 100%; object-fit: cover; transition: 0.5s; }
+        .hero-visual:hover img { transform: scale(1.05); }
 
-        .doc-card h2 {
-            font-size: 1.8rem;
-            color: #0C4A6E;
-            margin-bottom: 25px;
-            display: flex;
-            align-items: center;
-            gap: 15px;
+        .card-content { padding: 40px; }
+        
+        /* Section Titles */
+        .section-title {
+            font-family: var(--font-display); font-size: 1.8rem; margin-bottom: 25px;
+            color: var(--text-head); display: flex; align-items: center; gap: 15px;
         }
-        .doc-icon { font-size: 2rem; }
+        .section-icon { font-size: 2rem; }
 
-        .doc-card h3 {
-            font-family: 'Outfit', sans-serif;
-            font-size: 1.2rem;
-            color: #334155;
-            font-weight: 700;
-            margin-top: 30px;
-            margin-bottom: 12px;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            opacity: 0.9;
+        /* Sub-Headings */
+        .sub-heading {
+            font-family: var(--font-ui); font-size: 1rem; font-weight: 700; 
+            color: var(--accent); text-transform: uppercase; letter-spacing: 1px;
+            margin-top: 30px; margin-bottom: 15px; border-left: 3px solid var(--accent); padding-left: 12px;
         }
 
-        .doc-card p {
-            font-size: 1.05rem;
-            line-height: 1.8;
-            color: #475569;
-            margin-bottom: 15px;
+        .text-block { font-size: 1rem; line-height: 1.8; color: var(--text-muted); margin-bottom: 15px; }
+        
+        /* Lists */
+        .premium-list { list-style: none; margin-bottom: 20px; }
+        .premium-list li {
+            position: relative; padding-left: 25px; margin-bottom: 10px;
+            font-size: 1rem; color: var(--text-body);
+        }
+        .premium-list li::before {
+            content: "➞"; position: absolute; left: 0; color: var(--accent); font-weight: bold;
         }
 
-        /* Creative List Styling */
-        .styled-list { padding-left: 0; margin-top: 15px; }
-        .styled-list li {
-            list-style: none;
-            margin-bottom: 12px;
-            padding-left: 30px;
-            position: relative;
-            color: #334155;
-            font-weight: 500;
-        }
-        .styled-list li::before {
-            content: "➞";
-            position: absolute;
-            left: 0;
-            color: #0EA5E9;
-            font-weight: bold;
+        /* Warning List */
+        .warning-list li::before { content: "✕"; color: #EF4444; }
+        .card-warning { border-left: 4px solid #EF4444; background: linear-gradient(to right, rgba(239, 68, 68, 0.02), transparent); }
+
+        /* Small Tags */
+        .tag-pill {
+            display: inline-block; padding: 4px 12px; border-radius: 50px;
+            font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px;
+            margin-left: 10px; vertical-align: middle; background: var(--accent); color: white;
         }
 
-        /* Warning List Styling */
-        .warning-list li::before {
-            content: "✕";
-            color: #EF4444;
-        }
+        /* FOOTER */
+        footer { background: #020617; color: #94A3B8; padding: 80px 0 40px; border-top: 1px solid rgba(255,255,255,0.05); margin-top: 0; }
+        .footer-grid { display: grid; grid-template-columns: 1.5fr 1fr 1fr; gap: 60px; }
+        .footer-logo { height: 45px; opacity: 0.9; margin-bottom: 20px; }
+        .footer-desc { font-size: 0.9rem; line-height: 1.6; opacity: 0.8; max-width: 320px; margin-bottom: 20px; }
+        .footer-col h4 { color: #FFF; font-size: 0.9rem; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 25px; }
+        .footer-links a { display: block; color: #94A3B8; margin-bottom: 14px; font-size: 0.9rem; font-family: var(--font-ui); transition: 0.3s; }
+        .footer-links a:hover { color: var(--accent); transform: translateX(5px); }
+        .footer-bottom { margin-top: 60px; padding-top: 30px; border-top: 1px solid rgba(255,255,255,0.05); display: flex; justify-content: space-between; align-items: center; font-size: 0.85rem; opacity: 0.6; }
+        
+        .footer-social-icon { width: 36px; height: 36px; border-radius: 50%; background: rgba(255,255,255,0.05); display: inline-flex; align-items: center; justify-content: center; margin-right: 10px; transition: 0.3s; color: #FFF; border: 1px solid rgba(255,255,255,0.1); }
+        .footer-social-icon:hover { background: var(--accent); border-color: var(--accent); transform: translateY(-3px); }
+        .footer-social-icon svg { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+        
+        .status-badge { display: flex; align-items: center; gap: 8px; color: #10B981; font-weight: 600; }
+        .status-ping { display: inline-block; width: 8px; height: 8px; background: #10B981; border-radius: 50%; box-shadow: 0 0 10px #10B981; }
 
-        /* Dark Mode Overrides */
-        [data-theme="dark"] .doc-hero h1 { color: #fff; }
-        [data-theme="dark"] .doc-hero { border-bottom-color: rgba(255,255,255,0.1); }
-        [data-theme="dark"] .doc-card {
-            background: rgba(30, 41, 59, 0.6);
-            border-color: rgba(255,255,255,0.05);
+        .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s ease; }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+        .delay-1 { transition-delay: 0.1s; }
+
+        @media (max-width: 992px) {
+            .hero-title { font-size: 2.2rem; }
+            .footer-grid { grid-template-columns: 1fr; text-align: center; gap: 40px; }
+            .footer-bottom { flex-direction: column; gap: 20px; }
+            .mobile-toggle { display: block; }
+            .nav-links { display: none; }
         }
-        [data-theme="dark"] .doc-card h2 { color: #fff; }
-        [data-theme="dark"] .doc-card h3 { color: #94A3B8; }
-        [data-theme="dark"] .doc-card p { color: #cbd5e1; }
-        [data-theme="dark"] .styled-list li { color: #e2e8f0; }
-        [data-theme="dark"] .doc-card.red-accent { background: rgba(127, 29, 29, 0.2); }
     </style>
 </head>
 <body>
@@ -148,16 +218,10 @@
     <header>
         <div class="container nav-flex">
             <a href="index.html" class="brand-logo">
-                <div class="logo-icon-wrapper">
-                    <img src="assets/images/logo-header.png" alt="MVN FinHub Logo" width="131" height="88">
-                </div>
-                <div class="brand-text">
-                    <span class="text-mvn">MVN</span><span class="text-finhub">FinHub</span>
-                </div>
+                <div class="logo-icon-wrapper"><img src="assets/images/logo-header.png" alt="MVN Logo"></div>
+                <div class="brand-text"><span class="text-mvn">MVN</span><span class="text-finhub">FinHub</span></div>
             </a>
-            
-            <button class="mobile-toggle" id="mobile-menu-toggle" aria-label="Toggle Menu">☰</button>
-
+            <button class="mobile-toggle" id="mobile-menu-toggle" aria-label="Menu">☰</button>
             <nav class="nav-links" id="nav-links">
                 <a href="index.html" class="nav-item">Home</a>
                 <a href="services.html" class="nav-item active">Services</a>
@@ -169,206 +233,237 @@
     </header>
 
     <main>
-        
-        <section style="padding-top: 120px; padding-bottom: 40px;">
-            <div class="container" style="max-width: 900px;">
+
+        <section class="hero-section">
+            <div class="container">
+                <div class="hero-content reveal">
+                    <a href="services.html" class="back-link">← Return to Services</a>
+                    <h1 class="hero-title">NRI Documentation</h1>
+                    <p class="hero-subtitle">Documentation readiness, cross-border compliance, and institutional coordination support.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="content-section">
+            <div class="container">
                 
-                <div class="back-link-wrapper">
-                    <a href="services.html" class="back-link">← Return to Services Overview</a>
+                <div class="hero-visual reveal delay-1">
+                    <img src="assets/images/service-nri.png" alt="NRI Documentation Support">
                 </div>
 
-                <div class="doc-hero">
-                    <span class="doc-badge">Process-Oriented | Non-Advisory</span>
-                    <h1>NRI Documentation</h1>
-                    <p style="color: #64748B; font-size: 1.1rem; max-width: 600px; margin: 10px auto;">
-                        Documentation readiness, cross-border compliance, and institutional coordination support.
-                    </p>
-                </div>
-
-                <div class="doc-card blue-accent">
-                    <h2><span class="doc-icon">✈️</span> Definition & Scope</h2>
+                <div class="content-grid">
                     
-                    <h3>What This Service Is</h3>
-                    <p>A process-focused service providing documentation, coordination, and compliance-support for Non-Resident Indians (NRIs) dealing with Indian banking, demat, and regulatory systems. This service addresses cross-border documentation readiness and institutional process navigation, not financial, tax, or investment outcomes.</p>
+                    <div class="service-card reveal">
+                        <div class="card-content">
+                            <h2 class="section-title"><span class="section-icon">✈️</span> Definition & Scope</h2>
+                            
+                            <div class="sub-heading">What This Service Is</div>
+                            <p class="text-block">A process-focused service providing documentation, coordination, and compliance-support for Non-Resident Indians (NRIs) dealing with Indian banking, demat, and regulatory systems. This service addresses cross-border documentation readiness and institutional process navigation, not financial, tax, or investment outcomes.</p>
 
-                    <h3>Why This Process Exists</h3>
-                    <p>NRIs are subject to enhanced scrutiny due to cross-border regulatory frameworks such as FATCA and CRS, as well as RBI and FEMA compliance requirements.</p>
-                    <p>Differences in residency status, overseas documentation formats, jurisdictional standards, and institutional processes frequently lead to extended validation timelines, documentation rejections, or repeated follow-ups.</p>
-                    <p>This service exists to explain and structure documentation and coordination workflows, not to influence approvals or decisions.</p>
+                            <div class="sub-heading">Why This Process Exists</div>
+                            <p class="text-block">NRIs are subject to enhanced scrutiny due to cross-border regulatory frameworks such as FATCA and CRS, as well as RBI and FEMA compliance requirements.</p>
+                            <p class="text-block">Differences in residency status, overseas documentation formats, jurisdictional standards, and institutional processes frequently lead to extended validation timelines, documentation rejections, or repeated follow-ups.</p>
+                            <p class="text-block">This service exists to explain and structure documentation and coordination workflows, not to influence approvals or decisions.</p>
 
-                    <h3>Service Scope Breakdown (Micro-Level)</h3>
-                    <p>This service operates strictly as documentation, coordination, and compliance-support, without handling money or acting as a bank, broker, or advisor.</p>
+                            <div class="sub-heading">Service Scope Breakdown (Micro-Level)</div>
+                            <p class="text-block">This service operates strictly as documentation, coordination, and compliance-support, without handling money or acting as a bank, broker, or advisor.</p>
+                        </div>
+                    </div>
+
+                    <div class="service-card reveal">
+                        <div class="card-content">
+                            <h2 class="section-title">
+                                <span class="section-icon">💳</span> 1. NRE / NRO Account Documentation
+                                <span class="tag-pill">Non-Financial</span>
+                            </h2>
+                            
+                            <div class="sub-heading">What This Covers</div>
+                            <ul class="premium-list">
+                                <li>Resident to NRI account conversion documentation</li>
+                                <li>NRE / NRO account opening documentation checklists</li>
+                                <li>KYC, FATCA, and CRS documentation support</li>
+                                <li>Bank appointment coordination and follow-ups</li>
+                                <li>Nomination and mandate documentation assistance</li>
+                            </ul>
+
+                            <div class="sub-heading">What This Does Not Include</div>
+                            <ul class="premium-list warning-list">
+                                <li>No account operation</li>
+                                <li>No fund handling</li>
+                                <li>No banking authority or representation</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="service-card reveal">
+                        <div class="card-content">
+                            <h2 class="section-title">
+                                <span class="section-icon">📈</span> 2. NRI Demat & Trading Documentation
+                                <span class="tag-pill">Documentation-Only</span>
+                            </h2>
+                            
+                            <div class="sub-heading">What This Covers</div>
+                            <ul class="premium-list">
+                                <li>NRI demat account documentation support</li>
+                                <li>NRE demat vs NRO demat process explanation</li>
+                                <li>Trading and demat account linking coordination</li>
+                                <li>Resident to NRI demat account conversion documentation</li>
+                                <li>Neutral liaison with banks and brokers for paperwork</li>
+                            </ul>
+
+                            <div class="sub-heading">What This Does Not Include</div>
+                            <ul class="premium-list warning-list">
+                                <li>No trade execution</li>
+                                <li>No stock or investment advice</li>
+                                <li>No broker representation</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="service-card reveal">
+                        <div class="card-content">
+                            <h2 class="section-title"><span class="section-icon">💼</span> 3. PIS (Portfolio Investment Scheme) Documentation</h2>
+                            
+                            <div class="sub-heading">What This Covers</div>
+                            <ul class="premium-list">
+                                <li>PIS vs Non-PIS education (process view only)</li>
+                                <li>RBI PIS eligibility explanation</li>
+                                <li>PIS application documentation support</li>
+                                <li>Bank–broker–client coordination</li>
+                                <li>PIS account linking follow-ups</li>
+                            </ul>
+
+                            <div class="sub-heading">What This Does Not Include</div>
+                            <ul class="premium-list warning-list">
+                                <li>No investment advice</li>
+                                <li>No portfolio or trading decisions</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="service-card reveal">
+                        <div class="card-content">
+                            <h2 class="section-title">
+                                <span class="section-icon">🌍</span> 4. Repatriation & FEMA / RBI Compliance
+                                <span class="tag-pill">Awareness Only</span>
+                            </h2>
+                            
+                            <div class="sub-heading">What This Covers</div>
+                            <ul class="premium-list">
+                                <li>High-level RBI and FEMA rule explanation (non-interpretive)</li>
+                                <li>Repatriation documentation checklist preparation</li>
+                                <li>Form 15CA / 15CB coordination with Chartered Accountants</li>
+                                <li>Bank submission follow-ups</li>
+                            </ul>
+
+                            <div class="sub-heading">What This Does Not Include</div>
+                            <ul class="premium-list warning-list">
+                                <li>No tax advice</li>
+                                <li>No regulatory interpretation</li>
+                                <li>No outcome assurance</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="service-card reveal">
+                        <div class="card-content">
+                            <h2 class="section-title"><span class="section-icon">⚖️</span> 5. Attestation & Legal Documentation</h2>
+                            
+                            <div class="sub-heading">What This Covers</div>
+                            <ul class="premium-list">
+                                <li>Power of Attorney drafting assistance (coordination only)</li>
+                                <li>Embassy, notary, and apostille process guidance</li>
+                                <li>Overseas courier coordination</li>
+                                <li>Document digitization and record structuring</li>
+                            </ul>
+
+                            <div class="sub-heading">What This Does Not Include</div>
+                            <ul class="premium-list warning-list">
+                                <li>No legal opinions</li>
+                                <li>No legal representation</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="service-card reveal">
+                        <div class="card-content">
+                            <h2 class="section-title">
+                                <span class="section-icon">📝</span> 6. NRI Tax Process Support
+                                <span class="tag-pill">Non-Advisory</span>
+                            </h2>
+                            
+                            <div class="sub-heading">What This Covers</div>
+                            <ul class="premium-list">
+                                <li>High-level taxability awareness for NRE and NRO accounts</li>
+                                <li>TDS and compliance process explanation</li>
+                                <li>Coordination with Chartered Accountants for filings and certificates</li>
+                            </ul>
+
+                            <div class="sub-heading">What This Does Not Include</div>
+                            <ul class="premium-list warning-list">
+                                <li>No tax filing</li>
+                                <li>No tax planning or optimization advice</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="service-card reveal">
+                        <div class="card-content">
+                            <h2 class="section-title"><span class="section-icon">🔄</span> Lifecycle & Education</h2>
+                            
+                            <div class="sub-heading">7. Account Maintenance & Lifecycle Support</div>
+                            <ul class="premium-list">
+                                <li>Periodic KYC update documentation</li>
+                                <li>Bank and broker service request handling</li>
+                                <li>Account closure or modification assistance</li>
+                                <li>Nominee and address change documentation</li>
+                            </ul>
+
+                            <div class="sub-heading">8. Education & Onboarding Support</div>
+                            <ul class="premium-list">
+                                <li>NRE vs NRO vs FCNR process education</li>
+                                <li>PIS vs Non-PIS fundamentals</li>
+                                <li>RBI and FEMA compliance basics</li>
+                                <li>Step-by-step NRI onboarding kits</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="service-card card-warning reveal">
+                        <div class="card-content">
+                            <h2 class="section-title" style="color: #EF4444;"><span class="section-icon">🚫</span> Strict Boundaries</h2>
+                            
+                            <div class="sub-heading" style="border-color: #EF4444; color: #EF4444;">What This Service Does Not Do</div>
+                            <ul class="premium-list warning-list">
+                                <li>Does not handle client funds</li>
+                                <li>Does not execute trades or open accounts on behalf of clients</li>
+                                <li>Does not provide tax, investment, forex, or legal advice</li>
+                                <li>Does not act as a bank, broker, or financial intermediary</li>
+                                <li>Does not use bank or broker logos or claim partnerships</li>
+                                <li>Does not charge success-based or percentage-based fees</li>
+                            </ul>
+
+                            <div class="sub-heading" style="border-color: #EF4444; color: #EF4444;">Who This Is For</div>
+                            <ul class="premium-list">
+                                <li>NRIs managing Indian banking and demat documentation</li>
+                                <li>Individuals facing delays due to cross-border compliance</li>
+                                <li>NRIs seeking clarity on institutional processes</li>
+                            </ul>
+
+                            <div class="sub-heading" style="border-color: #EF4444; color: #EF4444;">Who This Is Not For</div>
+                            <ul class="premium-list warning-list">
+                                <li>Investment or trading decisions</li>
+                                <li>Tax planning or advisory services</li>
+                                <li>Forex or repatriation strategy advice</li>
+                                <li>Legal representation or dispute resolution</li>
+                            </ul>
+
+                            <div class="sub-heading" style="border-color: #EF4444; color: #EF4444;">Boundary Statement</div>
+                            <p class="text-block">This service is strictly educational and process-oriented. MVN FinHub does not provide banking services, brokerage services, tax advice, legal advice, investment advice, forex guidance, or outcome-based assurances of any kind.</p>
+                        </div>
+                    </div>
+
                 </div>
-
-                <div class="doc-card indigo-accent">
-                    <h2><span class="doc-icon">💳</span> 1. NRE / NRO Account Documentation Support</h2>
-                    <span class="doc-badge" style="background: #6366F1; margin-bottom: 15px;">Non-Financial</span>
-
-                    <h3>What This Covers</h3>
-                    <ul class="styled-list">
-                        <li>Resident to NRI account conversion documentation</li>
-                        <li>NRE / NRO account opening documentation checklists</li>
-                        <li>KYC, FATCA, and CRS documentation support</li>
-                        <li>Bank appointment coordination and follow-ups</li>
-                        <li>Nomination and mandate documentation assistance</li>
-                    </ul>
-
-                    <h3>What This Does Not Include</h3>
-                    <ul class="styled-list warning-list">
-                        <li>No account operation</li>
-                        <li>No fund handling</li>
-                        <li>No banking authority or representation</li>
-                    </ul>
-                </div>
-
-                <div class="doc-card blue-accent">
-                    <h2><span class="doc-icon">📈</span> 2. NRI Demat & Trading Documentation</h2>
-                    <span class="doc-badge" style="background: #0EA5E9; margin-bottom: 15px;">Documentation-Only</span>
-
-                    <h3>What This Covers</h3>
-                    <ul class="styled-list">
-                        <li>NRI demat account documentation support</li>
-                        <li>NRE demat vs NRO demat process explanation</li>
-                        <li>Trading and demat account linking coordination</li>
-                        <li>Resident to NRI demat account conversion documentation</li>
-                        <li>Neutral liaison with banks and brokers for paperwork</li>
-                    </ul>
-
-                    <h3>What This Does Not Include</h3>
-                    <ul class="styled-list warning-list">
-                        <li>No trade execution</li>
-                        <li>No stock or investment advice</li>
-                        <li>No broker representation</li>
-                    </ul>
-                </div>
-
-                <div class="doc-card indigo-accent">
-                    <h2><span class="doc-icon">💼</span> 3. PIS (Portfolio Investment Scheme) Documentation Support</h2>
-                    
-                    <h3>What This Covers</h3>
-                    <ul class="styled-list">
-                        <li>PIS vs Non-PIS education (process view only)</li>
-                        <li>RBI PIS eligibility explanation</li>
-                        <li>PIS application documentation support</li>
-                        <li>Bank–broker–client coordination</li>
-                        <li>PIS account linking follow-ups</li>
-                    </ul>
-
-                    <h3>What This Does Not Include</h3>
-                    <ul class="styled-list warning-list">
-                        <li>No investment advice</li>
-                        <li>No portfolio or trading decisions</li>
-                    </ul>
-                </div>
-
-                <div class="doc-card blue-accent">
-                    <h2><span class="doc-icon">🌍</span> 4. Repatriation & FEMA / RBI Compliance Support</h2>
-                    <span class="doc-badge" style="background: #0EA5E9; margin-bottom: 15px;">Awareness & Documentation Only</span>
-
-                    <h3>What This Covers</h3>
-                    <ul class="styled-list">
-                        <li>High-level RBI and FEMA rule explanation (non-interpretive)</li>
-                        <li>Repatriation documentation checklist preparation</li>
-                        <li>Form 15CA / 15CB coordination with Chartered Accountants</li>
-                        <li>Bank submission follow-ups</li>
-                    </ul>
-
-                    <h3>What This Does Not Include</h3>
-                    <ul class="styled-list warning-list">
-                        <li>No tax advice</li>
-                        <li>No regulatory interpretation</li>
-                        <li>No outcome assurance</li>
-                    </ul>
-                </div>
-
-                <div class="doc-card indigo-accent">
-                    <h2><span class="doc-icon">⚖️</span> 5. Attestation & Legal Documentation Coordination</h2>
-                    
-                    <h3>What This Covers</h3>
-                    <ul class="styled-list">
-                        <li>Power of Attorney drafting assistance (coordination only)</li>
-                        <li>Embassy, notary, and apostille process guidance</li>
-                        <li>Overseas courier coordination</li>
-                        <li>Document digitization and record structuring</li>
-                    </ul>
-
-                    <h3>What This Does Not Include</h3>
-                    <ul class="styled-list warning-list">
-                        <li>No legal opinions</li>
-                        <li>No legal representation</li>
-                    </ul>
-                </div>
-
-                <div class="doc-card blue-accent">
-                    <h2><span class="doc-icon">📝</span> 6. NRI Tax Process Support</h2>
-                    <span class="doc-badge" style="background: #0EA5E9; margin-bottom: 15px;">Non-Advisory</span>
-
-                    <h3>What This Covers</h3>
-                    <ul class="styled-list">
-                        <li>High-level taxability awareness for NRE and NRO accounts</li>
-                        <li>TDS and compliance process explanation</li>
-                        <li>Coordination with Chartered Accountants for filings and certificates</li>
-                    </ul>
-
-                    <h3>What This Does Not Include</h3>
-                    <ul class="styled-list warning-list">
-                        <li>No tax filing</li>
-                        <li>No tax planning or optimization advice</li>
-                    </ul>
-                </div>
-
-                <div class="doc-card indigo-accent">
-                    <h2><span class="doc-icon">🔄</span> Lifecycle & Education</h2>
-                    
-                    <h3>7. Account Maintenance & Lifecycle Support</h3>
-                    <ul class="styled-list">
-                        <li>Periodic KYC update documentation</li>
-                        <li>Bank and broker service request handling</li>
-                        <li>Account closure or modification assistance</li>
-                        <li>Nominee and address change documentation</li>
-                    </ul>
-
-                    <h3>8. Education & Onboarding Support</h3>
-                    <ul class="styled-list">
-                        <li>NRE vs NRO vs FCNR process education</li>
-                        <li>PIS vs Non-PIS fundamentals</li>
-                        <li>RBI and FEMA compliance basics</li>
-                        <li>Step-by-step NRI onboarding kits</li>
-                    </ul>
-                </div>
-
-                <div class="doc-card red-accent">
-                    <h2><span class="doc-icon">🚫</span> Strict Boundaries</h2>
-                    
-                    <h3>What This Service Does Not Do</h3>
-                    <ul class="styled-list warning-list">
-                        <li>Does not handle client funds</li>
-                        <li>Does not execute trades or open accounts on behalf of clients</li>
-                        <li>Does not provide tax, investment, forex, or legal advice</li>
-                        <li>Does not act as a bank, broker, or financial intermediary</li>
-                        <li>Does not use bank or broker logos or claim partnerships</li>
-                        <li>Does not charge success-based or percentage-based fees</li>
-                    </ul>
-
-                    <h3>Who This Is For</h3>
-                    <ul class="styled-list">
-                        <li>NRIs managing Indian banking and demat documentation</li>
-                        <li>Individuals facing delays due to cross-border compliance</li>
-                        <li>NRIs seeking clarity on institutional processes</li>
-                    </ul>
-
-                    <h3>Who This Is Not For</h3>
-                    <ul class="styled-list warning-list">
-                        <li>Investment or trading decisions</li>
-                        <li>Tax planning or advisory services</li>
-                        <li>Forex or repatriation strategy advice</li>
-                        <li>Legal representation or dispute resolution</li>
-                    </ul>
-
-                    <h3>Boundary Statement</h3>
-                    <p>This service is strictly educational and process-oriented. MVN FinHub does not provide banking services, brokerage services, tax advice, legal advice, investment advice, forex guidance, or outcome-based assurances of any kind.</p>
-                </div>
-
             </div>
         </section>
 
@@ -376,58 +471,74 @@
 
     <footer>
         <div class="container">
-            <div class="footer-logo-container">
-               <img src="assets/images/logo-3d-full.png" alt="MVN FinHub Premium" class="footer-3d-logo" width="158" height="105">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <img src="assets/images/logo-3d-full.png" alt="MVN FinHub" class="footer-logo">
+                    <p class="footer-desc">MVN FinHub empowers individuals with clarity through strictly non-advisory process and documentation support. We decode institutional complexity.</p>
+                    <p style="font-size:0.85rem; color:#64748B; margin-top:20px;">Services are provided on an independent, fixed-fee basis. MVN FinHub does not provide financial, legal, or investment advice and is not responsible for decisions or outcomes. All decisions remain solely the responsibility of the user.</p>
+                    
+                    <div style="margin-top: 20px;">
+                        <a href="https://instagram.com/mvnfinhub" target="_blank" class="footer-social-icon" aria-label="Instagram">
+                            <svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+                        </a>
+                        <a href="mailto:mvnfinhub.contact@gmail.com" class="footer-social-icon" aria-label="Email">
+                            <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                        </a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h4>Explore</h4>
+                    <div class="footer-links">
+                        <a href="index.html">Home</a>
+                        <a href="services.html">Services</a>
+                        <a href="insights.html">Intelligence</a>
+                        <a href="about.html">About Us</a>
+                        <a href="contact.html">Get Support</a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h4>Legal & Policy</h4>
+                    <div class="footer-links">
+                        <a href="legal.html">Privacy Policy</a>
+                        <a href="legal.html">Terms of Service</a>
+                        <a href="legal.html">Disclaimer</a>
+                    </div>
+                </div>
             </div>
-
-            <p>&copy; 2026 MVN FinHub</p>
-            <p style="font-size: 0.9rem; margin-top: 10px; max-width: 600px; margin-left: auto; margin-right: auto; line-height: 1.6;">
-                MVN FinHub provides strictly non-advisory financial process, documentation, and educational support.
-                <br><br>
-                <span style="opacity: 0.8; font-size: 0.85rem;"><strong>Safety & Responsibility Disclaimer:</strong> MVN FinHub is an independent, non-advisory, process-oriented platform. Information provided is strictly educational in nature. MVN FinHub is not responsible for decisions, actions, outcomes, losses, delays, or consequences arising from the use, interpretation, or reliance on this information. Users remain solely responsible for all decisions and submissions.</span>
-            </p>
-
-            <div class="footer-links">
-                <a href="legal.html">Privacy & Legal</a>
-                <a href="contact.html">Contact</a>
-                <a href="https://instagram.com/mvnfinhub" target="_blank">Instagram</a>
-                
-                <button id="footer-theme-btn" class="theme-btn-footer" onclick="toggleTheme()" aria-label="Toggle Dark Mode" style="cursor: pointer;">🌙</button>
+            <div class="footer-bottom">
+                <div class="status-badge">
+                    <span class="status-ping"></span> System Operational
+                </div>
+                <span>&copy; 2026 MVN FinHub. All Rights Reserved.</span>
+                <button class="theme-btn" onclick="toggleTheme()" style="background:none; border:none; cursor:pointer; font-size:1.2rem; color:#FFF;">🌙</button>
             </div>
         </div>
-
-        <script>
-            // 1. Theme Logic
-            if(localStorage.getItem('theme') === 'dark') {
-                document.documentElement.setAttribute('data-theme', 'dark');
-                const btn = document.getElementById('footer-theme-btn');
-                if(btn) btn.textContent = '☀️';
-            }
-
-            function toggleTheme() {
-                if (window.toggleTheme) {
-                    window.toggleTheme();
-                    return;
-                }
-                const html = document.documentElement;
-                const btn = document.getElementById('footer-theme-btn');
-                const current = html.getAttribute('data-theme');
-                const metaTheme = document.querySelector('meta[name="theme-color"]');
-
-                if (current === 'dark') {
-                    html.setAttribute('data-theme', 'light');
-                    localStorage.setItem('theme', 'light');
-                    btn.textContent = '🌙';
-                    if(metaTheme) metaTheme.setAttribute('content', '#F8FAFC');
-                } else {
-                    html.setAttribute('data-theme', 'dark');
-                    localStorage.setItem('theme', 'dark');
-                    btn.textContent = '☀️';
-                    if(metaTheme) metaTheme.setAttribute('content', '#0F172A');
-                }
-            }
-        </script>
     </footer>
 
+    <script>
+        function toggleTheme() {
+            const html = document.documentElement;
+            const btn = document.querySelector('.theme-btn');
+            if (html.getAttribute('data-theme') === 'dark') {
+                html.setAttribute('data-theme', 'light'); localStorage.setItem('theme', 'light'); btn.textContent = '🌙';
+            } else {
+                html.setAttribute('data-theme', 'dark'); localStorage.setItem('theme', 'dark'); btn.textContent = '☀️';
+            }
+        }
+
+        const reveals = document.querySelectorAll(".reveal");
+        window.addEventListener('scroll', () => {
+            reveals.forEach(el => {
+                const rect = el.getBoundingClientRect();
+                if (rect.top < window.innerHeight - 100) el.classList.add("active");
+            });
+        });
+        window.dispatchEvent(new Event('scroll'));
+
+        // Mobile Menu
+        document.getElementById('mobile-menu-toggle').addEventListener('click', function() {
+            document.getElementById('nav-links').classList.toggle('active');
+        });
+    </script>
 </body>
 </html>

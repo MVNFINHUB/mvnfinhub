@@ -11,8 +11,8 @@ document.addEventListener('DOMContentLoaded', () => {
     function updateMetaThemeColor(isDark) {
         const themeColorMeta = document.querySelector('meta[name="theme-color"]');
         if (themeColorMeta) {
-            // Light Mode: #F8FAFC (White/Grey) | Dark Mode: #0F172A (Deep Blue)
-            themeColorMeta.setAttribute('content', isDark ? '#0F172A' : '#F8FAFC');
+            // Updated to match your new Premium Dark Mode background (#020617)
+            themeColorMeta.setAttribute('content', isDark ? '#020617' : '#F8FAFC');
         }
     }
 
@@ -29,7 +29,9 @@ document.addEventListener('DOMContentLoaded', () => {
             navLinks.classList.toggle('active');
             const isExpanded = navLinks.classList.contains('active');
             menuToggle.setAttribute('aria-expanded', isExpanded);
-            menuToggle.textContent = isExpanded ? '✕' : '☰';
+            
+            // Optional: Toggle icon text if needed, though CSS handles hamburger usually
+            // menuToggle.textContent = isExpanded ? '✕' : '☰'; 
         });
     }
 
@@ -38,7 +40,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // ==========================================
     window.toggleTheme = function() {
         const html = document.documentElement;
-        const btn = document.getElementById('footer-theme-btn');
+        const btn = document.getElementById('footer-theme-btn'); // Matches the ID in your footer
         const current = html.getAttribute('data-theme');
         
         if (current === 'light' || !current) {
@@ -88,10 +90,14 @@ document.addEventListener('DOMContentLoaded', () => {
                 alert("Please agree to the Privacy Policy."); return;
             }
 
-            const submitBtn = enquiryForm.querySelector('.submit-btn');
-            const originalText = submitBtn.textContent;
-            submitBtn.disabled = true; 
-            submitBtn.textContent = 'Sending...';
+            // Button Loading State
+            let submitBtn = enquiryForm.querySelector('.submit-btn') || enquiryForm.querySelector('.executive-btn');
+            const originalText = submitBtn ? submitBtn.textContent : 'Submit';
+            
+            if(submitBtn) {
+                submitBtn.disabled = true; 
+                submitBtn.textContent = 'Sending...';
+            }
 
             const refID = `MVN-${new Date().getFullYear()}-${Math.floor(10000 + Math.random() * 90000)}`;
             
@@ -111,7 +117,10 @@ document.addEventListener('DOMContentLoaded', () => {
                     await new Promise(r => setTimeout(r, 1500)); 
                     enquiryForm.style.display = 'none';
                     if(refIdDisplay) refIdDisplay.textContent = refID;
-                    if(successMessage) successMessage.style.display = 'block';
+                    if(successMessage) {
+                        successMessage.style.display = 'block';
+                        successMessage.scrollIntoView({ behavior: 'smooth' });
+                    }
                     return; 
                 }
 
@@ -138,8 +147,10 @@ document.addEventListener('DOMContentLoaded', () => {
             } catch (error) {
                 console.error(error);
                 alert("Message could not be sent. Please contact us directly.");
-                submitBtn.disabled = false;
-                submitBtn.textContent = originalText;
+                if(submitBtn) {
+                    submitBtn.disabled = false;
+                    submitBtn.textContent = originalText;
+                }
             }
         });
     }
