@@ -1,79 +1,134 @@
 /**
- * MVN FINHUB - APP CONTROLLER (FINAL v2026)
- * Handles: Mobile Menu, Database, and DYNAMIC THEME COLORS.
+ * MVN FINHUB - APP CONTROLLER (FINAL v2026.PLATINUM)
+ * Integrated: Mobile Logic, Theme Engine, Supabase Forms, Performance
  */
 
 document.addEventListener('DOMContentLoaded', () => {
 
     // ==========================================
-    // 0. DYNAMIC THEME COLOR (FIXES WHITE FLASH)
+    // 1. DYNAMIC THEME ENGINE (Meta Tag Sync)
     // ==========================================
     function updateMetaThemeColor(isDark) {
         const themeColorMeta = document.querySelector('meta[name="theme-color"]');
         if (themeColorMeta) {
-            // Updated to match your new Premium Dark Mode background (#020617)
             themeColorMeta.setAttribute('content', isDark ? '#020617' : '#F8FAFC');
         }
     }
 
-    // ==========================================
-    // 1. MOBILE MENU LOGIC (ACCESSIBILITY OPTIMIZED)
-    // ==========================================
-    const menuToggle = document.getElementById('mobile-menu-toggle');
-    const navLinks = document.getElementById('nav-links');
-
-    if (menuToggle && navLinks) {
-        menuToggle.setAttribute('aria-expanded', 'false');
-
-        menuToggle.addEventListener('click', () => {
-            navLinks.classList.toggle('active');
-            const isExpanded = navLinks.classList.contains('active');
-            menuToggle.setAttribute('aria-expanded', isExpanded);
-            
-            // Optional: Toggle icon text if needed, though CSS handles hamburger usually
-            // menuToggle.textContent = isExpanded ? '✕' : '☰'; 
-        });
+    // Initialize Theme on Load
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme === 'dark') {
+        document.documentElement.setAttribute('data-theme', 'dark');
+        updateMetaThemeColor(true);
+        const btn = document.getElementById('footer-theme-btn');
+        if(btn) btn.textContent = '☀️';
+    } else {
+        updateMetaThemeColor(false);
     }
 
-    // ==========================================
-    // 2. THEME TOGGLE LOGIC (CONNECTED TO META TAG)
-    // ==========================================
+    // Global Toggle Function
     window.toggleTheme = function() {
         const html = document.documentElement;
-        const btn = document.getElementById('footer-theme-btn'); // Matches the ID in your footer
+        const btn = document.getElementById('footer-theme-btn');
         const current = html.getAttribute('data-theme');
         
         if (current === 'light' || !current) {
             html.setAttribute('data-theme', 'dark');
             localStorage.setItem('theme', 'dark');
             if(btn) btn.textContent = '☀️';
-            updateMetaThemeColor(true); // <--- Updates Phone Browser Color
+            updateMetaThemeColor(true);
         } else {
             html.setAttribute('data-theme', 'light');
             localStorage.setItem('theme', 'light');
             if(btn) btn.textContent = '🌙';
-            updateMetaThemeColor(false); // <--- Updates Phone Browser Color
+            updateMetaThemeColor(false);
         }
     };
 
-    // Initialize Theme on Load (Double Check)
-    const savedTheme = localStorage.getItem('theme');
-    if (savedTheme === 'dark') {
-        updateMetaThemeColor(true);
-    } else {
-        updateMetaThemeColor(false);
+    // ==========================================
+    // 2. MOBILE MENU LOGIC (The "Fix")
+    // ==========================================
+    const menuToggle = document.getElementById('mobile-menu-toggle');
+    const navLinks = document.getElementById('nav-links');
+
+    if (menuToggle && navLinks) {
+        // Toggle Open/Close
+        menuToggle.addEventListener('click', (e) => {
+            e.stopPropagation(); // Prevent immediate closing
+            navLinks.classList.toggle('active');
+            
+            // Toggle Icon
+            menuToggle.textContent = navLinks.classList.contains('active') ? '✕' : '☰';
+            
+            // Lock Scroll when menu is open
+            document.body.style.overflow = navLinks.classList.contains('active') ? 'hidden' : 'auto';
+        });
+
+        // Close when clicking ANY link (Critical for UX)
+        navLinks.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                menuToggle.textContent = '☰';
+                document.body.style.overflow = 'auto';
+            });
+        });
+
+        // Close when clicking OUTSIDE the menu
+        document.addEventListener('click', (e) => {
+            if (navLinks.classList.contains('active') && !navLinks.contains(e.target) && !menuToggle.contains(e.target)) {
+                navLinks.classList.remove('active');
+                menuToggle.textContent = '☰';
+                document.body.style.overflow = 'auto';
+            }
+        });
     }
 
     // ==========================================
-    // 3. DYNAMIC FOOTER YEAR
+    // 3. PERFORMANCE: SCROLL REVEAL & LAZY LOAD
+    // ==========================================
+    
+    // Header Scroll Effect
+    const header = document.querySelector('header');
+    window.addEventListener('scroll', () => {
+        if (header) {
+            if (window.scrollY > 50) {
+                header.style.background = 'var(--bg-glass)';
+                header.style.backdropFilter = 'blur(12px)';
+                header.style.borderBottom = '1px solid var(--border)';
+                header.style.padding = '15px 0';
+            } else {
+                header.style.background = 'transparent';
+                header.style.backdropFilter = 'none';
+                header.style.borderBottom = 'none';
+                header.style.padding = '30px 0';
+            }
+        }
+    });
+
+    // Reveal Elements on Scroll
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('active');
+            }
+        });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    // Force Native Lazy Loading
+    document.querySelectorAll('img').forEach(img => img.loading = "lazy");
+
+    // ==========================================
+    // 4. DYNAMIC FOOTER YEAR
     // ==========================================
     const yearSpan = document.querySelector('.copyright-year');
     if(yearSpan) yearSpan.textContent = new Date().getFullYear();
 
     // ==========================================
-    // 4. DATABASE & FORM LOGIC (SUPABASE)
+    // 5. DATABASE & FORM LOGIC (SUPABASE)
     // ==========================================
-    // Replace these with your actual Supabase URL and Key when ready.
+    // Replace with your ACTUAL credentials
     const SUPABASE_URL = "https://fviufivewglglnxhlmmf.supabase.co";      
     const SUPABASE_KEY = "sb_publishable_HYE7g0GyJbUfmldKTTAbeA_OUdc0Rah";
 
@@ -90,8 +145,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 alert("Please agree to the Privacy Policy."); return;
             }
 
-            // Button Loading State
-            let submitBtn = enquiryForm.querySelector('.submit-btn') || enquiryForm.querySelector('.executive-btn');
+            // UI Loading State
+            let submitBtn = enquiryForm.querySelector('button[type="submit"]');
             const originalText = submitBtn ? submitBtn.textContent : 'Submit';
             
             if(submitBtn) {
@@ -112,8 +167,9 @@ document.addEventListener('DOMContentLoaded', () => {
             };
 
             try {
-                // FALLBACK: If keys are missing, simulate success for UI testing
+                // If keys are placeholders, simulate success (for testing)
                 if(!SUPABASE_URL || !SUPABASE_KEY || SUPABASE_URL.includes("YOUR_")) {
+                    console.warn("Supabase keys missing. Simulating success.");
                     await new Promise(r => setTimeout(r, 1500)); 
                     enquiryForm.style.display = 'none';
                     if(refIdDisplay) refIdDisplay.textContent = refID;
@@ -137,6 +193,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 if (!response.ok) throw new Error('Server Error');
 
+                // Success UI
                 enquiryForm.style.display = 'none';
                 if(refIdDisplay) refIdDisplay.textContent = refID;
                 if(successMessage) {
