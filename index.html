@@ -301,48 +301,44 @@
         .delay-3 { transition-delay: 0.3s; }
 
         /* ========================================================= 
-           7. MOBILE RESPONSIVE (ONLY MOBILE CHANGES)
+           7. MOBILE RESPONSIVE (CORRECTED & TESTED)
            ========================================================= */
         @media (max-width: 992px) {
             
-            /* Sticky Header for Mobile */
+            /* HEADER: Set to Relative so it scrolls WITH the page (not sticky) */
             header { 
-                position: fixed; 
-                background: var(--bg-glass); 
-                backdrop-filter: blur(12px);
+                position: relative !important; 
+                background: var(--bg-body); /* Solid background to prevent messiness */
                 border-bottom: 1px solid var(--border);
                 padding: 15px 0;
             }
             
             .mobile-toggle { 
                 display: block; 
+                z-index: 10001; /* Extremely high to ensure clickable */
             }
 
-            /* HIDE NAV BY DEFAULT ON MOBILE */
+            /* HIDE NAV BY DEFAULT - FORCE IT */
             .nav-links { 
-                display: none; 
-                position: fixed; 
-                top: 75px; 
+                display: none !important; 
+            }
+
+            /* SHOW NAV WHEN ACTIVE - FORCE IT */
+            .nav-links.active { 
+                display: flex !important; 
+                position: absolute; 
+                top: 100%; /* Appears directly below the header */
                 left: 0; 
                 width: 100%; 
-                height: auto;
-                min-height: 60vh;
-                background: var(--bg-card); 
+                background: var(--bg-card); /* Solid background */
                 flex-direction: column; 
                 align-items: center;
                 padding: 40px 20px; 
-                box-shadow: 0 20px 40px rgba(0,0,0,0.1); 
+                box-shadow: 0 20px 40px rgba(0,0,0,0.2); 
                 border-bottom: 1px solid var(--border);
-                z-index: 999;
+                z-index: 9999;
                 gap: 25px;
             }
-
-            /* SHOW NAV WHEN ACTIVE CLASS ADDED */
-            .nav-links.active { 
-                display: flex; 
-                animation: slideDown 0.3s ease forwards; 
-            }
-            @keyframes slideDown { from { opacity:0; transform:translateY(-10px); } to { opacity:1; transform:translateY(0); } }
 
             .nav-item { 
                 font-size: 1.2rem; 
@@ -360,15 +356,15 @@
                 padding: 12px;
             }
 
-            /* Stack Elements Vertically */
-            .hero-section { padding: 140px 0 80px; text-align: center; }
+            /* Layout Fixes */
+            .hero-section { padding: 40px 0 80px; text-align: center; }
             .hero-split { grid-template-columns: 1fr; gap: 40px; }
             .hero-title { font-size: 2.2rem; }
             .hero-subtitle { margin: 0 auto 30px; }
             .hero-btns { justify-content: center; flex-direction: column; width: 100%; }
             .btn-xl { width: 100%; justify-content: center; }
             
-            /* Grids for Mobile */
+            /* Grids */
             .card-grid, .highlight-grid, .ethics-grid { 
                 grid-template-columns: 1fr; 
                 margin-top: 40px; 
@@ -415,7 +411,7 @@
                 <a href="about.html" class="nav-item">About</a>
                 <a href="contact.html" class="btn-nav">Contact</a>
             </nav> 
-            </div>
+        </div>
     </header>
 
     <main>

@@ -17,7 +17,7 @@
     /* LIGHT MODE PALETTE */
     --bg-body: #F8FAFC;
     --bg-card: #FFFFFF;
-    --bg-glass: rgba(255, 255, 255, 0.9); /* Slightly more opaque for mobile readability */
+    --bg-glass: rgba(255, 255, 255, 0.9);
     --text-head: #0F172A;
     --text-body: #334155;
     --text-muted: #64748B;
@@ -369,10 +369,10 @@ footer {
    ========================================= */
 @media (max-width: 992px) {
     
-    /* 1. Header Layout */
+    /* 1. Header Layout - FIXED THE "STICKY NOT MOVING" ISSUE */
     header { 
         padding: 15px 0; 
-        position: fixed; 
+        position: relative !important; /* Changed from fixed to relative so it scrolls with page */
         background: var(--bg-glass); 
         backdrop-filter: blur(12px);
         border-bottom: 1px solid var(--border);
@@ -386,36 +386,31 @@ footer {
         width: 100%;
     }
 
-    /* 2. THE MENU CONTAINER (Changed # to . to match your HTML classes) */
+    /* 2. THE MENU CONTAINER - FIXED VISIBILITY ISSUE */
     .nav-links { 
-        /* FORCE HIDE initially */
-        display: none !important; 
-        
-        /* Mobile Layout Styling */
-        position: fixed; 
-        top: 80px; /* Push down below header */
-        left: 0; 
-        width: 100%; 
-        height: auto;
-        min-height: 50vh;
-        background-color: var(--bg-card); 
+        display: none !important; /* Ensure hidden by default */
+    }
+
+    /* 3. THE ACTIVE STATE - SHOWS MENU WHEN CLICKED */
+    .nav-links.active { 
+        display: flex !important; 
+        position: absolute;
+        top: 100%; /* Drop down directly below header */
+        left: 0;
+        width: 100%;
+        background-color: var(--bg-card); /* Solid background so it's readable */
         border-bottom: 1px solid var(--border);
         box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-        flex-direction: column !important; /* Force Stack */
+        flex-direction: column !important;
         align-items: center;
         justify-content: flex-start;
         gap: 25px;
         padding: 40px 20px;
         z-index: 9998; 
-    }
-
-    /* 3. THE ACTIVE STATE (Class to toggle via JS) */
-    .nav-links.active { 
-        display: flex !important; 
         animation: slideDown 0.3s ease-out forwards;
     }
 
-    /* 4. HAMBURGER BUTTON (Changed # to . to match common usage) */
+    /* 4. HAMBURGER BUTTON */
     .mobile-toggle { 
         display: block !important; 
         font-size: 1.8rem;
@@ -424,7 +419,7 @@ footer {
         color: var(--text-head);
         cursor: pointer;
         z-index: 9999;
-        margin-left: auto; /* Pushes button to right */
+        margin-left: auto;
     }
 
     /* 5. Mobile Nav Items */
@@ -448,7 +443,7 @@ footer {
 
     /* 6. Layout Stacking & Spacing */
     .hero-section { 
-        padding-top: 140px; 
+        padding-top: 60px; /* Reduced padding since header is relative */
         padding-bottom: 60px; 
         text-align: center; 
     }
@@ -462,12 +457,12 @@ footer {
     /* 7. Footer Optimization */
     .footer-grid { 
         text-align: center; 
-        gap: 50px; /* More breathing room between footer sections */
+        gap: 50px; 
     }
     
     .footer-desc {
-        margin: 0 auto 30px auto; /* Center the text properly */
-        max-width: 400px; /* Prevent text from looking too wide */
+        margin: 0 auto 30px auto; 
+        max-width: 400px;
     }
 
     .footer-links {
@@ -486,6 +481,6 @@ footer {
     .footer-watermark { display: none; }
     
     /* 8. Utility Fixes */
-    .category-bar-wrapper { top: 75px; padding: 0 15px; }
+    .category-bar-wrapper { top: 0; padding: 0 15px; }
     .category-bar { margin: 0; width: 100%; border-radius: 12px; }
 }

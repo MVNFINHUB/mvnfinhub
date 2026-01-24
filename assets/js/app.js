@@ -29,7 +29,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Global Toggle Function
     window.toggleTheme = function() {
         const html = document.documentElement;
-        const btn = document.getElementById('footer-theme-btn');
+        const btn = document.querySelector('.theme-btn'); // Target the class from footer
         const current = html.getAttribute('data-theme');
         
         if (current === 'light' || !current) {
@@ -46,7 +46,7 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     // ==========================================
-    // 2. MOBILE MENU LOGIC (The "Fix")
+    // 2. MOBILE MENU LOGIC (THE FIX)
     // ==========================================
     const menuToggle = document.getElementById('mobile-menu-toggle');
     const navLinks = document.getElementById('nav-links');
@@ -58,10 +58,13 @@ document.addEventListener('DOMContentLoaded', () => {
             navLinks.classList.toggle('active');
             
             // Toggle Icon
-            menuToggle.textContent = navLinks.classList.contains('active') ? '✕' : '☰';
-            
-            // Lock Scroll when menu is open
-            document.body.style.overflow = navLinks.classList.contains('active') ? 'hidden' : 'auto';
+            if (navLinks.classList.contains('active')) {
+                menuToggle.textContent = '✕';
+                document.body.style.overflow = 'hidden'; // Lock scroll
+            } else {
+                menuToggle.textContent = '☰';
+                document.body.style.overflow = 'auto'; // Unlock scroll
+            }
         });
 
         // Close when clicking ANY link (Critical for UX)
@@ -92,15 +95,17 @@ document.addEventListener('DOMContentLoaded', () => {
     window.addEventListener('scroll', () => {
         if (header) {
             if (window.scrollY > 50) {
+                // Add glass effect on scroll
                 header.style.background = 'var(--bg-glass)';
                 header.style.backdropFilter = 'blur(12px)';
                 header.style.borderBottom = '1px solid var(--border)';
-                header.style.padding = '15px 0';
             } else {
-                header.style.background = 'transparent';
-                header.style.backdropFilter = 'none';
-                header.style.borderBottom = 'none';
-                header.style.padding = '30px 0';
+                // Transparent at top (unless mobile)
+                if(window.innerWidth > 992) {
+                    header.style.background = 'transparent';
+                    header.style.backdropFilter = 'none';
+                    header.style.borderBottom = 'none';
+                }
             }
         }
     });
@@ -128,7 +133,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // ==========================================
     // 5. DATABASE & FORM LOGIC (SUPABASE)
     // ==========================================
-    // Replace with your ACTUAL credentials
+    // Replace "" with your ACTUAL credentials if you have them
     const SUPABASE_URL = "https://fviufivewglglnxhlmmf.supabase.co";      
     const SUPABASE_KEY = "sb_publishable_HYE7g0GyJbUfmldKTTAbeA_OUdc0Rah";
 
@@ -167,9 +172,9 @@ document.addEventListener('DOMContentLoaded', () => {
             };
 
             try {
-                // If keys are placeholders, simulate success (for testing)
-                if(!SUPABASE_URL || !SUPABASE_KEY || SUPABASE_URL.includes("YOUR_")) {
-                    console.warn("Supabase keys missing. Simulating success.");
+                // If keys are missing, simulate success (Prevents crashing if you haven't set up DB yet)
+                if(!SUPABASE_URL || !SUPABASE_KEY) {
+                    console.log("Supabase keys missing. Simulating success.");
                     await new Promise(r => setTimeout(r, 1500)); 
                     enquiryForm.style.display = 'none';
                     if(refIdDisplay) refIdDisplay.textContent = refID;
