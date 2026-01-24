@@ -365,11 +365,11 @@ footer {
 
 
 /* =========================================
-   10. FINAL MOBILE FIX (AGGRESSIVE)
+   10. FINAL MOBILE FIX (Z-INDEX CORRECTED)
    ========================================= */
 @media (max-width: 992px) {
     
-    /* 1. Header Layout - Force Space Between Logo and Hamburger */
+    /* 1. Header Layout */
     header { 
         padding: 15px 0; 
         position: fixed; 
@@ -386,12 +386,12 @@ footer {
         width: 100%;
     }
 
-    /* 2. THE MENU CONTAINER */
+    /* 2. THE MENU CONTAINER (Layer 9998) */
     .nav-links { 
-        /* Hide it by default so it doesn't overlap the logo */
+        /* Hide by default to prevent overlap mess */
         display: none; 
         
-        /* Mobile Layout Styling */
+        /* Mobile Layout */
         position: fixed; 
         top: 0; 
         left: 0; 
@@ -402,28 +402,31 @@ footer {
         align-items: center;
         justify-content: center;
         gap: 30px;
-        z-index: 9999;
         padding: 40px;
-        transition: opacity 0.3s ease;
+        
+        /* CRITICAL FIX: Lower than the toggle button */
+        z-index: 9998; 
     }
 
-    /* 3. THE ACTIVE STATE (This makes it open) */
+    /* 3. THE ACTIVE STATE (Show Forcefully) */
     .nav-links.active { 
-        /* !important forces it to show, overriding the 'none' above */
         display: flex !important; 
         opacity: 1;
     }
 
-    /* 4. Hamburger Button Styling */
+    /* 4. HAMBURGER BUTTON (Layer 9999 - TOPMOST) */
     .mobile-toggle { 
         display: block !important; 
-        z-index: 1001; 
         font-size: 2rem;
         background: none;
         border: none;
         color: var(--text-head);
         cursor: pointer;
-        margin-left: auto; /* Pushes button to far right */
+        margin-left: auto;
+        
+        /* CRITICAL FIX: Higher than the menu so it's clickable */
+        z-index: 9999; 
+        position: relative;
     }
 
     /* 5. Mobile Nav Items */
@@ -442,7 +445,7 @@ footer {
         margin-top: 20px;
     }
 
-    /* 6. Layout Stacking (Prevents Horizontal Scroll) */
+    /* 6. Layout Stacking */
     .hero-section { padding-top: 140px; padding-bottom: 60px; text-align: center; }
     
     .hero-split, .bento-grid, .card-grid, .footer-grid, 
