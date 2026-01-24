@@ -18,7 +18,6 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=Inter:wght@300;400;500;600&family=Poppins:wght@400;500;600;700;800&family=Source+Serif+4:opsz,wght@8..60,400;600;700&display=swap" rel="stylesheet">
     
-    <script src="assets/js/app.js" defer></script>
     <script data-goatcounter="https://mvnfinhub.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 
     <script>
@@ -230,19 +229,85 @@
         .delay-2 { transition-delay: 0.2s; }
         .delay-3 { transition-delay: 0.3s; }
 
+        /* ========================================================= 
+           MOBILE RESPONSIVE (CORRECTED & TESTED)
+           ========================================================= */
         @media (max-width: 992px) {
+            
+            /* HEADER: Set to Relative so it scrolls WITH the page */
+            header { 
+                position: relative !important; 
+                background: var(--bg-body); 
+                border-bottom: 1px solid var(--border);
+                padding: 15px 0;
+            }
+            
+            .mobile-toggle { 
+                display: block; 
+                z-index: 10001; 
+            }
+
+            /* HIDE NAV BY DEFAULT */
+            .nav-links { 
+                display: none !important; 
+            }
+
+            /* SHOW NAV WHEN ACTIVE */
+            .nav-links.active { 
+                display: flex !important; 
+                position: absolute; 
+                top: 100%; 
+                left: 0; 
+                width: 100%; 
+                background: var(--bg-card); 
+                flex-direction: column; 
+                align-items: center;
+                padding: 40px 20px; 
+                box-shadow: 0 20px 40px rgba(0,0,0,0.2); 
+                border-bottom: 1px solid var(--border);
+                z-index: 10005; /* FIX: Higher than Film Grain & Sticky Nav */
+                gap: 25px;
+            }
+
+            .nav-item { 
+                font-size: 1.2rem; 
+                width: 100%; 
+                text-align: center;
+                padding: 10px 0;
+                border-bottom: 1px solid rgba(0,0,0,0.05);
+            }
+            
+            .btn-nav {
+                width: 100%;
+                max-width: 200px;
+                text-align: center;
+                margin-top: 15px;
+                padding: 12px;
+            }
+
+            /* Page Specific Mobile Fixes */
             .hero-split { grid-template-columns: 1fr; gap: 40px; }
             .hero-title { font-size: 2.5rem; }
+            
+            /* Bento Grid Fixes */
             .bento-grid { grid-template-columns: 1fr; }
             .span-2, .span-3 { grid-column: auto; }
             .feature-card { grid-template-columns: 1fr; }
             .feature-card .card-image-slot { height: 250px; border-right: none; border-bottom: 1px solid var(--border); }
             .feature-card .card-content { padding: 30px; }
+            
             .category-bar { justify-content: flex-start; }
+            
             .footer-grid { grid-template-columns: 1fr; text-align: center; gap: 40px; }
             .footer-bottom { flex-direction: column; gap: 20px; }
             .mobile-toggle { display: block; }
             .nav-links { display: none; }
+        }
+
+        /* SAFETY: Ensure Desktop never shows hamburger */
+        @media (min-width: 993px) {
+            .mobile-toggle { display: none !important; }
+            .nav-links { display: flex !important; }
         }
     </style>
 </head>
@@ -569,9 +634,46 @@
         });
         window.dispatchEvent(new Event('scroll'));
 
-        // Mobile Menu
-        document.getElementById('mobile-menu-toggle').addEventListener('click', function() {
-            document.getElementById('nav-links').classList.toggle('active');
+        // --- NUCLEAR MENU FIX (Direct Function) ---
+        function toggleMobileMenu() {
+            const nav = document.getElementById('nav-links');
+            const btn = document.getElementById('mobile-menu-toggle');
+            
+            nav.classList.toggle('active');
+            
+            if (nav.classList.contains('active')) {
+                btn.textContent = '✕';
+                document.body.style.overflow = 'hidden'; 
+            } else {
+                btn.textContent = '☰';
+                document.body.style.overflow = 'auto'; 
+            }
+        }
+
+        // Close menu when clicking a link
+        document.addEventListener('DOMContentLoaded', function() {
+            const nav = document.getElementById('nav-links');
+            const btn = document.getElementById('mobile-menu-toggle');
+            
+            if(nav && btn) {
+                // Handle Link Clicks (Closing Menu for Internal Anchors too)
+                nav.querySelectorAll('a').forEach(link => {
+                    link.addEventListener('click', () => {
+                        nav.classList.remove('active');
+                        btn.textContent = '☰';
+                        document.body.style.overflow = 'auto';
+                    });
+                });
+
+                // Handle Outside Clicks
+                document.addEventListener('click', (e) => {
+                    if (nav.classList.contains('active') && !nav.contains(e.target) && !btn.contains(e.target)) {
+                        nav.classList.remove('active');
+                        btn.textContent = '☰';
+                        document.body.style.overflow = 'auto';
+                    }
+                });
+            }
         });
 
         // Sticky Nav & Active State
@@ -607,14 +709,16 @@
         let topicIndex = 0;
         const tickerElement = document.getElementById('live-topic-ticker');
         
-        setInterval(() => {
-            tickerElement.style.opacity = '0';
-            setTimeout(() => {
-                topicIndex = (topicIndex + 1) % topics.length;
-                tickerElement.innerText = topics[topicIndex];
-                tickerElement.style.opacity = '1';
-            }, 500);
-        }, 3000);
+        if(tickerElement) {
+            setInterval(() => {
+                tickerElement.style.opacity = '0';
+                setTimeout(() => {
+                    topicIndex = (topicIndex + 1) % topics.length;
+                    tickerElement.innerText = topics[topicIndex];
+                    tickerElement.style.opacity = '1';
+                }, 500);
+            }, 3000);
+        }
     </script>
 </body>
 </html>
