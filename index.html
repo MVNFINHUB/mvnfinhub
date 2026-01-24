@@ -739,6 +739,36 @@
                 }, 500);
             }, 3000); 
         }
-    </script>
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+    // Select button and menu securely
+    var btn = document.getElementById('mobile-menu-toggle') || document.querySelector('.mobile-toggle');
+    var nav = document.getElementById('nav-links') || document.querySelector('.nav-links');
+
+    if (btn && nav) {
+        console.log("Menu System Loaded"); // Debug check
+        
+        btn.addEventListener('click', function(e) {
+            e.preventDefault(); // Stop any default link behavior
+            e.stopPropagation(); // Stop clicks passing through
+            
+            // Toggle the menu
+            if (nav.style.display === 'flex' || nav.classList.contains('active')) {
+                nav.style.display = 'none';
+                nav.classList.remove('active');
+                btn.innerHTML = '&#9776;'; // Hamburger Icon
+                document.body.style.overflow = 'auto'; // Enable scrolling
+            } else {
+                nav.style.display = 'flex';
+                nav.classList.add('active');
+                btn.innerHTML = '&times;'; // Close X Icon
+                document.body.style.overflow = 'hidden'; // Disable scrolling
+            }
+        });
+    } else {
+        console.error("Critical: Menu ID/Class mismatch. Check HTML tags.");
+    }
+});
+</script>
 </body>
 </html>
