@@ -156,7 +156,6 @@ header {
     cursor: pointer !important;
     pointer-events: auto !important; /* Force clickability */
 }
-}
 
 /* --- 5. HERO SECTIONS --- */
 .hero-section { 
