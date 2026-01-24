@@ -146,6 +146,7 @@
         }
         .btn-nav:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(0,0,0,0.2); }
 
+        /* Default: Hidden on desktop */
         .mobile-toggle { display: none; font-size: 2rem; background: none; border: none; color: var(--text-head); cursor: pointer; z-index: 1002; }
 
         /* --- 4. HERO SECTION --- */
@@ -336,7 +337,7 @@
                 padding: 40px 20px; 
                 box-shadow: 0 20px 40px rgba(0,0,0,0.2); 
                 border-bottom: 1px solid var(--border);
-                z-index: 9999;
+                z-index: 10005; /* FIX: Higher than Film Grain (9999) */
                 gap: 25px;
             }
 
@@ -383,6 +384,12 @@
             .social-row { justify-content: center; }
             .footer-bottom { flex-direction: column; gap: 20px; text-align: center; }
             .footer-watermark { display: none; }
+        }
+
+        /* SAFETY: Ensure Desktop never shows hamburger */
+        @media (min-width: 993px) {
+            .mobile-toggle { display: none !important; }
+            .nav-links { display: flex !important; }
         }
     </style>
 </head>
@@ -690,12 +697,22 @@
             const btn = document.getElementById('mobile-menu-toggle');
             
             if(nav && btn) {
+                // Handle Link Clicks
                 nav.querySelectorAll('a').forEach(link => {
                     link.addEventListener('click', () => {
                         nav.classList.remove('active');
                         btn.textContent = '☰';
                         document.body.style.overflow = 'auto';
                     });
+                });
+
+                // Handle Outside Clicks
+                document.addEventListener('click', (e) => {
+                    if (nav.classList.contains('active') && !nav.contains(e.target) && !btn.contains(e.target)) {
+                        nav.classList.remove('active');
+                        btn.textContent = '☰';
+                        document.body.style.overflow = 'auto';
+                    }
                 });
             }
         });

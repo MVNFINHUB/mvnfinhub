@@ -45,25 +45,28 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
 
+   // ==========================================
+    // 2. MOBILE MENU LOGIC (RECTIFIED)
     // ==========================================
-    // 2. MOBILE MENU LOGIC (THE FIX)
-    // ==========================================
-    const menuToggle = document.getElementById('mobile-menu-toggle');
-    const navLinks = document.getElementById('nav-links');
+    /* MOBILE FIX: Updated selectors to match CSS classes (.mobile-toggle, .nav-links) */
+    const menuToggle = document.querySelector('.mobile-toggle') || document.getElementById('mobile-menu-toggle');
+    const navLinks = document.querySelector('.nav-links');
 
     if (menuToggle && navLinks) {
         // Toggle Open/Close
         menuToggle.addEventListener('click', (e) => {
-            e.stopPropagation(); // Prevent immediate closing
+            e.preventDefault();  /* FIX: Stops ghost clicks on touch */
+            e.stopPropagation(); /* FIX: Prevents bubbling */
+            
             navLinks.classList.toggle('active');
             
-            // Toggle Icon
+            // Toggle Icon & Scroll Lock
             if (navLinks.classList.contains('active')) {
                 menuToggle.textContent = '✕';
-                document.body.style.overflow = 'hidden'; // Lock scroll
+                document.body.style.overflow = 'hidden'; /* Lock background scroll */
             } else {
                 menuToggle.textContent = '☰';
-                document.body.style.overflow = 'auto'; // Unlock scroll
+                document.body.style.overflow = 'auto';
             }
         });
 

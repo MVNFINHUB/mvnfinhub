@@ -148,13 +148,17 @@ header {
 }
 .btn-nav:hover { transform: translateY(-2px); box-shadow: 0 10px 20px rgba(0,0,0,0.15); }
 
+/* --- REPLACE IN SECTION 4 --- */
+
 /* Mobile Menu Button */
 #mobile-menu-toggle, .mobile-toggle {
-    display: block !important;
-    z-index: 2147483647 !important; /* Maximum possible layer */
-    position: relative !important;
-    cursor: pointer !important;
-    pointer-events: auto !important; /* Force clickability */
+    display: none; /* MOBILE FIX: Hidden by default on Desktop */
+    z-index: 2147483647; /* Maximum possible layer */
+    position: relative;
+    cursor: pointer;
+    background: transparent;
+    border: none;
+    padding: 0;
 }
 
 /* --- 5. HERO SECTIONS --- */
@@ -366,16 +370,24 @@ footer {
 .status-badge { display: flex; align-items: center; gap: 8px; color: #10B981; font-weight: 600; }
 .status-ping { display: inline-block; width: 8px; height: 8px; background: #10B981; border-radius: 50%; box-shadow: 0 0 10px #10B981; }
 
+/* --- REPLACE ENTIRE SECTION 10 --- */
 
 /* =========================================
-   10. MOBILE MENU FIX (CORRECTED)
+   10. MOBILE MENU FIX (RECTIFIED)
    ========================================= */
 @media (max-width: 992px) {
     
-    /* 1. Header Layout - FIXED THE "STICKY NOT MOVING" ISSUE */
+    /* 1. FORCE SHOW HAMBURGER ON MOBILE */
+    #mobile-menu-toggle, .mobile-toggle {
+        display: block !important;
+        color: var(--text-head);
+        font-size: 1.8rem;
+    }
+
+    /* 2. Header Layout - SCROLL SAFE */
     header { 
         padding: 15px 0; 
-        position: relative !important; /* Changed from fixed to relative so it scrolls with page */
+        position: relative !important; 
         background: var(--bg-glass); 
         backdrop-filter: blur(12px);
         border-bottom: 1px solid var(--border);
@@ -383,53 +395,36 @@ footer {
     }
 
     .nav-flex {
-        display: flex !important;
-        justify-content: space-between !important;
-        align-items: center !important;
         width: 100%;
+        justify-content: space-between;
     }
 
-    /* 2. THE MENU CONTAINER - FIXED VISIBILITY ISSUE */
+    /* 3. MENU CONTAINER - HIDDEN BY DEFAULT */
     .nav-links { 
-        display: none !important; /* Ensure hidden by default */
-    }
-
-    /* 3. THE ACTIVE STATE - SHOWS MENU WHEN CLICKED */
-    .nav-links.active { 
-        display: flex !important; 
-        position: absolute;
-        top: 100%; /* Drop down directly below header */
-        left: 0;
+        display: none !important;
         width: 100%;
-        background-color: var(--bg-card); /* Solid background so it's readable */
+        position: absolute;
+        top: 100%;
+        left: 0;
+        background-color: var(--bg-card);
         border-bottom: 1px solid var(--border);
         box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-        flex-direction: column !important;
+        flex-direction: column;
         align-items: center;
-        justify-content: flex-start;
-        gap: 25px;
         padding: 40px 20px;
-        z-index: 9998; 
-        animation: slideDown 0.3s ease-out forwards;
+        gap: 25px;
     }
 
-    /* 4. HAMBURGER BUTTON */
-    .mobile-toggle { 
-        display: block !important; 
-        font-size: 1.8rem;
-        background: none;
-        border: none;
-        color: var(--text-head);
-        cursor: pointer;
-        z-index: 9999;
-        margin-left: auto;
+    /* 4. ACTIVE STATE - TRIGGERED BY JS */
+    .nav-links.active { 
+        display: flex !important; 
+        z-index: 10005 !important; /* Fix: Above Film Grain */
+        animation: slideDown 0.3s ease-out forwards;
     }
 
     /* 5. Mobile Nav Items */
     .nav-item { 
         font-size: 1.2rem; 
-        font-weight: 600; 
-        color: var(--text-head); 
         width: 100%;
         text-align: center;
         padding: 10px 0;
@@ -439,17 +434,11 @@ footer {
     .btn-nav { 
         width: 100%; 
         max-width: 250px;
-        text-align: center; 
-        padding: 12px; 
         margin-top: 10px;
     }
 
-    /* 6. Layout Stacking & Spacing */
-    .hero-section { 
-        padding-top: 60px; /* Reduced padding since header is relative */
-        padding-bottom: 60px; 
-        text-align: center; 
-    }
+    /* 6. Mobile Layout Adjustments */
+    .hero-section { padding: 60px 0; text-align: center; }
     
     .hero-split, .bento-grid, .card-grid, .footer-grid, 
     .ethics-grid, .highlight-grid, .feature-card { 
@@ -457,30 +446,15 @@ footer {
         gap: 40px; 
     }
 
-    /* 7. Footer Optimization */
-    .footer-grid { 
+    /* 7. Footer Mobile Stack */
+    .footer-grid, .footer-bottom { 
         text-align: center; 
-        gap: 50px; 
-    }
-    
-    .footer-desc {
-        margin: 0 auto 30px auto; 
-        max-width: 400px;
-    }
-
-    .footer-links {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 15px;
-    }
-
-    .footer-bottom { 
+        display: flex; 
         flex-direction: column; 
-        gap: 20px; 
-        text-align: center;
+        align-items: center; 
     }
     
+    .footer-links { align-items: center; }
     .footer-watermark { display: none; }
     
     /* 8. Utility Fixes */
