@@ -363,42 +363,128 @@ footer {
 .status-badge { display: flex; align-items: center; gap: 8px; color: #10B981; font-weight: 600; }
 .status-ping { display: inline-block; width: 8px; height: 8px; background: #10B981; border-radius: 50%; box-shadow: 0 0 10px #10B981; }
 
-/* --- 10. CRITICAL MOBILE FIXES --- */
-@media (max-width: 992px) {
-    header { padding: 15px 0; }
-    
-    /* Fixed Full-Screen Menu */
-    .mobile-toggle { display: block; }
-    .nav-links { 
-        position: fixed; top: 0; left: 0; width: 100%; height: 100vh;
-        background: var(--bg-card); flex-direction: column; align-items: center;
-        justify-content: center; gap: 30px; z-index: 1000;
-        transform: translateY(-100%); transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-        padding: 40px; opacity: 0;
-    }
-    .nav-links.active { transform: translateY(0); opacity: 1; }
-    .nav-item { font-size: 1.5rem; font-weight: 700; color: var(--text-head); }
-    .btn-nav { font-size: 1.2rem; padding: 15px 40px; width: 100%; text-align: center; }
 
-    /* Stack Everything */
-    .hero-split, .bento-grid, .card-grid, .footer-grid, .ethics-grid, .highlight-grid, .feature-card {
-        grid-template-columns: 1fr; gap: 40px;
+/* =========================================
+   10. BULLETPROOF MOBILE FIX (v2026)
+   ========================================= */
+@media (max-width: 992px) {
+    
+    /* 1. Reset Header Layout */
+    header { 
+        padding: 15px 0; 
+        position: fixed; /* Force fixed to stay at top */
+        background: var(--bg-glass); /* Ensure background exists */
+        backdrop-filter: blur(12px);
+        border-bottom: 1px solid var(--border);
     }
+
+    /* 2. Mobile Toggle Button (The Hamburger) */
+    .mobile-toggle { 
+        display: block !important; 
+        z-index: 10001; /* Must be HIGHER than the menu */
+        position: relative;
+        font-size: 1.8rem;
+        background: none;
+        border: none;
+        color: var(--text-head);
+        cursor: pointer;
+        padding: 5px;
+    }
+
+    /* 3. The Menu Container (Full Screen Overlay) */
+    .nav-links { 
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 30px;
+        
+        /* Positioning logic */
+        position: fixed; 
+        top: 0; 
+        left: 0; 
+        width: 100%; 
+        height: 100vh; 
+        
+        /* Appearance */
+        background-color: var(--bg-body); /* Solid color, no glass */
+        z-index: 10000; /* High Z-Index */
+        padding: 40px;
+        
+        /* Animation State: HIDDEN */
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none; /* Click-through when closed */
+        transform: translateY(-20px);
+        transition: all 0.3s ease-in-out;
+    }
+
+    /* 4. Active State (When Open) */
+    .nav-links.active { 
+        opacity: 1; 
+        visibility: visible; 
+        pointer-events: auto; /* Re-enable clicks */
+        transform: translateY(0);
+    }
+
+    /* 5. Nav Items Styling */
+    .nav-item { 
+        font-size: 1.5rem; 
+        font-weight: 700; 
+        color: var(--text-head); 
+        opacity: 1;
+    }
+    
+    .btn-nav { 
+        width: 100%; 
+        text-align: center; 
+        padding: 15px; 
+        font-size: 1.1rem;
+        margin-top: 20px;
+    }
+
+    /* 6. Fix Hero Spacing (Prevent Overlap) */
+    .hero-section { 
+        padding-top: 140px; /* Push down content so header doesn't cover it */
+        padding-bottom: 60px;
+        text-align: center;
+    }
+    
+    .hero-split, 
+    .bento-grid, 
+    .card-grid, 
+    .footer-grid, 
+    .ethics-grid, 
+    .highlight-grid,
+    .feature-card { 
+        grid-template-columns: 1fr !important; 
+        gap: 40px; 
+    }
+
+    /* 7. General Element Fixes */
+    .hero-title { font-size: 2.4rem; }
     .hero-btns { justify-content: center; width: 100%; }
-    .btn-primary, .btn-outline { width: 100%; justify-content: center; }
+    .btn-xl, .btn-primary, .btn-outline { width: 100%; justify-content: center; }
     
-    /* Typography Scaling */
-    .hero-title { font-size: 2.5rem; }
-    .hero-section { padding: 120px 0 60px; text-align: center; }
-    .hero-visual { height: 280px; transform: none !important; margin-bottom: 30px; }
+    .span-2, .span-3 { grid-column: auto; }
     
-    /* Footer stacking */
+    .hero-visual { 
+        height: 250px; 
+        transform: none !important; 
+        margin-bottom: 30px; 
+    }
+    
     .footer-grid { text-align: center; }
-    .footer-bottom { flex-direction: column; gap: 20px; }
-    .footer-watermark { display: none; } /* Remove massive text on mobile */
+    .footer-bottom { flex-direction: column; gap: 20px; text-align: center; }
     .social-row { justify-content: center; }
+    .footer-watermark { display: none; }
     
-    /* Fix sticky nav on mobile */
-    .category-bar-wrapper { top: 10px; }
-    .category-bar { border-radius: 0; border-left: none; border-right: none; margin: 0 -25px; width: calc(100% + 50px); padding: 10px 20px; }
+    /* 8. Sticky Nav Fix (Insights) */
+    .category-bar-wrapper { top: 70px; padding: 0 15px; }
+    .category-bar { 
+        margin: 0; 
+        width: 100%; 
+        border-radius: 12px;
+        justify-content: flex-start; /* Allow horizontal scroll */
+    }
 }
