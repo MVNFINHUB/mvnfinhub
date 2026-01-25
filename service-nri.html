@@ -73,7 +73,7 @@
             transition: background 0.3s ease;
         }
 
-        /* WORD BREAK FIX: Ensures long technical words don't overflow on mobile */
+        /* WORD BREAK FIX: Applied globally to headers */
         h1, h2, h3, h4, p, li, a { 
             overflow-wrap: break-word; 
             word-wrap: break-word; 
@@ -190,9 +190,6 @@
             display: inline-block; padding: 4px 12px; border-radius: 50px;
             font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px;
             margin-left: 10px; vertical-align: middle; background: var(--accent); color: white;
-            /* Mobile Fix for Tags */
-            white-space: normal; 
-            margin-top: 5px;
         }
 
         /* FOOTER */
@@ -287,6 +284,27 @@
             .footer-grid { grid-template-columns: 1fr; text-align: center; gap: 40px; }
             .footer-col { display: flex; flex-direction: column; align-items: center; }
             .footer-bottom { flex-direction: column; gap: 20px; }
+
+            /* --- FIX FOR TITLE & BADGE OVERLAP --- */
+            .section-title {
+                flex-wrap: wrap; /* Allows text and badge to wrap comfortably */
+                line-height: 1.3;
+                font-size: 1.6rem; /* Slightly smaller to fit better */
+            }
+            
+            .tag-pill {
+                margin-left: 0;
+                margin-top: 8px; /* Give breathing room from text */
+                white-space: nowrap; 
+                align-self: flex-start;
+            }
+            
+            /* Explicitly allow breaking of long words inside flex */
+            .section-title span:not(.tag-pill) {
+                word-break: break-word;
+                overflow-wrap: break-word;
+                min-width: 0; /* Critical for flex child wrapping */
+            }
         }
 
         /* SAFETY: Ensure Desktop never shows hamburger */
@@ -350,7 +368,6 @@
                 
                 <div class="hero-visual reveal delay-1">
                     <img src="assets/images/service-nri.png" alt="NRI Documentation Support" fetchpriority="high" decoding="async">
-                    
                 </div>
 
                 <div class="content-grid">
