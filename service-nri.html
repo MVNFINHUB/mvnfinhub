@@ -203,6 +203,13 @@
         .reveal.active { opacity: 1; transform: translateY(0); }
         .delay-1 { transition-delay: 0.1s; }
 
+        .theme-btn {
+            background: rgba(255, 255, 255, 0.1); border: 1px solid var(--border);
+            color: var(--text-head); padding: 8px 12px; border-radius: 50px;
+            cursor: pointer; transition: 0.3s; font-size: 1rem; margin-left: 10px;
+        }
+        .theme-btn:hover { background: var(--accent-glow); border-color: var(--accent); }
+
         @media (max-width: 992px) {
             /* MOBILE LAYOUT FIXES */
             .hero-title { font-size: 2.2rem; }
@@ -236,6 +243,16 @@
                 gap: 20px;
             }
         }
+
+        /* --- EXTRA MOBILE FIXES (PHONES) --- */
+        @media (max-width: 480px) {
+            .hero-section { padding-top: 100px; padding-bottom: 60px; }
+            .hero-title { font-size: 1.8rem; }
+            .container { padding: 0 20px; }
+            .section-title { font-size: 1.5rem; flex-wrap: wrap; }
+            .tag-pill { margin-left: 0; margin-top: 5px; display: table; }
+            .card-content { padding: 20px; }
+        }
     </style>
 </head>
 <body>
@@ -247,7 +264,9 @@
                 <div class="brand-text"><span class="text-mvn">MVN</span><span class="text-finhub">FinHub</span></div>
             </a>
             
-            <button class="mobile-toggle" id="mobile-menu-toggle" aria-label="Menu" onclick="toggleMobileMenu(event)">☰</button>
+            <div style="display: flex; align-items: center;">
+                <button class="mobile-toggle" id="mobile-menu-toggle" aria-label="Menu" onclick="toggleMobileMenu(event)">☰</button>
+            </div>
             
             <nav class="nav-links" id="nav-links">
                 <a href="index.html" class="nav-item">Home</a>
@@ -543,29 +562,35 @@
     </footer>
 
     <script>
-        function toggleTheme() {
-            const html = document.documentElement;
-            const btn = document.querySelector('.theme-btn');
-            if (html.getAttribute('data-theme') === 'dark') {
-                html.setAttribute('data-theme', 'light'); localStorage.setItem('theme', 'light'); btn.textContent = '🌙';
-            } else {
-                html.setAttribute('data-theme', 'dark'); localStorage.setItem('theme', 'dark'); btn.textContent = '☀️';
+        // Reveal Animations
+        function reveal() {
+            var reveals = document.querySelectorAll(".reveal");
+            for (var i = 0; i < reveals.length; i++) {
+                var windowHeight = window.innerHeight;
+                var elementTop = reveals[i].getBoundingClientRect().top;
+                var elementVisible = 100;
+                if (elementTop < windowHeight - elementVisible) {
+                    reveals[i].classList.add("active");
+                }
             }
         }
+        window.addEventListener("scroll", reveal);
+        // Trigger once on load
+        reveal();
 
-        const reveals = document.querySelectorAll(".reveal");
-        window.addEventListener('scroll', () => {
-            reveals.forEach(el => {
-                const rect = el.getBoundingClientRect();
-                if (rect.top < window.innerHeight - 100) el.classList.add("active");
-            });
-        });
-        window.dispatchEvent(new Event('scroll'));
+        // Mobile Menu Toggle
+        function toggleMobileMenu(e) {
+            e.preventDefault();
+            const nav = document.getElementById('nav-links');
+            nav.classList.toggle('active');
+        }
 
-        // MENU FUNCTION RETAINED AS PER INSTRUCTION
-        function toggleMobileMenu(event) {
-            if (event) event.stopPropagation();
-            document.getElementById('nav-links').classList.toggle('active');
+        // Theme Toggle
+        function toggleTheme() {
+            const current = document.documentElement.getAttribute('data-theme');
+            const target = current === 'dark' ? 'light' : 'dark';
+            document.documentElement.setAttribute('data-theme', target);
+            localStorage.setItem('theme', target);
         }
     </script>
 </body>
