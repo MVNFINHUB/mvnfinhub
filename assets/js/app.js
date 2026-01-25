@@ -45,47 +45,61 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
 
-   // ==========================================
-    // 2. MOBILE MENU LOGIC (RECTIFIED)
+    // ==========================================
+    // 2. MOBILE MENU LOGIC (SURGICAL FIX)
     // ==========================================
     /* MOBILE FIX: Targeted .mobile-toggle and .nav-links for strict CSS compatibility */
     const menuToggle = document.querySelector('.mobile-toggle') || document.getElementById('mobile-menu-toggle');
     const navLinks = document.querySelector('.nav-links');
 
-    if (menuToggle && navLinks) {
-        // Toggle Open/Close
-        menuToggle.addEventListener('click', (e) => {
-            /* MOBILE FIX: Prevent default and stop propagation to fix tap issues on touch screens */
-            e.preventDefault();  
-            e.stopPropagation(); 
-            
-            navLinks.classList.toggle('active');
-            
-            // Toggle Icon & Scroll Lock
-            if (navLinks.classList.contains('active')) {
-                menuToggle.textContent = '✕';
-                document.body.style.overflow = 'hidden'; /* MOBILE FIX: Prevent background scrolling when menu is open */
-            } else {
-                menuToggle.textContent = '☰';
-                document.body.style.overflow = 'auto';
-            }
-        });
+    // SAFETY: Force reset body scroll on page load (Fixes "Stuck" scroll on Back Button)
+    document.body.style.overflow = '';
 
-        // Close when clicking ANY link (Critical for UX)
-        navLinks.querySelectorAll('a').forEach(link => {
-            link.addEventListener('click', () => {
+    if (menuToggle && navLinks) {
+        
+        // Internal Toggle Function to ensure state consistency
+        const setMenuState = (isOpen) => {
+            if (isOpen) {
+                navLinks.classList.add('active');
+                menuToggle.textContent = '✕';
+                menuToggle.setAttribute('aria-expanded', 'true');
+                document.body.style.overflow = 'hidden'; /* Lock Scroll */
+            } else {
                 navLinks.classList.remove('active');
                 menuToggle.textContent = '☰';
-                document.body.style.overflow = 'auto';
+                menuToggle.setAttribute('aria-expanded', 'false');
+                document.body.style.overflow = ''; /* Unlock Scroll */
+            }
+        };
+
+        // 1. Toggle Open/Close on Click
+        menuToggle.addEventListener('click', (e) => {
+            e.preventDefault();  
+            e.stopPropagation();
+            const isCurrentlyOpen = navLinks.classList.contains('active');
+            setMenuState(!isCurrentlyOpen);
+        });
+
+        // 2. Close when clicking ANY link (Critical for UX)
+        navLinks.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                setMenuState(false);
             });
         });
 
-        // Close when clicking OUTSIDE the menu
+        // 3. Close when clicking OUTSIDE the menu
         document.addEventListener('click', (e) => {
-            if (navLinks.classList.contains('active') && !navLinks.contains(e.target) && !menuToggle.contains(e.target)) {
-                navLinks.classList.remove('active');
-                menuToggle.textContent = '☰';
-                document.body.style.overflow = 'auto';
+            if (navLinks.classList.contains('active') && 
+                !navLinks.contains(e.target) && 
+                !menuToggle.contains(e.target)) {
+                setMenuState(false);
+            }
+        });
+
+        // 4. SAFETY: Auto-close if screen resizes to Desktop (Prevents broken layout)
+        window.addEventListener('resize', () => {
+            if (window.innerWidth > 992 && navLinks.classList.contains('active')) {
+                setMenuState(false);
             }
         });
     }
@@ -143,7 +157,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // ==========================================
     const SUPABASE_URL = "https://fviufivewglglnxhlmmf.supabase.co";      
     const SUPABASE_KEY = "sb_publishable_HYE7g0GyJbUfmldKTTAbeA_OUdc0Rah";
-    
+
     const enquiryForm = document.getElementById('enquiryForm');
     const successMessage = document.getElementById('successMessage');
     const refIdDisplay = document.getElementById('refIdDisplay');
