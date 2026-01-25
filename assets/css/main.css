@@ -462,3 +462,41 @@ footer {
     .category-bar-wrapper { top: 0; padding: 0 15px; }
     .category-bar { margin: 0; width: 100%; border-radius: 12px; }
 }
+
+/* =========================================
+   11. PRODUCTION PATCHES (MOBILE ADDITIONS)
+   ========================================= */
+
+/* Prevent background scroll when menu is open */
+body.menu-open {
+    overflow: hidden !important;
+    height: 100vh;
+}
+
+@media (max-width: 768px) {
+    /* Strict Mobile-First Layout Corrections */
+    .container { padding: 0 20px; }
+    
+    /* Hero Visual Resize */
+    .hero-visual {
+        height: 300px;
+        margin-top: 20px;
+        transform: none !important; /* Disable 3D tilt on phone for performance */
+    }
+    
+    /* Typography Overrides */
+    .hero-title { font-size: 2.2rem; }
+    .hero-subtitle { font-size: 1rem; margin-bottom: 30px; }
+    
+    /* Grid Corrections */
+    .footer-grid, .card-grid, .bento-grid, .hero-split {
+        grid-template-columns: 1fr !important;
+    }
+    
+    /* Button Stacking */
+    .hero-btns {
+        flex-direction: column;
+        width: 100%;
+    }
+    .btn-xl { width: 100%; justify-content: center; }
+}

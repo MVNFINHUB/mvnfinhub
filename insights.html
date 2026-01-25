@@ -234,88 +234,94 @@
            ========================================================= */
         @media (max-width: 992px) {
             
-            /* HEADER: Set to Relative so it scrolls WITH the page */
+            /* 1. Header Layout - SCROLL SAFE */
             header { 
+                padding: 15px 0; 
                 position: relative !important; 
                 background: var(--bg-body); 
                 border-bottom: 1px solid var(--border);
-                padding: 15px 0;
-            }
-            
-            .mobile-toggle { 
-                display: block; 
-                z-index: 10001; 
             }
 
-            /* HIDE NAV BY DEFAULT */
+            .nav-flex {
+                width: 100%;
+                justify-content: space-between;
+            }
+
+            /* 2. MENU CONTAINER - HIDDEN BY DEFAULT */
             .nav-links { 
-                display: none !important; 
+                display: none !important;
+                width: 100%;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                background-color: var(--bg-card);
+                border-bottom: 1px solid var(--border);
+                box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+                flex-direction: column;
+                align-items: center;
+                padding: 40px 20px;
+                gap: 25px;
             }
 
-            /* SHOW NAV WHEN ACTIVE */
+            /* 3. ACTIVE STATE - TRIGGERED BY JS */
             .nav-links.active { 
                 display: flex !important; 
-                position: absolute; 
-                top: 100%; 
-                left: 0; 
-                width: 100%; 
-                background: var(--bg-card); 
-                flex-direction: column; 
-                align-items: center;
-                padding: 40px 20px; 
-                box-shadow: 0 20px 40px rgba(0,0,0,0.2); 
-                border-bottom: 1px solid var(--border);
-                z-index: 10005; /* FIX: Higher than Film Grain & Sticky Nav */
-                gap: 25px;
+                z-index: 10005 !important; 
             }
 
             .nav-item { 
                 font-size: 1.2rem; 
-                width: 100%; 
+                width: 100%;
                 text-align: center;
                 padding: 10px 0;
                 border-bottom: 1px solid rgba(0,0,0,0.05);
             }
             
-            .btn-nav {
-                width: 100%;
-                max-width: 200px;
-                text-align: center;
-                margin-top: 15px;
-                padding: 12px;
+            .mobile-toggle { 
+                display: block; 
+                padding: 5px; /* Touch target */
+                z-index: 10001;
             }
 
-            /* Page Specific Mobile Fixes */
+            /* 4. Page Specific Mobile Fixes */
+            .hero-section { padding: 40px 0 80px; text-align: center; }
             .hero-split { grid-template-columns: 1fr; gap: 40px; }
-            .hero-title { font-size: 2.5rem; }
+            .hero-title { font-size: 2.2rem; }
             
             /* Bento Grid Fixes */
             .bento-grid { grid-template-columns: 1fr; }
             .span-2, .span-3 { grid-column: auto; }
+            
+            /* Feature Card Collapse */
             .feature-card { grid-template-columns: 1fr; }
-            .feature-card .card-image-slot { height: 250px; border-right: none; border-bottom: 1px solid var(--border); }
+            .feature-card .card-image-slot { 
+                height: 250px; 
+                margin: 0;
+                border-right: none; 
+                border-bottom: 1px solid var(--border); 
+            }
             .feature-card .card-content { padding: 30px; }
             
-            .category-bar { justify-content: flex-start; }
+            /* Scrollable Bar Padding */
+            .category-bar { justify-content: flex-start; padding-right: 40px; }
             
-            /* Force Footer to Stack with Flex */
-            .footer-grid { 
-                display: flex !important;
-                flex-direction: column;
-                align-items: center;
-                text-align: center;
-                gap: 40px; 
-            }
-            .footer-bottom { flex-direction: column; gap: 20px; }
+            /* Footer */
+            .footer-grid { grid-template-columns: 1fr; text-align: center; gap: 40px; }
             .footer-col { display: flex; flex-direction: column; align-items: center; }
-            .social-row { justify-content: center; }
-            .footer-watermark { display: none; }
+            .footer-bottom { flex-direction: column; gap: 20px; }
         }
 
         /* SAFETY: Ensure Desktop never shows hamburger */
         @media (min-width: 993px) {
             .mobile-toggle { display: none !important; }
             .nav-links { display: flex !important; }
+        }
+
+        /* --- MOBILE-ONLY OVERRIDES (STRICT) --- */
+        body.menu-open {
+            overflow: hidden !important;
+            position: fixed;
+            width: 100%;
         }
     </style>
 </head>
@@ -328,9 +334,7 @@
                 <div class="brand-text"><span class="text-mvn">MVN</span><span class="text-finhub">FinHub</span></div>
             </a>
             
-            <button class="mobile-toggle" id="mobile-menu-toggle" aria-label="Menu" onclick="toggleMobileMenu()">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
-            </button>
+            <button class="mobile-toggle" id="mobile-menu-toggle" aria-label="Menu">☰</button>
 
             <nav class="nav-links" id="nav-links">
                 <a href="index.html" class="nav-item">Home</a>
@@ -637,52 +641,64 @@
             }
         }
 
-        const reveals = document.querySelectorAll(".reveal");
-        window.addEventListener('scroll', () => {
-            reveals.forEach(el => {
-                const rect = el.getBoundingClientRect();
-                if (rect.top < window.innerHeight - 100) el.classList.add("active");
-            });
-        });
-        window.dispatchEvent(new Event('scroll'));
+        // --- UNIFIED MOBILE NAV LOGIC (PRODUCTION FIX) ---
+        document.addEventListener('DOMContentLoaded', () => {
+            const menuToggle = document.getElementById('mobile-menu-toggle');
+            const navLinks = document.getElementById('nav-links');
+            const body = document.body;
 
-        // --- NUCLEAR MENU FIX (Direct Function) ---
-        function toggleMobileMenu() {
-            const nav = document.getElementById('nav-links');
-            const btn = document.getElementById('mobile-menu-toggle');
-            
-            nav.classList.toggle('active');
-            
-            if (nav.classList.contains('active')) {
-                btn.textContent = '✕';
-                document.body.style.overflow = 'hidden'; 
-            } else {
-                btn.textContent = '☰';
-                document.body.style.overflow = 'auto'; 
-            }
-        }
+            if (menuToggle && navLinks) {
+                
+                // Toggle Function
+                const toggleMenu = (event) => {
+                    if(event) {
+                        event.preventDefault();
+                        event.stopPropagation();
+                    }
+                    
+                    const isOpen = navLinks.classList.contains('active');
+                    
+                    if (isOpen) {
+                        closeMenu();
+                    } else {
+                        openMenu();
+                    }
+                };
 
-        // Close menu when clicking a link
-        document.addEventListener('DOMContentLoaded', function() {
-            const nav = document.getElementById('nav-links');
-            const btn = document.getElementById('mobile-menu-toggle');
-            
-            if(nav && btn) {
-                // Handle Link Clicks (Closing Menu for Internal Anchors too)
-                nav.querySelectorAll('a').forEach(link => {
-                    link.addEventListener('click', () => {
-                        nav.classList.remove('active');
-                        btn.textContent = '☰';
-                        document.body.style.overflow = 'auto';
-                    });
+                const openMenu = () => {
+                    navLinks.classList.add('active');
+                    body.classList.add('menu-open'); // CSS handles scroll lock
+                    menuToggle.innerHTML = '✕';
+                    menuToggle.setAttribute('aria-expanded', 'true');
+                };
+
+                const closeMenu = () => {
+                    navLinks.classList.remove('active');
+                    body.classList.remove('menu-open');
+                    menuToggle.innerHTML = '☰';
+                    menuToggle.setAttribute('aria-expanded', 'false');
+                };
+
+                // Listeners
+                menuToggle.addEventListener('click', toggleMenu);
+
+                // Close on Link Click
+                navLinks.querySelectorAll('a').forEach(link => {
+                    link.addEventListener('click', closeMenu);
                 });
 
-                // Handle Outside Clicks
-                document.addEventListener('click', (e) => {
-                    if (nav.classList.contains('active') && !nav.contains(e.target) && !btn.contains(e.target)) {
-                        nav.classList.remove('active');
-                        btn.textContent = '☰';
-                        document.body.style.overflow = 'auto';
+                // Close on Outside Click
+                document.addEventListener('click', (event) => {
+                    const isClickInside = navLinks.contains(event.target) || menuToggle.contains(event.target);
+                    if (!isClickInside && navLinks.classList.contains('active')) {
+                        closeMenu();
+                    }
+                });
+
+                // Safety Resize
+                window.addEventListener('resize', () => {
+                    if (window.innerWidth > 992 && navLinks.classList.contains('active')) {
+                        closeMenu();
                     }
                 });
             }
@@ -690,7 +706,7 @@
 
         // Sticky Nav & Active State
         const sections = document.querySelectorAll('.insight-zone');
-        const navLinks = document.querySelectorAll('.cat-btn');
+        const catLinks = document.querySelectorAll('.cat-btn');
 
         window.addEventListener('scroll', () => {
             let current = '';
@@ -701,7 +717,7 @@
                 }
             });
 
-            navLinks.forEach(link => {
+            catLinks.forEach(link => {
                 link.classList.remove('active');
                 if (link.getAttribute('href').includes(current)) {
                     link.classList.add('active');
@@ -709,7 +725,17 @@
             });
         });
 
-        // Live Ticker Logic
+        // Scroll Reveal
+        const reveals = document.querySelectorAll(".reveal");
+        window.addEventListener('scroll', () => {
+            reveals.forEach(el => {
+                const rect = el.getBoundingClientRect();
+                if (rect.top < window.innerHeight - 100) el.classList.add("active");
+            });
+        });
+        window.dispatchEvent(new Event('scroll'));
+
+        // Live Ticker
         const topics = [
             "System Architecture", 
             "Market Dynamics", 

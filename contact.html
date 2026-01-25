@@ -290,7 +290,11 @@
                 color: var(--text-main); /* Ensure visibility on mobile */
             }
             
-            .mobile-toggle { display: block; }
+            .mobile-toggle { 
+                display: block; 
+                padding: 5px; /* Touch target */
+                z-index: 10001;
+            }
 
             /* 4. Page Specific Mobile Fixes */
             .contact-grid { grid-template-columns: 1fr; gap: 40px; }
@@ -306,6 +310,13 @@
         @media (min-width: 993px) {
             .mobile-toggle { display: none !important; }
             .nav-links { display: flex !important; }
+        }
+
+        /* --- MOBILE-ONLY OVERRIDES (STRICT) --- */
+        body.menu-open {
+            overflow: hidden !important;
+            position: fixed;
+            width: 100%;
         }
     </style>
     
@@ -334,7 +345,9 @@
                 <div class="logo-icon-wrapper"><img src="assets/images/logo-header.png" alt="MVN Logo"></div>
                 <div class="brand-text"><span class="text-mvn">MVN</span><span class="text-finhub">FinHub</span></div>
             </a>
+            
             <button class="mobile-toggle" id="mobile-menu-toggle" aria-label="Menu">☰</button>
+            
             <nav class="nav-links" id="nav-links">
                 <a href="index.html" class="nav-item">Home</a>
                 <a href="services.html" class="nav-item">Services</a>
@@ -569,51 +582,69 @@
         });
         window.dispatchEvent(new Event('scroll'));
 
-        // --- NUCLEAR MENU FIX (Direct Function) ---
-        function toggleMobileMenu() {
-            const nav = document.getElementById('nav-links');
-            const btn = document.getElementById('mobile-menu-toggle');
-            
-            nav.classList.toggle('active');
-            
-            if (nav.classList.contains('active')) {
-                btn.textContent = '✕';
-                document.body.style.overflow = 'hidden'; 
-            } else {
-                btn.textContent = '☰';
-                document.body.style.overflow = 'auto'; 
-            }
-        }
+        // --- UNIFIED MOBILE NAV LOGIC (PRODUCTION FIX) ---
+        document.addEventListener('DOMContentLoaded', () => {
+            const menuToggle = document.getElementById('mobile-menu-toggle');
+            const navLinks = document.getElementById('nav-links');
+            const body = document.body;
 
-        // Close menu when clicking a link
-        document.addEventListener('DOMContentLoaded', function() {
-            const nav = document.getElementById('nav-links');
-            const btn = document.getElementById('mobile-menu-toggle');
-            
-            if(nav && btn) {
-                // Event Listener for the button
-                btn.addEventListener('click', toggleMobileMenu);
+            if (menuToggle && navLinks) {
+                
+                // Toggle Function
+                const toggleMenu = (event) => {
+                    if(event) {
+                        event.preventDefault();
+                        event.stopPropagation();
+                    }
+                    
+                    const isOpen = navLinks.classList.contains('active');
+                    
+                    if (isOpen) {
+                        closeMenu();
+                    } else {
+                        openMenu();
+                    }
+                };
 
-                // Handle Link Clicks
-                nav.querySelectorAll('a').forEach(link => {
-                    link.addEventListener('click', () => {
-                        nav.classList.remove('active');
-                        btn.textContent = '☰';
-                        document.body.style.overflow = 'auto';
-                    });
+                const openMenu = () => {
+                    navLinks.classList.add('active');
+                    body.classList.add('menu-open'); // CSS handles scroll lock
+                    menuToggle.innerHTML = '✕';
+                    menuToggle.setAttribute('aria-expanded', 'true');
+                };
+
+                const closeMenu = () => {
+                    navLinks.classList.remove('active');
+                    body.classList.remove('menu-open');
+                    menuToggle.innerHTML = '☰';
+                    menuToggle.setAttribute('aria-expanded', 'false');
+                };
+
+                // Listeners
+                menuToggle.addEventListener('click', toggleMenu);
+
+                // Close on Link Click
+                navLinks.querySelectorAll('a').forEach(link => {
+                    link.addEventListener('click', closeMenu);
                 });
 
-                // Handle Outside Clicks
-                document.addEventListener('click', (e) => {
-                    if (nav.classList.contains('active') && !nav.contains(e.target) && !btn.contains(e.target)) {
-                        nav.classList.remove('active');
-                        btn.textContent = '☰';
-                        document.body.style.overflow = 'auto';
+                // Close on Outside Click
+                document.addEventListener('click', (event) => {
+                    const isClickInside = navLinks.contains(event.target) || menuToggle.contains(event.target);
+                    if (!isClickInside && navLinks.classList.contains('active')) {
+                        closeMenu();
+                    }
+                });
+
+                // Safety Resize
+                window.addEventListener('resize', () => {
+                    if (window.innerWidth > 992 && navLinks.classList.contains('active')) {
+                        closeMenu();
                     }
                 });
             }
 
-            // Form Logic (Preserved)
+            // Form Logic (Preserved from original)
             const form = document.getElementById('enquiryForm');
             if(form) {
                 form.addEventListener('submit', (e) => {

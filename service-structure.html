@@ -109,14 +109,7 @@
         .btn-nav { background: var(--text-head); color: var(--bg-body) !important; padding: 8px 22px; border-radius: 50px; font-family: var(--font-ui); font-weight: 600; font-size: 0.85rem; box-shadow: 0 4px 20px rgba(0,0,0,0.1); transition: 0.3s; }
         .btn-nav:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(0,0,0,0.2); }
         
-        /* ----------------------------------------------------
-           CSS-ONLY MOBILE MENU LOGIC 
-           ---------------------------------------------------- */
-        /* 1. Hide the checkbox input */
-        #mobile-menu-checkbox { display: none; }
-
-        /* 2. Style the Label to look like the Hamburger Button */
-        .mobile-toggle-label { display: none; font-size: 1.5rem; background: none; border: none; color: var(--text-head); cursor: pointer; z-index: 10001; user-select: none; }
+        .mobile-toggle { display: none; font-size: 1.5rem; background: none; border: none; color: var(--text-head); cursor: pointer; }
 
         /* --- 4. HERO SECTION --- */
         .hero-section { padding: 140px 0 80px; background: var(--hero-gradient); position: relative; overflow: hidden; text-align: center; clip-path: polygon(0 0, 100% 0, 100% 95%, 0 100%); }
@@ -209,22 +202,22 @@
         .delay-3 { transition-delay: 0.3s; }
 
         /* ========================================================= 
-           MOBILE RESPONSIVE (CSS-ONLY MENU FIX)
+           MOBILE RESPONSIVE (CORRECTED & TESTED)
            ========================================================= */
         @media (max-width: 992px) {
             
-            /* HEADER: Relative & High Z-Index */
+            /* HEADER: Set to Relative so it scrolls WITH the page */
             header { 
                 position: relative !important; 
                 background: var(--bg-body); 
                 border-bottom: 1px solid var(--border);
                 padding: 15px 0;
-                z-index: 10000 !important;
             }
             
-            /* SHOW THE HAMBURGER LABEL */
-            .mobile-toggle-label { 
-                display: block !important; 
+            .mobile-toggle { 
+                display: block; 
+                z-index: 10001; 
+                padding: 5px; /* Touch target */
             }
 
             /* HIDE NAV BY DEFAULT */
@@ -232,8 +225,8 @@
                 display: none !important; 
             }
 
-            /* --- THE CSS LOGIC (CHECKED = OPEN) --- */
-            #mobile-menu-checkbox:checked ~ .nav-links {
+            /* SHOW NAV WHEN ACTIVE */
+            .nav-links.active { 
                 display: flex !important; 
                 position: absolute; 
                 top: 100%; 
@@ -245,13 +238,9 @@
                 padding: 40px 20px; 
                 box-shadow: 0 20px 40px rgba(0,0,0,0.2); 
                 border-bottom: 1px solid var(--border);
-                z-index: 10005; 
+                z-index: 10005; /* FIX: Higher than Film Grain */
                 gap: 25px;
             }
-
-            /* HIDE SCROLL when menu is open (Optional but nice) */
-            /* Note: Pure CSS cannot lock body scroll easily without :has(), 
-               so we rely on overflow handling within the menu container if needed */
 
             .nav-item { 
                 font-size: 1.2rem; 
@@ -273,28 +262,26 @@
             .hero-section { padding: 40px 0 80px; text-align: center; }
             .hero-title { font-size: 2.2rem; }
             
-            .service-card { padding: 0; }
-            .card-content { padding: 25px; }
             .card-visual { height: 200px; }
+            .card-content { padding: 25px; }
             
-            /* Force Footer to Stack */
-            .footer-grid { 
-                display: flex !important;
-                flex-direction: column;
-                align-items: center;
-                text-align: center;
-                gap: 40px; 
-            }
-            .footer-bottom { flex-direction: column; gap: 20px; }
+            /* Footer */
+            .footer-grid { grid-template-columns: 1fr; text-align: center; gap: 40px; }
             .footer-col { display: flex; flex-direction: column; align-items: center; }
-            .social-row { justify-content: center; }
-            .footer-watermark { display: none; }
+            .footer-bottom { flex-direction: column; gap: 20px; }
         }
 
         /* SAFETY: Ensure Desktop never shows hamburger */
         @media (min-width: 993px) {
-            .mobile-toggle-label { display: none !important; }
+            .mobile-toggle { display: none !important; }
             .nav-links { display: flex !important; }
+        }
+
+        /* --- MOBILE-ONLY OVERRIDES (STRICT) --- */
+        body.menu-open {
+            overflow: hidden !important;
+            position: fixed;
+            width: 100%;
         }
     </style>
 </head>
@@ -314,10 +301,7 @@
                 </div>
             </a>
             
-            <input type="checkbox" id="mobile-menu-checkbox">
-            <label for="mobile-menu-checkbox" class="mobile-toggle-label">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
-            </label>
+            <button class="mobile-toggle" id="mobile-menu-toggle" aria-label="Menu">☰</button>
 
             <nav class="nav-links" id="nav-links">
                 <a href="index.html" class="nav-item">Home</a>
@@ -555,18 +539,65 @@
         });
         window.dispatchEvent(new Event('scroll'));
 
-        // CSS-ONLY MENU SUPPORT: Close menu when clicking a link
-        // This is safe even if JS fails, the menu still opens via CSS
-        document.addEventListener('DOMContentLoaded', function() {
-            const checkbox = document.getElementById('mobile-menu-checkbox');
-            const nav = document.getElementById('nav-links');
-            
-            if(checkbox && nav) {
-                // Close menu when a link is clicked (UX improvement)
-                nav.querySelectorAll('a').forEach(link => {
-                    link.addEventListener('click', () => {
-                        checkbox.checked = false; // Uncheck the box to hide menu
-                    });
+        // --- UNIFIED MOBILE NAV LOGIC (PRODUCTION FIX) ---
+        document.addEventListener('DOMContentLoaded', () => {
+            const menuToggle = document.getElementById('mobile-menu-toggle');
+            const navLinks = document.getElementById('nav-links');
+            const body = document.body;
+
+            if (menuToggle && navLinks) {
+                
+                // Toggle Function
+                const toggleMenu = (event) => {
+                    if(event) {
+                        event.preventDefault();
+                        event.stopPropagation();
+                    }
+                    
+                    const isOpen = navLinks.classList.contains('active');
+                    
+                    if (isOpen) {
+                        closeMenu();
+                    } else {
+                        openMenu();
+                    }
+                };
+
+                const openMenu = () => {
+                    navLinks.classList.add('active');
+                    body.classList.add('menu-open'); // CSS handles scroll lock
+                    menuToggle.innerHTML = '✕';
+                    menuToggle.setAttribute('aria-expanded', 'true');
+                };
+
+                const closeMenu = () => {
+                    navLinks.classList.remove('active');
+                    body.classList.remove('menu-open');
+                    menuToggle.innerHTML = '☰';
+                    menuToggle.setAttribute('aria-expanded', 'false');
+                };
+
+                // Listeners
+                menuToggle.addEventListener('click', toggleMenu);
+
+                // Close on Link Click
+                navLinks.querySelectorAll('a').forEach(link => {
+                    link.addEventListener('click', closeMenu);
+                });
+
+                // Close on Outside Click
+                document.addEventListener('click', (event) => {
+                    const isClickInside = navLinks.contains(event.target) || menuToggle.contains(event.target);
+                    if (!isClickInside && navLinks.classList.contains('active')) {
+                        closeMenu();
+                    }
+                });
+
+                // Safety Resize
+                window.addEventListener('resize', () => {
+                    if (window.innerWidth > 992 && navLinks.classList.contains('active')) {
+                        closeMenu();
+                    }
                 });
             }
         });

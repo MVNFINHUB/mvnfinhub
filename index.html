@@ -395,6 +395,21 @@
             .mobile-toggle { display: none !important; }
             .nav-links { display: flex !important; }
         }
+
+        /* --- MOBILE-ONLY OVERRIDES (STRICT) --- */
+        body.menu-open {
+            overflow: hidden !important; /* Locks background scroll */
+            position: fixed;
+            width: 100%;
+        }
+
+        @media (max-width: 768px) {
+            .hero-visual {
+                height: 300px; /* Reduces height on mobile */
+                margin-top: 20px;
+                transform: none !important; /* Disables 3D tilt */
+            }
+        }
     </style>
 </head>
 <body>
@@ -413,7 +428,7 @@
                 </div>
             </a>
             
-            <button class="mobile-toggle" id="mobile-menu-toggle" aria-label="Toggle Menu" onclick="toggleMobileMenu()">☰</button>
+            <button class="mobile-toggle" id="mobile-menu-toggle" aria-label="Toggle Menu">☰</button>
 
             <nav class="nav-links" id="nav-links">
                 <a href="index.html" class="nav-item active">Home</a>
@@ -679,43 +694,64 @@
             }
         }
 
-        // --- NUCLEAR MENU FIX (Direct Function) ---
-        function toggleMobileMenu() {
-            const nav = document.getElementById('nav-links');
-            const btn = document.getElementById('mobile-menu-toggle');
-            
-            nav.classList.toggle('active');
-            
-            if (nav.classList.contains('active')) {
-                btn.textContent = '✕';
-                document.body.style.overflow = 'hidden'; 
-            } else {
-                btn.textContent = '☰';
-                document.body.style.overflow = 'auto'; 
-            }
-        }
+        // --- UNIFIED MOBILE NAV LOGIC (PRODUCTION FIX) ---
+        document.addEventListener('DOMContentLoaded', () => {
+            const menuToggle = document.getElementById('mobile-menu-toggle');
+            const navLinks = document.getElementById('nav-links');
+            const body = document.body;
 
-        // Close menu when clicking a link
-        document.addEventListener('DOMContentLoaded', function() {
-            const nav = document.getElementById('nav-links');
-            const btn = document.getElementById('mobile-menu-toggle');
-            
-            if(nav && btn) {
-                // Handle Link Clicks
-                nav.querySelectorAll('a').forEach(link => {
-                    link.addEventListener('click', () => {
-                        nav.classList.remove('active');
-                        btn.textContent = '☰';
-                        document.body.style.overflow = 'auto';
-                    });
+            if (menuToggle && navLinks) {
+                
+                // Toggle Function
+                const toggleMenu = (event) => {
+                    if(event) {
+                        event.preventDefault();
+                        event.stopPropagation();
+                    }
+                    
+                    const isOpen = navLinks.classList.contains('active');
+                    
+                    if (isOpen) {
+                        closeMenu();
+                    } else {
+                        openMenu();
+                    }
+                };
+
+                const openMenu = () => {
+                    navLinks.classList.add('active');
+                    body.classList.add('menu-open'); // CSS handles scroll lock
+                    menuToggle.innerHTML = '✕';
+                    menuToggle.setAttribute('aria-expanded', 'true');
+                };
+
+                const closeMenu = () => {
+                    navLinks.classList.remove('active');
+                    body.classList.remove('menu-open');
+                    menuToggle.innerHTML = '☰';
+                    menuToggle.setAttribute('aria-expanded', 'false');
+                };
+
+                // Listeners
+                menuToggle.addEventListener('click', toggleMenu);
+
+                // Close on Link Click
+                navLinks.querySelectorAll('a').forEach(link => {
+                    link.addEventListener('click', closeMenu);
                 });
 
-                // Handle Outside Clicks
-                document.addEventListener('click', (e) => {
-                    if (nav.classList.contains('active') && !nav.contains(e.target) && !btn.contains(e.target)) {
-                        nav.classList.remove('active');
-                        btn.textContent = '☰';
-                        document.body.style.overflow = 'auto';
+                // Close on Outside Click
+                document.addEventListener('click', (event) => {
+                    const isClickInside = navLinks.contains(event.target) || menuToggle.contains(event.target);
+                    if (!isClickInside && navLinks.classList.contains('active')) {
+                        closeMenu();
+                    }
+                });
+
+                // Safety Resize
+                window.addEventListener('resize', () => {
+                    if (window.innerWidth > 992 && navLinks.classList.contains('active')) {
+                        closeMenu();
                     }
                 });
             }

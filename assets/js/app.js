@@ -46,60 +46,64 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     // ==========================================
-    // 2. MOBILE MENU LOGIC (SURGICAL FIX)
+    // 2. MOBILE MENU LOGIC (UNIFIED & STANDARDIZED)
     // ==========================================
-    /* MOBILE FIX: Targeted .mobile-toggle and .nav-links for strict CSS compatibility */
-    const menuToggle = document.querySelector('.mobile-toggle') || document.getElementById('mobile-menu-toggle');
+    const menuToggle = document.getElementById('mobile-menu-toggle');
     const navLinks = document.querySelector('.nav-links');
-
-    // SAFETY: Force reset body scroll on page load (Fixes "Stuck" scroll on Back Button)
-    document.body.style.overflow = '';
+    const body = document.body;
 
     if (menuToggle && navLinks) {
         
-        // Internal Toggle Function to ensure state consistency
-        const setMenuState = (isOpen) => {
+        // Internal State Manager
+        const toggleMenu = (event) => {
+            if (event) {
+                event.preventDefault();
+                event.stopPropagation();
+            }
+
+            const isOpen = navLinks.classList.contains('active');
+            
             if (isOpen) {
-                navLinks.classList.add('active');
-                menuToggle.textContent = '✕';
-                menuToggle.setAttribute('aria-expanded', 'true');
-                document.body.style.overflow = 'hidden'; /* Lock Scroll */
+                closeMenu();
             } else {
-                navLinks.classList.remove('active');
-                menuToggle.textContent = '☰';
-                menuToggle.setAttribute('aria-expanded', 'false');
-                document.body.style.overflow = ''; /* Unlock Scroll */
+                openMenu();
             }
         };
 
-        // 1. Toggle Open/Close on Click
-        menuToggle.addEventListener('click', (e) => {
-            e.preventDefault();  
-            e.stopPropagation();
-            const isCurrentlyOpen = navLinks.classList.contains('active');
-            setMenuState(!isCurrentlyOpen);
-        });
+        const openMenu = () => {
+            navLinks.classList.add('active');
+            body.classList.add('menu-open'); // CSS handles scroll lock
+            menuToggle.innerHTML = '✕';
+            menuToggle.setAttribute('aria-expanded', 'true');
+        };
 
-        // 2. Close when clicking ANY link (Critical for UX)
+        const closeMenu = () => {
+            navLinks.classList.remove('active');
+            body.classList.remove('menu-open'); // CSS unlocks scroll
+            menuToggle.innerHTML = '☰';
+            menuToggle.setAttribute('aria-expanded', 'false');
+        };
+
+        // 1. Main Toggle Listener
+        menuToggle.addEventListener('click', toggleMenu);
+
+        // 2. Close when clicking ANY link (UX Requirement)
         navLinks.querySelectorAll('a').forEach(link => {
-            link.addEventListener('click', () => {
-                setMenuState(false);
-            });
+            link.addEventListener('click', closeMenu);
         });
 
         // 3. Close when clicking OUTSIDE the menu
-        document.addEventListener('click', (e) => {
-            if (navLinks.classList.contains('active') && 
-                !navLinks.contains(e.target) && 
-                !menuToggle.contains(e.target)) {
-                setMenuState(false);
+        document.addEventListener('click', (event) => {
+            const isClickInside = navLinks.contains(event.target) || menuToggle.contains(event.target);
+            if (!isClickInside && navLinks.classList.contains('active')) {
+                closeMenu();
             }
         });
 
-        // 4. SAFETY: Auto-close if screen resizes to Desktop (Prevents broken layout)
+        // 4. Safety: Close on Desktop Resize
         window.addEventListener('resize', () => {
             if (window.innerWidth > 992 && navLinks.classList.contains('active')) {
-                setMenuState(false);
+                closeMenu();
             }
         });
     }
@@ -118,7 +122,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 header.style.backdropFilter = 'blur(12px)';
                 header.style.borderBottom = '1px solid var(--border)';
             } else {
-                /* DESKTOP SAFETY: Only clear backgrounds at top if width is desktop (prevent mobile flicker) */
+                /* DESKTOP SAFETY: Only clear backgrounds at top if width is desktop */
                 if(window.innerWidth > 992) {
                     header.style.background = 'transparent';
                     header.style.backdropFilter = 'none';
