@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://mvnfinhub.goatcounter.com https://gc.zgo.at; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self' https://mvnfinhub.goatcounter.com;">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://unpkg.com https://mvnfinhub.goatcounter.com https://gc.zgo.at; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self' https://mvnfinhub.goatcounter.com https://*.supabase.co;">
     <meta http-equiv="X-Content-Type-Options" content="nosniff">
     <meta name="referrer" content="strict-origin-when-cross-origin">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -393,7 +393,9 @@
                             <h2>Enquiry Logged</h2>
                             <p style="color:var(--text-muted); margin-bottom:10px;">Your request has been securely recorded.</p>
                             <span class="ref-code" id="refIdDisplay"></span>
-                            <p style="font-size:0.9rem; color:var(--text-muted);">A confirmation has been sent to your dashboard.</p>
+                            
+                            <p style="font-size:0.9rem; color:var(--text-muted);">We will contact you within 24 business hours.</p>
+                            
                             <a href="index.html" class="executive-btn" style="width:auto; display:inline-block; margin-top:20px; padding:12px 30px;">Return Home</a>
                         </div>
 
@@ -643,24 +645,11 @@
                     }
                 });
             }
-
-            // Form Logic (Preserved from original)
-            const form = document.getElementById('enquiryForm');
-            if(form) {
-                form.addEventListener('submit', (e) => {
-                    e.preventDefault();
-                    const btn = form.querySelector('.executive-btn');
-                    btn.innerHTML = 'Verifying...';
-                    
-                    setTimeout(() => {
-                        form.style.display = 'none';
-                        document.getElementById('successMessage').style.display = 'block';
-                        document.getElementById('refIdDisplay').innerText = 'REF-' + Math.floor(100000 + Math.random() * 900000);
-                        window.scrollTo({ top: 0, behavior: 'smooth' });
-                    }, 1500);
-                });
-            }
         });
     </script>
+    
+    <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
+    <script src="assets/js/app.js"></script>
+
 </body>
 </html>

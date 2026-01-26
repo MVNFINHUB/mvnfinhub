@@ -157,14 +157,25 @@ document.addEventListener('DOMContentLoaded', () => {
     if(yearSpan) yearSpan.textContent = new Date().getFullYear();
 
     // ==========================================
-    // 5. DATABASE & FORM LOGIC (SUPABASE)
+    // 5. DATABASE & FORM LOGIC (SUPABASE FIX)
     // ==========================================
+    
+    // PLEASE PASTE YOUR KEYS HERE
     const SUPABASE_URL = "https://fviufivewglglnxhlmmf.supabase.co";      
     const SUPABASE_KEY = "sb_publishable_HYE7g0GyJbUfmldKTTAbeA_OUdc0Rah";
+
 
     const enquiryForm = document.getElementById('enquiryForm');
     const successMessage = document.getElementById('successMessage');
     const refIdDisplay = document.getElementById('refIdDisplay');
+
+    // Initialize Supabase Client (Requires the script tag in HTML)
+    let supabaseClient = null;
+    if (typeof supabase !== 'undefined') {
+        supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+    } else {
+        console.error("Supabase script not found in HTML.");
+    }
 
     if (enquiryForm) {
         enquiryForm.addEventListener('submit', async function(e) {
@@ -197,31 +208,18 @@ document.addEventListener('DOMContentLoaded', () => {
             };
 
             try {
-                if(!SUPABASE_URL || !SUPABASE_KEY) {
-                    console.log("Supabase keys missing. Simulating success.");
-                    await new Promise(r => setTimeout(r, 1500)); 
-                    enquiryForm.style.display = 'none';
-                    if(refIdDisplay) refIdDisplay.textContent = refID;
-                    if(successMessage) {
-                        successMessage.style.display = 'block';
-                        successMessage.scrollIntoView({ behavior: 'smooth' });
-                    }
-                    return; 
+                if(!supabaseClient) {
+                    throw new Error("Supabase client not initialized.");
                 }
 
-                const response = await fetch(`${SUPABASE_URL}/rest/v1/enquiries`, {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'apikey': SUPABASE_KEY,
-                        'Authorization': `Bearer ${SUPABASE_KEY}`,
-                        'Prefer': 'return=minimal'
-                    },
-                    body: JSON.stringify(formData)
-                });
+                // DIRECT SUPABASE INSERT
+                const { data, error } = await supabaseClient
+                    .from('enquiries') // Ensure your table name is exactly 'enquiries' in Supabase
+                    .insert([formData]);
 
-                if (!response.ok) throw new Error('Server Error');
+                if (error) throw error;
 
+                // Success State
                 enquiryForm.style.display = 'none';
                 if(refIdDisplay) refIdDisplay.textContent = refID;
                 if(successMessage) {
@@ -230,7 +228,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
 
             } catch (error) {
-                console.error(error);
+                console.error("Submission Error:", error);
                 alert("Message could not be sent. Please contact us directly.");
                 if(submitBtn) {
                     submitBtn.disabled = false;
